@@ -18,12 +18,14 @@ $columns = array(
 );
 
 // getting total number records without any search
-$sql = "SELECT * FROM Usuarios";
+$sql = "SELECT * FROM Usuarios 
+        LEFT JOIN TipoDeUsuarios ON Usuarios.TIPODEUSUARIOID = TipoDeUsuarios.TIPODEUSUARIOID";
 $query = mysqli_query($conn, $sql) or die("Usuario-grid-data.php: get employees");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 $sql = "SELECT * FROM Usuarios
+LEFT JOIN TipoDeUsuarios ON Usuarios.TIPODEUSUARIOID = TipoDeUsuarios.TIPODEUSUARIOID
 WHERE 1=1 ";
 
 if (!empty($requestData['search']['value'])) {
@@ -31,12 +33,12 @@ if (!empty($requestData['search']['value'])) {
     $sql_words = array();
     foreach ($search_words as $word) {
         $sql_words[] = "(
-            Usuarios.Nombre LIKE '%" . $word . "%' OR
+            Usuarios.PrimerNombre LIKE '%" . $word . "%' OR
             Usuarios.SegundoNombre LIKE '%" . $word . "%' OR
             Usuarios.ApellidoPaterno LIKE '%" . $word . "%' OR
             Usuarios.ApellidoMaterno LIKE '%" . $word . "%' OR
-            Usuarios.SituacionUsuario LIKE '%" . $word . "%' OR
-            Usuarios.Email LIKE '%" . $word . "%'
+            TipoDeUsuarios.TipoDeUsuario LIKE '%" . $word . "%' OR
+            Usuarios.email LIKE '%" . $word . "%'
         )";
     }
     $sql .= " AND " . implode(' AND ', $sql_words);
@@ -58,7 +60,7 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
 
     $nestedData[] = $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"] . ' ' . $row["PrimerNombre"] . ' ' . $row["SegundoNombre"];
     $nestedData[] = $row["email"];
-    $nestedData[] = $row["TIPODEUSUARIOID"];
+    $nestedData[] = $row["TipoDeUsuario"];
     $nestedData[] = '
 
     <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-toggle="modal" data-target="#EditarUsuarios" onclick="TomarDatosParaModalUsuarios(' . $row["USUARIOID"] . ', ' . $Congreso . ')"><i class="mdi mdi-pencil"></i>Editar</button>
