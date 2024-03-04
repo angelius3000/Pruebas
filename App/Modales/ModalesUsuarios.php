@@ -53,10 +53,17 @@
 
                                                 </div>
 
-                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="email" class="form-label">Email</label>
                                                     <input type="text" class="form-control" id="email" autocomplete="off" placeholder="uncorreo@email.com" name="email">
+
+                                                </div>
+
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+
+                                                    <label for="Telefono" class="form-label">Teléfono</label>
+                                                    <input type="text" class="form-control" id="Telefono" autocomplete="off" placeholder="656 123 4567" name="Telefono">
 
                                                 </div>
 
