@@ -43,7 +43,7 @@
     <div class="app full-width-header align-content-stretch d-flex flex-wrap">
         <div class="app-sidebar">
             <div class="logo logo-sm">
-                <a href="index.html"> <img src="App/Graficos/Logo/LogoEdison.jpeg" style="max-width :100px;"> </a>
+                <a href="main.php"> <img src="App/Graficos/Logo/LogoEdison.png" style="max-width :130px;"> </a>
             </div>
 
             <?php include("includes/Menu.php") ?>

@@ -31,6 +31,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/neptune.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/neptune.png" />
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -43,7 +45,7 @@
     <div class="app full-width-header align-content-stretch d-flex flex-wrap">
         <div class="app-sidebar">
             <div class="logo logo-sm">
-                <a href="index.html"> <img src="App/Graficos/Logo/LogoEdison.jpeg" style="max-width :100px;"> </a>
+                <a href="index.html"> <img src="App/Graficos/Logo/LogoEdison.png" style="max-width :100px;"> </a>
             </div>
 
             <?php include("includes/Menu.php") ?>
@@ -63,7 +65,6 @@
                 <div class="content-wrapper">
                     <div class="container-fluid">
 
-
                         <div class="row">
                             <div class="col">
                                 <div class="page-description">
@@ -73,6 +74,14 @@
                             </div>
                         </div>
 
+
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalAgregarUsuarios"><i class="mdi mdi-pencil"></i>Agregar Usuario</button>
+
+                            </div>
+                        </div>
+                        <br>
                         <div class="row">
                             <table id="UsuariosDT" class="display" style="width:100%">
                                 <thead>
@@ -81,7 +90,6 @@
                                         <th>email</th>
                                         <th>Tipo de usuario</th>
                                         <th></th>
-
                                     </tr>
                                 </thead>
                             </table>
@@ -95,6 +103,8 @@
             </div>
         </div>
     </div>
+
+    <?php include("App/Modales/ModalesUsuarios.php") ?>
 
     <!-- Javascripts -->
     <script src="assets/plugins/jquery/jquery-3.5.1.min.js"></script>
