@@ -15,17 +15,51 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12">
 
                                             <div class="row">
-                                                <div class="col-lg-6 col-sm-12">
-                                                    <label for="CantidadPago" class="form-label">Cantidad</label>
-                                                    <input type="text" class="form-control" id="CantidadPago" autocomplete="off" placeholder="34540" name="CantidadPago">
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <select class="form-select" aria-label="Default select example">
+                                                        <option selected>Selecciona tipo de usuario</option>
+
+                                                        <?php while ($row_TipoDeUsuario = mysqli_fetch_assoc($TipoDeUsuario)) { ?>
+
+                                                            <option value="<?php echo $row_TipoDeUsuario['TIPODEUSUARIOID']; ?>"><?php echo $row_TipoDeUsuario['TipoDeUsuario']; ?></option>
+
+                                                        <?php } ?>
+
+                                                    </select>
+                                                </div>
+
+
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="PrimerNombre" class="form-label">Primer nombre</label>
+                                                    <input type="text" class="form-control" id="PrimerNombre" autocomplete="off" placeholder="Luis" name="PrimerNombre">
 
                                                 </div>
-                                                <div class="col-lg-6 col-sm-12">
+                                                <div class="col-lg-6 col-sm-12 mb-4">
 
-                                                    <label for="CantidadPago" class="form-label">Cantidad</label>
-                                                    <input type="text" class="form-control" id="CantidadPago" autocomplete="off" placeholder="34540" name="CantidadPago">
+                                                    <label for="SegundoNombre" class="form-label">Segundo nombre</label>
+                                                    <input type="text" class="form-control" id="SegundoNombre" autocomplete="off" placeholder="Roberto" name="SegundoNombre">
 
                                                 </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+
+                                                    <label for="ApellidoPaterno" class="form-label">Apellido paterno</label>
+                                                    <input type="text" class="form-control" id="ApellidoPaterno" autocomplete="off" placeholder="Pérez" name="ApellidoPaterno">
+
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+
+                                                    <label for="ApellidoMaterno" class="form-label">Apellido materno</label>
+                                                    <input type="text" class="form-control" id="ApellidoMaterno" autocomplete="off" placeholder="Chávez" name="ApellidoMaterno">
+
+                                                </div>
+
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+
+                                                    <label for="email" class="form-label">Email</label>
+                                                    <input type="text" class="form-control" id="email" autocomplete="off" placeholder="uncorreo@email.com" name="email">
+
+                                                </div>
+
                                             </div>
 
                                         </div>

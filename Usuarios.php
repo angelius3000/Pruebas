@@ -1,3 +1,13 @@
+<?php include("Connections/Con.php");
+
+$query_TipoDeUsuario = "SELECT * FROM TipoDeUsuarios";
+$TipoDeUsuario = mysqli_query($conn, $query_TipoDeUsuario) or die(mysqli_error($conn));
+$totalRows_TipoDeUsuario = mysqli_num_rows($TipoDeUsuario);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
