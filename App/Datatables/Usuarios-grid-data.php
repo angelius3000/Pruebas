@@ -63,7 +63,8 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
     $nestedData[] = $row["TipoDeUsuario"];
     $nestedData[] = '
 
-    <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-toggle="modal" data-target="#EditarUsuarios" onclick="TomarDatosParaModalUsuarios(' . $row["USUARIOID"] . ', ' . $Congreso . ')"><i class="mdi mdi-pencil"></i>Editar</button>
+    <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalEditarUsuarios" onclick="TomarDatosParaModalUsuarios(' . $row["USUARIOID"] . ')"><i class="mdi mdi-pencil"></i>Editar</button>
+
 
     
     <button type="button" class="btn btn-sm btn-danger waves-effect width-md waves-light" data-toggle="modal" data-target="#BorrarUsuarios" onclick="TomarDatosParaModalUsuarios(' . $row["USUARIOID"] . ', ' . $Congreso . ')"><i class="mdi mdi-close"></i>Borrar</button>';
