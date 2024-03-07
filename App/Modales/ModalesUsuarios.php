@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Agregar Usuarios</h5>
+                <h5 class="modal-title">Agregar usuarios</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
             </div>
             <form data-parsley-validate class="forms-sample" id="ValidacionAgregarUsuario">
@@ -98,7 +98,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar Usuarios</h5>
+                <h5 class="modal-title">Editar usuarios</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
             </div>
             <form data-parsley-validate class="forms-sample" id="ValidacionEditarUsuario">
@@ -184,6 +184,47 @@
                         Editar</button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL DE BORRADO -->
+
+<div class="modal" id="ModalDeshabilitarUsuarios">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Deshabilitar usuarios</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+
+                                Deseas dehabilitar este usuario?
+
+                                <br>
+                                <br>
+                                <h3 id="NombreUsuarioDeshabilitar"></h3>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <input type="hidden" id="USUARIOIDDeshabilitar" name="USUARIOIDDeshabilitar">
+
+
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" id="DeshabilitarUsuario" class="btn btn-danger">
+                    Deshabilitar</button>
+            </div>
+
         </div>
     </div>
 </div>

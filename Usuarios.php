@@ -100,6 +100,7 @@ $totalRows_TipoDeUsuario = mysqli_num_rows($TipoDeUsuario);
                                         <th>email</th>
                                         <th>Tipo de usuario</th>
                                         <th></th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                             </table>

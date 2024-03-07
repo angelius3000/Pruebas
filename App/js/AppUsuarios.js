@@ -100,6 +100,30 @@ $(document).ready(function() {
       $("#ModalEditarUsuarios").modal("toggle");
     }
   });
+
+  // Deshabilitar Usuario
+
+  $("body").on("click", "#DeshabilitarUsuario", function() {
+    var USUARIOID = $("input#USUARIOIDDeshabilitar").val();
+
+    var dataString = "USUARIOID=" + USUARIOID;
+
+    console.log(dataString);
+
+    // ajax
+    $.ajax({
+      //async: false,
+      type: "POST",
+      url: "App/Server/ServerDeshabilitarUsuarios.php",
+      data: dataString,
+      dataType: "json",
+      success: function(response) {
+        dataTableUsuarioDT.columns.adjust().draw();
+      },
+    }).done(function() {});
+
+    $("#ModalDeshabilitarUsuarios").modal("toggle");
+  });
 });
 
 function TomarDatosParaModalUsuarios(val) {
@@ -120,6 +144,20 @@ function TomarDatosParaModalUsuarios(val) {
       $("select#TIPODEUSUARIOIDEditar").val(response.TIPODEUSUARIOID);
 
       $("input#USUARIOIDEditar").val(response.USUARIOID);
+
+      //Para modal de Borrar
+
+      $("#NombreUsuarioDeshabilitar").text(
+        response.PrimerNombre +
+          " " +
+          response.SegundoNombre +
+          " " +
+          response.ApellidoPaterno +
+          " " +
+          response.ApellidoMaterno
+      );
+
+      $("input#USUARIOIDDeshabilitar").val(response.USUARIOID);
     },
   });
 }

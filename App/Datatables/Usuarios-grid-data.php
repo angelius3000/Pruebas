@@ -56,18 +56,26 @@ $data = array();
 
 while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparando el Arraigo
 
+
+    if ($row["Deshabilitado"] == 0) {
+        $BadgeActivo = '<span class="badge badge-success">Activo</span>';
+    } else {
+        $BadgeActivo = '<span class="badge badge-danger">Inhabilitado</span>';
+    }
+
+
     $nestedData = array();
 
     $nestedData[] = $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"] . ' ' . $row["PrimerNombre"] . ' ' . $row["SegundoNombre"];
     $nestedData[] = $row["email"];
     $nestedData[] = $row["TipoDeUsuario"];
+    $nestedData[] = $BadgeActivo;
     $nestedData[] = '
 
     <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalEditarUsuarios" onclick="TomarDatosParaModalUsuarios(' . $row["USUARIOID"] . ')"><i class="mdi mdi-pencil"></i>Editar</button>
 
-
-    
-    <button type="button" class="btn btn-sm btn-danger waves-effect width-md waves-light" data-toggle="modal" data-target="#BorrarUsuarios" onclick="TomarDatosParaModalUsuarios(' . $row["USUARIOID"] . ', ' . $Congreso . ')"><i class="mdi mdi-close"></i>Borrar</button>';
+    <button type="button" class="btn btn-sm btn-danger waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalDeshabilitarUsuarios" onclick="TomarDatosParaModalUsuarios(' . $row["USUARIOID"] . ')"><i class="mdi mdi-pencil"></i>Deshabilitar</button>
+    ';
 
     $data[] = $nestedData;
 }
