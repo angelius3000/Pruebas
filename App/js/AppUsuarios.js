@@ -79,6 +79,8 @@ $(document).ready(function() {
       // data string
       var dataString = form.serialize();
 
+      console.log(dataString);
+
       // ajax
       $.ajax({
         //async: false,
@@ -95,7 +97,7 @@ $(document).ready(function() {
         },
       }).done(function() {});
 
-      $("#ModalAgregarUsuarios").modal("toggle");
+      $("#ModalEditarUsuarios").modal("toggle");
     }
   });
 });
