@@ -43,6 +43,7 @@ LEFT JOIN Status ON Status.STATUSID = Repartos.STATUSID
 WHERE 1=1 ";
 
 if (!empty($requestData['search']['value'])) {
+
     $search_words = explode(' ', $requestData['search']['value']);
     $sql_words = array();
     foreach ($search_words as $word) {
@@ -51,7 +52,16 @@ if (!empty($requestData['search']['value'])) {
             Usuarios.SegundoNombre LIKE '%" . $word . "%' OR
             Usuarios.ApellidoPaterno LIKE '%" . $word . "%' OR
             Usuarios.ApellidoMaterno LIKE '%" . $word . "%' OR
-            TipoDeUsuarios.TipoDeUsuario LIKE '%" . $word . "%' OR
+            Clientes.NombreCliente LIKE '%" . $word . "%' OR
+            Repartos.REPARTOID LIKE '%" . $word . "%' OR
+            Repartos.Fecha LIKE '%" . $word . "%' OR
+            Repartos.Calle LIKE '%" . $word . "%' OR
+            Repartos.CP LIKE '%" . $word . "%' OR
+            Repartos.Receptor LIKE '%" . $word . "%' OR
+            Repartos.TelefonoDeReceptor LIKE '%" . $word . "%' OR
+            Repartos.TelefonoAlternativo LIKE '%" . $word . "%' OR
+            Repartos.NumeroDeFactura LIKE '%" . $word . "%' OR
+            Repartos.Comentarios LIKE '%" . $word . "%' OR
             Usuarios.email LIKE '%" . $word . "%'
         )";
     }
@@ -71,17 +81,25 @@ $data = array();
 while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparando el Arraigo
 
 
-    // if ($row["Deshabilitado"] == 0) {
-    //     $BadgeActivo = '<span class="badge badge-success">Activo</span>';
-    // } else {
-    //     $BadgeActivo = '<span class="badge badge-danger">Inhabilitado</span>';
-    // }
+    if ($row["STATUSID"] == 1) {
+        $BadgeStatus = '<span class="badge badge-info">Registrado</span>';
+    } else if ($row["STATUSID"] == 2) {
+        $BadgeStatus = '<span class="badge badge-warning">En tránsito</span>';
+    } else if ($row["STATUSID"] == 3) {
+        $BadgeStatus = '<span class="badge badge-dark">Demorado</span>';
+    } else if ($row["STATUSID"] == 4) {
+        $BadgeStatus = '<span class="badge badge-secondary">Surtiendo</span>';
+    } else if ($row["STATUSID"] == 5) {
+        $BadgeStatus = '<span class="badge badge-success">Entregado</span>';
+    } else if ($row["STATUSID"] == 6) {
+        $BadgeStatus = '<span class="badge badge-danger">Cancelado</span>';
+    }
 
 
     $nestedData = array();
 
-    $nestedData[] = $row["REPARTOID"];
-    $nestedData[] = $row["Status"];
+    $nestedData[] = '<strong>' . $row["REPARTOID"] . '</strong>';
+    $nestedData[] = $BadgeStatus;
     $nestedData[] = $row["PrimerNombre"] . ' ' . $row["SegundoNombre"] . ' ' . $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"];
     $nestedData[] = $row["NombreCliente"];
     $nestedData[] = $row["Fecha"];
