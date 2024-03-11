@@ -11,21 +11,35 @@ $requestData = $_REQUEST;
 
 $columns = array(
     // datatable column index  => database column name
-    0 => 'ApellidoPaterno',
-    1 => 'email',
-    2 => 'TIPODEUSUARIOID',
-    3 => ' '
+    0 => 'REPARTOID',
+    1 => 'STATUSID',
+    2 => 'USUARIOID',
+    3 => 'CLIENTEID',
+    4 => 'Fecha',
+    5 => 'Calle',
+    6 => 'CP',
+    7 => 'Receptor',
+    8 => 'TelefonoDeReceptor',
+    9 => 'TelefonoAlternativo',
+    10 => 'NumeroFactura',
+    11 => 'Comentarios'
+
+
 );
 
 // getting total number records without any search
-$sql = "SELECT * FROM Usuarios 
-        LEFT JOIN TipoDeUsuarios ON Usuarios.TIPODEUSUARIOID = TipoDeUsuarios.TIPODEUSUARIOID";
+$sql = "SELECT * FROM Repartos
+LEFT JOIN Usuarios ON Usuarios.USUARIOID = Repartos.USUARIOID
+LEFT JOIN Clientes ON Clientes.CLIENTEID = Repartos.CLIENTEID
+LEFT JOIN Status ON Status.STATUSID = Repartos.STATUSID ";
 $query = mysqli_query($conn, $sql) or die("Usuario-grid-data.php: get employees");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
-$sql = "SELECT * FROM Usuarios
-LEFT JOIN TipoDeUsuarios ON Usuarios.TIPODEUSUARIOID = TipoDeUsuarios.TIPODEUSUARIOID
+$sql = "SELECT * FROM Repartos
+LEFT JOIN Usuarios ON Usuarios.USUARIOID = Repartos.USUARIOID
+LEFT JOIN Clientes ON Clientes.CLIENTEID = Repartos.CLIENTEID
+LEFT JOIN Status ON Status.STATUSID = Repartos.STATUSID
 WHERE 1=1 ";
 
 if (!empty($requestData['search']['value'])) {
@@ -57,19 +71,27 @@ $data = array();
 while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparando el Arraigo
 
 
-    if ($row["Deshabilitado"] == 0) {
-        $BadgeActivo = '<span class="badge badge-success">Activo</span>';
-    } else {
-        $BadgeActivo = '<span class="badge badge-danger">Inhabilitado</span>';
-    }
+    // if ($row["Deshabilitado"] == 0) {
+    //     $BadgeActivo = '<span class="badge badge-success">Activo</span>';
+    // } else {
+    //     $BadgeActivo = '<span class="badge badge-danger">Inhabilitado</span>';
+    // }
 
 
     $nestedData = array();
 
-    $nestedData[] = $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"] . ' ' . $row["PrimerNombre"] . ' ' . $row["SegundoNombre"];
-    $nestedData[] = $row["email"];
-    $nestedData[] = $row["TipoDeUsuario"];
-    $nestedData[] = $BadgeActivo;
+    $nestedData[] = $row["REPARTOID"];
+    $nestedData[] = $row["Status"];
+    $nestedData[] = $row["PrimerNombre"] . ' ' . $row["SegundoNombre"] . ' ' . $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"];
+    $nestedData[] = $row["NombreCliente"];
+    $nestedData[] = $row["Fecha"];
+    $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"];
+    $nestedData[] = $row["CP"];
+    $nestedData[] = $row["Receptor"];
+    $nestedData[] = $row["TelefonoDeReceptor"];
+    $nestedData[] = $row["TelefonoAlternativo"];
+    $nestedData[] = $row["NumeroDeFactura"];
+    $nestedData[] = $row["Comentarios"];
     $nestedData[] = '
 
     <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalEditarUsuarios" onclick="TomarDatosParaModalUsuarios(' . $row["USUARIOID"] . ')"><i class="mdi mdi-pencil"></i>Editar</button>

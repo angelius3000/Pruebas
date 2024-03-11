@@ -58,10 +58,18 @@ $totalRows_TipoDeUsuario = mysqli_num_rows($TipoDeUsuario);
                             <table id="RepartosDT" class="display" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Nombre</th>
-                                        <th>email</th>
-                                        <th>Tipo de usuario</th>
-                                        <th></th>
+                                        <th>Folio</th>
+                                        <th>Estatus</th>
+                                        <th>Solicitante</th>
+                                        <th>Cliente</th>
+                                        <th>Fecha</th>
+                                        <th>Dirección</th>
+                                        <th>CP</th>
+                                        <th>Receptor</th>
+                                        <th>Teléfono receptor</th>
+                                        <th>Telefono alternativo</th>
+                                        <th>Numero de factura</th>
+                                        <th>Comentarios</th>
                                         <th></th>
                                     </tr>
                                 </thead>
