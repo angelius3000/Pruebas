@@ -1,11 +1,11 @@
-<div class="modal" id="ModalAgregarUsuarios">
+<div class="modal" id="ModalAgregarReparto">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Agregar usuarios</h5>
+                <h5 class="modal-title">Agregar reparto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
             </div>
-            <form data-parsley-validate class="forms-sample" id="ValidacionAgregarUsuario">
+            <form data-parsley-validate class="forms-sample" id="ValidacionAgregarRepartos">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-12">
@@ -13,67 +13,63 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
-
                                             <div class="row">
+
                                                 <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <select class="form-select" name="TIPODEUSUARIOID" id="TIPODEUSUARIOID" aria-label="Default select example" required>
-                                                        <option selected>Selecciona tipo de usuario</option>
-
-                                                        <?php while ($row_TipoDeUsuario = mysqli_fetch_assoc($TipoDeUsuario)) { ?>
-
-                                                            <option value="<?php echo $row_TipoDeUsuario['TIPODEUSUARIOID']; ?>"><?php echo $row_TipoDeUsuario['TipoDeUsuario']; ?></option>
-
-                                                        <?php }
-
-                                                        // Reset the pointer to the beginning
-                                                        mysqli_data_seek($TipoDeUsuario, 0);
-
-                                                        ?>
-
-                                                    </select>
-                                                </div>
-
-
-                                                <div class="col-lg-6 col-sm-12 mb-4">
-                                                    <label for="PrimerNombre" class="form-label">Primer nombre</label>
-                                                    <input type="text" class="form-control" id="PrimerNombre" autocomplete="off" placeholder="Luis" name="PrimerNombre" required>
-
+                                                    <label for="CLIENTEID" class="form-label">Cliente ID</label>
+                                                    <input type="text" class="form-control" id="CLIENTEID" autocomplete="off" name="CLIENTEID" required>
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
-
-                                                    <label for="SegundoNombre" class="form-label">Segundo nombre</label>
-                                                    <input type="text" class="form-control" id="SegundoNombre" autocomplete="off" placeholder="Roberto" name="SegundoNombre" required>
-
+                                                    <label for="Fecha" class="form-label">Fecha</label>
+                                                    <input type="date" class="form-control" id="Fecha" name="Fecha" required>
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
-
-                                                    <label for="ApellidoPaterno" class="form-label">Apellido paterno</label>
-                                                    <input type="text" class="form-control" id="ApellidoPaterno" autocomplete="off" placeholder="Pérez" name="ApellidoPaterno" required>
-
-                                                </div>
-                                                <div class="col-lg-6 col-sm-12 mb-4">
-
-                                                    <label for="ApellidoMaterno" class="form-label">Apellido materno</label>
-                                                    <input type="text" class="form-control" id="ApellidoMaterno" autocomplete="off" placeholder="Chávez" name="ApellidoMaterno" required>
-
+                                                    <label for="NumeroDeFactura" class="form-label">Número de Factura</label>
+                                                    <input type="text" class="form-control" id="NumeroDeFactura" autocomplete="off" name="NumeroDeFactura" required>
                                                 </div>
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
-
-                                                    <label for="email" class="form-label">Email</label>
-                                                    <input type="text" class="form-control" id="email" autocomplete="off" placeholder="uncorreo@email.com" name="email" required>
-
+                                                    <label for="Calle" class="form-label">Calle</label>
+                                                    <input type="text" class="form-control" id="Calle" autocomplete="off" name="Calle" required>
                                                 </div>
-
                                                 <div class="col-lg-6 col-sm-12 mb-4">
-
-                                                    <label for="Telefono" class="form-label">Teléfono</label>
-                                                    <input type="text" class="form-control" id="Telefono" autocomplete="off" placeholder="656 123 4567" name="Telefono" required>
-
+                                                    <label for="NumeroEXT" class="form-label">Número Exterior</label>
+                                                    <input type="text" class="form-control" id="NumeroEXT" autocomplete="off" name="NumeroEXT" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="Colonia" class="form-label">Colonia</label>
+                                                    <input type="text" class="form-control" id="Colonia" autocomplete="off" name="Colonia" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="CP" class="form-label">Código Postal</label>
+                                                    <input type="text" class="form-control" id="CP" autocomplete="off" name="CP" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="Ciudad" class="form-label">Ciudad</label>
+                                                    <input type="text" class="form-control" id="Ciudad" autocomplete="off" name="Ciudad" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="Estado" class="form-label">Estado</label>
+                                                    <input type="text" class="form-control" id="Estado" autocomplete="off" name="Estado" required>
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="Receptor" class="form-label">Receptor</label>
+                                                    <input type="text" class="form-control" id="Receptor" autocomplete="off" name="Receptor" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="TelefonoDeReceptor" class="form-label">Teléfono del Receptor</label>
+                                                    <input type="text" class="form-control" id="TelefonoDeReceptor" autocomplete="off" name="TelefonoDeReceptor" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="TelefonoAlternativo" class="form-label">Teléfono Alternativo</label>
+                                                    <input type="text" class="form-control" id="TelefonoAlternativo" autocomplete="off" name="TelefonoAlternativo">
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="Comentarios" class="form-label">Comentarios</label>
+                                                    <textarea class="form-control" id="Comentarios" name="Comentarios" rows="4"></textarea>
                                                 </div>
 
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -82,15 +78,14 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">
-                        Agregar</button>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
 
 <!-- MODAL DE EDICION -->
 
