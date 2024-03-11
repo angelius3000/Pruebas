@@ -33,7 +33,7 @@ $(document).ready(function() {
   });
 
   // Para Agregar Usuarios
-  $("#ValidacionAgregarUsuario").on("submit", function(e) {
+  $("#ValidacionAgregarRepartos").on("submit", function(e) {
     var form = $(this);
 
     form.parsley().validate();

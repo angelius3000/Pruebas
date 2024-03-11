@@ -1,12 +1,10 @@
 <?php include("Connections/Con.php");
 
-$query_TipoDeUsuario = "SELECT * FROM TipoDeUsuarios";
-$TipoDeUsuario = mysqli_query($conn, $query_TipoDeUsuario) or die(mysqli_error($conn));
-$totalRows_TipoDeUsuario = mysqli_num_rows($TipoDeUsuario);
+$query_Clientes = "SELECT * FROM Clientes";
+$Clientes = mysqli_query($conn, $query_Clientes) or die(mysqli_error($conn));
+$totalRows_Clientes = mysqli_num_rows($Clientes);
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">

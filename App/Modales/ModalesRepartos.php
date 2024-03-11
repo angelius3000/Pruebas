@@ -14,10 +14,27 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <div class="row">
-
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="CLIENTEID" class="form-label">Cliente ID</label>
-                                                    <input type="text" class="form-control" id="CLIENTEID" autocomplete="off" name="CLIENTEID" required>
+                                                    <select class="form-select" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
+                                                        <option selected>Selecciona cliente</option>
+
+                                                        <?php while ($row_Clientes = mysqli_fetch_assoc($Clientes)) { ?>
+
+                                                            <option value="<?php echo $row_Clientes['CLIENTEID']; ?>">
+
+                                                                <?php echo $row_Clientes['CLIENTESIAN'] . " - " . $row_Clientes['NombreCliente']; ?>
+
+                                                            </option>
+
+                                                        <?php }
+
+                                                        // Reset the pointer to the beginning
+                                                        mysqli_data_seek($Clientes, 0);
+
+                                                        ?>
+
+                                                    </select>
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
                                                     <label for="Fecha" class="form-label">Fecha</label>
@@ -107,15 +124,23 @@
 
                                             <div class="row">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <select class="form-select" name="TIPODEUSUARIOIDEditar" id="TIPODEUSUARIOIDEditar" aria-label="Default select example" required>
-                                                        <option selected>Selecciona tipo de usuario</option>
+                                                    <select class="form-select" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
+                                                        <option selected>Selecciona cliente</option>
 
-                                                        <?php while ($row_TipoDeUsuario = mysqli_fetch_assoc($TipoDeUsuario)) { ?>
+                                                        <?php while ($row_Clientes = mysqli_fetch_assoc($Clientes)) { ?>
 
-                                                            <option value="<?php echo $row_TipoDeUsuario['TIPODEUSUARIOID']; ?>"><?php echo $row_TipoDeUsuario['TipoDeUsuario']; ?></option>
+                                                            <option value="<?php echo $row_Clientes['CLIENTEID']; ?>">
 
-                                                        <?php } ?>
+                                                                <?php echo $row_Clientes['CLIENTESIAN'] . " - " . $row_Clientes['NombreCliente']; ?>
 
+                                                            </option>
+
+                                                        <?php }
+
+                                                        // Reset the pointer to the beginning
+                                                        mysqli_data_seek($Clientes, 0);
+
+                                                        ?>
 
                                                     </select>
                                                 </div>
