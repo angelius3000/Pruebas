@@ -1,5 +1,5 @@
 <?php
-include("../../Connections/Con.php");
+include("../../Connections/ConDB.php");
 // include("../../includes/Funciones.php");
 
 // if (!isset($_SESSION)) {

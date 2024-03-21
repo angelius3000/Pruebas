@@ -1,6 +1,6 @@
 <?php
 
-include("../../Connections/Con.php");
+include("../../Connections/ConDB.php");
 
 $TIPODEUSUARIOID = mysqli_real_escape_string($conn, $_POST['TIPODEUSUARIOID']);
 $PrimerNombre = mysqli_real_escape_string($conn, $_POST['PrimerNombre']);

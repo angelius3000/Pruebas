@@ -1,6 +1,6 @@
 <?php
 
-include("../../Connections/Con.php");
+include("../../Connections/ConDB.php");
 
 $USUARIOIDDeshabilitar = mysqli_real_escape_string($conn, $_POST['USUARIOID']);
 

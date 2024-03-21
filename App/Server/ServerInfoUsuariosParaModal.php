@@ -1,6 +1,6 @@
 <?php
 
-include("../../Connections/Con.php");
+include("../../Connections/ConDB.php");
 // Definir La table de la base de datos
 
 $IDDeUsuario = $_POST['ID'];
