@@ -31,7 +31,7 @@ $columns = array(
 
 
 // getting total number records without any search
-$sql = "SELECT * FROM Repartos
+$sql = "SELECT * FROM repartos
 LEFT JOIN Usuarios ON Usuarios.USUARIOID = Repartos.USUARIOID
 LEFT JOIN Clientes ON Clientes.CLIENTEID = Repartos.CLIENTEID
 LEFT JOIN Status ON Status.STATUSID = Repartos.STATUSID ";
@@ -39,7 +39,7 @@ $query = mysqli_query($conn, $sql) or die("Usuario-grid-data.php: get employees"
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
-$sql = "SELECT * FROM Repartos
+$sql = "SELECT * FROM repartos
 LEFT JOIN Usuarios ON Usuarios.USUARIOID = Repartos.USUARIOID
 LEFT JOIN Clientes ON Clientes.CLIENTEID = Repartos.CLIENTEID
 LEFT JOIN Status ON Status.STATUSID = Repartos.STATUSID

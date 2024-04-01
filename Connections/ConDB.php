@@ -11,7 +11,7 @@ if ($_SERVER['HTTP_HOST'] == "localhost/edisonreparto") {
     $servername = "localhost";
     $username = "root";
     $password = "root";
-    $dbname = "Edison";
+    $dbname = "edison";
 } else {
 
     /* Database connection start */
