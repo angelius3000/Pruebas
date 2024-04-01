@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var dataTableUsuarioDT = $("#repartosDT").DataTable({
+  var dataTableUsuarioDT = $("#RepartosDT").DataTable({
     // Tabla General de Usuarios
 
     dom: "Bifrtip",
@@ -25,7 +25,7 @@ $(document).ready(function() {
     processing: "Procesando...",
     loadingRecords: "Cargando...",
     ajax: {
-      url: "App/Datatables/repartos-grid-data.php", // json datasource
+      url: "App/Datatables/Repartos-grid-data.php", // json datasource
       type: "post",
     },
     lengthChange: true, // añade la lista desplegable

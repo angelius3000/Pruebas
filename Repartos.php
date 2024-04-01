@@ -38,7 +38,7 @@ $totalRows_clientes = mysqli_num_rows($clientes);
                         <div class="row">
                             <div class="col">
                                 <div class="page-description">
-                                    <h2>repartos</h2>
+                                    <h2>Repartos</h2>
 
                                 </div>
                             </div>
@@ -53,7 +53,7 @@ $totalRows_clientes = mysqli_num_rows($clientes);
                         </div>
                         <br>
                         <div class="row">
-                            <table id="repartosDT" class="display" style="width:100%">
+                            <table id="RepartosDT" class="display" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Folio</th>
