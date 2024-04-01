@@ -22,7 +22,8 @@ $columns = array(
     8 => 'TelefonoDeReceptor',
     9 => 'TelefonoAlternativo',
     10 => 'NumeroFactura',
-    11 => 'Comentarios'
+    11 => 'Comentarios',
+    12 => ''
 
 
 );
@@ -74,6 +75,7 @@ $totalFiltered = mysqli_num_rows($query); // when there is a search parameter th
 $sql .= " ORDER BY " . $columns[$requestData['order'][0]['column']] . "   " . $requestData['order'][0]['dir'] . "  LIMIT " . $requestData['start'] . " ," . $requestData['length'] . "   ";
 /* $requestData['order'][0]['column'] contains colmun index, $requestData['order'][0]['dir'] contains order such as asc/desc  */
 
+
 $query = mysqli_query($conn, $sql) or die("employee-grid-data.php: get employees");
 
 $data = array();
@@ -102,7 +104,7 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
     $nestedData[] = $BadgeStatus;
     $nestedData[] = $row["PrimerNombre"] . ' ' . $row["SegundoNombre"] . ' ' . $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"];
     $nestedData[] = $row["NombreCliente"];
-    $nestedData[] = $row["Fecha"];
+    $nestedData[] = $row["FechaReparto"];
     $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"];
     $nestedData[] = $row["CP"];
     $nestedData[] = $row["Receptor"];
@@ -126,7 +128,6 @@ $json_data = array(
     "recordsTotal"    => intval($totalData),  // total number of records
     "recordsFiltered" => intval($totalFiltered), // total number of records after searching, if there is no searching then totalFiltered = totalData
     "data"            => $data,   // total data array,
-    'NombreCongreso' => $rowCongreso["Congreso"]
 );
 
 echo json_encode($json_data);  // send data as json format
