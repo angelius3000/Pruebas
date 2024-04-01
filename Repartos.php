@@ -83,7 +83,7 @@ $totalRows_clientes = mysqli_num_rows($clientes);
         </div>
     </div>
 
-    <?php include("App/Modales/Modalesrepartos.php") ?>
+    <?php include("App/Modales/ModalesRepartos.php") ?>
 
     <!-- Javascripts -->
     <script src="assets/plugins/jquery/jquery-3.5.1.min.js"></script>
@@ -99,7 +99,7 @@ $totalRows_clientes = mysqli_num_rows($clientes);
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js" integrity="sha512-Fq/wHuMI7AraoOK+juE5oYILKvSPe6GC5ZWZnvpOO/ZPdtyA29n+a5kVLP4XaLyDy9D1IBPYzdFycO33Ijd0Pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="App/js/Apprepartos.js"></script>
+    <script src="App/js/AppRepartos.js"></script>
 
 </body>
 
