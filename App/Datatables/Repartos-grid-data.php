@@ -27,6 +27,9 @@ $columns = array(
 
 );
 
+// Esta es la nueva version
+
+
 // getting total number records without any search
 $sql = "SELECT * FROM Repartos
 LEFT JOIN Usuarios ON Usuarios.USUARIOID = Repartos.USUARIOID
