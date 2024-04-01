@@ -6,6 +6,12 @@ if ($_SERVER['HTTP_HOST'] == "localhost/edisonreparto") {
     $username = "root";
     $password = "";
     $dbname = "edison";
+} else if ($_SERVER['HTTP_HOST'] == "local.edison:8888") {
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "root";
+    $dbname = "Edison";
 } else {
 
     /* Database connection start */
