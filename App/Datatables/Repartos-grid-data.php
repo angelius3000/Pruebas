@@ -13,17 +13,18 @@ $columns = array(
     // datatable column index  => database column name
     0 => 'REPARTOID',
     1 => 'STATUSID',
-    2 => 'USUARIOID',
-    3 => 'CLIENTEID',
-    4 => 'Fecha',
-    5 => 'Calle',
-    6 => 'CP',
-    7 => 'Receptor',
-    8 => 'TelefonoDeReceptor',
-    9 => 'TelefonoAlternativo',
-    10 => 'NumeroFactura',
-    11 => 'Comentarios'
-
+    2 => 'ApellidoPaterno',
+    3 => 'NombreCliente',
+    4 => 'FechaReparto',
+    5 => 'HoraReparto',
+    6 => 'Calle',
+    7 => 'CP',
+    8 => 'Receptor',
+    9 => 'TelefonoDeReceptor',
+    10 => 'TelefonoAlternativo',
+    11 => 'NumeroFactura',
+    12 => 'Comentarios',
+    13 => ' '
 
 );
 
@@ -34,7 +35,7 @@ $columns = array(
 $sql = "SELECT * FROM repartos
 LEFT JOIN usuarios ON usuarios.USUARIOID = repartos.USUARIOID
 LEFT JOIN clientes ON clientes.CLIENTEID = repartos.CLIENTEID
-LEFT JOIN Status ON Status.STATUSID = repartos.STATUSID ";
+LEFT JOIN Status ON status.STATUSID = repartos.STATUSID ";
 $query = mysqli_query($conn, $sql) or die("Usuario-grid-data.php: get employees");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
@@ -42,7 +43,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 $sql = "SELECT * FROM repartos
 LEFT JOIN usuarios ON usuarios.USUARIOID = repartos.USUARIOID
 LEFT JOIN clientes ON clientes.CLIENTEID = repartos.CLIENTEID
-LEFT JOIN Status ON Status.STATUSID = repartos.STATUSID
+LEFT JOIN Status ON status.STATUSID = repartos.STATUSID
 WHERE 1=1 ";
 
 if (!empty($requestData['search']['value'])) {
@@ -51,21 +52,22 @@ if (!empty($requestData['search']['value'])) {
     $sql_words = array();
     foreach ($search_words as $word) {
         $sql_words[] = "(
+            repartos.REPARTOID LIKE '%" . $word . "%' OR
+            repartos.STATUSID LIKE '%" . $word . "%' OR
             usuarios.PrimerNombre LIKE '%" . $word . "%' OR
             usuarios.SegundoNombre LIKE '%" . $word . "%' OR
             usuarios.ApellidoPaterno LIKE '%" . $word . "%' OR
             usuarios.ApellidoMaterno LIKE '%" . $word . "%' OR
             clientes.NombreCliente LIKE '%" . $word . "%' OR
-            repartos.REPARTOID LIKE '%" . $word . "%' OR
-            repartos.Fecha LIKE '%" . $word . "%' OR
+            repartos.FechaReparto LIKE '%" . $word . "%' OR
+            repartos.HoraReparto LIKE '%" . $word . "%' OR
             repartos.Calle LIKE '%" . $word . "%' OR
             repartos.CP LIKE '%" . $word . "%' OR
             repartos.Receptor LIKE '%" . $word . "%' OR
             repartos.TelefonoDeReceptor LIKE '%" . $word . "%' OR
             repartos.TelefonoAlternativo LIKE '%" . $word . "%' OR
             repartos.NumeroDeFactura LIKE '%" . $word . "%' OR
-            repartos.Comentarios LIKE '%" . $word . "%' OR
-            usuarios.email LIKE '%" . $word . "%'
+            repartos.Comentarios LIKE '%" . $word . "%'
         )";
     }
     $sql .= " AND " . implode(' AND ', $sql_words);
@@ -105,7 +107,8 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
     $nestedData[] = $BadgeStatus;
     $nestedData[] = $row["PrimerNombre"] . ' ' . $row["SegundoNombre"] . ' ' . $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"];
     $nestedData[] = $row["NombreCliente"];
-    $nestedData[] = $row["Fecha"];
+    $nestedData[] = $row["FechaReparto"];
+    $nestedData[] = $row["HoraReparto"];
     $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"];
     $nestedData[] = $row["CP"];
     $nestedData[] = $row["Receptor"];
