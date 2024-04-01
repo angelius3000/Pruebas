@@ -5,7 +5,7 @@ $(document).ready(function() {
     dom: "Bifrtip",
     buttons: ["excelHtml5", "pdfHtml5", "pageLength"],
     processing: true,
-    serverSide: "",
+    serverSide: true,
     responsive: true,
     pageLength: 100,
     language: {
@@ -26,7 +26,7 @@ $(document).ready(function() {
     loadingRecords: "Cargando...",
     ajax: {
       url: "App/Datatables/Usuarios-grid-data.php", // json datasource
-      type: "post",      
+      type: "post",
     },
     lengthChange: true, // añade la lista desplegable
     order: [[0, "DESC"]],
