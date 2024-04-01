@@ -28,9 +28,6 @@ $columns = array(
 
 );
 
-// Esta es la nueva version
-
-
 // getting total number records without any search
 $sql = "SELECT * FROM repartos
 LEFT JOIN usuarios ON usuarios.USUARIOID = repartos.USUARIOID
@@ -78,6 +75,7 @@ $totalFiltered = mysqli_num_rows($query); // when there is a search parameter th
 
 $sql .= " ORDER BY " . $columns[$requestData['order'][0]['column']] . "   " . $requestData['order'][0]['dir'] . "  LIMIT " . $requestData['start'] . " ," . $requestData['length'] . "   ";
 /* $requestData['order'][0]['column'] contains colmun index, $requestData['order'][0]['dir'] contains order such as asc/desc  */
+
 
 $query = mysqli_query($conn, $sql) or die("employee-grid-data.php: get employees");
 
@@ -131,7 +129,7 @@ $json_data = array(
     "draw" => intval($requestData['draw']),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
     "recordsTotal"    => intval($totalData),  // total number of records
     "recordsFiltered" => intval($totalFiltered), // total number of records after searching, if there is no searching then totalFiltered = totalData
-    "data"            => $data
+    "data"            => $data,   // total data array,
 );
 
 echo json_encode($json_data);  // send data as json format
