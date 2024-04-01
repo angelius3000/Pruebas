@@ -5,7 +5,7 @@
                 <h5 class="modal-title">Agregar reparto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
             </div>
-            <form data-parsley-validate class="forms-sample" id="ValidacionAgregarRepartos">
+            <form data-parsley-validate class="forms-sample" id="ValidacionAgregarrepartos">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-12">
@@ -19,18 +19,18 @@
                                                     <select class="form-select" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
                                                         <option selected>Selecciona cliente</option>
 
-                                                        <?php while ($row_Clientes = mysqli_fetch_assoc($Clientes)) { ?>
+                                                        <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
 
-                                                            <option value="<?php echo $row_Clientes['CLIENTEID']; ?>">
+                                                            <option value="<?php echo $row_clientes['CLIENTEID']; ?>">
 
-                                                                <?php echo $row_Clientes['CLIENTESIAN'] . " - " . $row_Clientes['NombreCliente']; ?>
+                                                                <?php echo $row_clientes['clientesIAN'] . " - " . $row_clientes['NombreCliente']; ?>
 
                                                             </option>
 
                                                         <?php }
 
                                                         // Reset the pointer to the beginning
-                                                        mysqli_data_seek($Clientes, 0);
+                                                        mysqli_data_seek($clientes, 0);
 
                                                         ?>
 
@@ -127,18 +127,18 @@
                                                     <select class="form-select" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
                                                         <option selected>Selecciona cliente</option>
 
-                                                        <?php while ($row_Clientes = mysqli_fetch_assoc($Clientes)) { ?>
+                                                        <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
 
-                                                            <option value="<?php echo $row_Clientes['CLIENTEID']; ?>">
+                                                            <option value="<?php echo $row_clientes['CLIENTEID']; ?>">
 
-                                                                <?php echo $row_Clientes['CLIENTESIAN'] . " - " . $row_Clientes['NombreCliente']; ?>
+                                                                <?php echo $row_clientes['clientesIAN'] . " - " . $row_clientes['NombreCliente']; ?>
 
                                                             </option>
 
                                                         <?php }
 
                                                         // Reset the pointer to the beginning
-                                                        mysqli_data_seek($Clientes, 0);
+                                                        mysqli_data_seek($clientes, 0);
 
                                                         ?>
 

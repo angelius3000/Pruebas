@@ -18,14 +18,14 @@ $columns = array(
 );
 
 // getting total number records without any search
-$sql = "SELECT * FROM Usuarios 
-        LEFT JOIN TipoDeUsuarios ON Usuarios.TIPODEUSUARIOID = TipoDeUsuarios.TIPODEUSUARIOID";
+$sql = "SELECT * FROM usuarios 
+        LEFT JOIN tipodeusuarios ON usuarios.TIPODEUSUARIOID = tipodeusuarios.TIPODEUSUARIOID";
 $query = mysqli_query($conn, $sql) or die("Usuario-grid-data.php: get employees");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
-$sql = "SELECT * FROM Usuarios
-LEFT JOIN TipoDeUsuarios ON Usuarios.TIPODEUSUARIOID = TipoDeUsuarios.TIPODEUSUARIOID
+$sql = "SELECT * FROM usuarios
+LEFT JOIN tipodeusuarios ON usuarios.TIPODEUSUARIOID = tipodeusuarios.TIPODEUSUARIOID
 WHERE 1=1 ";
 
 if (!empty($requestData['search']['value'])) {
@@ -33,12 +33,12 @@ if (!empty($requestData['search']['value'])) {
     $sql_words = array();
     foreach ($search_words as $word) {
         $sql_words[] = "(
-            Usuarios.PrimerNombre LIKE '%" . $word . "%' OR
-            Usuarios.SegundoNombre LIKE '%" . $word . "%' OR
-            Usuarios.ApellidoPaterno LIKE '%" . $word . "%' OR
-            Usuarios.ApellidoMaterno LIKE '%" . $word . "%' OR
-            TipoDeUsuarios.TipoDeUsuario LIKE '%" . $word . "%' OR
-            Usuarios.email LIKE '%" . $word . "%'
+            usuarios.PrimerNombre LIKE '%" . $word . "%' OR
+            usuarios.SegundoNombre LIKE '%" . $word . "%' OR
+            usuarios.ApellidoPaterno LIKE '%" . $word . "%' OR
+            usuarios.ApellidoMaterno LIKE '%" . $word . "%' OR
+            tipodeusuarios.TipoDeUsuario LIKE '%" . $word . "%' OR
+            usuarios.email LIKE '%" . $word . "%'
         )";
     }
     $sql .= " AND " . implode(' AND ', $sql_words);

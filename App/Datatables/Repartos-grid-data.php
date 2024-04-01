@@ -32,17 +32,17 @@ $columns = array(
 
 // getting total number records without any search
 $sql = "SELECT * FROM repartos
-LEFT JOIN Usuarios ON Usuarios.USUARIOID = Repartos.USUARIOID
-LEFT JOIN Clientes ON Clientes.CLIENTEID = Repartos.CLIENTEID
-LEFT JOIN Status ON Status.STATUSID = Repartos.STATUSID ";
+LEFT JOIN usuarios ON usuarios.USUARIOID = repartos.USUARIOID
+LEFT JOIN clientes ON clientes.CLIENTEID = repartos.CLIENTEID
+LEFT JOIN Status ON Status.STATUSID = repartos.STATUSID ";
 $query = mysqli_query($conn, $sql) or die("Usuario-grid-data.php: get employees");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 $sql = "SELECT * FROM repartos
-LEFT JOIN Usuarios ON Usuarios.USUARIOID = Repartos.USUARIOID
-LEFT JOIN Clientes ON Clientes.CLIENTEID = Repartos.CLIENTEID
-LEFT JOIN Status ON Status.STATUSID = Repartos.STATUSID
+LEFT JOIN usuarios ON usuarios.USUARIOID = repartos.USUARIOID
+LEFT JOIN clientes ON clientes.CLIENTEID = repartos.CLIENTEID
+LEFT JOIN Status ON Status.STATUSID = repartos.STATUSID
 WHERE 1=1 ";
 
 if (!empty($requestData['search']['value'])) {
@@ -51,21 +51,21 @@ if (!empty($requestData['search']['value'])) {
     $sql_words = array();
     foreach ($search_words as $word) {
         $sql_words[] = "(
-            Usuarios.PrimerNombre LIKE '%" . $word . "%' OR
-            Usuarios.SegundoNombre LIKE '%" . $word . "%' OR
-            Usuarios.ApellidoPaterno LIKE '%" . $word . "%' OR
-            Usuarios.ApellidoMaterno LIKE '%" . $word . "%' OR
-            Clientes.NombreCliente LIKE '%" . $word . "%' OR
-            Repartos.REPARTOID LIKE '%" . $word . "%' OR
-            Repartos.Fecha LIKE '%" . $word . "%' OR
-            Repartos.Calle LIKE '%" . $word . "%' OR
-            Repartos.CP LIKE '%" . $word . "%' OR
-            Repartos.Receptor LIKE '%" . $word . "%' OR
-            Repartos.TelefonoDeReceptor LIKE '%" . $word . "%' OR
-            Repartos.TelefonoAlternativo LIKE '%" . $word . "%' OR
-            Repartos.NumeroDeFactura LIKE '%" . $word . "%' OR
-            Repartos.Comentarios LIKE '%" . $word . "%' OR
-            Usuarios.email LIKE '%" . $word . "%'
+            usuarios.PrimerNombre LIKE '%" . $word . "%' OR
+            usuarios.SegundoNombre LIKE '%" . $word . "%' OR
+            usuarios.ApellidoPaterno LIKE '%" . $word . "%' OR
+            usuarios.ApellidoMaterno LIKE '%" . $word . "%' OR
+            clientes.NombreCliente LIKE '%" . $word . "%' OR
+            repartos.REPARTOID LIKE '%" . $word . "%' OR
+            repartos.Fecha LIKE '%" . $word . "%' OR
+            repartos.Calle LIKE '%" . $word . "%' OR
+            repartos.CP LIKE '%" . $word . "%' OR
+            repartos.Receptor LIKE '%" . $word . "%' OR
+            repartos.TelefonoDeReceptor LIKE '%" . $word . "%' OR
+            repartos.TelefonoAlternativo LIKE '%" . $word . "%' OR
+            repartos.NumeroDeFactura LIKE '%" . $word . "%' OR
+            repartos.Comentarios LIKE '%" . $word . "%' OR
+            usuarios.email LIKE '%" . $word . "%'
         )";
     }
     $sql .= " AND " . implode(' AND ', $sql_words);

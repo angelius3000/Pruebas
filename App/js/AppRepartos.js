@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var dataTableUsuarioDT = $("#RepartosDT").DataTable({
+  var dataTableUsuarioDT = $("#repartosDT").DataTable({
     // Tabla General de Usuarios
 
     dom: "Bifrtip",
@@ -25,7 +25,7 @@ $(document).ready(function() {
     processing: "Procesando...",
     loadingRecords: "Cargando...",
     ajax: {
-      url: "App/Datatables/Repartos-grid-data.php", // json datasource
+      url: "App/Datatables/repartos-grid-data.php", // json datasource
       type: "post",
     },
     lengthChange: true, // añade la lista desplegable
@@ -33,7 +33,7 @@ $(document).ready(function() {
   });
 
   // Para Agregar Usuarios
-  $("#ValidacionAgregarRepartos").on("submit", function(e) {
+  $("#ValidacionAgregarrepartos").on("submit", function(e) {
     var form = $(this);
 
     form.parsley().validate();

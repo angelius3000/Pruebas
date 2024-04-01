@@ -1,8 +1,8 @@
 <?php include("Connections/ConDB.php");
 
-$query_Clientes = "SELECT * FROM Clientes";
-$Clientes = mysqli_query($conn, $query_Clientes) or die(mysqli_error($conn));
-$totalRows_Clientes = mysqli_num_rows($Clientes);
+$query_clientes = "SELECT * FROM clientes";
+$clientes = mysqli_query($conn, $query_clientes) or die(mysqli_error($conn));
+$totalRows_clientes = mysqli_num_rows($clientes);
 
 ?>
 
@@ -38,7 +38,7 @@ $totalRows_Clientes = mysqli_num_rows($Clientes);
                         <div class="row">
                             <div class="col">
                                 <div class="page-description">
-                                    <h2>Repartos</h2>
+                                    <h2>repartos</h2>
 
                                 </div>
                             </div>
@@ -53,7 +53,7 @@ $totalRows_Clientes = mysqli_num_rows($Clientes);
                         </div>
                         <br>
                         <div class="row">
-                            <table id="RepartosDT" class="display" style="width:100%">
+                            <table id="repartosDT" class="display" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Folio</th>
@@ -83,7 +83,7 @@ $totalRows_Clientes = mysqli_num_rows($Clientes);
         </div>
     </div>
 
-    <?php include("App/Modales/ModalesRepartos.php") ?>
+    <?php include("App/Modales/Modalesrepartos.php") ?>
 
     <!-- Javascripts -->
     <script src="assets/plugins/jquery/jquery-3.5.1.min.js"></script>
@@ -99,7 +99,7 @@ $totalRows_Clientes = mysqli_num_rows($Clientes);
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js" integrity="sha512-Fq/wHuMI7AraoOK+juE5oYILKvSPe6GC5ZWZnvpOO/ZPdtyA29n+a5kVLP4XaLyDy9D1IBPYzdFycO33Ijd0Pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="App/js/AppRepartos.js"></script>
+    <script src="App/js/Apprepartos.js"></script>
 
 </body>
 
