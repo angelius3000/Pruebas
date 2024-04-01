@@ -1,18 +1,18 @@
 <?php
 /* Database connection start */
-if ($_SERVER['HTTP_HOST'] == "local.edison:8888") {
+if ($_SERVER['HTTP_HOST'] == "localhost/edisonreparto") {
 
     $servername = "localhost";
     $username = "root";
-    $password = "root";
-    $dbname = "Edison";
+    $password = "";
+    $dbname = "edison";
 } else {
 
     /* Database connection start */
     $servername = "localhost:3306";
-    $username = "registromedico";
+    $username = "root";
     $password = "";
-    $dbname = "";
+    $dbname = "edison";
 }
 
 $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed: " . mysqli_connect_error());
