@@ -5,7 +5,7 @@
                 <h5 class="modal-title">Agregar reparto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
             </div>
-            <form data-parsley-validate class="forms-sample" id="ValidacionAgregarrepartos">
+            <form data-parsley-validate class="forms-sample" id="ValidacionAgregarRepartos">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-12">
@@ -95,6 +95,10 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+
+
+                    <input type="hidden" class="form-control" id="USUARIOID" name="USUARIOID" value="1">
+
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-primary">Agregar</button>
                 </div>

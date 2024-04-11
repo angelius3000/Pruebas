@@ -26,13 +26,11 @@ $(document).ready(function() {
     loadingRecords: "Cargando...",
     ajax: {
       url: "App/Datatables/Repartos-grid-data.php", // json datasource
-      type: "post"
+      type: "post",
     },
     lengthChange: true, // añade la lista desplegable
     order: [[0, "DESC"]],
   });
-
-
 
   // Para Agregar Usuarios
   $("#ValidacionAgregarRepartos").on("submit", function(e) {
@@ -53,19 +51,17 @@ $(document).ready(function() {
       $.ajax({
         //async: false,
         type: "POST",
-        url: "App/Server/ServerInsertarUsuarios.php",
+        url: "App/Server/ServerInsertarRepartos.php",
         data: dataString,
         dataType: "json",
         success: function(response) {
-          // Reescribe la Datatable y le da refresh
+          //console.log(response.USUARIOID);
 
-          console.log(response.USUARIOID);
-
-          dataTableUsuarioDT.columns.adjust().draw();
+          dataTableRepartosDT.columns.adjust().draw();
         },
       }).done(function() {});
 
-      $("#ModalAgregarUsuarios").modal("toggle");
+      $("#ModalAgregarReparto").modal("toggle");
     }
   });
 
