@@ -4,6 +4,9 @@ $query_clientes = "SELECT * FROM clientes";
 $clientes = mysqli_query($conn, $query_clientes) or die(mysqli_error($conn));
 $totalRows_clientes = mysqli_num_rows($clientes);
 
+// Fecha De hoy
+$FechaHoy = date("Y-m-d");
+
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +63,7 @@ $totalRows_clientes = mysqli_num_rows($clientes);
                                         <th>Estatus</th>
                                         <th>Solicitante</th>
                                         <th>Cliente</th>
-                                        <th>Fecha</th>
+                                        <th>Fecha de registro</th>
                                         <th>Dirección</th>
                                         <th>CP</th>
                                         <th>Receptor</th>

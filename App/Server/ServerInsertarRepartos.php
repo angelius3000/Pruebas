@@ -4,7 +4,6 @@ include("../../Connections/ConDB.php");
 
 
 $CLIENTEID = mysqli_real_escape_string($conn, $_POST['CLIENTEID']);
-$Fecha = mysqli_real_escape_string($conn, $_POST['Fecha']);
 $NumeroDeFactura = mysqli_real_escape_string($conn, $_POST['NumeroDeFactura']);
 $Calle = mysqli_real_escape_string($conn, $_POST['Calle']);
 $NumeroEXT = mysqli_real_escape_string($conn, $_POST['NumeroEXT']);
@@ -19,8 +18,8 @@ $Comentarios = mysqli_real_escape_string($conn, $_POST['Comentarios']);
 $USUARIOID = mysqli_real_escape_string($conn, $_POST['USUARIOID']);
 
 
-$sql = "INSERT INTO repartos (USUARIOID, CLIENTEID, NumeroDeFactura, FechaReparto, Calle, NumeroEXT, Colonia, CP, Ciudad, Estado, Receptor,TelefonoDeReceptor,TelefonoAlternativo, Comentarios, STATUSID) 
-VALUES ('$USUARIOID', '$CLIENTEID', '$NumeroDeFactura', '$Fecha', '$Calle', '$NumeroEXT', '$Colonia', '$CP', '$Ciudad', '$Estado', '$Receptor', '$TelefonoDeReceptor', '$TelefonoAlternativo', '$Comentarios', '1')";
+$sql = "INSERT INTO repartos (USUARIOID, CLIENTEID, NumeroDeFactura, Calle, NumeroEXT, Colonia, CP, Ciudad, Estado, Receptor,TelefonoDeReceptor,TelefonoAlternativo, Comentarios, STATUSID) 
+VALUES ('$USUARIOID', '$CLIENTEID', '$NumeroDeFactura', '$Calle', '$NumeroEXT', '$Colonia', '$CP', '$Ciudad', '$Estado', '$Receptor', '$TelefonoDeReceptor', '$TelefonoAlternativo', '$Comentarios', '1')";
 
 if (!mysqli_query($conn, $sql)) {
     die('Error: ' . mysqli_error($conn));

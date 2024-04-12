@@ -37,8 +37,8 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
-                                                    <label for="Fecha" class="form-label">Fecha</label>
-                                                    <input type="date" class="form-control" id="Fecha" name="Fecha" required>
+                                                    <label for="Fecha" class="form-label">Fecha de registro</label>
+                                                    <input type="input" class="form-control" id="Fecha" disabled value="<?php echo $FechaHoy; ?> ">
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
                                                     <label for="NumeroDeFactura" class="form-label">Número de Factura</label>
@@ -109,15 +109,14 @@
 
 
 <!-- MODAL DE EDICION -->
-
-<div class="modal" id="ModalEditarUsuarios">
+<div class="modal" id="ModalEditarReparto">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar usuarios</h5>
+                <h5 class="modal-title">Editar reparto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
             </div>
-            <form data-parsley-validate class="forms-sample" id="ValidacionEditarUsuario">
+            <form data-parsley-validate class="forms-sample" id="ValidacionEditarRepartos">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-12">
@@ -125,10 +124,10 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
-
                                             <div class="row">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <select class="form-select" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
+                                                    <label for="CLIENTEIDEditar" class="form-label">Cliente ID</label>
+                                                    <select class="form-select" name="CLIENTEIDEditar" id="CLIENTEIDEditar" aria-label="Default select example" required>
                                                         <option selected>Selecciona cliente</option>
 
                                                         <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
@@ -149,47 +148,53 @@
                                                     </select>
                                                 </div>
 
-
                                                 <div class="col-lg-6 col-sm-12 mb-4">
-                                                    <label for="PrimerNombreEditar" class="form-label">Primer nombre</label>
-                                                    <input type="text" class="form-control" id="PrimerNombreEditar" autocomplete="off" placeholder="Luis" name="PrimerNombreEditar" required>
-
-                                                </div>
-                                                <div class="col-lg-6 col-sm-12 mb-4">
-
-                                                    <label for="SegundoNombreEditar" class="form-label">Segundo nombre</label>
-                                                    <input type="text" class="form-control" id="SegundoNombreEditar" autocomplete="off" placeholder="Roberto" name="SegundoNombreEditar" required>
-
-                                                </div>
-                                                <div class="col-lg-6 col-sm-12 mb-4">
-
-                                                    <label for="ApellidoPaternoEditar" class="form-label">Apellido paterno</label>
-                                                    <input type="text" class="form-control" id="ApellidoPaternoEditar" autocomplete="off" placeholder="Pérez" name="ApellidoPaternoEditar" required>
-
-                                                </div>
-                                                <div class="col-lg-6 col-sm-12 mb-4">
-
-                                                    <label for="ApellidoMaternoEditar" class="form-label">Apellido materno</label>
-                                                    <input type="text" class="form-control" id="ApellidoMaternoEditar" autocomplete="off" placeholder="Chávez" name="ApellidoMaternoEditar" required>
-
+                                                    <label for="NumeroDeFacturaEditar" class="form-label">Número de Factura</label>
+                                                    <input type="text" class="form-control" id="NumeroDeFacturaEditar" autocomplete="off" name="NumeroDeFacturaEditar" required>
                                                 </div>
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
-
-                                                    <label for="emailEditar" class="form-label">Email</label>
-                                                    <input type="text" class="form-control" id="emailEditar" autocomplete="off" placeholder="uncorreo@email.com" name="emailEditar" required>
-
+                                                    <label for="CalleEditar" class="form-label">Calle</label>
+                                                    <input type="text" class="form-control" id="CalleEditar" autocomplete="off" name="CalleEditar" required>
                                                 </div>
-
                                                 <div class="col-lg-6 col-sm-12 mb-4">
-
-                                                    <label for="TelefonoEditar" class="form-label">Teléfono</label>
-                                                    <input type="text" class="form-control" id="TelefonoEditar" autocomplete="off" placeholder="656 123 4567" name="TelefonoEditar" required>
-
+                                                    <label for="NumeroEXTEditar" class="form-label">Número Exterior</label>
+                                                    <input type="text" class="form-control" id="NumeroEXTEditar" autocomplete="off" name="NumeroEXTEditar" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="ColoniaEditar" class="form-label">Colonia</label>
+                                                    <input type="text" class="form-control" id="ColoniaEditar" autocomplete="off" name="ColoniaEditar" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="CPEditar" class="form-label">Código Postal</label>
+                                                    <input type="text" class="form-control" id="CPEditar" autocomplete="off" name="CPEditar" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="CiudadEditar" class="form-label">Ciudad</label>
+                                                    <input type="text" class="form-control" id="CiudadEditar" autocomplete="off" name="CiudadEditar" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="EstadoEditar" class="form-label">Estado</label>
+                                                    <input type="text" class="form-control" id="EstadoEditar" autocomplete="off" name="EstadoEditar" required>
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="ReceptorEditar" class="form-label">Receptor</label>
+                                                    <input type="text" class="form-control" id="ReceptorEditar" autocomplete="off" name="ReceptorEditar" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="TelefonoDeReceptorEditar" class="form-label">Teléfono del Receptor</label>
+                                                    <input type="text" class="form-control" id="TelefonoDeReceptorEditar" autocomplete="off" name="TelefonoDeReceptorEditar" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="TelefonoAlternativoEditar" class="form-label">Teléfono Alternativo</label>
+                                                    <input type="text" class="form-control" id="TelefonoAlternativoEditar" autocomplete="off" name="TelefonoAlternativoEditar">
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="ComentariosEditar" class="form-label">Comentarios</label>
+                                                    <textarea class="form-control" id="ComentariosEditar" name="ComentariosEditar" rows="4"></textarea>
                                                 </div>
 
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -200,17 +205,16 @@
                 <div class="modal-footer">
 
 
-                    <input type="hidden" id="USUARIOIDEditar" name="USUARIOIDEditar">
-
+                    <input type="hidden" class="form-control" id="USUARIOID" name="USUARIOID" value="1">
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">
-                        Editar</button>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
 
 <!-- MODAL DE BORRADO -->
 

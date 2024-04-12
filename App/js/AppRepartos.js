@@ -124,6 +124,34 @@ $(document).ready(function() {
   });
 });
 
+function TomarDatosParaModalRepartos(val) {
+  $.ajax({
+    type: "POST",
+    url: "App/Server/ServerInfoRepartosParaModal.php",
+    dataType: "json",
+    data: "ID=" + val,
+    success: function(response) {
+      // Para el Modal de editar
+
+      // Campos para el modal #ModalEditarReparto
+
+      $("select#CLIENTEIDEditar").val(response.CLIENTEID);
+      $("input#NumeroDeFacturaEditar").val(response.NumeroDeFactura);
+      $("input#CalleEditar").val(response.Calle);
+      $("input#ColoniaEditar").val(response.Colonia);
+      $("input#NumeroEXTEditar").val(response.NumeroEXT);
+      $("input#ColoniaEditar").val(response.Colonia);
+      $("input#CPEditar").val(response.CP);
+      $("input#CiudadEditar").val(response.Ciudad);
+      $("input#EstadoEditar").val(response.Estado);
+      $("input#ReceptorEditar").val(response.Receptor);
+      $("input#TelefonoDeReceptorEditar").val(response.TelefonoDeReceptor);
+      $("input#TelefonoAlternativoEditar").val(response.TelefonoAlternativo);
+      $("textarea#ComentariosEditar").val(response.Comentarios);
+    },
+  });
+}
+
 function TomarDatosParaModalUsuarios(val) {
   $.ajax({
     type: "POST",
