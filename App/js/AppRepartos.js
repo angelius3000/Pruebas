@@ -122,6 +122,42 @@ $(document).ready(function() {
 
     $("#ModalBorrarReparto").modal("toggle");
   });
+
+  // Evento para editar Status de reparto
+
+  $("#ValidacionEditarStatus").on("submit", function(e) {
+    var form = $(this);
+
+    form.parsley().validate();
+
+    if (form.parsley().isValid()) {
+      //prevent Default functionality
+      e.preventDefault();
+
+      // data string
+      var dataString = form.serialize();
+
+      console.log(dataString);
+
+      // ajax
+      $.ajax({
+        //async: false,
+        type: "POST",
+        url: "App/Server/ServerUpdateStatus.php",
+        data: dataString,
+        dataType: "json",
+        success: function(response) {
+          // Reescribe la Datatable y le da refresh
+
+          console.log(response.USUARIOID);
+
+          dataTableRepartosDT.columns.adjust().draw();
+        },
+      }).done(function() {});
+
+      $("#ModalCambioStatus").modal("toggle");
+    }
+  });
 });
 
 function TomarDatosParaModalRepartos(val) {
@@ -156,6 +192,7 @@ function TomarDatosParaModalRepartos(val) {
 
       // Para el editor de Status
       $("input#REPARTOIDEditarStatus").val(response.REPARTOID);
+      $("select#STATUSIDEditar").val(response.STATUSID);
     },
   });
 }

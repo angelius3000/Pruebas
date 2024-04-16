@@ -263,7 +263,7 @@
                 <h5 class="modal-title">Editar Estatus</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
             </div>
-            <form data-parsley-validate class="forms-sample" id="ValidacionEditarRepartos">
+            <form data-parsley-validate class="forms-sample" id="ValidacionEditarStatus">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-12">
@@ -273,15 +273,15 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <div class="row">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="CLIENTEIDEditar" class="form-label">Cliente ID</label>
-                                                    <select class="form-select" name="CLIENTEIDEditar" id="CLIENTEIDEditar" aria-label="Default select example" required>
-                                                        <option selected>Selecciona cliente</option>
+                                                    <label for="STATUSIDEditar" class="form-label">Status</label>
+                                                    <select class="form-select" name="STATUSIDEditar" id="STATUSIDEditar" aria-label="Default select example" required>
 
-                                                        <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
 
-                                                            <option value="<?php echo $row_clientes['CLIENTEID']; ?>">
+                                                        <?php while ($row_status = mysqli_fetch_assoc($status)) { ?>
 
-                                                                <?php echo $row_clientes['clientesIAN'] . " - " . $row_clientes['NombreCliente']; ?>
+                                                            <option value="<?php echo $row_status['STATUSID']; ?>">
+
+                                                                <?php echo $row_status['Status']; ?>
 
                                                             </option>
 

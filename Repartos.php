@@ -4,6 +4,10 @@ $query_clientes = "SELECT * FROM clientes";
 $clientes = mysqli_query($conn, $query_clientes) or die(mysqli_error($conn));
 $totalRows_clientes = mysqli_num_rows($clientes);
 
+$query_status = "SELECT * FROM status";
+$status = mysqli_query($conn, $query_status) or die(mysqli_error($conn));
+$totalRows_status = mysqli_num_rows($status);
+
 // Fecha De hoy
 $FechaHoy = date("Y-m-d");
 
