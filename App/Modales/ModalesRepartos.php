@@ -205,24 +205,23 @@
                 <div class="modal-footer">
 
 
-                    <input type="hidden" class="form-control" id="USUARIOID" name="USUARIOID" value="1">
+                    <input type="hidden" class="form-control" id="REPARTOIDEditar" name="REPARTOIDEditar">
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">Agregar</button>
+                    <button type="submit" class="btn btn-primary">Editar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-
 <!-- MODAL DE BORRADO -->
 
-<div class="modal" id="ModalDeshabilitarUsuarios">
+<div class="modal" id="ModalBorrarReparto">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Deshabilitar usuarios</h5>
+                <h5 class="modal-title">Borrar reparto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
             </div>
 
@@ -232,11 +231,9 @@
                         <div class="card">
                             <div class="card-body">
 
-                                Deseas dehabilitar este usuario?
-
+                                <h4> Deseas borrar este reparto?</h4>
                                 <br>
-                                <br>
-                                <h3 id="NombreUsuarioDeshabilitar"></h3>
+                                <span id="DatosRepartoParaBorrar"></span>
 
                             </div>
                         </div>
@@ -245,14 +242,75 @@
             </div>
             <div class="modal-footer">
 
-                <input type="hidden" id="USUARIOIDDeshabilitar" name="USUARIOIDDeshabilitar">
+                <input type="hidden" id="REPARTOIDBorrar" name="REPARTOIDBorrar">
 
 
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" id="DeshabilitarUsuario" class="btn btn-danger">
-                    Deshabilitar</button>
+                <button type="button" id="BorrarReparto" class="btn btn-danger">
+                    Borrar</button>
             </div>
 
+        </div>
+    </div>
+</div>
+
+<!-- MODAL DE CAMBIO DE STATUS -->
+
+<div class="modal" id="ModalCambioStatus">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Estatus</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+            </div>
+            <form data-parsley-validate class="forms-sample" id="ValidacionEditarRepartos">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="CLIENTEIDEditar" class="form-label">Cliente ID</label>
+                                                    <select class="form-select" name="CLIENTEIDEditar" id="CLIENTEIDEditar" aria-label="Default select example" required>
+                                                        <option selected>Selecciona cliente</option>
+
+                                                        <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
+
+                                                            <option value="<?php echo $row_clientes['CLIENTEID']; ?>">
+
+                                                                <?php echo $row_clientes['clientesIAN'] . " - " . $row_clientes['NombreCliente']; ?>
+
+                                                            </option>
+
+                                                        <?php }
+
+                                                        // Reset the pointer to the beginning
+                                                        mysqli_data_seek($clientes, 0);
+
+                                                        ?>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+
+                    <input type="hidden" class="form-control" id="REPARTOIDEditarStatus" name="REPARTOIDEditarStatus">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Editar</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

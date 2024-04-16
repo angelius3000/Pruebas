@@ -13,7 +13,6 @@ function FechasTextoCompleto($FechaDeMysql) // Función para convertir la fecha 
     $year = date("Y", strtotime($FechaDeMysql));
 
 
-
     switch ($day) {
 
         case "Monday":

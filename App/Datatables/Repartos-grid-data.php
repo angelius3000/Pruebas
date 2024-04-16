@@ -82,19 +82,18 @@ $data = array();
 
 while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparando el Arraigo
 
-
     if ($row["STATUSID"] == 1) {
-        $BadgeStatus = '<span class="badge badge-info">Registrado</span>';
+        $BadgeStatus = '<span class="badge badge-info" data-bs-toggle="modal" data-bs-target="#ModalCambioStatus" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')">Registrado</span>';
     } else if ($row["STATUSID"] == 2) {
-        $BadgeStatus = '<span class="badge badge-warning">En tránsito</span>';
+        $BadgeStatus = '<span class="badge badge-warning" data-bs-toggle="modal" data-bs-target="#ModalCambioStatus" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')">En tránsito</span>';
     } else if ($row["STATUSID"] == 3) {
-        $BadgeStatus = '<span class="badge badge-dark">Demorado</span>';
+        $BadgeStatus = '<span class="badge badge-dark" data-bs-toggle="modal" data-bs-target="#ModalCambioStatus" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')">Demorado</span>';
     } else if ($row["STATUSID"] == 4) {
-        $BadgeStatus = '<span class="badge badge-secondary">Surtiendo</span>';
+        $BadgeStatus = '<span class="badge badge-secondary" data-bs-toggle="modal" data-bs-target="#ModalCambioStatus" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')">Surtiendo</span>';
     } else if ($row["STATUSID"] == 5) {
-        $BadgeStatus = '<span class="badge badge-success">Entregado</span>';
+        $BadgeStatus = '<span class="badge badge-success" data-bs-toggle="modal" data-bs-target="#ModalCambioStatus" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')">Entregado</span>';
     } else if ($row["STATUSID"] == 6) {
-        $BadgeStatus = '<span class="badge badge-danger">Cancelado</span>';
+        $BadgeStatus = '<span class="badge badge-danger" data-bs-toggle="modal" data-bs-target="#ModalCambioStatus" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')">Cancelado</span>';
     }
 
 
@@ -116,11 +115,13 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
 
     <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalEditarReparto" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')"><i class="mdi mdi-pencil"></i>Editar</button>
 
-    <button type="button" class="btn btn-sm btn-danger waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalDeshabilitaReparto" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')"><i class="mdi mdi-pencil"></i>Deshabilitar</button>
+    <button type="button" class="btn btn-sm btn-danger waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalBorrarReparto" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')"><i class="mdi mdi-pencil"></i>Borrar</button>
     ';
 
     $data[] = $nestedData;
 }
+
+
 
 
 $json_data = array(

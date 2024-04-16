@@ -65,7 +65,7 @@ $(document).ready(function() {
     }
   });
 
-  $("#ValidacionEditarUsuario").on("submit", function(e) {
+  $("#ValidacionEditarRepartos").on("submit", function(e) {
     var form = $(this);
 
     form.parsley().validate();
@@ -83,7 +83,7 @@ $(document).ready(function() {
       $.ajax({
         //async: false,
         type: "POST",
-        url: "App/Server/ServerUpdateUsuarios.php",
+        url: "App/Server/ServerUpdateRepartos.php",
         data: dataString,
         dataType: "json",
         success: function(response) {
@@ -91,20 +91,20 @@ $(document).ready(function() {
 
           console.log(response.USUARIOID);
 
-          dataTableUsuarioDT.columns.adjust().draw();
+          dataTableRepartosDT.columns.adjust().draw();
         },
       }).done(function() {});
 
-      $("#ModalEditarUsuarios").modal("toggle");
+      $("#ModalEditarReparto").modal("toggle");
     }
   });
 
   // Deshabilitar Usuario
 
-  $("body").on("click", "#DeshabilitarUsuario", function() {
-    var USUARIOID = $("input#USUARIOIDDeshabilitar").val();
+  $("body").on("click", "#BorrarReparto", function() {
+    var REPARTOID = $("input#REPARTOIDBorrar").val();
 
-    var dataString = "USUARIOID=" + USUARIOID;
+    var dataString = "REPARTOID=" + REPARTOID;
 
     console.log(dataString);
 
@@ -112,15 +112,15 @@ $(document).ready(function() {
     $.ajax({
       //async: false,
       type: "POST",
-      url: "App/Server/ServerDeshabilitarUsuarios.php",
+      url: "App/Server/ServerBorrarRepartos.php",
       data: dataString,
       dataType: "json",
       success: function(response) {
-        dataTableUsuarioDT.columns.adjust().draw();
+        dataTableRepartosDT.columns.adjust().draw();
       },
     }).done(function() {});
 
-    $("#ModalDeshabilitarUsuarios").modal("toggle");
+    $("#ModalBorrarReparto").modal("toggle");
   });
 });
 
@@ -148,42 +148,14 @@ function TomarDatosParaModalRepartos(val) {
       $("input#TelefonoDeReceptorEditar").val(response.TelefonoDeReceptor);
       $("input#TelefonoAlternativoEditar").val(response.TelefonoAlternativo);
       $("textarea#ComentariosEditar").val(response.Comentarios);
-    },
-  });
-}
 
-function TomarDatosParaModalUsuarios(val) {
-  $.ajax({
-    type: "POST",
-    url: "App/Server/ServerInfoUsuariosParaModal.php",
-    dataType: "json",
-    data: "ID=" + val,
-    success: function(response) {
-      // Para el Modal de editar
-      $("input#PrimerNombreEditar").val(response.PrimerNombre);
-      $("input#SegundoNombreEditar").val(response.SegundoNombre);
-      $("input#ApellidoPaternoEditar").val(response.ApellidoPaterno);
-      $("input#ApellidoMaternoEditar").val(response.ApellidoMaterno);
-      $("input#emailEditar").val(response.Email);
-      $("input#TelefonoEditar").val(response.Telefono);
+      $("input#REPARTOIDEditar").val(response.REPARTOID);
+      $("#DatosRepartoParaBorrar").html(response.DatosParaBorrarReparto);
 
-      $("select#TIPODEUSUARIOIDEditar").val(response.TIPODEUSUARIOID);
+      $("input#REPARTOIDBorrar").val(response.REPARTOID);
 
-      $("input#USUARIOIDEditar").val(response.USUARIOID);
-
-      //Para modal de Borrar
-
-      $("#NombreUsuarioDeshabilitar").text(
-        response.PrimerNombre +
-          " " +
-          response.SegundoNombre +
-          " " +
-          response.ApellidoPaterno +
-          " " +
-          response.ApellidoMaterno
-      );
-
-      $("input#USUARIOIDDeshabilitar").val(response.USUARIOID);
+      // Para el editor de Status
+      $("input#REPARTOIDEditarStatus").val(response.REPARTOID);
     },
   });
 }
