@@ -159,7 +159,6 @@ $(document).ready(function() {
     }
   });
 });
-
 function TomarDatosParaModalRepartos(val) {
   $.ajax({
     type: "POST",

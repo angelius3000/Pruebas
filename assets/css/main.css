@@ -6407,10 +6407,11 @@ span.flatpickr-weekday {
 }
 
 .app-auth-sign-in .app-auth-background {
-    background: url('../images/backgrounds/sign-in.svg') no-repeat;
-    background-size: 60%;
+    background: url('../../App/Graficos/Background/BackIndex.jpg') no-repeat;
+    background-size: 100%;
     background-position: center;
 }
+
 
 
 .app-auth-sign-up .app-auth-background {
