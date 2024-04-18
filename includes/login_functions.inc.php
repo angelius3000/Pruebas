@@ -6,13 +6,13 @@ function redirect_user($page = 'index.php')
 	// URL is http:// plus the host name plus the current directory:
 
 
-	if ($_SERVER['HTTP_HOST'] == "local.sertec:8888") {
+	if ($_SERVER['HTTP_HOST'] == "local.edison:8888") {
+		$url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
+	} else if ($_SERVER['HTTP_HOST'] == "localhost/edisonreparto") {
 		$url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
 	} else {
 		$url = 'https://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
 	}
-
-
 
 	// Remove any trailing slashes:
 	$url = rtrim($url, '/\\');

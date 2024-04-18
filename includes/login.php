@@ -11,8 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	if ($check) { // OK!
 
-		$emailUsuario = $data['Email'];
-
 		// Set the session data:
 		session_start();
 
@@ -20,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		$_SESSION['Username'] = $data['email'];
 		$_SESSION['TIPOUSUARIO'] = $data['TIPODEUSUARIOID'];
-		$_SESSION['USUARIOSID'] = $data['USUARIOID'];
+		$_SESSION['USUARIOID'] = $data['USUARIOID'];
 		$_SESSION['Deshabiitado'] = $data['Deshabilitado'];
 		$_SESSION['NombreDelUsuario'] = $NombreDelUsuario;
 

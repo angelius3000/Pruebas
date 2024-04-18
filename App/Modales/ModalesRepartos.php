@@ -97,7 +97,7 @@
                 <div class="modal-footer">
 
 
-                    <input type="hidden" class="form-control" id="USUARIOID" name="USUARIOID" value="1">
+                    <input type="hidden" class="form-control" id="USUARIOID" name="USUARIOID" value="<?php echo $_SESSION['USUARIOID']; ?>">
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-primary">Agregar</button>

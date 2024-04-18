@@ -1,4 +1,4 @@
-<?php include("Connections/ConDB.php");
+<?php include("includes/HeaderScripts.php");
 
 $query_clientes = "SELECT * FROM clientes";
 $clientes = mysqli_query($conn, $query_clientes) or die(mysqli_error($conn));

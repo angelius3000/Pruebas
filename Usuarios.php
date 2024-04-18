@@ -1,4 +1,4 @@
-<?php include("Connections/ConDB.php");
+<?php include("includes/HeaderScripts.php");
 
 $query_TipoDeUsuario = "SELECT * FROM TipoDeUsuarios";
 $TipoDeUsuario = mysqli_query($conn, $query_TipoDeUsuario) or die(mysqli_error($conn));
