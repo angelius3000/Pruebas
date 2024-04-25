@@ -47,7 +47,7 @@ $FechaHoy = date("Y-m-d");
                                 <div class="page-description">
                                     <h2>Repartos</h2>
                                     <?php // ESTE ES EL QUE IMPRIME LAS SESSIONES VARIABLES
-                                    // echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';
+                                    //echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';
                                     ?>
                                 </div>
                             </div>
