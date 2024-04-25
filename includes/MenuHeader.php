@@ -56,8 +56,17 @@
                 <ul class="navbar-nav">
 
                     <li class="nav-item hidden-on-mobile">
-                        <a class="nav-link nav-notifications-toggle" id="notificationsDropDown" href="#" data-bs-toggle="dropdown">4</a>
+
+                        <?php
+                        $NombreUsuario = $_SESSION['NombreDelUsuario'];
+                        $CaracterUsuario = $NombreUsuario[0]; ?>
+
+                        <a class="nav-link nav-notifications-toggle" id="notificationsDropDown" href="#" data-bs-toggle="dropdown"><?php echo $CaracterUsuario; ?></a>
                         <div class="dropdown-menu dropdown-menu-end notifications-dropdown" aria-labelledby="notificationsDropDown">
+
+
+
+
                             <h6 class="dropdown-headerNombreUsuario"><?php echo $_SESSION['NombreDelUsuario']; ?></h6>
                             <span class="dropdown-headerEdison"><?php echo $_SESSION['Username']; ?></span>
                             <br>

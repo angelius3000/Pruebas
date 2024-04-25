@@ -2,9 +2,9 @@
 include("../../Connections/ConDB.php");
 include("../../includes/Funciones.php");
 
-// if (!isset($_SESSION)) {
-//     session_start();
-// }
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 // storing  request (ie, get/post) global array to a variable  
 $requestData = $_REQUEST;
@@ -80,20 +80,28 @@ $query = mysqli_query($conn, $sql) or die("employee-grid-data.php: get employees
 
 $data = array();
 
+
+
 while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparando el Arraigo
 
+    if ($_SESSION['TIPOUSUARIO'] == '1') {
+        $MandarModal = 'data-bs-toggle="modal" data-bs-target="#ModalCambioStatus" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')"';
+    } else {
+        $MandarModal = '';
+    }
+
     if ($row["STATUSID"] == 1) {
-        $BadgeStatus = '<span class="badge badge-info" data-bs-toggle="modal" data-bs-target="#ModalCambioStatus" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')">Registrado</span>';
+        $BadgeStatus = '<span class="badge badge-info" ' . $MandarModal . '>Registrado</span>';
     } else if ($row["STATUSID"] == 2) {
-        $BadgeStatus = '<span class="badge badge-warning" data-bs-toggle="modal" data-bs-target="#ModalCambioStatus" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')">En tránsito</span>';
+        $BadgeStatus = '<span class="badge badge-warning"  ' . $MandarModal . '>En tránsito</span>';
     } else if ($row["STATUSID"] == 3) {
-        $BadgeStatus = '<span class="badge badge-dark" data-bs-toggle="modal" data-bs-target="#ModalCambioStatus" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')">Demorado</span>';
+        $BadgeStatus = '<span class="badge badge-dark"  ' . $MandarModal . '>Demorado</span>';
     } else if ($row["STATUSID"] == 4) {
-        $BadgeStatus = '<span class="badge badge-secondary" data-bs-toggle="modal" data-bs-target="#ModalCambioStatus" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')">Surtiendo</span>';
+        $BadgeStatus = '<span class="badge badge-secondary"  ' . $MandarModal . '>Surtiendo</span>';
     } else if ($row["STATUSID"] == 5) {
-        $BadgeStatus = '<span class="badge badge-success" data-bs-toggle="modal" data-bs-target="#ModalCambioStatus" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')">Entregado</span>';
+        $BadgeStatus = '<span class="badge badge-success" ' . $MandarModal . '>Entregado</span>';
     } else if ($row["STATUSID"] == 6) {
-        $BadgeStatus = '<span class="badge badge-danger" data-bs-toggle="modal" data-bs-target="#ModalCambioStatus" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')">Cancelado</span>';
+        $BadgeStatus = '<span class="badge badge-danger"  ' . $MandarModal . '>Cancelado</span>';
     }
 
 
