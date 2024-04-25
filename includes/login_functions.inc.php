@@ -50,7 +50,8 @@ function check_login($dbc, $username = '', $pass = '')
 	if (empty($errors)) { // If everything's OK.
 
 		// Sacamos lo que necesita ir en la session:
-		$q = "SELECT email, TIPODEUSUARIOID, USUARIOID, PrimerNombre, SegundoNombre, ApellidoPaterno, ApellidoMaterno, Deshabilitado FROM usuarios WHERE email='$u' AND Password ='$p'";		// 
+		$q = "SELECT email, usuarios.TIPODEUSUARIOID, USUARIOID, PrimerNombre, SegundoNombre, ApellidoPaterno, ApellidoMaterno, Deshabilitado, tipodeusuarios.TipoDeUsuario FROM usuarios
+		LEFT JOIN tipodeusuarios ON usuarios.TIPODEUSUARIOID = tipodeusuarios.TIPODEUSUARIOID WHERE email='$u' AND Password ='$p'";		// 
 		$r = @mysqli_query($dbc, $q); // Run the query.
 
 		// Check the result:

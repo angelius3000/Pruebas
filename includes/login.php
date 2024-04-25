@@ -21,6 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$_SESSION['USUARIOID'] = $data['USUARIOID'];
 		$_SESSION['Deshabiitado'] = $data['Deshabilitado'];
 		$_SESSION['NombreDelUsuario'] = $NombreDelUsuario;
+		$_SESSION['TipoDeUsuario'] = $data['TipoDeUsuario'];
+
 
 		if ($_SERVER['HTTP_HOST'] == "local.edison:8888") {
 
