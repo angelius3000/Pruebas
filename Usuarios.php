@@ -1,5 +1,9 @@
 <?php include("includes/HeaderScripts.php");
 
+if ($_SESSION['TIPOUSUARIO'] != 1) {
+    header("Location: index.php");
+}
+
 $query_TipoDeUsuario = "SELECT * FROM TipoDeUsuarios";
 $TipoDeUsuario = mysqli_query($conn, $query_TipoDeUsuario) or die(mysqli_error($conn));
 $totalRows_TipoDeUsuario = mysqli_num_rows($TipoDeUsuario);
