@@ -11,6 +11,10 @@ $totalRows_status = mysqli_num_rows($status);
 // Fecha De hoy
 $FechaHoy = date("Y-m-d");
 
+$query_productos = "SELECT * FROM productos";
+$productos = mysqli_query($conn, $query_productos) or die(mysqli_error($conn));
+$totalRows_productos = mysqli_num_rows($productos);
+
 ?>
 
 <!DOCTYPE html>
@@ -57,6 +61,9 @@ $FechaHoy = date("Y-m-d");
                         <div class="row">
                             <div class="col">
                                 <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalAgregarReparto"><i class="mdi mdi-pencil"></i>Agregar Reparto</button>
+
+                                <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalChecarSelect2"><i class="mdi mdi-pencil"></i>Para Checar Select 2</button>
+
 
                             </div>
                         </div>
@@ -105,6 +112,8 @@ $FechaHoy = date("Y-m-d");
     <script src="assets/js/main.min.js"></script>
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/pages/datatables.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.3/select2.min.js" integrity="sha512-nwnflbQixsRIWaXWyQmLkq4WazLLsPLb1k9tA0SEx3Njm+bjEBVbLTijfMnztBKBoTwPsyz4ToosyNn/4ahTBQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js" integrity="sha512-Fq/wHuMI7AraoOK+juE5oYILKvSPe6GC5ZWZnvpOO/ZPdtyA29n+a5kVLP4XaLyDy9D1IBPYzdFycO33Ijd0Pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 

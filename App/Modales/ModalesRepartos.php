@@ -314,3 +314,64 @@
         </div>
     </div>
 </div>
+
+<div class="modal" id="ModalChecarSelect2">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Checar Select 2</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+            </div>
+            <form data-parsley-validate class="forms-sample" id="ValidacionAgregarRepartos">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="CLIENTEID" class="form-label">Producto</label>
+                                                    <select class="form-select select2" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
+                                                        <option selected>Selecciona cliente</option>
+
+                                                        <?php while ($row_productos = mysqli_fetch_assoc($productos)) { ?>
+
+                                                            <option value="<?php echo $row_productos['PRODUCTOSID']; ?>">
+
+                                                                <?php echo $row_productos['Sku'] . " - " . $row_productos['Descripcion'] . " - " . $row_productos['MarcaProductos']; ?>
+
+                                                            </option>
+
+                                                        <?php }
+
+                                                        // Reset the pointer to the beginning
+                                                        mysqli_data_seek($clientes, 0);
+
+                                                        ?>
+
+                                                    </select>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+
+                    <input type="hidden" class="form-control" id="USUARIOID" name="USUARIOID" value="<?php echo $_SESSION['USUARIOID']; ?>">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

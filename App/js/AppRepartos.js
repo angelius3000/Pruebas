@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  // como puedo disparar en la clase .select2 que comienze la busqueda de los clientes
+
+  $(".select2").select2();
+
   var dataTableRepartosDT = $("#Repartos2DT").DataTable({
     // Tabla General de Usuarios
 
@@ -19,7 +23,7 @@ $(document).ready(function() {
         next: "Siguiente",
         previous: "Anterior",
       },
-      infoEmpty: "Sin rúbricas registradas",
+      infoEmpty: "Sin repartos registradas",
       infoFiltered: "(filtrado de _MAX_ registros)",
     },
     processing: "Procesando...",
