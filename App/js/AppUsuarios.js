@@ -124,6 +124,20 @@ $(document).ready(function() {
 
     $("#ModalDeshabilitarUsuarios").modal("toggle");
   });
+
+  $(document).on("change", "#TIPODEUSUARIOID", function() {
+    var TipoDeUsuario = $(this).val();
+
+    if (TipoDeUsuario == 4) {
+      $("#ClientesEscondidos").show();
+
+      // Ponerle el parametro "required al select de Clientes"
+      $("select#CLIENTEID").attr("required", true);
+    } else {
+      $("#ClientesEscondidos").hide();
+      $("select#CLIENTEID").attr("required", false);
+    }
+  });
 });
 
 function TomarDatosParaModalUsuarios(val) {

@@ -8,6 +8,11 @@ $query_TipoDeUsuario = "SELECT * FROM TipoDeUsuarios";
 $TipoDeUsuario = mysqli_query($conn, $query_TipoDeUsuario) or die(mysqli_error($conn));
 $totalRows_TipoDeUsuario = mysqli_num_rows($TipoDeUsuario);
 
+$query_clientes = "SELECT * FROM clientes";
+$clientes = mysqli_query($conn, $query_clientes) or die(mysqli_error($conn));
+$totalRows_clientes = mysqli_num_rows($clientes);
+
+
 ?>
 
 <!DOCTYPE html>
