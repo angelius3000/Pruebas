@@ -70,7 +70,17 @@
                             <h6 class="dropdown-headerNombreUsuario"><?php echo $_SESSION['NombreDelUsuario']; ?></h6>
                             <span class="dropdown-headerEdison"><?php echo $_SESSION['Username']; ?></span>
                             <br>
-                            <span class="dropdown-headerTipoUsuario"><?php echo $_SESSION['TipoDeUsuario']; ?></span>
+
+                            <?php if ($_SESSION['TIPOUSUARIO'] == '4') {
+
+                                $TituloDeUsuarioParaMenu = $_SESSION['NombreCliente'];
+                            } else {
+                                $TituloDeUsuarioParaMenu = $_SESSION['TipoDeUsuario'];
+                            }
+
+                            ?>
+
+                            <span class="dropdown-headerTipoUsuario"><?php echo $TituloDeUsuarioParaMenu; ?></span>
                             <div class="dropdown-divider"></div>
 
                             <a href="logout.php">Log out</a>

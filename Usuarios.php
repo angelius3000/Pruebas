@@ -69,6 +69,7 @@ $totalRows_clientes = mysqli_num_rows($clientes);
                                         <th>Nombre</th>
                                         <th>email</th>
                                         <th>Tipo de usuario</th>
+                                        <th>Empresa</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
