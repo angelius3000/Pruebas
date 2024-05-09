@@ -99,6 +99,13 @@
 
                                                 </div>
 
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+
+                                                    <label for="Password" class="form-label">Password</label>
+                                                    <input type="text" class="form-control" id="Password" placeholder="Arbolito1208" name="Password" required>
+
+                                                </div>
+
                                             </div>
 
                                         </div>

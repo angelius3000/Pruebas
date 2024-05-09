@@ -43,7 +43,7 @@ function check_login($dbc, $username = '', $pass = '')
 		$errors[] = 'You forgot to enter your password.';
 	} else {
 		$p = mysqli_real_escape_string($dbc, trim($pass));
-		//$p = SHA1($p); // Aqui encrypto el passowrd
+		$p = SHA1($p); // Aqui encrypto el passowrd
 
 	}
 
