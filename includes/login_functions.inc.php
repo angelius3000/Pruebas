@@ -50,7 +50,7 @@ function check_login($dbc, $username = '', $pass = '')
 	if (empty($errors)) { // If everything's OK.
 
 		// Sacamos lo que necesita ir en la session:
-		$q = "SELECT email, usuarios.TIPODEUSUARIOID, USUARIOID, PrimerNombre, SegundoNombre, ApellidoPaterno, ApellidoMaterno, Deshabilitado, tipodeusuarios.TipoDeUsuario, clientes.NombreCliente FROM usuarios
+		$q = "SELECT email, usuarios.TIPODEUSUARIOID, USUARIOID, PrimerNombre, SegundoNombre, ApellidoPaterno, ApellidoMaterno, Deshabilitado, tipodeusuarios.TipoDeUsuario, clientes.NombreCliente, clientes.CLIENTEID FROM usuarios
 		LEFT JOIN tipodeusuarios ON usuarios.TIPODEUSUARIOID = tipodeusuarios.TIPODEUSUARIOID 
 		LEFT JOIN clientes ON usuarios.CLIENTEID = clientes.CLIENTEID
 		WHERE email='$u' AND Password ='$p'";		// 

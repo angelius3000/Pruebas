@@ -9,6 +9,8 @@ if (!isset($_SESSION)) {
 // storing  request (ie, get/post) global array to a variable  
 $requestData = $_REQUEST;
 
+$CLIENTEID = $_SESSION['CLIENTEID'];
+
 $columns = array(
     // datatable column index  => database column name
     0 => 'REPARTOID',
@@ -32,7 +34,9 @@ $columns = array(
 $sql = "SELECT * FROM repartos
 LEFT JOIN usuarios ON usuarios.USUARIOID = repartos.USUARIOID
 LEFT JOIN clientes ON clientes.CLIENTEID = repartos.CLIENTEID
-LEFT JOIN status ON status.STATUSID = repartos.STATUSID ";
+LEFT JOIN status ON status.STATUSID = repartos.STATUSID
+WHERE repartos.CLIENTEID = '$CLIENTEID'
+";
 $query = mysqli_query($conn, $sql) or die("Usuario-grid-data.php: get employees");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
@@ -41,7 +45,7 @@ $sql = "SELECT * FROM repartos
 LEFT JOIN usuarios ON usuarios.USUARIOID = repartos.USUARIOID
 LEFT JOIN clientes ON clientes.CLIENTEID = repartos.CLIENTEID
 LEFT JOIN status ON status.STATUSID = repartos.STATUSID
-WHERE 1=1 ";
+WHERE 1=1 AND repartos.CLIENTEID = '$CLIENTEID' ";
 
 if (!empty($requestData['search']['value'])) {
 

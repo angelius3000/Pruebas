@@ -57,37 +57,66 @@ $totalRows_productos = mysqli_num_rows($productos);
                             </div>
                         </div>
 
+                        <?php if ($_SESSION['TIPOUSUARIO'] == 1 || $_SESSION['TIPOUSUARIO'] == 3) { ?>
 
-                        <div class="row">
-                            <div class="col">
-                                <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalAgregarReparto"><i class="mdi mdi-pencil"></i>Agregar Reparto</button>
+                            <div class="row">
+                                <div class="col">
+                                    <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalAgregarReparto"><i class="mdi mdi-pencil"></i>Agregar Reparto</button>
 
-                                <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalChecarSelect2"><i class="mdi mdi-pencil"></i>Para Checar Select 2</button>
-
-
+                                </div>
                             </div>
-                        </div>
+
+                        <?php  } ?>
+
                         <br>
                         <div class="row">
-                            <table id="Repartos2DT" class="display" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>Folio</th>
-                                        <th>Estatus</th>
-                                        <th>Solicitante</th>
-                                        <th>Cliente</th>
-                                        <th>Fecha de registro</th>
-                                        <th>Dirección</th>
-                                        <th>CP</th>
-                                        <th>Receptor</th>
-                                        <th>Teléfono receptor</th>
-                                        <th>Telefono alternativo</th>
-                                        <th>Numero de factura</th>
-                                        <th>Comentarios</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                            </table>
+
+                            <?php if ($_SESSION['TIPOUSUARIO'] == 4) { ?>
+                                <table id="RepartosCliente2DT" class="display" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Folio</th>
+                                            <th>Estatus</th>
+                                            <th>Solicitante</th>
+                                            <th>Cliente</th>
+                                            <th>Fecha de registro</th>
+                                            <th>Dirección</th>
+                                            <th>CP</th>
+                                            <th>Receptor</th>
+                                            <th>Teléfono receptor</th>
+                                            <th>Telefono alternativo</th>
+                                            <th>Numero de factura</th>
+                                            <th>Comentarios</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                </table>
+
+                            <?php } else { ?>
+
+                                <table id="Repartos2DT" class="display" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Folio</th>
+                                            <th>Estatus</th>
+                                            <th>Solicitante</th>
+                                            <th>Cliente</th>
+                                            <th>Fecha de registro</th>
+                                            <th>Dirección</th>
+                                            <th>CP</th>
+                                            <th>Receptor</th>
+                                            <th>Teléfono receptor</th>
+                                            <th>Telefono alternativo</th>
+                                            <th>Numero de factura</th>
+                                            <th>Comentarios</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                </table>
+
+                            <?php } ?>
+
+
                         </div>
                         <div class="row">
                             <div class="col">

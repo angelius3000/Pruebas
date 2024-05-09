@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$_SESSION['NombreDelUsuario'] = $NombreDelUsuario;
 		$_SESSION['TipoDeUsuario'] = $data['TipoDeUsuario'];
 		$_SESSION['NombreCliente'] = $data['NombreCliente'];
+		$_SESSION['CLIENTEID'] = $data['CLIENTEID'];
 
 
 		if ($_SERVER['HTTP_HOST'] == "local.edison:8888") {

@@ -2,9 +2,6 @@
 
 include("../../Connections/ConDB.php");
 
-TIPODEUSUARIOID=4&CLIENTEID=1&PrimerNombre=aaaa&SegundoNombre=sss&ApellidoPaterno=dd&ApellidoMaterno=fff&email=ouh%40iuh.com&Telefono=6561234567
-AppUsuarios.js:60 7
-
 $TIPODEUSUARIOID = mysqli_real_escape_string($conn, $_POST['TIPODEUSUARIOID']);
 $PrimerNombre = mysqli_real_escape_string($conn, $_POST['PrimerNombre']);
 $SegundoNombre = mysqli_real_escape_string($conn, $_POST['SegundoNombre']);
