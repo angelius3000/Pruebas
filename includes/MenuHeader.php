@@ -61,33 +61,41 @@
                         $NombreUsuario = $_SESSION['NombreDelUsuario'];
                         $CaracterUsuario = $NombreUsuario[0]; ?>
 
-                        <a class="nav-link nav-notifications-toggle" id="notificationsDropDown" href="#" data-bs-toggle="dropdown"><?php echo $CaracterUsuario; ?></a>
-                        <div class="dropdown-menu dropdown-menu-end notifications-dropdown" aria-labelledby="notificationsDropDown">
+                        <?php if ($_SESSION['TIPOUSUARIO'] == '4') { ?>
 
 
-
-
-                            <h6 class="dropdown-headerNombreUsuario"><?php echo $_SESSION['NombreDelUsuario']; ?></h6>
-                            <span class="dropdown-headerEdison"><?php echo $_SESSION['Username']; ?></span>
-                            <br>
-
-                            <?php if ($_SESSION['TIPOUSUARIO'] == '4') {
-
-                                $TituloDeUsuarioParaMenu = $_SESSION['NombreCliente'];
-                            } else {
-                                $TituloDeUsuarioParaMenu = $_SESSION['TipoDeUsuario'];
-                            }
-
-                            ?>
-
-                            <span class="dropdown-headerTipoUsuario"><?php echo $TituloDeUsuarioParaMenu; ?></span>
-                            <div class="dropdown-divider"></div>
-
-                            <a href="logout.php">Log out</a>
-
-
-                        </div>
+                    <li class="nav-item hidden-on-mobile">
+                        <a class="nav-link" href="Repartos.php"><strong><?php echo $_SESSION['NombreCliente']; ?></strong></a>
                     </li>
+
+                <?php } ?>
+                <a class="nav-link nav-notifications-toggle" id="notificationsDropDown" href="#" data-bs-toggle="dropdown"><?php echo $CaracterUsuario; ?></a>
+                <div class="dropdown-menu dropdown-menu-end notifications-dropdown" aria-labelledby="notificationsDropDown">
+
+
+
+
+                    <h6 class="dropdown-headerNombreUsuario"><?php echo $_SESSION['NombreDelUsuario']; ?></h6>
+                    <span class="dropdown-headerEdison"><?php echo $_SESSION['Username']; ?></span>
+                    <br>
+
+                    <?php if ($_SESSION['TIPOUSUARIO'] == '4') {
+
+                        $TituloDeUsuarioParaMenu = $_SESSION['NombreCliente'];
+                    } else {
+                        $TituloDeUsuarioParaMenu = $_SESSION['TipoDeUsuario'];
+                    }
+
+                    ?>
+
+                    <span class="dropdown-headerTipoUsuario"><?php echo $TituloDeUsuarioParaMenu; ?></span>
+                    <div class="dropdown-divider"></div>
+
+                    <a href="logout.php">Log out</a>
+
+
+                </div>
+                </li>
                 </ul>
             </div>
         </div>
