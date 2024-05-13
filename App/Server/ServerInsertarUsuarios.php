@@ -1,6 +1,7 @@
 <?php
 
 include("../../Connections/ConDB.php");
+include("../../includes/Funciones.php");
 
 $TIPODEUSUARIOID = mysqli_real_escape_string($conn, $_POST['TIPODEUSUARIOID']);
 $PrimerNombre = mysqli_real_escape_string($conn, $_POST['PrimerNombre']);
@@ -15,8 +16,10 @@ $CLIENTEID = isset($_POST['CLIENTEID']) ? mysqli_real_escape_string($conn, $_POS
 $Password = mysqli_real_escape_string($conn, $_POST['Password']);
 $Password = sha1($Password);
 
+$HASH = random_num(40);
 
-$sql = "INSERT INTO Usuarios (PrimerNombre, SegundoNombre, ApellidoPaterno, ApellidoMaterno, email, Telefono, TIPODEUSUARIOID, CLIENTEID, Password) VALUES ('$PrimerNombre', '$SegundoNombre', '$ApellidoPaterno', '$ApellidoMaterno', '$email', '$Telefono', '$TIPODEUSUARIOID', '$CLIENTEID', '$Password')";
+
+$sql = "INSERT INTO Usuarios (PrimerNombre, SegundoNombre, ApellidoPaterno, ApellidoMaterno, email, Telefono, TIPODEUSUARIOID, CLIENTEID, Password, HASH) VALUES ('$PrimerNombre', '$SegundoNombre', '$ApellidoPaterno', '$ApellidoMaterno', '$email', '$Telefono', '$TIPODEUSUARIOID', '$CLIENTEID', '$Password', '$HASH')";
 
 if (!mysqli_query($conn, $sql)) {
     die('Error: ' . mysqli_error($conn));

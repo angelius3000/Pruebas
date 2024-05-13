@@ -1,3 +1,5 @@
+<?php require_once('Connections/ConDB.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,20 +50,19 @@
                 <a href="main.php"> <img src="App/Graficos/Logo/LogoEdison.png" style="max-width :250px;"> </a>
             </div>
             <br>
-            <form action="includes/login.php" method="POST">
+            <form data-parsley-validate class="forms-sample" id="ValidacionMandarCorreoPassword">
                 <div class="auth-credentials m-b-xxl">
-                    <label for="username" class="form-label">Email</label>
+                    <label for="username" class="form-label">Escribe tu Email</label>
 
-                    <input type="email" class="form-control m-b-md" id="username" name="username" aria-describedby="username" placeholder="tucorreo@edison.com.mx">
+                    <input type="email" class="form-control m-b-md" id="email" name="email" placeholder="tucorreo@edison.com.mx">
 
-                    <label for="password" class="form-label">Contraseña</label>
-
-                    <input type="password" class="form-control" id="password" name="password" aria-describedby="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
+                    Mandaremos un correo con la recuperacion de tu password
                 </div>
 
                 <div class="auth-submit">
-                    <button type="submit" href="#" class="btn btn-primary">Entrar</button>
-                    <a href="OlvidasteTuPassword.php" class="auth-forgot-password float-end">¿Olvidaste tu contraseña?</a>
+
+                    <button type="submit" href="#" class="btn btn-primary">Enviar recuperación</button>
+
                 </div>
 
 
@@ -79,6 +80,11 @@
     <script src="assets/plugins/pace/pace.min.js"></script>
     <script src="assets/js/main.min.js"></script>
     <script src="assets/js/custom.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js" integrity="sha512-Fq/wHuMI7AraoOK+juE5oYILKvSPe6GC5ZWZnvpOO/ZPdtyA29n+a5kVLP4XaLyDy9D1IBPYzdFycO33Ijd0Pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="App/js/AppRecuperacionDePassword.js"></script>
+
 </body>
 
 </html>
