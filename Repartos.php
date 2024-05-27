@@ -104,6 +104,8 @@ $totalRows_productos = mysqli_num_rows($productos);
                                         <tr>
                                             <th>Folio</th>
                                             <th>Estatus</th>
+                                            <th>Surtidor</th>
+                                            <th>Repartidor</th>
                                             <th>Solicitante</th>
                                             <th>Cliente</th>
                                             <th>Fecha de registro</th>
