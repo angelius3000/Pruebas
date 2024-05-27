@@ -295,6 +295,43 @@
                                                     </select>
                                                 </div>
                                             </div>
+
+                                            <div class="row RepartosEscondidos" style="display:none">
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="Surtidores" class="form-label">Status</label>
+
+                                                    <textarea class="form-control" id="Surtidores" name="Surtidores" maxlength="500" rows="4"></textarea>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row RepartosEscondidos" style="display:none">
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="USUARIOIDRepartidor" class="form-label">Status</label>
+                                                    <select class="form-select" name="USUARIOIDRepartidor" id="USUARIOIDRepartidor" aria-label="Default select example">
+
+                                                        <option value=""> -
+                                                        </option>
+                                                        <?php while ($row_Repartidores = mysqli_fetch_assoc($Repartidores)) { ?>
+
+                                                            <option value="<?php echo $row_Repartidores['USUARIOID']; ?>">
+
+                                                                <?php echo $row_Repartidores['ApellidoPaterno'] . ' ' . $row_Repartidores['ApellidoMaterno'] . ' ' . $row_Repartidores['PrimerNombre'] . ' ' . $row_Repartidores['SegundoNombre']; ?>
+
+                                                            </option>
+
+                                                        <?php }
+
+                                                        // Reset the pointer to the beginning
+                                                        mysqli_data_seek($clientes, 0);
+
+                                                        ?>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
                                         </div>
                                     </div>
                                 </div>

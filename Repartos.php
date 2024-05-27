@@ -8,6 +8,11 @@ $query_status = "SELECT * FROM status";
 $status = mysqli_query($conn, $query_status) or die(mysqli_error($conn));
 $totalRows_status = mysqli_num_rows($status);
 
+$query_Repartidores = "SELECT * FROM usuarios 
+                        WHERE TIPODEUSUARIOID = 2 AND Deshabilitado = 0";
+$Repartidores = mysqli_query($conn, $query_Repartidores) or die(mysqli_error($conn));
+$totalRows_Repartidores = mysqli_num_rows($Repartidores);
+
 // Fecha De hoy
 $FechaHoy = date("Y-m-d");
 

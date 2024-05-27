@@ -36,7 +36,7 @@ $(document).ready(function() {
     order: [[0, "DESC"]],
   });
 
-  var dataTableRepartosDT = $("#RepartosCliente2DT").DataTable({
+  var dataTableRepartosDTClientes = $("#RepartosCliente2DT").DataTable({
     // Tabla General de Usuarios
 
     dom: "Bifrtip",
@@ -186,13 +186,32 @@ $(document).ready(function() {
         success: function(response) {
           // Reescribe la Datatable y le da refresh
 
-          console.log(response.USUARIOID);
+          console.log(response.REPARTOID);
 
           dataTableRepartosDT.columns.adjust().draw();
         },
       }).done(function() {});
 
       $("#ModalCambioStatus").modal("toggle");
+    }
+  });
+
+  // Toma el change de el editor de Repartos
+
+  $(document).on("change", "#STATUSIDEditar", function() {
+    var Status = $(this).val();
+    var REPARTOID = $("input#REPARTOIDEditarStatus").val();
+
+    TomarDatosParaModalEnEdicionDeStatus(REPARTOID);
+
+    if (Status == 4) {
+      $(".RepartosEscondidos").show();
+      $("#Surtidores").prop("required", true);
+      $("#USUARIOIDRepartidor").prop("required", true);
+    } else {
+      $(".RepartosEscondidos").hide();
+      $("#Surtidores").prop("required", false);
+      $("#USUARIOIDRepartidor").prop("required", false);
     }
   });
 });
@@ -229,6 +248,31 @@ function TomarDatosParaModalRepartos(val) {
       // Para el editor de Status
       $("input#REPARTOIDEditarStatus").val(response.REPARTOID);
       $("select#STATUSIDEditar").val(response.STATUSID);
+
+      if (response.STATUSID == 4) {
+        $(".RepartosEscondidos").show();
+
+        $("textarea#Surtidores").val(response.Surtidores);
+        $("select#USUARIOIDRepartidor").val(response.USUARIOIDRepartidor);
+      } else {
+        $(".RepartosEscondidos").hide();
+        $("textarea#Surtidores").val("");
+        $("select#USUARIOIDRepartidor").val("");
+      }
+    },
+  });
+}
+
+function TomarDatosParaModalEnEdicionDeStatus(val) {
+  $.ajax({
+    type: "POST",
+    url: "App/Server/ServerInfoRepartosParaModal.php",
+    dataType: "json",
+    data: "ID=" + val,
+    success: function(response) {
+      // Para el Modal de editar
+      $("textarea#Surtidores").val(response.Surtidores);
+      $("select#USUARIOIDRepartidor").val(response.USUARIOIDRepartidor);
     },
   });
 }

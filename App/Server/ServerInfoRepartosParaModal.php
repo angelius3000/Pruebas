@@ -36,7 +36,9 @@ $msg = array(
     'TelefonoAlternativo' => $row['TelefonoAlternativo'],
     'Comentarios' => $row['Comentarios'],
     'STATUSID' => $row['STATUSID'],
-    'DatosParaBorrarReparto' => $DatosParaBorrarReparto
+    'DatosParaBorrarReparto' => $DatosParaBorrarReparto,
+    'Surtidores' => $row['Surtidores'],
+    'USUARIOIDRepartidor' => $row['USUARIOIDRepartidor']
 
 );
 
