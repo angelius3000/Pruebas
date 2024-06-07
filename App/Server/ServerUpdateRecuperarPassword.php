@@ -8,7 +8,7 @@ $Password = SHA1($Password);
 $HASHDelUsuario = mysqli_real_escape_string($conn, $_POST['HASH']);
 
 // Build the base query
-$sql = "UPDATE Usuarios SET 
+$sql = "UPDATE usuarios SET 
     Password = '$Password'
     WHERE HASH = '$HASHDelUsuario'";
 

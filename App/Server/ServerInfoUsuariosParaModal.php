@@ -5,7 +5,7 @@ include("../../Connections/ConDB.php");
 
 $IDDeUsuario = $_POST['ID'];
 
-$sql = "SELECT * FROM Usuarios WHERE Usuarios.USUARIOID = $IDDeUsuario";
+$sql = "SELECT * FROM usuarios WHERE usuarios.USUARIOID = $IDDeUsuario";
 $status = mysqli_query($conn, $sql) or die("database error:" . mysqli_error($conn));
 $row = mysqli_fetch_array($status);
 

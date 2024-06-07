@@ -298,7 +298,7 @@
 
                                             <div class="row RepartosEscondidos" style="display:none">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="Surtidores" class="form-label">Status</label>
+                                                    <label for="Surtidores" class="form-label">Surtidor</label>
 
                                                     <textarea class="form-control" id="Surtidores" name="Surtidores" maxlength="500" rows="4"></textarea>
                                                 </div>
@@ -307,7 +307,7 @@
 
                                             <div class="row RepartosEscondidos" style="display:none">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="USUARIOIDRepartidor" class="form-label">Status</label>
+                                                    <label for="USUARIOIDRepartidor" class="form-label">Repartidor</label>
                                                     <select class="form-select" name="USUARIOIDRepartidor" id="USUARIOIDRepartidor" aria-label="Default select example">
 
                                                         <option value=""> -

@@ -25,7 +25,7 @@ $(document).ready(function() {
 
           console.log(response.USUARIOID);
 
-          dataTableUsuarioDT.columns.adjust().draw();
+          // dataTableUsuarioDT.columns.adjust().draw();
         },
       }).done(function() {});
 

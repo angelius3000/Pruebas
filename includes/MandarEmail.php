@@ -18,7 +18,7 @@ function RecuperaTuPassword($email, $Hash)
   try {
     // Configuración del servidor SMTP
     $mail->isSMTP();
-    $mail->Host = 'mail.edison.com.mx'; // Reemplaza con la dirección del servidor SMTP
+    $mail->Host = 's1079.usc1.mysecurecloudhost.com'; // Reemplaza con la dirección del servidor SMTP
     $mail->Port = 587; // Reemplaza con el puerto SMTP correspondiente
     $mail->SMTPAuth = true;
     $mail->Username = 'notificaciones@edison.com.mx'; // Reemplaza con tu nombre de usuario SMTP
@@ -51,7 +51,7 @@ function RecuperaTuPassword($email, $Hash)
         <table width="100%" cellspacing="4" cellpadding="4">
        
         <tr>
-        <td><img src="http://local.edison:8888/App/Graficos/Logo/LogoEdison.png" width="200" alt=""/></td>
+        <td><img src="http://reparto.edison.com.mx/App/Graficos/Logo/LogoEdison.png" width="200" alt=""/></td>
         </tr>
         <tr>
         <td align="center" valign="top"><table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
@@ -76,7 +76,7 @@ function RecuperaTuPassword($email, $Hash)
                 <tr align="center" >
                 <td style="border-radius: 5px;" bgcolor="#0895ca">
              
-                    <a href="http://local.edison:8888/RecuperarTuPassword.php?HASH=' . $Hash . '" target="_blank" style="padding: 8px 12px; border: 1px solid #0895ca;border-radius: 5px;font-family: Helvetica, Arial, sans-serif;font-size: 14px; color: #ffffff; text-decoration: none;font-weight:bold;display: inline-block;">
+                    <a href="http://reparto.edison.com.mx/RecuperarTuPassword.php?HASH=' . $Hash . '" target="_blank" style="padding: 8px 12px; border: 1px solid #0895ca;border-radius: 5px;font-family: Helvetica, Arial, sans-serif;font-size: 14px; color: #ffffff; text-decoration: none;font-weight:bold;display: inline-block;">
                         Recupera tu contraseña           
                     </a>
                 </td>

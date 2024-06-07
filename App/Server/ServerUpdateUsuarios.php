@@ -12,7 +12,7 @@ $TelefonoEditar = mysqli_real_escape_string($conn, $_POST['TelefonoEditar']);
 $USUARIOIDEditar = mysqli_real_escape_string($conn, $_POST['USUARIOIDEditar']);
 
 // Build the base query
-$sql = "UPDATE Usuarios SET 
+$sql = "UPDATE usuarios SET 
     PrimerNombre = '$PrimerNombreEditar',
     SegundoNombre = '$SegundoNombreEditar',
     ApellidoPaterno = '$ApellidoPaternoEditar',

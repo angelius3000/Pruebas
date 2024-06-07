@@ -20,7 +20,7 @@ $REPARTOID = mysqli_real_escape_string($conn, $_POST['REPARTOIDEditar']);
 
 
 // Build the base query
-$sql = "UPDATE Repartos SET 
+$sql = "UPDATE repartos SET 
     CLIENTEID = '$CLIENTEID',
     NumeroDeFactura = '$NumeroDeFactura',
     Calle = '$Calle',

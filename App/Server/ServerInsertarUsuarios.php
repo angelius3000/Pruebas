@@ -19,7 +19,7 @@ $Password = sha1($Password);
 $HASH = random_num(40);
 
 
-$sql = "INSERT INTO Usuarios (PrimerNombre, SegundoNombre, ApellidoPaterno, ApellidoMaterno, email, Telefono, TIPODEUSUARIOID, CLIENTEID, Password, HASH) VALUES ('$PrimerNombre', '$SegundoNombre', '$ApellidoPaterno', '$ApellidoMaterno', '$email', '$Telefono', '$TIPODEUSUARIOID', '$CLIENTEID', '$Password', '$HASH')";
+$sql = "INSERT INTO usuarios (PrimerNombre, SegundoNombre, ApellidoPaterno, ApellidoMaterno, email, Telefono, TIPODEUSUARIOID, CLIENTEID, Password, HASH) VALUES ('$PrimerNombre', '$SegundoNombre', '$ApellidoPaterno', '$ApellidoMaterno', '$email', '$Telefono', '$TIPODEUSUARIOID', '$CLIENTEID', '$Password', '$HASH')";
 
 if (!mysqli_query($conn, $sql)) {
     die('Error: ' . mysqli_error($conn));
