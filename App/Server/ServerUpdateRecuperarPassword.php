@@ -16,7 +16,7 @@ if (!mysqli_query($conn, $sql)) {
     die('Error: ' . mysqli_error($conn));
 }
 
-$msg = array('USUARIOID' => $USUARIOIDEditar);
+$msg = array('USUARIOID' => $HASHDelUsuario);
 
 // send data as json format
 echo json_encode($msg);

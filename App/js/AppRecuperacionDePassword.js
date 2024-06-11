@@ -23,11 +23,13 @@ $(document).ready(function() {
         success: function(response) {
           // Reescribe la Datatable y le da refresh
 
-          console.log(response.USUARIOID);
-
-          // dataTableUsuarioDT.columns.adjust().draw();
+          alert("Tu contraseña ha sido cambiada exitosamente");
         },
-      }).done(function() {});
+      }).done(function() {
+        // Redireccionar a otra pagina
+
+        window.location.href = "index.php";
+      });
 
       $("#ModalEditarUsuarios").modal("toggle");
     }
