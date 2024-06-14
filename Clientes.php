@@ -48,7 +48,7 @@ $totalRows_clientes = mysqli_num_rows($clientes);
                         <div class="row">
                             <div class="col">
                                 <div class="page-description">
-                                    <h2>Usuarios</h2>
+                                    <h2>Clientes</h2>
 
                                 </div>
                             </div>
@@ -57,7 +57,7 @@ $totalRows_clientes = mysqli_num_rows($clientes);
 
                         <div class="row">
                             <div class="col">
-                                <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalAgregarUsuarios"><i class="mdi mdi-pencil"></i>Agregar Usuario</button>
+                                <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalAgregarUsuarios"><i class="material-icons-two-tone">add</i> Agregar Cliente</button>
 
                             </div>
                         </div>

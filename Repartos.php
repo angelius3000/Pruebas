@@ -66,7 +66,7 @@ $totalRows_productos = mysqli_num_rows($productos);
 
                             <div class="row">
                                 <div class="col">
-                                    <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalAgregarReparto"><i class="mdi mdi-pencil"></i>Agregar Reparto</button>
+                                    <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalAgregarReparto"><i class="material-icons-two-tone">add</i> Agregar Reparto</button>
 
                                 </div>
                             </div>
