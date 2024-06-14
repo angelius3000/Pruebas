@@ -37,9 +37,8 @@
                                             <div class="row" style="display:none" id="ClientesEscondidos">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="CLIENTEID" class="form-label">Cliente ID</label>
-                                                    <!-- <input type="text" class="form-control" id="CLIENTEID" autocomplete="off" placeholder="0000" name="CLIENTEID" required> -->
                                                     <select class="form-select select2" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
-                                                        <option value="">Selecciona cliente</option>
+                                                        <option selected>Selecciona cliente</option>
 
                                                         <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
 
