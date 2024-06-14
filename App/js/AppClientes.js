@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var dataTableUsuarioDT = $("#ClientesDT").DataTable({
+  var dataTableClientesDT = $("#ClientesDT").DataTable({
     // Tabla General de Usuarios
 
     dom: "Bifrtip",
@@ -57,13 +57,13 @@ $(document).ready(function() {
         success: function(response) {
           // Reescribe la Datatable y le da refresh
 
-          console.log(response.USUARIOID);
+          console.log(response.CLIENTEID);
 
-          dataTableUsuarioDT.columns.adjust().draw();
+          dataTableClientesDT.columns.adjust().draw();
         },
       }).done(function() {});
 
-      $("#ModalAgregarUsuarios").modal("toggle");
+      $("#ModalAgregarClientes").modal("toggle");
     }
   });
 
@@ -85,28 +85,28 @@ $(document).ready(function() {
       $.ajax({
         //async: false,
         type: "POST",
-        url: "App/Server/ServerUpdateUsuarios.php",
+        url: "App/Server/ServerUpdateClientes.php",
         data: dataString,
         dataType: "json",
         success: function(response) {
           // Reescribe la Datatable y le da refresh
 
-          console.log(response.USUARIOID);
+          console.log(response.CLIENTEID);
 
-          dataTableUsuarioDT.columns.adjust().draw();
+          dataTableClientesDT.columns.adjust().draw();
         },
       }).done(function() {});
 
-      $("#ModalEditarUsuarios").modal("toggle");
+      $("#ModalEditarClientes").modal("toggle");
     }
   });
 
   // Deshabilitar Usuario
 
   $("body").on("click", "#DeshabilitarCliente", function() {
-    var USUARIOID = $("input#USUARIOIDDeshabilitar").val();
+    var CLIENTEID = $("input#CLIENTEIDDeshabilitar").val();
 
-    var dataString = "USUARIOID=" + USUARIOID;
+    var dataString = "CLIENTEID=" + CLIENTEID;
 
     console.log(dataString);
 
@@ -114,64 +114,59 @@ $(document).ready(function() {
     $.ajax({
       //async: false,
       type: "POST",
-      url: "App/Server/ServerDeshabilitarUsuarios.php",
+      url: "App/Server/ServerDeshabilitarClientes.php",
       data: dataString,
       dataType: "json",
       success: function(response) {
-        dataTableUsuarioDT.columns.adjust().draw();
+        dataTableClienteDT.columns.adjust().draw();
       },
     }).done(function() {});
 
-    $("#ModalDeshabilitarUsuarios").modal("toggle");
+    $("#ModalDeshabilitarClientes").modal("toggle");
   });
 
-  $(document).on("change", "#TIPODEUSUARIOID", function() {
-    var TipoDeUsuario = $(this).val();
-
-    if (TipoDeUsuario == 4) {
-      $("#ClientesEscondidos").show();
+  // $(document).on("change", "#TIPODEUSUARIOID", function() {
+  //  var TipoDeUsuario = $(this).val();
+  //
+  //  if (TipoDeUsuario == 4) {
+  //    $("#ClientesEscondidos").show();
 
       // Ponerle el parametro "required al select de Clientes"
-      $("select#CLIENTEID").attr("required", true);
-    } else {
-      $("#ClientesEscondidos").hide();
-      $("select#CLIENTEID").attr("required", false);
-    }
-  });
+  //    $("select#CLIENTEID").attr("required", true);
+  //  } else {
+  //    $("#ClientesEscondidos").hide();
+  //    $("select#CLIENTEID").attr("required", false);
+  //  }
+  //});
 });
 
-function TomarDatosParaModalUsuarios(val) {
+function TomarDatosParaModalClientes(val) {
   $.ajax({
     type: "POST",
-    url: "App/Server/ServerInfoUsuariosParaModal.php",
+    url: "App/Server/ServerInfoClientesParaModal.php",
     dataType: "json",
     data: "ID=" + val,
     success: function(response) {
       // Para el Modal de editar
-      $("input#PrimerNombreEditar").val(response.PrimerNombre);
-      $("input#SegundoNombreEditar").val(response.SegundoNombre);
-      $("input#ApellidoPaternoEditar").val(response.ApellidoPaterno);
-      $("input#ApellidoMaternoEditar").val(response.ApellidoMaterno);
-      $("input#emailEditar").val(response.Email);
-      $("input#TelefonoEditar").val(response.Telefono);
-
-      $("select#TIPODEUSUARIOIDEditar").val(response.TIPODEUSUARIOID);
-
-      $("input#USUARIOIDEditar").val(response.USUARIOID);
+      $("input#CLIENTESIANEditar").val(response.CLIENTESIAN);
+      $("input#NombreClienteEditar").val(response.NombreCliente);
+      $("input#EmailClienteEditar").val(response.EmailCliente);
+      $("input#TelefonoClienteEditar").val(response.TelefonoCliente);
+      $("input#NombreContactoEditar").val(response.NombreContacto);
+      $("input#DireccionClienteEditar").val(response.DireccionCliente);
+      $("select#ColoniaClienteEditar").val(response.ColoniaCliente);
+      $("input#CiudadClienteEditar").val(response.CiudadCliente);
+      $("input#EstadoClienteEditar").val(response.EstadoCliente);
 
       //Para modal de Borrar
 
       $("#NombreUsuarioDeshabilitar").text(
-        response.PrimerNombre +
+        response.CLIENTESIAN +
           " " +
-          response.SegundoNombre +
-          " " +
-          response.ApellidoPaterno +
-          " " +
-          response.ApellidoMaterno
+          response.NombreCliente
       );
 
-      $("input#USUARIOIDDeshabilitar").val(response.USUARIOID);
+      $("input#CLIENTEIDDeshabilitar").val(response.CLIENTEID);
     },
   });
 }
