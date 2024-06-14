@@ -33,7 +33,7 @@ $(document).ready(function() {
   });
 
   // Para Agregar Usuarios
-  $("#ValidacionAgregarUsuario").on("submit", function(e) {
+  $("#ValidacionAgregarClientes").on("submit", function(e) {
     var form = $(this);
 
     form.parsley().validate();
@@ -51,7 +51,7 @@ $(document).ready(function() {
       $.ajax({
         //async: false,
         type: "POST",
-        url: "App/Server/ServerInsertarUsuarios.php",
+        url: "App/Server/ServerInsertarClientes.php",
         data: dataString,
         dataType: "json",
         success: function(response) {
@@ -67,7 +67,7 @@ $(document).ready(function() {
     }
   });
 
-  $("#ValidacionEditarUsuario").on("submit", function(e) {
+  $("#ValidacionEditarClientes").on("submit", function(e) {
     var form = $(this);
 
     form.parsley().validate();
@@ -103,7 +103,7 @@ $(document).ready(function() {
 
   // Deshabilitar Usuario
 
-  $("body").on("click", "#DeshabilitarUsuario", function() {
+  $("body").on("click", "#DeshabilitarCliente", function() {
     var USUARIOID = $("input#USUARIOIDDeshabilitar").val();
 
     var dataString = "USUARIOID=" + USUARIOID;

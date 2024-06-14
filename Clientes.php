@@ -66,10 +66,10 @@ $totalRows_clientes = mysqli_num_rows($clientes);
                             <table id="ClientesDT" class="display" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>CLIENTE SIAN</th>
+                                        <th>Numero de cliente</th>
                                         <th>Nombre</th>
                                         <th>Email</th>
-                                        <th>Telefono</th>
+                                        <th>Teléfono</th>
                                         <th>Contacto</th>
                                         <th>Dirección</th>
                                         <th>Colonia</th>

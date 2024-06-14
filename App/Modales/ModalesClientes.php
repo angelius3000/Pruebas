@@ -15,95 +15,63 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12">
 
                                             <div class="row">
-                                                <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <select class="form-select" name="TIPODEUSUARIOID" id="TIPODEUSUARIOID" aria-label="Default select example" required>
-                                                        <option selected>Selecciona tipo de usuario</option>
-
-                                                        <?php while ($row_TipoDeUsuario = mysqli_fetch_assoc($TipoDeUsuario)) { ?>
-
-                                                            <option value="<?php echo $row_TipoDeUsuario['TIPODEUSUARIOID']; ?>"><?php echo $row_TipoDeUsuario['TipoDeUsuario']; ?></option>
-
-                                                        <?php }
-
-                                                        // Reset the pointer to the beginning
-                                                        mysqli_data_seek($TipoDeUsuario, 0);
-
-                                                        ?>
-
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="row" style="display:none" id="ClientesEscondidos">
-                                                <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="CLIENTEID" class="form-label">Cliente ID</label>
-                                                    <input type="text" class="form-control" id="CLIENTEID" autocomplete="off" placeholder="0000" name="CLIENTEID" required>
-                                                    <!-- <select class="form-select" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
-                                                        <option value="">Selecciona cliente</option>
-
-                                                        <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
-
-                                                            <option value="<?php echo $row_clientes['CLIENTEID']; ?>">
-
-                                                                <?php echo $row_clientes['CLIENTESIAN'] . " - " . $row_clientes['NombreCliente']; ?>
-
-                                                            </option>
-
-                                                        <?php }
-
-                                                        // Reset the pointer to the beginning
-                                                        mysqli_data_seek($clientes, 0);
-
-                                                        ?>
-
-                                                    </select> -->
-                                                </div>
-
-                                            </div>
-
-                                            <div class="row">
                                                 <div class="col-lg-6 col-sm-12 mb-4">
-                                                    <label for="PrimerNombre" class="form-label">Primer nombre</label>
-                                                    <input type="text" class="form-control" id="PrimerNombre" autocomplete="off" placeholder="Luis" name="PrimerNombre" required>
+                                                    <label for="CLIENTESIAN" class="form-label">Número de cliente</label>
+                                                    <input type="text" class="form-control" id="CLIENTESIAN" autocomplete="off" placeholder="8923" name="CLIENTESIAN" required>
 
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
-                                                    <label for="SegundoNombre" class="form-label">Segundo nombre</label>
-                                                    <input type="text" class="form-control" id="SegundoNombre" autocomplete="off" placeholder="Roberto" name="SegundoNombre" required>
+                                                    <label for="NombreCliente" class="form-label">Nombre</label>
+                                                    <input type="text" class="form-control" id="NombreCliente" autocomplete="off" placeholder="Roberto" name="NombreCliente" required>
 
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
-                                                    <label for="ApellidoPaterno" class="form-label">Apellido paterno</label>
-                                                    <input type="text" class="form-control" id="ApellidoPaterno" autocomplete="off" placeholder="Pérez" name="ApellidoPaterno" required>
-
-                                                </div>
-                                                <div class="col-lg-6 col-sm-12 mb-4">
-
-                                                    <label for="ApellidoMaterno" class="form-label">Apellido materno</label>
-                                                    <input type="text" class="form-control" id="ApellidoMaterno" autocomplete="off" placeholder="Chávez" name="ApellidoMaterno" required>
+                                                    <label for="EmailCliente" class="form-label">Email</label>
+                                                    <input type="text" class="form-control" id="EmailCliente" autocomplete="off" placeholder="correo@email.com" name="EmailCliente">
 
                                                 </div>
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
-                                                    <label for="email" class="form-label">Email</label>
-                                                    <input type="text" class="form-control" id="email" autocomplete="off" placeholder="uncorreo@email.com" name="email" required>
+                                                    <label for="TelefonoCliente" class="form-label">Teléfono cliente</label>
+                                                    <input type="text" class="form-control" id="TelefonoCliente" autocomplete="off" placeholder="6561234567" name="TelefonoCliente">
 
                                                 </div>
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
-                                                    <label for="Telefono" class="form-label">Teléfono</label>
-                                                    <input type="text" class="form-control" id="Telefono" autocomplete="off" placeholder="656 123 4567" name="Telefono" required>
+                                                    <label for="NombreContacto" class="form-label">Contacto</label>
+                                                    <input type="text" class="form-control" id="NombreContacto" autocomplete="off" placeholder="Pedro" name="NombreContacto">
 
                                                 </div>
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
-                                                    <label for="Password" class="form-label">Password</label>
-                                                    <input type="text" class="form-control" id="Password" placeholder="Arbolito1208" name="Password" required>
+                                                    <label for="DireccionCliente" class="form-label">Calle y número</label>
+                                                    <input type="text" class="form-control" id="DireccionCliente" placeholder="Arbolito 1208-A" name="DireccionCliente">
+
+                                                </div>
+
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+
+                                                    <label for="ColoniaCliente" class="form-label">Colonia</label>
+                                                    <input type="text" class="form-control" id="ColoniaCliente" placeholder="Col Del Bosque" name="ColoniaCliente">
+
+                                                </div>
+
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+
+                                                    <label for="CiudadCliente" class="form-label">Ciudad</label>
+                                                    <input type="text" class="form-control" id="CiudadCliente" placeholder="Monterrey" name="CiudadCliente">
+
+                                                </div>
+
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+
+                                                    <label for="EstadoCliente" class="form-label">Calle y número</label>
+                                                    <input type="text" class="form-control" id="EstadoCliente" placeholder="Nuevo León" name="EstadoCliente">
 
                                                 </div>
 
@@ -256,7 +224,7 @@
 
 
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" id="DeshabilitarUsuario" class="btn btn-danger">
+                <button type="button" id="DeshabilitarCliente" class="btn btn-danger">
                     Deshabilitar</button>
             </div>
 
