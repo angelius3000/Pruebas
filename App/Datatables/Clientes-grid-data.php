@@ -36,12 +36,15 @@ if (!empty($requestData['search']['value'])) {
     $sql_words = array();
     foreach ($search_words as $word) {
         $sql_words[] = "(
-            usuarios.PrimerNombre LIKE '%" . $word . "%' OR
-            usuarios.SegundoNombre LIKE '%" . $word . "%' OR
-            usuarios.ApellidoPaterno LIKE '%" . $word . "%' OR
-            usuarios.ApellidoMaterno LIKE '%" . $word . "%' OR
-            tipodeusuarios.TipoDeUsuario LIKE '%" . $word . "%' OR
-            usuarios.email LIKE '%" . $word . "%'
+            clientes.CLIENTESIAN LIKE '%" . $word . "%' OR
+            clientes.NombreCliente LIKE '%" . $word . "%' OR
+            clientes.EmailCliente LIKE '%" . $word . "%' OR
+            clientes.TelefonoCliente LIKE '%" . $word . "%' OR
+            clientes.NombreContacto LIKE '%" . $word . "%' OR
+            clientes.DireccionCliente LIKE '%" . $word . "%' OR
+            clientes.ColoniaCliente LIKE '%" . $word . "%' OR
+            clientes.CiudadCliente LIKE '%" . $word . "%' OR
+            clientes.EstadoCliente LIKE '%" . $word . "%'
         )";
     }
     $sql .= " AND " . implode(' AND ', $sql_words);
