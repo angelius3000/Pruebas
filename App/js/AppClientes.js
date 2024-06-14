@@ -125,19 +125,19 @@ $(document).ready(function() {
     $("#ModalDeshabilitarClientes").modal("toggle");
   });
 
-  // $(document).on("change", "#TIPODEUSUARIOID", function() {
-  //  var TipoDeUsuario = $(this).val();
-  //
-  //  if (TipoDeUsuario == 4) {
-  //    $("#ClientesEscondidos").show();
+   $(document).on("change", "#TIPODEUSUARIOID", function() {
+    var TipoDeUsuario = $(this).val();
+  
+    if (TipoDeUsuario == 4) {
+      $("#ClientesEscondidos").show();
 
       // Ponerle el parametro "required al select de Clientes"
-  //    $("select#CLIENTEID").attr("required", true);
-  //  } else {
-  //    $("#ClientesEscondidos").hide();
-  //    $("select#CLIENTEID").attr("required", false);
-  //  }
-  //});
+      $("select#CLIENTEID").attr("required", true);
+    } else {
+      $("#ClientesEscondidos").hide();
+      $("select#CLIENTEID").attr("required", false);
+    }
+  });
 });
 
 function TomarDatosParaModalClientes(val) {
@@ -154,7 +154,7 @@ function TomarDatosParaModalClientes(val) {
       $("input#TelefonoClienteEditar").val(response.TelefonoCliente);
       $("input#NombreContactoEditar").val(response.NombreContacto);
       $("input#DireccionClienteEditar").val(response.DireccionCliente);
-      $("select#ColoniaClienteEditar").val(response.ColoniaCliente);
+      $("input#ColoniaClienteEditar").val(response.ColoniaCliente);
       $("input#CiudadClienteEditar").val(response.CiudadCliente);
       $("input#EstadoClienteEditar").val(response.EstadoCliente);
 
