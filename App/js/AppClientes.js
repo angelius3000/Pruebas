@@ -118,7 +118,7 @@ $(document).ready(function() {
       data: dataString,
       dataType: "json",
       success: function(response) {
-        dataTableClienteDT.columns.adjust().draw();
+        dataTableClientesDT.columns.adjust().draw();
       },
     }).done(function() {});
 
