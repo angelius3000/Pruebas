@@ -10,6 +10,7 @@ $NombreContactoEditar = mysqli_real_escape_string($conn, $_POST['NombreContactoE
 $DireccionClienteEditar = mysqli_real_escape_string($conn, $_POST['DireccionClienteEditar']);
 $ColoniaClienteEditar = mysqli_real_escape_string($conn, $_POST['ColoniaClienteEditar']);
 $CiudadClienteEditar = mysqli_real_escape_string($conn, $_POST['CiudadClienteEditar']);
+$EstadoClienteEditar = mysqli_real_escape_string($conn, $_POST['EstadoClienteEditar']);
 
 // Build the base query
 $sql = "UPDATE clientes SET 
