@@ -68,7 +68,7 @@
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="SegundoNombre" class="form-label">Segundo nombre</label>
-                                                    <input type="text" class="form-control" id="SegundoNombre" autocomplete="off" placeholder="Roberto" name="SegundoNombre" required>
+                                                    <input type="text" class="form-control" id="SegundoNombre" autocomplete="off" placeholder="Roberto" name="SegundoNombre">
 
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
@@ -80,7 +80,7 @@
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="ApellidoMaterno" class="form-label">Apellido materno</label>
-                                                    <input type="text" class="form-control" id="ApellidoMaterno" autocomplete="off" placeholder="Chávez" name="ApellidoMaterno" required>
+                                                    <input type="text" class="form-control" id="ApellidoMaterno" autocomplete="off" placeholder="Chávez" name="ApellidoMaterno">
 
                                                 </div>
 
@@ -94,14 +94,14 @@
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="Telefono" class="form-label">Teléfono</label>
-                                                    <input type="text" class="form-control" id="Telefono" autocomplete="off" placeholder="656 123 4567" name="Telefono" required>
+                                                    <input type="text" class="form-control" id="Telefono" autocomplete="off" placeholder="656 123 4567" name="Telefono">
 
                                                 </div>
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="Password" class="form-label">Password</label>
-                                                    <input type="text" class="form-control" id="Password" placeholder="Arbolito1208" name="Password" required>
+                                                    <input type="text" class="form-control" id="Password" placeholder="Arbolito1208" name="Password">
 
                                                 </div>
 
