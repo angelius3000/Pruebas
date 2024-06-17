@@ -167,7 +167,7 @@
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="SegundoNombreEditar" class="form-label">Segundo nombre</label>
-                                                    <input type="text" class="form-control" id="SegundoNombreEditar" autocomplete="off" placeholder="Roberto" name="SegundoNombreEditar" required>
+                                                    <input type="text" class="form-control" id="SegundoNombreEditar" autocomplete="off" placeholder="Roberto" name="SegundoNombreEditar">
 
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
@@ -179,7 +179,7 @@
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="ApellidoMaternoEditar" class="form-label">Apellido materno</label>
-                                                    <input type="text" class="form-control" id="ApellidoMaternoEditar" autocomplete="off" placeholder="Chávez" name="ApellidoMaternoEditar" required>
+                                                    <input type="text" class="form-control" id="ApellidoMaternoEditar" autocomplete="off" placeholder="Chávez" name="ApellidoMaternoEditar">
 
                                                 </div>
 
@@ -193,7 +193,7 @@
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="TelefonoEditar" class="form-label">Teléfono</label>
-                                                    <input type="text" class="form-control" id="TelefonoEditar" autocomplete="off" placeholder="656 123 4567" name="TelefonoEditar" required>
+                                                    <input type="text" class="form-control" id="TelefonoEditar" autocomplete="off" placeholder="656 123 4567" name="TelefonoEditar">
 
                                                 </div>
 
