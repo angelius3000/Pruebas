@@ -1,6 +1,6 @@
 <?php
 /* Database connection start */
-if ($_SERVER['HTTP_HOST'] == "localhost/edisonreparto") {
+if ($_SERVER['HTTP_HOST'] == "localhost") {
 
     $servername = "localhost";
     $username = "root";
