@@ -2,18 +2,18 @@
 
 include("../../Connections/ConDB.php");
 
-$USUARIOIDDeshabilitar = mysqli_real_escape_string($conn, $_POST['USUARIOID']);
+$CLIENTEIDDeshabilitar = mysqli_real_escape_string($conn, $_POST['CLIENTEID']);
 
 // Build the base query
-$sql = "UPDATE usuarios SET 
+$sql = "UPDATE clientes SET 
     Deshabilitado = 1
-    WHERE USUARIOID = '$USUARIOIDDeshabilitar'";
+    WHERE CLIENTEID = '$CLIENTEIDDeshabilitar'";
 
 if (!mysqli_query($conn, $sql)) {
     die('Error: ' . mysqli_error($conn));
 }
 
-$msg = array('USUARIOID' => $USUARIOIDDeshabilitar);
+$msg = array('CLIENTEID' => $CLIENTEIDDeshabilitar);
 
 // send data as json format
 echo json_encode($msg);

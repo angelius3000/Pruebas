@@ -21,7 +21,7 @@ if (!mysqli_query($conn, $sql)) {
 
 $last_id = mysqli_insert_id($conn);
 
-$msg = array('USUARIOID' => $last_id);
+$msg = array('CLIENTEID' => $last_id);
 
 // send data as json format
 echo json_encode($msg);

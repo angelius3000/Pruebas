@@ -70,7 +70,7 @@
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
-                                                    <label for="EstadoCliente" class="form-label">Calle y número</label>
+                                                    <label for="EstadoCliente" class="form-label">Estado</label>
                                                     <input type="text" class="form-control" id="EstadoCliente" placeholder="Nuevo León" name="EstadoCliente">
 
                                                 </div>
@@ -112,58 +112,63 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
-
                                             <div class="row">
-                                                <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <select class="form-select" name="TIPODEUSUARIOIDEditar" id="TIPODEUSUARIOIDEditar" aria-label="Default select example" required>
-                                                        <option selected>Selecciona tipo de usuario</option>
-
-                                                        <?php while ($row_TipoDeUsuario = mysqli_fetch_assoc($TipoDeUsuario)) { ?>
-
-                                                            <option value="<?php echo $row_TipoDeUsuario['TIPODEUSUARIOID']; ?>"><?php echo $row_TipoDeUsuario['TipoDeUsuario']; ?></option>
-
-                                                        <?php } ?>
-
-
-                                                    </select>
-                                                </div>
-
-
                                                 <div class="col-lg-6 col-sm-12 mb-4">
-                                                    <label for="PrimerNombreEditar" class="form-label">Primer nombre</label>
-                                                    <input type="text" class="form-control" id="PrimerNombreEditar" autocomplete="off" placeholder="Luis" name="PrimerNombreEditar" required>
+                                                    <label for="CLIENTESIANEditar" class="form-label">Número de cliente</label>
+                                                    <input type="text" class="form-control" id="CLIENTESIANEditar" autocomplete="off" placeholder="" name="CLIENTESIANEditar" required>
 
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
-                                                    <label for="SegundoNombreEditar" class="form-label">Segundo nombre</label>
-                                                    <input type="text" class="form-control" id="SegundoNombreEditar" autocomplete="off" placeholder="Roberto" name="SegundoNombreEditar" required>
+                                                    <label for="NombreClienteEditar" class="form-label">Nombre</label>
+                                                    <input type="text" class="form-control" id="NombreClienteEditar" autocomplete="off" placeholder="" name="NombreClienteEditar" required>
 
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
-                                                    <label for="ApellidoPaternoEditar" class="form-label">Apellido paterno</label>
-                                                    <input type="text" class="form-control" id="ApellidoPaternoEditar" autocomplete="off" placeholder="Pérez" name="ApellidoPaternoEditar" required>
+                                                    <label for="EmailClienteEditar" class="form-label">Email</label>
+                                                    <input type="text" class="form-control" id="EmailClienteEditar" autocomplete="off" placeholder="" name="EmailClienteEditar">
 
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
-                                                    <label for="ApellidoMaternoEditar" class="form-label">Apellido materno</label>
-                                                    <input type="text" class="form-control" id="ApellidoMaternoEditar" autocomplete="off" placeholder="Chávez" name="ApellidoMaternoEditar" required>
+                                                    <label for="TelefonoClienteEditar" class="form-label">Apellido materno</label>
+                                                    <input type="text" class="form-control" id="TelefonoClienteEditar" autocomplete="off" placeholder="" name="TelefonoClienteEditar">
 
                                                 </div>
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
-                                                    <label for="emailEditar" class="form-label">Email</label>
-                                                    <input type="text" class="form-control" id="emailEditar" autocomplete="off" placeholder="uncorreo@email.com" name="emailEditar" required>
+                                                    <label for="NombreContactoEditar" class="form-label">Contacto</label>
+                                                    <input type="text" class="form-control" id="NombreContactoEditar" autocomplete="off" placeholder="" name="NombreContactoEditar">
 
                                                 </div>
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
-                                                    <label for="TelefonoEditar" class="form-label">Teléfono</label>
-                                                    <input type="text" class="form-control" id="TelefonoEditar" autocomplete="off" placeholder="656 123 4567" name="TelefonoEditar" required>
+                                                    <label for="DireccionClienteEditar" class="form-label">Calle y numero</label>
+                                                    <input type="text" class="form-control" id="DireccionClienteEditar" autocomplete="off" placeholder="" name="DireccionClienteEditar">
+
+                                                </div>
+
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+
+                                                    <label for="ColoniaClienteEditar" class="form-label">Colonia</label>
+                                                    <input type="text" class="form-control" id="ColoniaClienteEditar" autocomplete="off" placeholder="" name="ColoniaClienteEditar">
+
+                                                </div>
+
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+
+                                                    <label for="CiudadClienteEditar" class="form-label">Ciudad</label>
+                                                    <input type="text" class="form-control" id="CiudadClienteEditar" autocomplete="off" placeholder="" name="CiudadClienteEditar">
+
+                                                </div>
+
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+
+                                                    <label for="EstadoClienteEditar" class="form-label">Estado</label>
+                                                    <input type="text" class="form-control" id="EstadoClienteEditar" autocomplete="off" placeholder="" name="EstadoClienteEditar">
 
                                                 </div>
 
@@ -179,7 +184,7 @@
                 <div class="modal-footer">
 
 
-                    <input type="hidden" id="USUARIOIDEditar" name="USUARIOIDEditar">
+                    <input type="hidden" id="CLIENTEIDEditar" name="CLIENTEIDEditar">
 
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -211,7 +216,7 @@
 
                                 <br>
                                 <br>
-                                <h3 id="NombreUsuarioDeshabilitar"></h3>
+                                <h3 id="NombreClienteDeshabilitar"></h3>
 
                             </div>
                         </div>
@@ -220,7 +225,7 @@
             </div>
             <div class="modal-footer">
 
-                <input type="hidden" id="USUARIOIDDeshabilitar" name="USUARIOIDDeshabilitar">
+                <input type="hidden" id="CLIENTEIDDeshabilitar" name="CLIENTEIDDeshabilitar">
 
 
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

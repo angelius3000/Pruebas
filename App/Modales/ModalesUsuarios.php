@@ -37,9 +37,8 @@
                                             <div class="row" style="display:none" id="ClientesEscondidos">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="CLIENTEID" class="form-label">Cliente ID</label>
-                                                    <input type="text" class="form-control" id="CLIENTEID" autocomplete="off" placeholder="0000" name="CLIENTEID" required>
-                                                    <!-- <select class="form-select" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
-                                                        <option value="">Selecciona cliente</option>
+                                                    <select class="form-select select2" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
+                                                        <option selected>Selecciona cliente</option>
 
                                                         <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
 
@@ -55,8 +54,7 @@
                                                         mysqli_data_seek($clientes, 0);
 
                                                         ?>
-
-                                                    </select> -->
+                                                    </select>
                                                 </div>
 
                                             </div>
@@ -70,7 +68,7 @@
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="SegundoNombre" class="form-label">Segundo nombre</label>
-                                                    <input type="text" class="form-control" id="SegundoNombre" autocomplete="off" placeholder="Roberto" name="SegundoNombre" required>
+                                                    <input type="text" class="form-control" id="SegundoNombre" autocomplete="off" placeholder="Roberto" name="SegundoNombre">
 
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
@@ -82,7 +80,7 @@
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="ApellidoMaterno" class="form-label">Apellido materno</label>
-                                                    <input type="text" class="form-control" id="ApellidoMaterno" autocomplete="off" placeholder="Chávez" name="ApellidoMaterno" required>
+                                                    <input type="text" class="form-control" id="ApellidoMaterno" autocomplete="off" placeholder="Chávez" name="ApellidoMaterno">
 
                                                 </div>
 
@@ -96,14 +94,14 @@
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="Telefono" class="form-label">Teléfono</label>
-                                                    <input type="text" class="form-control" id="Telefono" autocomplete="off" placeholder="656 123 4567" name="Telefono" required>
+                                                    <input type="text" class="form-control" id="Telefono" autocomplete="off" placeholder="656 123 4567" name="Telefono">
 
                                                 </div>
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="Password" class="form-label">Password</label>
-                                                    <input type="text" class="form-control" id="Password" placeholder="Arbolito1208" name="Password" required>
+                                                    <input type="text" class="form-control" id="Password" placeholder="Arbolito1208" name="Password">
 
                                                 </div>
 
@@ -169,7 +167,7 @@
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="SegundoNombreEditar" class="form-label">Segundo nombre</label>
-                                                    <input type="text" class="form-control" id="SegundoNombreEditar" autocomplete="off" placeholder="Roberto" name="SegundoNombreEditar" required>
+                                                    <input type="text" class="form-control" id="SegundoNombreEditar" autocomplete="off" placeholder="Roberto" name="SegundoNombreEditar">
 
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
@@ -181,7 +179,7 @@
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="ApellidoMaternoEditar" class="form-label">Apellido materno</label>
-                                                    <input type="text" class="form-control" id="ApellidoMaternoEditar" autocomplete="off" placeholder="Chávez" name="ApellidoMaternoEditar" required>
+                                                    <input type="text" class="form-control" id="ApellidoMaternoEditar" autocomplete="off" placeholder="Chávez" name="ApellidoMaternoEditar">
 
                                                 </div>
 
@@ -195,7 +193,7 @@
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="TelefonoEditar" class="form-label">Teléfono</label>
-                                                    <input type="text" class="form-control" id="TelefonoEditar" autocomplete="off" placeholder="656 123 4567" name="TelefonoEditar" required>
+                                                    <input type="text" class="form-control" id="TelefonoEditar" autocomplete="off" placeholder="656 123 4567" name="TelefonoEditar">
 
                                                 </div>
 

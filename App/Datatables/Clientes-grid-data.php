@@ -24,7 +24,7 @@ $columns = array(
 
 // getting total number records without any search
 $sql = "SELECT * FROM clientes";
-$query = mysqli_query($conn, $sql) or die("Usuario-grid-data.php: get employees");
+$query = mysqli_query($conn, $sql) or die("Clientes-grid-data.php: get employees");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
@@ -90,9 +90,9 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
     $nestedData[] = $BadgeActivo;
     $nestedData[] = '
 
-    <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalEditarClientes" onclick="TomarDatosParaModalUsuarios(' . $row["USUARIOID"] . ')"><i class="mdi mdi-pencil"></i>Editar</button>
+    <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalEditarClientes" onclick="TomarDatosParaModalClientes(' . $row["CLIENTESID"] . ')"><i class="mdi mdi-pencil"></i>Editar</button>
 
-    <button type="button" class="btn btn-sm btn-danger waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalDeshabilitarClientes" onclick="TomarDatosParaModalUsuarios(' . $row["USUARIOID"] . ')"><i class="mdi mdi-pencil"></i>Deshabilitar</button>
+    <button type="button" class="btn btn-sm btn-danger waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalDeshabilitarClientes" onclick="TomarDatosParaModalClientes(' . $row["CLIENTESID"] . ')"><i class="mdi mdi-pencil"></i>Deshabilitar</button>
     ';
 
     $data[] = $nestedData;
