@@ -62,19 +62,11 @@ $data = array();
 
 while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparando el Arraigo
 
-
-    if ($row["Deshabilitado"] == 0) {
-        $BadgeActivo = '<span class="badge badge-success">Activo</span>';
-    } else {
-        $BadgeActivo = '<span class="badge badge-danger">Inhabilitado</span>';
-    }
-
     if (!empty($row["CLIENTEID"])) {
         $Empresa = $row["NombreCliente"];
     } else {
         $Empresa = 'Edison';
     }
-
 
     $nestedData = array();
 

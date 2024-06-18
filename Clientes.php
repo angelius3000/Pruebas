@@ -4,22 +4,12 @@ if ($_SESSION['TIPOUSUARIO'] != 1) {
     header("Location: index.php");
 }
 
-$query_TipoDeUsuario = "SELECT * FROM tipodeusuarios";
-$TipoDeUsuario = mysqli_query($conn, $query_TipoDeUsuario) or die(mysqli_error($conn));
-$totalRows_TipoDeUsuario = mysqli_num_rows($TipoDeUsuario);
-
-$query_clientes = "SELECT * FROM clientes";
-$clientes = mysqli_query($conn, $query_clientes) or die(mysqli_error($conn));
-$totalRows_clientes = mysqli_num_rows($clientes);
-
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <?php include("includes/Header.php") ?>
-
 
 <body>
     <div class="app full-width-header align-content-stretch d-flex flex-wrap">
