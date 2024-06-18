@@ -48,6 +48,8 @@
                 <a href="main.php"> <img src="App/Graficos/Logo/LogoEdison.png" style="max-width :250px;"> </a>
             </div>
             <br>
+
+            <?php echo "Este es el HTTPHOST <strong>" . $_SERVER['HTTP_HOST'] . '</strong>'; ?>
             <form action="includes/login.php" method="POST">
                 <div class="auth-credentials m-b-xxl">
                     <label for="username" class="form-label">Email</label>
