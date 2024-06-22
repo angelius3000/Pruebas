@@ -33,9 +33,12 @@ $totalRows_productos = mysqli_num_rows($productos);
             <div class="logo logo-sm">
                 <a href="main.php"> <img src="App/Graficos/Logo/LogoEdison.png" style="max-width :130px;"> </a>
             </div>
+            <?php if ($_SESSION['TIPOUSUARIO'] == '1') { ?>
 
-            <?php include("includes/Menu.php") ?>
-
+                <?php include("includes/Menu.php") ?>
+                
+            <?php } ?>
+           
         </div>
         <div class="app-container">
             <div class="search">
