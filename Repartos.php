@@ -28,7 +28,7 @@ $totalRows_productos = mysqli_num_rows($productos);
 <?php include("includes/Header.php") ?>
 
 <body>
-    <!-- <div class="app full-width-header align-content-stretch d-flex flex-wrap"> -->
+    <div class="app full-width-header align-content-stretch d-flex flex-wrap">
         <div class="app-sidebar">
             <div class="logo logo-sm">
                 <a href="main.php"> <img src="App/Graficos/Logo/LogoEdison.png" style="max-width :130px;"> </a>
@@ -136,7 +136,7 @@ $totalRows_productos = mysqli_num_rows($productos);
                 </div>
             </div>
         </div>
-    <!-- </div> -->
+    </div>
 
     <?php include("App/Modales/ModalesRepartos.php") ?>
 
