@@ -45,7 +45,7 @@
         </div>
         <div class="app-auth-container">
             <div class="logomain">
-                <a href="main.php"> <img src="App/Graficos/Logo/LogoEdison.png" style="max-width :250px;"> </a>
+                <a href="Repartos.php"> <img src="App/Graficos/Logo/LogoEdison.png" style="max-width :250px;"> </a>
             </div>
             <br>
 
