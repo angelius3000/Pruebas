@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			exit;
 		} else {
 
-			echo "<script>window.location.href='https://reparto.edison.com.mx/repartos.php';</script>";
+			echo "<script>window.location.href='https://reparto.edison.com.mx/Repartos.php';</script>";
 			exit;
 		}
 	} else { // Unsuccessful!
