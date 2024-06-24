@@ -179,16 +179,6 @@ $(document).ready(function() {
     }).done(function() {});
   });
 
-  // Disparo el modal #ModalAgregarClientes cuano cierro #ModalEmailYaExiste
-
-  $("#ModalEmailYaExiste").on("hidden.bs.modal", function() {
-    $("#ModalAgregarClientes").modal("show");
-
-    // Limpia la forma del modal
-
-    $("#ValidacionAgregarClientes")[0].reset();
-  });
-
   // Para que los clientes no se puedan clonar , en SIAN
 
   var typingTimer; // Timer identifier
@@ -251,10 +241,14 @@ $(document).ready(function() {
     }).done(function() {});
   }
 
-  // Disparo el modal #ModalAgregarClientes cuano cierro #ModalSIANYaExiste
+  // Disparo el modal #ModalAgregarClientes cuano cierro #ModalEmailYaExiste
 
-  $("#ModalSIANYaExiste").on("hidden.bs.modal", function() {
+  $("#ModalYaExiste").on("hidden.bs.modal", function() {
     $("#ModalAgregarClientes").modal("show");
+
+    // Limpia la forma del modal
+
+    $("#ValidacionAgregarClientes")[0].reset();
   });
 });
 

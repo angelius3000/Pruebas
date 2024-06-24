@@ -255,52 +255,54 @@
 
                                 <h3>Ya existe un cliente con esa información:</h3>
 
-                                <br>
-                                Numero de cliente SIAN:
-                                <br>
-                                <strong><span id="NumeroDeClienteSIANYaExiste"></span></strong>
-                                <br>
-                                <br>
-                                Nombre:
-                                <br>
-                                <strong><span id="NombreClienteYaExiste"></span></strong>
-                                <br>
-                                <br>
-                                Correo:
-                                <br>
-                                <strong><span id="EmailClienteYaExiste"></span></strong>
-                                <br>
-                                <br>
-                                Teléfono:
-                                <br>
-                                <strong><span id="TelefonoClienteYaExiste"></span></strong>
-                                <br>
-                                <br>
-                                Contacto:
-                                <br>
-                                <strong><span id="NombreContactoYaExiste"></span></strong>
-                                <br>
-                                <br>
-                                Dirección:
-                                <br>
-                                <strong><span id="DireccionClienteYaExiste"></span></strong>
-                                <br>
-                                <br>
-                                Colonia:
-                                <br>
-                                <strong><span id="ColoniaClienteYaExiste"></span></strong>
-                                <br>
-                                <br>
-                                Ciudad:
-                                <br>
-                                <strong><span id="CiudadClienteYaExiste"></span></strong>
-                                <br>
-                                <br>
-                                Estado:
-                                <br>
-                                <strong><span id="EstadoClienteYaExiste"></span></strong>
 
-
+                                <div class="row">
+                                    <div class="col-lg-6 col-sm-12 mb-4">
+                                        Numero de cliente SIAN:
+                                        <br>
+                                        <strong><span id="NumeroDeClienteSIANYaExiste"></span></strong>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12 mb-4">
+                                        Nombre:
+                                        <br>
+                                        <strong><span id="NombreClienteYaExiste"></span></strong>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12 mb-4">
+                                        Correo:
+                                        <br>
+                                        <strong><span id="EmailClienteYaExiste"></span></strong>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12 mb-4">
+                                        Teléfono:
+                                        <br>
+                                        <strong><span id="TelefonoClienteYaExiste"></span></strong>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12 mb-4">
+                                        Contacto:
+                                        <br>
+                                        <strong><span id="NombreContactoYaExiste"></span></strong>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12 mb-4">
+                                        Dirección:
+                                        <br>
+                                        <strong><span id="DireccionClienteYaExiste"></span></strong>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12 mb-4">
+                                        Colonia:
+                                        <br>
+                                        <strong><span id="ColoniaClienteYaExiste"></span></strong>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12 mb-4">
+                                        Ciudad:
+                                        <br>
+                                        <strong><span id="CiudadClienteYaExiste"></span></strong>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12 mb-4">
+                                        Estado:
+                                        <br>
+                                        <strong><span id="EstadoClienteYaExiste"></span></strong>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
