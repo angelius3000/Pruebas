@@ -1,8 +1,8 @@
 <?php include("includes/HeaderScripts.php");
 
-if ($_SESSION['TIPOUSUARIO'] != 1) {
-    header("Location: index.php");
-}
+// if ($_SESSION['TIPOUSUARIO'] != 1) {
+//     header("Location: index.php");
+// }
 
 ?>
 
@@ -40,7 +40,7 @@ if ($_SESSION['TIPOUSUARIO'] != 1) {
                                     <h1>Full-width Header</h1>
 
                                     <?php // ESTE ES EL QUE IMPRIME LAS SESSIONES VARIABLES
-                                   // echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';
+                                    echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';
                                     ?>
                                     <span>Header without spacing to sidebar and page edges. <div class="alert alert-secondary m-t-lg" role="alert">Note! Logo block with user info in it is not compatible with full-width header.</div></span>
                                 </div>

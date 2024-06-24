@@ -20,6 +20,18 @@ $query_productos = "SELECT * FROM productos";
 $productos = mysqli_query($conn, $query_productos) or die(mysqli_error($conn));
 $totalRows_productos = mysqli_num_rows($productos);
 
+if ($_SESSION['TIPOUSUARIO'] == 3) {
+
+    $ClaseDeBody = "sidebar-hidden";
+    $ClaseDeLogo = "hidden-sidebar-logo";
+    $IconoFlecha = "last_page";
+} else {
+
+    $ClaseDeBody = "";
+    $ClaseDeLogo = "";
+    $IconoFlecha = "first_page";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -28,17 +40,17 @@ $totalRows_productos = mysqli_num_rows($productos);
 <?php include("includes/Header.php") ?>
 
 <body>
-    <div class="app full-width-header align-content-stretch d-flex flex-wrap">
+    <div class="app full-width-header align-content-stretch d-flex flex-wrap <?php echo $ClaseDeBody; ?>">
         <div class="app-sidebar">
-            <div class="logo logo-sm">
+            <div class="logo logo-sm <?php echo $ClaseDeLogo; ?>">
                 <a href="main.php"> <img src="App/Graficos/Logo/LogoEdison.png" style="max-width :130px;"> </a>
             </div>
-            
 
-                <?php include("includes/Menu.php") ?>
-                
-            
-           
+
+            <?php include("includes/Menu.php") ?>
+
+
+
         </div>
         <div class="app-container">
             <div class="search">
