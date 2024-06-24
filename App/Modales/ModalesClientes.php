@@ -236,3 +236,69 @@
         </div>
     </div>
 </div>
+
+<!-- Modal cliente ya existe -->
+
+<div class="modal" id="ModalEmailYaExiste">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">El cliente ya existe</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <h3>Ya existe un cliente con esa información:</h3>
+
+                                <br>
+                                Nombre:
+                                <br>
+                                <strong><span id="NombreClienteYaExiste"></span></strong>
+                                <br>
+                                Correo:
+                                <br>
+                                <strong><span id="EmailClienteYaExiste"></span></strong>
+                                <br>
+                                Teléfono:
+                                <br>
+                                <strong><span id="TelefonoClienteYaExiste"></span></strong>
+                                <br>
+                                Contacto:
+                                <br>
+                                <strong><span id="NombreContactoYaExiste"></span></strong>
+                                <br>
+                                Dirección:
+                                <br>
+                                <strong><span id="DireccionClienteYaExiste"></span></strong>
+                                <br>
+                                Colonia:
+                                <br>
+                                <strong><span id="ColoniaClienteYaExiste"></span></strong>
+                                <br>
+                                Ciudad:
+                                <br>
+                                <strong><span id="CiudadClienteYaExiste"></span></strong>
+                                <br>
+                                Estado:
+                                <br>
+                                <strong><span id="EstadoClienteYaExiste"></span></strong>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+
+        </div>
+    </div>
+</div>

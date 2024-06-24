@@ -125,9 +125,9 @@ $(document).ready(function() {
     $("#ModalDeshabilitarClientes").modal("toggle");
   });
 
-   $(document).on("change", "#TIPODEUSUARIOID", function() {
+  $(document).on("change", "#TIPODEUSUARIOID", function() {
     var TipoDeUsuario = $(this).val();
-  
+
     if (TipoDeUsuario == 4) {
       $("#ClientesEscondidos").show();
 
@@ -137,6 +137,65 @@ $(document).ready(function() {
       $("#ClientesEscondidos").hide();
       $("select#CLIENTEID").attr("required", false);
     }
+  });
+
+  // Para que los clientes no se puedan clonar , mandamos el pedido para ver si existen
+
+  $("#CLIENTESIAN, #CLIENTESIANEditar").on("keyup", function() {
+    var ValorClienteSIAN = $(this).val();
+
+    // ajax
+    $.ajax({
+      //async: false,
+      type: "POST",
+      url: "App/Server/ServerUpdateClientes.php",
+      data: dataString,
+      dataType: "json",
+      success: function(response) {
+        // Reescribe la Datatable y le da refresh
+
+        console.log(response.CLIENTEID);
+
+        dataTableClientesDT.columns.adjust().draw();
+      },
+    }).done(function() {});
+  });
+
+  $("#EmailCliente, #EmailClienteEditar").on("keyup", function() {
+    var ValorEmail = $(this).val();
+
+    // ajax
+    $.ajax({
+      //async: false,
+      type: "POST",
+      url: "App/Server/ServerInfoClientesChecarEmailSiExiste.php",
+      data: "EmailCliente=" + ValorEmail,
+      dataType: "json",
+      success: function(response) {
+        // Reescribe la Datatable y le da refresh
+
+        if (response.NombreCliente != null) {
+          // Mandar el modal de que ya existe el email
+
+          $("#ModalEmailYaExiste").modal("show");
+
+          // Quitamos el modal que genero el email
+
+          $("#ModalAgregarClientes").modal("hide");
+
+          // Mandamos la informacion al nuevo modal
+
+          $("#NombreClienteYaExiste").text(response.NombreCliente);
+          $("#EmailClienteYaExiste").text(response.EmailCliente);
+          $("#TelefonoClienteYaExiste").text(response.TelefonoCliente);
+          $("#NombreContactoYaExiste").text(response.NombreContacto);
+          $("#DireccionClienteYaExiste").text(response.DireccionCliente);
+          $("#ColoniaClienteYaExiste").text(response.ColoniaCliente);
+          $("#CiudadClienteYaExiste").text(response.CiudadCliente);
+          $("#EstadoClienteYaExiste").text(response.EstadoCliente);
+        }
+      },
+    }).done(function() {});
   });
 });
 
@@ -161,9 +220,7 @@ function TomarDatosParaModalClientes(val) {
       //Para modal de Borrar
 
       $("#NombreUsuarioDeshabilitar").text(
-        response.CLIENTESIAN +
-          " " +
-          response.NombreCliente
+        response.CLIENTESIAN + " " + response.NombreCliente
       );
 
       $("input#CLIENTEIDDeshabilitar").val(response.CLIENTEID);
