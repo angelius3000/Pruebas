@@ -28,11 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		if ($_SERVER['HTTP_HOST'] == "local.edison:8888") {
 
-			echo "<script>window.location.href='http://local.edison:8888/main.php';</script>";
+			echo "<script>window.location.href='http://local.edison:8888/Repartos.php';</script>";
 			exit;
 		} else if ($_SERVER['HTTP_HOST'] == "localhost") {
 
-			echo "<script>window.location.href='http://localhost/edisonreparto/main.php';</script>";
+			echo "<script>window.location.href='http://localhost/edisonreparto/Repartos.php';</script>";
 			exit;
 		} else {
 

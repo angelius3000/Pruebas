@@ -1,8 +1,8 @@
 <?php include("includes/HeaderScripts.php");
 
-// if ($_SESSION['TIPOUSUARIO'] != 1) {
-//     header("Location: index.php");
-// }
+if ($_SESSION['TIPOUSUARIO'] != 1) {
+    header("Location: index.php");
+}
 
 ?>
 
