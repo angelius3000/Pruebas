@@ -239,7 +239,7 @@
 
 <!-- Modal cliente ya existe -->
 
-<div class="modal" id="ModalEmailYaExiste">
+<div class="modal" id="ModalYaExiste">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -256,33 +256,45 @@
                                 <h3>Ya existe un cliente con esa información:</h3>
 
                                 <br>
+                                Numero de cliente SIAN:
+                                <br>
+                                <strong><span id="NumeroDeClienteSIANYaExiste"></span></strong>
+                                <br>
+                                <br>
                                 Nombre:
                                 <br>
                                 <strong><span id="NombreClienteYaExiste"></span></strong>
+                                <br>
                                 <br>
                                 Correo:
                                 <br>
                                 <strong><span id="EmailClienteYaExiste"></span></strong>
                                 <br>
+                                <br>
                                 Teléfono:
                                 <br>
                                 <strong><span id="TelefonoClienteYaExiste"></span></strong>
+                                <br>
                                 <br>
                                 Contacto:
                                 <br>
                                 <strong><span id="NombreContactoYaExiste"></span></strong>
                                 <br>
+                                <br>
                                 Dirección:
                                 <br>
                                 <strong><span id="DireccionClienteYaExiste"></span></strong>
+                                <br>
                                 <br>
                                 Colonia:
                                 <br>
                                 <strong><span id="ColoniaClienteYaExiste"></span></strong>
                                 <br>
+                                <br>
                                 Ciudad:
                                 <br>
                                 <strong><span id="CiudadClienteYaExiste"></span></strong>
+                                <br>
                                 <br>
                                 Estado:
                                 <br>

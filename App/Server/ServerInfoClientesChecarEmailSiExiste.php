@@ -14,6 +14,7 @@ if ($EmailDeCliente != "") {
 
     $msg = array(
         'CLIENTEID' => $row['CLIENTEID'],
+        'CLIENTESIAN' => $row['CLIENTESIAN'],
         'NombreCliente' => $row['NombreCliente'],
         'EmailCliente' => $row['EmailCliente'],
         'TelefonoCliente' => $row['TelefonoCliente'],

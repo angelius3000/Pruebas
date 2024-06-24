@@ -141,26 +141,6 @@ $(document).ready(function() {
 
   // Para que los clientes no se puedan clonar , mandamos el pedido para ver si existen
 
-  $("#CLIENTESIAN, #CLIENTESIANEditar").on("keyup", function() {
-    var ValorClienteSIAN = $(this).val();
-
-    // ajax
-    $.ajax({
-      //async: false,
-      type: "POST",
-      url: "App/Server/ServerUpdateClientes.php",
-      data: dataString,
-      dataType: "json",
-      success: function(response) {
-        // Reescribe la Datatable y le da refresh
-
-        console.log(response.CLIENTEID);
-
-        dataTableClientesDT.columns.adjust().draw();
-      },
-    }).done(function() {});
-  });
-
   $("#EmailCliente, #EmailClienteEditar").on("keyup", function() {
     var ValorEmail = $(this).val();
 
@@ -177,7 +157,7 @@ $(document).ready(function() {
         if (response.NombreCliente != null) {
           // Mandar el modal de que ya existe el email
 
-          $("#ModalEmailYaExiste").modal("show");
+          $("#ModalYaExiste").modal("show");
 
           // Quitamos el modal que genero el email
 
@@ -185,6 +165,7 @@ $(document).ready(function() {
 
           // Mandamos la informacion al nuevo modal
 
+          $("#NumeroDeClienteSIANYaExiste").text(response.CLIENTESIAN);
           $("#NombreClienteYaExiste").text(response.NombreCliente);
           $("#EmailClienteYaExiste").text(response.EmailCliente);
           $("#TelefonoClienteYaExiste").text(response.TelefonoCliente);
@@ -196,6 +177,84 @@ $(document).ready(function() {
         }
       },
     }).done(function() {});
+  });
+
+  // Disparo el modal #ModalAgregarClientes cuano cierro #ModalEmailYaExiste
+
+  $("#ModalEmailYaExiste").on("hidden.bs.modal", function() {
+    $("#ModalAgregarClientes").modal("show");
+
+    // Limpia la forma del modal
+
+    $("#ValidacionAgregarClientes")[0].reset();
+  });
+
+  // Para que los clientes no se puedan clonar , en SIAN
+
+  var typingTimer; // Timer identifier
+  var doneTypingInterval = 1000; // Tiempo en milisegundos (1 segundo)
+  var $input = $("#CLIENTESIAN, #CLIENTESIANEditar");
+  var ValorClienteSIAN;
+
+  // Evento keyup en el input
+  $input.on("keyup", function() {
+    ValorClienteSIAN = $(this).val();
+
+    clearTimeout(typingTimer);
+    typingTimer = setTimeout(doneTyping, doneTypingInterval);
+  });
+
+  // Evento keydown en el input (opcional, para cancelar el temporizador si se vuelve a escribir antes de que termine)
+  $input.on("keydown", function() {
+    clearTimeout(typingTimer);
+  });
+
+  // Evento blur en el input
+  $input.on("blur", function() {
+    clearTimeout(typingTimer);
+    doneTyping();
+  });
+
+  // Función que se llama cuando el usuario deja de escribir
+  function doneTyping() {
+    $.ajax({
+      //async: false,
+      type: "POST",
+      url: "App/Server/ServerInfoClientesChecarSIANSiExiste.php",
+      data: "CLIENTESIAN=" + ValorClienteSIAN,
+      dataType: "json",
+      success: function(response) {
+        // Reescribe la Datatable y le da refresh
+
+        if (response.NombreCliente != null) {
+          // Mandar el modal de que ya existe el email
+
+          $("#ModalYaExiste").modal("show");
+
+          // Quitamos el modal que genero el email
+
+          $("#ModalAgregarClientes").modal("hide");
+
+          // Mandamos la informacion al nuevo modal
+
+          $("#NumeroDeClienteSIANYaExiste").text(response.CLIENTESIAN);
+          $("#NombreClienteYaExiste").text(response.NombreCliente);
+          $("#EmailClienteYaExiste").text(response.EmailCliente);
+          $("#TelefonoClienteYaExiste").text(response.TelefonoCliente);
+          $("#NombreContactoYaExiste").text(response.NombreContacto);
+          $("#DireccionClienteYaExiste").text(response.DireccionCliente);
+          $("#ColoniaClienteYaExiste").text(response.ColoniaCliente);
+          $("#CiudadClienteYaExiste").text(response.CiudadCliente);
+          $("#EstadoClienteYaExiste").text(response.EstadoCliente);
+        }
+      },
+    }).done(function() {});
+  }
+
+  // Disparo el modal #ModalAgregarClientes cuano cierro #ModalSIANYaExiste
+
+  $("#ModalSIANYaExiste").on("hidden.bs.modal", function() {
+    $("#ModalAgregarClientes").modal("show");
   });
 });
 
