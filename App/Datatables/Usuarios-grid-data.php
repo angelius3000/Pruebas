@@ -19,13 +19,15 @@ $columns = array(
 
 // getting total number records without any search
 $sql = "SELECT * FROM usuarios 
-        LEFT JOIN tipodeusuarios ON usuarios.TIPODEUSUARIOID = tipodeusuarios.TIPODEUSUARIOID";
+        LEFT JOIN tipodeusuarios ON usuarios.TIPODEUSUARIOID = tipodeusuarios.TIPODEUSUARIOID
+        LEFT JOIN clientes ON usuarios.CLIENTEID = clientes.CLIENTEID";
 $query = mysqli_query($conn, $sql) or die("Usuario-grid-data.php: get employees");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 $sql = "SELECT * FROM usuarios
 LEFT JOIN tipodeusuarios ON usuarios.TIPODEUSUARIOID = tipodeusuarios.TIPODEUSUARIOID
+LEFT JOIN clientes ON usuarios.CLIENTEID = clientes.CLIENTEID
 WHERE 1=1 ";
 
 if (!empty($requestData['search']['value'])) {
@@ -63,12 +65,19 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
         $BadgeActivo = '<span class="badge badge-danger">Inhabilitado</span>';
     }
 
+    if (!empty($row["CLIENTEID"])) {
+        $Empresa = $row["NombreCliente"];
+    } else {
+        $Empresa = 'Edison';
+    }
+
 
     $nestedData = array();
 
     $nestedData[] = $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"] . ' ' . $row["PrimerNombre"] . ' ' . $row["SegundoNombre"];
     $nestedData[] = $row["email"];
     $nestedData[] = $row["TipoDeUsuario"];
+    $nestedData[] = $Empresa;
     $nestedData[] = $BadgeActivo;
     $nestedData[] = '
 

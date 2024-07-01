@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  // como puedo disparar en la clase .select2 que comienze la busqueda de los clientes
+
+  $(".select2").select2();
+
   var dataTableRepartosDT = $("#Repartos2DT").DataTable({
     // Tabla General de Usuarios
 
@@ -19,7 +23,7 @@ $(document).ready(function() {
         next: "Siguiente",
         previous: "Anterior",
       },
-      infoEmpty: "Sin rúbricas registradas",
+      infoEmpty: "Sin repartos registradas",
       infoFiltered: "(filtrado de _MAX_ registros)",
     },
     processing: "Procesando...",
@@ -30,13 +34,44 @@ $(document).ready(function() {
 
     ajax: {
       url: "App/Datatables/Repartos-grid-data.php", // json datasource
-      type: "post"
+      type: "post",
     },
     lengthChange: true, // añade la lista desplegable
     order: [[0, "DESC"]],
   });
 
+  var dataTableRepartosDTClientes = $("#RepartosCliente2DT").DataTable({
+    // Tabla General de Usuarios
 
+    dom: "Bifrtip",
+    buttons: ["excelHtml5", "pdfHtml5", "pageLength"],
+    processing: true,
+    serverSide: true,
+    responsive: true,
+    pageLength: 100,
+    language: {
+      search: "Búsqueda:",
+      lengthMenu: "Mostrar _MENU_ filas",
+      zeroRecords: "Sin información",
+      info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+      paginate: {
+        first: "Primera",
+        last: "Última",
+        next: "Siguiente",
+        previous: "Anterior",
+      },
+      infoEmpty: "Sin repartos registradas",
+      infoFiltered: "(filtrado de _MAX_ registros)",
+    },
+    processing: "Procesando...",
+    loadingRecords: "Cargando...",
+    ajax: {
+      url: "App/Datatables/RepartosCliente-grid-data.php", // json datasource
+      type: "post",
+    },
+    lengthChange: true, // añade la lista desplegable
+    order: [[0, "DESC"]],
+  });
 
   // Para Agregar Usuarios
   $("#ValidacionAgregarRepartos").on("submit", function(e) {
@@ -57,23 +92,21 @@ $(document).ready(function() {
       $.ajax({
         //async: false,
         type: "POST",
-        url: "App/Server/ServerInsertarUsuarios.php",
+        url: "App/Server/ServerInsertarRepartos.php",
         data: dataString,
         dataType: "json",
         success: function(response) {
-          // Reescribe la Datatable y le da refresh
+          //console.log(response.USUARIOID);
 
-          console.log(response.USUARIOID);
-
-          dataTableUsuarioDT.columns.adjust().draw();
+          dataTableRepartosDT.columns.adjust().draw();
         },
       }).done(function() {});
 
-      $("#ModalAgregarUsuarios").modal("toggle");
+      $("#ModalAgregarReparto").modal("toggle");
     }
   });
 
-  $("#ValidacionEditarUsuario").on("submit", function(e) {
+  $("#ValidacionEditarRepartos").on("submit", function(e) {
     var form = $(this);
 
     form.parsley().validate();
@@ -91,7 +124,7 @@ $(document).ready(function() {
       $.ajax({
         //async: false,
         type: "POST",
-        url: "App/Server/ServerUpdateUsuarios.php",
+        url: "App/Server/ServerUpdateRepartos.php",
         data: dataString,
         dataType: "json",
         success: function(response) {
@@ -99,20 +132,20 @@ $(document).ready(function() {
 
           console.log(response.USUARIOID);
 
-          dataTableUsuarioDT.columns.adjust().draw();
+          dataTableRepartosDT.columns.adjust().draw();
         },
       }).done(function() {});
 
-      $("#ModalEditarUsuarios").modal("toggle");
+      $("#ModalEditarReparto").modal("toggle");
     }
   });
 
   // Deshabilitar Usuario
 
-  $("body").on("click", "#DeshabilitarUsuario", function() {
-    var USUARIOID = $("input#USUARIOIDDeshabilitar").val();
+  $("body").on("click", "#BorrarReparto", function() {
+    var REPARTOID = $("input#REPARTOIDBorrar").val();
 
-    var dataString = "USUARIOID=" + USUARIOID;
+    var dataString = "REPARTOID=" + REPARTOID;
 
     console.log(dataString);
 
@@ -120,50 +153,130 @@ $(document).ready(function() {
     $.ajax({
       //async: false,
       type: "POST",
-      url: "App/Server/ServerDeshabilitarUsuarios.php",
+      url: "App/Server/ServerBorrarRepartos.php",
       data: dataString,
       dataType: "json",
       success: function(response) {
-        dataTableUsuarioDT.columns.adjust().draw();
+        dataTableRepartosDT.columns.adjust().draw();
       },
     }).done(function() {});
 
-    $("#ModalDeshabilitarUsuarios").modal("toggle");
+    $("#ModalBorrarReparto").modal("toggle");
+  });
+
+  // Evento para editar Status de reparto
+
+  $("#ValidacionEditarStatus").on("submit", function(e) {
+    var form = $(this);
+
+    form.parsley().validate();
+
+    if (form.parsley().isValid()) {
+      //prevent Default functionality
+      e.preventDefault();
+
+      // data string
+      var dataString = form.serialize();
+
+      console.log(dataString);
+
+      // ajax
+      $.ajax({
+        //async: false,
+        type: "POST",
+        url: "App/Server/ServerUpdateStatus.php",
+        data: dataString,
+        dataType: "json",
+        success: function(response) {
+          // Reescribe la Datatable y le da refresh
+
+          console.log(response.REPARTOID);
+
+          dataTableRepartosDT.columns.adjust().draw();
+        },
+      }).done(function() {});
+
+      $("#ModalCambioStatus").modal("toggle");
+    }
+  });
+
+  // Toma el change de el editor de Repartos
+
+  $(document).on("change", "#STATUSIDEditar", function() {
+    var Status = $(this).val();
+    var REPARTOID = $("input#REPARTOIDEditarStatus").val();
+
+    TomarDatosParaModalEnEdicionDeStatus(REPARTOID);
+
+    if (Status == 4) {
+      $(".RepartosEscondidos").show();
+      $("#Surtidores").prop("required", true);
+      $("#USUARIOIDRepartidor").prop("required", true);
+    } else {
+      $(".RepartosEscondidos").hide();
+      $("#Surtidores").prop("required", false);
+      $("#USUARIOIDRepartidor").prop("required", false);
+    }
   });
 });
-
-function TomarDatosParaModalUsuarios(val) {
+function TomarDatosParaModalRepartos(val) {
   $.ajax({
     type: "POST",
-    url: "App/Server/ServerInfoUsuariosParaModal.php",
+    url: "App/Server/ServerInfoRepartosParaModal.php",
     dataType: "json",
     data: "ID=" + val,
     success: function(response) {
       // Para el Modal de editar
-      $("input#PrimerNombreEditar").val(response.PrimerNombre);
-      $("input#SegundoNombreEditar").val(response.SegundoNombre);
-      $("input#ApellidoPaternoEditar").val(response.ApellidoPaterno);
-      $("input#ApellidoMaternoEditar").val(response.ApellidoMaterno);
-      $("input#emailEditar").val(response.Email);
-      $("input#TelefonoEditar").val(response.Telefono);
 
-      $("select#TIPODEUSUARIOIDEditar").val(response.TIPODEUSUARIOID);
+      // Campos para el modal #ModalEditarReparto
 
-      $("input#USUARIOIDEditar").val(response.USUARIOID);
+      $("select#CLIENTEIDEditar").val(response.CLIENTEID);
+      $("input#NumeroDeFacturaEditar").val(response.NumeroDeFactura);
+      $("input#CalleEditar").val(response.Calle);
+      $("input#ColoniaEditar").val(response.Colonia);
+      $("input#NumeroEXTEditar").val(response.NumeroEXT);
+      $("input#ColoniaEditar").val(response.Colonia);
+      $("input#CPEditar").val(response.CP);
+      $("input#CiudadEditar").val(response.Ciudad);
+      $("input#EstadoEditar").val(response.Estado);
+      $("input#ReceptorEditar").val(response.Receptor);
+      $("input#TelefonoDeReceptorEditar").val(response.TelefonoDeReceptor);
+      $("input#TelefonoAlternativoEditar").val(response.TelefonoAlternativo);
+      $("textarea#ComentariosEditar").val(response.Comentarios);
 
-      //Para modal de Borrar
+      $("input#REPARTOIDEditar").val(response.REPARTOID);
+      $("#DatosRepartoParaBorrar").html(response.DatosParaBorrarReparto);
 
-      $("#NombreUsuarioDeshabilitar").text(
-        response.PrimerNombre +
-          " " +
-          response.SegundoNombre +
-          " " +
-          response.ApellidoPaterno +
-          " " +
-          response.ApellidoMaterno
-      );
+      $("input#REPARTOIDBorrar").val(response.REPARTOID);
 
-      $("input#USUARIOIDDeshabilitar").val(response.USUARIOID);
+      // Para el editor de Status
+      $("input#REPARTOIDEditarStatus").val(response.REPARTOID);
+      $("select#STATUSIDEditar").val(response.STATUSID);
+
+      if (response.STATUSID == 4) {
+        $(".RepartosEscondidos").show();
+
+        $("textarea#Surtidores").val(response.Surtidores);
+        $("select#USUARIOIDRepartidor").val(response.USUARIOIDRepartidor);
+      } else {
+        $(".RepartosEscondidos").hide();
+        $("textarea#Surtidores").val("");
+        $("select#USUARIOIDRepartidor").val("");
+      }
+    },
+  });
+}
+
+function TomarDatosParaModalEnEdicionDeStatus(val) {
+  $.ajax({
+    type: "POST",
+    url: "App/Server/ServerInfoRepartosParaModal.php",
+    dataType: "json",
+    data: "ID=" + val,
+    success: function(response) {
+      // Para el Modal de editar
+      $("textarea#Surtidores").val(response.Surtidores);
+      $("select#USUARIOIDRepartidor").val(response.USUARIOIDRepartidor);
     },
   });
 }

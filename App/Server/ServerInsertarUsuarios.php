@@ -1,6 +1,7 @@
 <?php
 
 include("../../Connections/ConDB.php");
+include("../../includes/Funciones.php");
 
 $TIPODEUSUARIOID = mysqli_real_escape_string($conn, $_POST['TIPODEUSUARIOID']);
 $PrimerNombre = mysqli_real_escape_string($conn, $_POST['PrimerNombre']);
@@ -10,8 +11,15 @@ $ApellidoMaterno = mysqli_real_escape_string($conn, $_POST['ApellidoMaterno']);
 $email = mysqli_real_escape_string($conn, $_POST['email']);
 $Telefono = mysqli_real_escape_string($conn, $_POST['Telefono']);
 
+$CLIENTEID = isset($_POST['CLIENTEID']) ? mysqli_real_escape_string($conn, $_POST['CLIENTEID']) : 0;
 
-$sql = "INSERT INTO Usuarios (PrimerNombre, SegundoNombre, ApellidoPaterno, ApellidoMaterno, email, Telefono, TIPODEUSUARIOID) VALUES ('$PrimerNombre', '$SegundoNombre', '$ApellidoPaterno', '$ApellidoMaterno', '$email', '$Telefono', '$TIPODEUSUARIOID')";
+$Password = mysqli_real_escape_string($conn, $_POST['Password']);
+$Password = sha1($Password);
+
+$HASH = random_num(40);
+
+
+$sql = "INSERT INTO Usuarios (PrimerNombre, SegundoNombre, ApellidoPaterno, ApellidoMaterno, email, Telefono, TIPODEUSUARIOID, CLIENTEID, Password, HASH) VALUES ('$PrimerNombre', '$SegundoNombre', '$ApellidoPaterno', '$ApellidoMaterno', '$email', '$Telefono', '$TIPODEUSUARIOID', '$CLIENTEID', '$Password', '$HASH')";
 
 if (!mysqli_query($conn, $sql)) {
     die('Error: ' . mysqli_error($conn));

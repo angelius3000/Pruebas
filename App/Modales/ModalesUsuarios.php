@@ -32,8 +32,35 @@
 
                                                     </select>
                                                 </div>
+                                            </div>
 
+                                            <div class="row" style="display:none" id="ClientesEscondidos">
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="CLIENTEID" class="form-label">Cliente ID</label>
+                                                    <select class="form-select" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
+                                                        <option value="">Selecciona cliente</option>
 
+                                                        <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
+
+                                                            <option value="<?php echo $row_clientes['CLIENTEID']; ?>">
+
+                                                                <?php echo $row_clientes['clientesIAN'] . " - " . $row_clientes['NombreCliente']; ?>
+
+                                                            </option>
+
+                                                        <?php }
+
+                                                        // Reset the pointer to the beginning
+                                                        mysqli_data_seek($clientes, 0);
+
+                                                        ?>
+
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
                                                 <div class="col-lg-6 col-sm-12 mb-4">
                                                     <label for="PrimerNombre" class="form-label">Primer nombre</label>
                                                     <input type="text" class="form-control" id="PrimerNombre" autocomplete="off" placeholder="Luis" name="PrimerNombre" required>
@@ -69,6 +96,13 @@
 
                                                     <label for="Telefono" class="form-label">Teléfono</label>
                                                     <input type="text" class="form-control" id="Telefono" autocomplete="off" placeholder="656 123 4567" name="Telefono" required>
+
+                                                </div>
+
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+
+                                                    <label for="Password" class="form-label">Password</label>
+                                                    <input type="text" class="form-control" id="Password" placeholder="Arbolito1208" name="Password" required>
 
                                                 </div>
 

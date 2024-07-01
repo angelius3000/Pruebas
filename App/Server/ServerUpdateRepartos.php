@@ -2,25 +2,38 @@
 
 include("../../Connections/ConDB.php");
 
-$TIPODEUSUARIOIDEditar = mysqli_real_escape_string($conn, $_POST['TIPODEUSUARIOIDEditar']);
-$PrimerNombreEditar = mysqli_real_escape_string($conn, $_POST['PrimerNombreEditar']);
-$SegundoNombreEditar = mysqli_real_escape_string($conn, $_POST['SegundoNombreEditar']);
-$ApellidoPaternoEditar = mysqli_real_escape_string($conn, $_POST['ApellidoPaternoEditar']);
-$ApellidoMaternoEditar = mysqli_real_escape_string($conn, $_POST['ApellidoMaternoEditar']);
-$emailEditar = mysqli_real_escape_string($conn, $_POST['emailEditar']);
-$TelefonoEditar = mysqli_real_escape_string($conn, $_POST['TelefonoEditar']);
-$USUARIOIDEditar = mysqli_real_escape_string($conn, $_POST['USUARIOIDEditar']);
+// Get values from form
+$CLIENTEID = mysqli_real_escape_string($conn, $_POST['CLIENTEIDEditar']);
+$NumeroDeFactura = mysqli_real_escape_string($conn, $_POST['NumeroDeFacturaEditar']);
+$Calle = mysqli_real_escape_string($conn, $_POST['CalleEditar']);
+$NumeroEXT = mysqli_real_escape_string($conn, $_POST['NumeroEXTEditar']);
+$Colonia = mysqli_real_escape_string($conn, $_POST['ColoniaEditar']);
+$CP = mysqli_real_escape_string($conn, $_POST['CPEditar']);
+$Ciudad = mysqli_real_escape_string($conn, $_POST['CiudadEditar']);
+$Estado = mysqli_real_escape_string($conn, $_POST['EstadoEditar']);
+$Receptor = mysqli_real_escape_string($conn, $_POST['ReceptorEditar']);
+$TelefonoDeReceptor = mysqli_real_escape_string($conn, $_POST['TelefonoDeReceptorEditar']);
+$TelefonoAlternativo = mysqli_real_escape_string($conn, $_POST['TelefonoAlternativoEditar']);
+$Comentarios = mysqli_real_escape_string($conn, $_POST['ComentariosEditar']);
+$USUARIOID = mysqli_real_escape_string($conn, $_POST['USUARIOID']);
+$REPARTOID = mysqli_real_escape_string($conn, $_POST['REPARTOIDEditar']);
+
 
 // Build the base query
-$sql = "UPDATE Usuarios SET 
-    PrimerNombre = '$PrimerNombreEditar',
-    SegundoNombre = '$SegundoNombreEditar',
-    ApellidoPaterno = '$ApellidoPaternoEditar',
-    ApellidoMaterno = '$ApellidoMaternoEditar',
-    email = '$emailEditar',
-    Telefono = '$TelefonoEditar',
-    TIPODEUSUARIOID = '$TIPODEUSUARIOIDEditar'
-    WHERE USUARIOID = '$USUARIOIDEditar'";
+$sql = "UPDATE Repartos SET 
+    CLIENTEID = '$CLIENTEID',
+    NumeroDeFactura = '$NumeroDeFactura',
+    Calle = '$Calle',
+    NumeroEXT = '$NumeroEXT',
+    Colonia = '$Colonia',
+    CP = '$CP',
+    Ciudad = '$Ciudad',
+    Estado = '$Estado',
+    Receptor = '$Receptor',
+    TelefonoDeReceptor = '$TelefonoDeReceptor',
+    TelefonoAlternativo = '$TelefonoAlternativo',
+    Comentarios = '$Comentarios'
+    WHERE REPARTOID = '$REPARTOID'";
 
 if (!mysqli_query($conn, $sql)) {
     die('Error: ' . mysqli_error($conn));
