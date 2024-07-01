@@ -53,10 +53,10 @@ if ($_SESSION['TIPOUSUARIO'] != 1) {
                         </div>
                         <br>
                         <div class="row">
-                            <table id="ClientesDT" class="display" style="width:100%">
+                            <table id="ClientesDT" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Numero de cliente</th>
+                                        <th data-bs-toggle="tooltip" data-bs-placement="right" title="Número de CONTADO - Número de CRÉDITO">Número de cliente</th>
                                         <th>Nombre</th>
                                         <th>Email</th>
                                         <th>Teléfono</th>

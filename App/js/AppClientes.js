@@ -1,4 +1,11 @@
 $(document).ready(function() {
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  );
+  var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+
   var dataTableClientesDT = $("#ClientesDT").DataTable({
     // Tabla General de Usuarios
 
@@ -8,6 +15,9 @@ $(document).ready(function() {
     serverSide: true,
     responsive: true,
     pageLength: 100,
+    columnDefs: [
+      { className: "text-end NumerosSIAN", targets: [0] }, // Alinear al centro las columnas 1 y 2
+    ],
     language: {
       search: "Búsqueda:",
       lengthMenu: "Mostrar _MENU_ filas",

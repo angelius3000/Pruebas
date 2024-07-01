@@ -63,7 +63,7 @@ $totalRows_clientes = mysqli_num_rows($clientes);
                         </div>
                         <br>
                         <div class="row">
-                            <table id="UsuariosDT" class="display" style="width:100%">
+                            <table id="UsuariosDT" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>

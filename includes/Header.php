@@ -25,6 +25,9 @@
     <link href="assets/css/main.min.css" rel="stylesheet">
     <link href="assets/css/custom.css" rel="stylesheet">
 
+    <!-- CSS de Edison -->
+    <link href="assets/css/Edison.css" rel="stylesheet">
+
     <link rel="apple-touch-icon" sizes="57x57" href="App/Graficos/Favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="App/Graficos/Favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="App/Graficos/Favicon/apple-icon-72x72.png">

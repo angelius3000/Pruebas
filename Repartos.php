@@ -114,7 +114,7 @@ if ($_SESSION['TIPOUSUARIO'] == 3) {
 
                             <?php } else { ?>
 
-                                <table id="Repartos2DT" class="display" style="width:100%">
+                                <table id="Repartos2DT" class="table table-striped" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>Folio</th>
@@ -163,6 +163,8 @@ if ($_SESSION['TIPOUSUARIO'] == 3) {
     <script src="assets/js/main.min.js"></script>
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/pages/datatables.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables-buttons/3.0.2/js/dataTables.buttons.min.js" integrity="sha512-14shWK3qFVtqjfVywWUNuBNHxcEeS/3pJb9Lfj08z1/Y6mbMj9Ye4GOmiYnMbodUCNleopnrWldy92leOSkgpg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.3/select2.min.js" integrity="sha512-nwnflbQixsRIWaXWyQmLkq4WazLLsPLb1k9tA0SEx3Njm+bjEBVbLTijfMnztBKBoTwPsyz4ToosyNn/4ahTBQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 

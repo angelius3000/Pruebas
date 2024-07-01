@@ -68,10 +68,18 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
         $Empresa = 'Edison';
     }
 
+    if ($row["CLCSIAN"] != NULL) {
+
+        $NumeroDeCredito = ' - ' . $row["CLCSIAN"];
+    } else {
+
+        $NumeroDeCredito = '';
+    }
+
     $nestedData = array();
 
-    $nestedData[] = $row["CLIENTESIAN"];
-    $nestedData[] = '<strong>' . $row["NombreCliente"] . '</strong>';
+    $nestedData[] = $row["CLIENTESIAN"] . $NumeroDeCredito;
+    $nestedData[] = '<strong >' . $row["NombreCliente"] . '</strong>';
     $nestedData[] = $row["EmailCliente"];
     $nestedData[] = $row["TelefonoCliente"];
     $nestedData[] = $row["NombreContacto"];
