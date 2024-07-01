@@ -101,8 +101,6 @@ $(document).ready(function() {
         success: function(response) {
           // Reescribe la Datatable y le da refresh
 
-          console.log(response.CLIENTEID);
-
           dataTableClientesDT.columns.adjust().draw();
         },
       }).done(function() {});
@@ -113,7 +111,7 @@ $(document).ready(function() {
 
   // Deshabilitar Usuario
 
-  $("body").on("click", "#DeshabilitarCliente", function() {
+  $("body").on("click", "#BorrarCliente", function() {
     var CLIENTEID = $("input#CLIENTEIDDeshabilitar").val();
 
     var dataString = "CLIENTEID=" + CLIENTEID;
@@ -124,7 +122,7 @@ $(document).ready(function() {
     $.ajax({
       //async: false,
       type: "POST",
-      url: "App/Server/ServerDeshabilitarClientes.php",
+      url: "App/Server/ServerBorrarClientes.php",
       data: dataString,
       dataType: "json",
       success: function(response) {
@@ -270,7 +268,12 @@ function TomarDatosParaModalClientes(val) {
     data: "ID=" + val,
     success: function(response) {
       // Para el Modal de editar
+
+      $("input#CLIENTEIDEditar").val(response.CLIENTEID);
+
       $("input#CLIENTESIANEditar").val(response.CLIENTESIAN);
+      $("input#CLCSIANEditar").val(response.CLCSIAN);
+
       $("input#NombreClienteEditar").val(response.NombreCliente);
       $("input#EmailClienteEditar").val(response.EmailCliente);
       $("input#TelefonoClienteEditar").val(response.TelefonoCliente);
@@ -282,7 +285,7 @@ function TomarDatosParaModalClientes(val) {
 
       //Para modal de Borrar
 
-      $("#NombreUsuarioDeshabilitar").text(
+      $("#NombreClienteBorrar").text(
         response.CLIENTESIAN + " " + response.NombreCliente
       );
 
