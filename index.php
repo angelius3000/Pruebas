@@ -55,11 +55,11 @@
                 <div class="auth-credentials m-b-xxl">
                     <label for="username" class="form-label">Email</label>
 
-                    <input type="email" class="form-control m-b-md" id="username" name="username" aria-describedby="username" placeholder="tucorreo@edison.com.mx">
+                    <input type="email" class="form-control m-b-md" id="username" name="username" aria-describedby="username" placeholder="">
 
                     <label for="password" class="form-label">Contraseña</label>
 
-                    <input type="password" class="form-control" id="password" name="password" aria-describedby="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
+                    <input type="password" class="form-control" id="password" name="password" aria-describedby="password" placeholder="">
                 </div>
 
                 <div class="auth-submit">
