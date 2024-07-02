@@ -206,7 +206,7 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
     $nestedData[] = $row["PrimerNombre_US"] . ' ' . $row["SegundoNombre_US"] . ' ' . $row["ApellidoPaterno_US"] . ' ' . $row["ApellidoMaterno_US"];
 
     $nestedData[] = $row["NombreCliente"];
-    $nestedData[] =  SoloFecha($row["FechaDeRegistro"]);
+    $nestedData[] = date('d-m-Y H:i:s', strtotime($row["FechaDeRegistro"]));
     $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"];
     $nestedData[] = $row["CP"];
     $nestedData[] = $row["Receptor"];
