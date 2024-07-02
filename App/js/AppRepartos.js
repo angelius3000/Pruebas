@@ -12,6 +12,9 @@ $(document).ready(function() {
     serverSide: true,
     responsive: true,
     pageLength: 100,
+    columnDefs: [
+      { className: "text-end NumerosSIAN", targets: [0] }, // Alinear al centro las columnas 1 y 2
+    ],
     language: {
       search: "Búsqueda:",
       lengthMenu: "Mostrar _MENU_ filas",
