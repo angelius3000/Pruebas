@@ -78,7 +78,7 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
 
     $nestedData = array();
 
-    $nestedData[] = $row["CLIENTESIAN"] . $NumeroDeCredito;
+    $nestedData[] = '<a data-toggle="tooltip" data-bs-placement="bottom"  title="Número de CONTADO - Número de CRÉDITO" data-html="true">' . $row["CLIENTESIAN"] . ' ' . $NumeroDeCredito . '</a>';
     $nestedData[] = '<strong >' . $row["NombreCliente"] . '</strong>';
     $nestedData[] = $row["EmailCliente"];
     $nestedData[] = $row["TelefonoCliente"];
