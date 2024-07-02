@@ -1,36 +1,8 @@
-<?php include("includes/HeaderScripts.php");
+<?php include("Connections/ConDB.php");
 
 $query_clientes = "SELECT * FROM clientes";
 $clientes = mysqli_query($conn, $query_clientes) or die(mysqli_error($conn));
 $totalRows_clientes = mysqli_num_rows($clientes);
-
-$query_status = "SELECT * FROM status";
-$status = mysqli_query($conn, $query_status) or die(mysqli_error($conn));
-$totalRows_status = mysqli_num_rows($status);
-
-$query_Repartidores = "SELECT * FROM usuarios 
-                        WHERE TIPODEUSUARIOID = 2 AND Deshabilitado = 0";
-$Repartidores = mysqli_query($conn, $query_Repartidores) or die(mysqli_error($conn));
-$totalRows_Repartidores = mysqli_num_rows($Repartidores);
-
-// Fecha De hoy
-$FechaHoy = date("Y-m-d");
-
-$query_productos = "SELECT * FROM productos";
-$productos = mysqli_query($conn, $query_productos) or die(mysqli_error($conn));
-$totalRows_productos = mysqli_num_rows($productos);
-
-if ($_SESSION['TIPOUSUARIO'] == 3) {
-
-    $ClaseDeBody = "sidebar-hidden";
-    $ClaseDeLogo = "hidden-sidebar-logo";
-    $IconoFlecha = "last_page";
-} else {
-
-    $ClaseDeBody = "";
-    $ClaseDeLogo = "";
-    $IconoFlecha = "first_page";
-}
 
 ?>
 
@@ -40,16 +12,13 @@ if ($_SESSION['TIPOUSUARIO'] == 3) {
 <?php include("includes/Header.php") ?>
 
 <body>
-    <div class="app full-width-header align-content-stretch d-flex flex-wrap <?php echo $ClaseDeBody; ?>">
+    <div class="app full-width-header align-content-stretch d-flex flex-wrap">
         <div class="app-sidebar">
-            <div class="logo logo-sm <?php echo $ClaseDeLogo; ?>">
+            <div class="logo logo-sm">
                 <a href="main.php"> <img src="App/Graficos/Logo/LogoEdison.png" style="max-width :130px;"> </a>
             </div>
 
-
             <?php include("includes/Menu.php") ?>
-
-
 
         </div>
         <div class="app-container">
@@ -70,75 +39,40 @@ if ($_SESSION['TIPOUSUARIO'] == 3) {
                             <div class="col">
                                 <div class="page-description">
                                     <h2>Repartos</h2>
-                                    <?php // ESTE ES EL QUE IMPRIME LAS SESSIONES VARIABLES
-                                    //echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';
-                                    ?>
+
                                 </div>
                             </div>
                         </div>
 
-                        <?php if ($_SESSION['TIPOUSUARIO'] == 1 || $_SESSION['TIPOUSUARIO'] == 3) { ?>
 
-                            <div class="row">
-                                <div class="col">
-                                    <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalAgregarReparto"><i class="material-icons-two-tone">add</i> Agregar Reparto</button>
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalAgregarReparto"><i class="mdi mdi-pencil"></i>Agregar Reparto</button>
 
-                                </div>
                             </div>
-
-                        <?php  } ?>
-
+                        </div>
                         <br>
                         <div class="row">
-
-                            <?php if ($_SESSION['TIPOUSUARIO'] == 4) { ?>
-                                <table id="RepartosCliente2DT" class="display" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>Folio</th>
-                                            <th>Estatus</th>
-                                            <th>Solicitante</th>
-                                            <th>Cliente</th>
-                                            <th>Fecha de registro</th>
-                                            <th>Dirección</th>
-                                            <th>CP</th>
-                                            <th>Receptor</th>
-                                            <th>Teléfono receptor</th>
-                                            <th>Telefono alternativo</th>
-                                            <th>Numero de factura</th>
-                                            <th>Comentarios</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                </table>
-
-                            <?php } else { ?>
-
-                                <table id="Repartos2DT" class="table table-striped" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>Folio</th>
-                                            <th>Estatus</th>
-                                            <th>Surtidor</th>
-                                            <th>Repartidor</th>
-                                            <th>Solicitante</th>
-                                            <th>Cliente</th>
-                                            <th>Fecha de registro</th>
-                                            <th>Dirección</th>
-                                            <th>CP</th>
-                                            <th>Receptor</th>
-                                            <th>Teléfono receptor</th>
-                                            <th>Telefono alternativo</th>
-                                            <th>Numero de factura</th>
-                                            <th>Comentarios</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                </table>
-
-                            <?php } ?>
-
-
+                            <table id="Repartos2DT" class="display" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Folio</th>
+                                        <th>Estatus</th>
+                                        <th>Solicitante</th>
+                                        <th>Cliente</th>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Dirección</th>
+                                        <th>CP</th>
+                                        <th>Receptor</th>
+                                        <th>Teléfono receptor</th>
+                                        <th>Telefono alternativo</th>
+                                        <th>Numero de factura</th>
+                                        <th>Comentarios</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                            </table>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -163,8 +97,6 @@ if ($_SESSION['TIPOUSUARIO'] == 3) {
     <script src="assets/js/main.min.js"></script>
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/pages/datatables.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.3/select2.min.js" integrity="sha512-nwnflbQixsRIWaXWyQmLkq4WazLLsPLb1k9tA0SEx3Njm+bjEBVbLTijfMnztBKBoTwPsyz4ToosyNn/4ahTBQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js" integrity="sha512-Fq/wHuMI7AraoOK+juE5oYILKvSPe6GC5ZWZnvpOO/ZPdtyA29n+a5kVLP4XaLyDy9D1IBPYzdFycO33Ijd0Pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
