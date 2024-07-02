@@ -56,7 +56,7 @@ if ($_SESSION['TIPOUSUARIO'] != 1) {
                             <table id="ClientesDT" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th data-bs-toggle="tooltip" data-bs-placement="right" title="Número de CONTADO - Número de CRÉDITO">Número de cliente</th>
+                                        <th>Número de cliente</th>
                                         <th>Nombre</th>
                                         <th>Email</th>
                                         <th>Teléfono</th>
