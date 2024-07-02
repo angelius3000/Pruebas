@@ -4,7 +4,7 @@ if ($_SESSION['TIPOUSUARIO'] != 1) {
     header("Location: index.php");
 }
 
-$query_TipoDeUsuario = "SELECT * FROM TipoDeUsuarios";
+$query_TipoDeUsuario = "SELECT * FROM tipodeusuarios";
 $TipoDeUsuario = mysqli_query($conn, $query_TipoDeUsuario) or die(mysqli_error($conn));
 $totalRows_TipoDeUsuario = mysqli_num_rows($TipoDeUsuario);
 
@@ -57,7 +57,7 @@ $totalRows_clientes = mysqli_num_rows($clientes);
 
                         <div class="row">
                             <div class="col">
-                                <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalAgregarUsuarios"><i class="mdi mdi-pencil"></i>Agregar Usuario</button>
+                                <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalAgregarUsuarios"><i class="material-icons-two-tone">add</i> Agregar Usuario</button>
 
                             </div>
                         </div>

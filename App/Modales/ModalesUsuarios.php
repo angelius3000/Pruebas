@@ -37,14 +37,14 @@
                                             <div class="row" style="display:none" id="ClientesEscondidos">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="CLIENTEID" class="form-label">Cliente ID</label>
-                                                    <select class="form-select" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
-                                                        <option value="">Selecciona cliente</option>
+                                                    <select class="form-select select2" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
+                                                        <option selected>Selecciona cliente</option>
 
                                                         <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
 
                                                             <option value="<?php echo $row_clientes['CLIENTEID']; ?>">
 
-                                                                <?php echo $row_clientes['clientesIAN'] . " - " . $row_clientes['NombreCliente']; ?>
+                                                                <?php echo $row_clientes['CLIENTESIAN'] . " - " . $row_clientes['NombreCliente']; ?>
 
                                                             </option>
 
@@ -54,7 +54,6 @@
                                                         mysqli_data_seek($clientes, 0);
 
                                                         ?>
-
                                                     </select>
                                                 </div>
 
@@ -63,46 +62,46 @@
                                             <div class="row">
                                                 <div class="col-lg-6 col-sm-12 mb-4">
                                                     <label for="PrimerNombre" class="form-label">Primer nombre</label>
-                                                    <input type="text" class="form-control" id="PrimerNombre" autocomplete="off" placeholder="Luis" name="PrimerNombre" required>
+                                                    <input type="text" class="form-control" id="PrimerNombre" autocomplete="off" placeholder="" name="PrimerNombre" required>
 
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="SegundoNombre" class="form-label">Segundo nombre</label>
-                                                    <input type="text" class="form-control" id="SegundoNombre" autocomplete="off" placeholder="Roberto" name="SegundoNombre" required>
+                                                    <input type="text" class="form-control" id="SegundoNombre" autocomplete="off" placeholder="" name="SegundoNombre">
 
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="ApellidoPaterno" class="form-label">Apellido paterno</label>
-                                                    <input type="text" class="form-control" id="ApellidoPaterno" autocomplete="off" placeholder="Pérez" name="ApellidoPaterno" required>
+                                                    <input type="text" class="form-control" id="ApellidoPaterno" autocomplete="off" placeholder="" name="ApellidoPaterno" required>
 
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="ApellidoMaterno" class="form-label">Apellido materno</label>
-                                                    <input type="text" class="form-control" id="ApellidoMaterno" autocomplete="off" placeholder="Chávez" name="ApellidoMaterno" required>
+                                                    <input type="text" class="form-control" id="ApellidoMaterno" autocomplete="off" placeholder="" name="ApellidoMaterno">
 
                                                 </div>
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="email" class="form-label">Email</label>
-                                                    <input type="text" class="form-control" id="email" autocomplete="off" placeholder="uncorreo@email.com" name="email" required>
+                                                    <input type="text" class="form-control" id="email" autocomplete="off" placeholder="" name="email" required>
 
                                                 </div>
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="Telefono" class="form-label">Teléfono</label>
-                                                    <input type="text" class="form-control" id="Telefono" autocomplete="off" placeholder="656 123 4567" name="Telefono" required>
+                                                    <input type="text" class="form-control" id="Telefono" autocomplete="off" placeholder="" name="Telefono">
 
                                                 </div>
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="Password" class="form-label">Password</label>
-                                                    <input type="text" class="form-control" id="Password" placeholder="Arbolito1208" name="Password" required>
+                                                    <input type="text" class="form-control" id="Password" placeholder="" name="Password">
 
                                                 </div>
 
@@ -162,39 +161,39 @@
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
                                                     <label for="PrimerNombreEditar" class="form-label">Primer nombre</label>
-                                                    <input type="text" class="form-control" id="PrimerNombreEditar" autocomplete="off" placeholder="Luis" name="PrimerNombreEditar" required>
+                                                    <input type="text" class="form-control" id="PrimerNombreEditar" autocomplete="off" placeholder="" name="PrimerNombreEditar" required>
 
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="SegundoNombreEditar" class="form-label">Segundo nombre</label>
-                                                    <input type="text" class="form-control" id="SegundoNombreEditar" autocomplete="off" placeholder="Roberto" name="SegundoNombreEditar" required>
+                                                    <input type="text" class="form-control" id="SegundoNombreEditar" autocomplete="off" placeholder="" name="SegundoNombreEditar">
 
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="ApellidoPaternoEditar" class="form-label">Apellido paterno</label>
-                                                    <input type="text" class="form-control" id="ApellidoPaternoEditar" autocomplete="off" placeholder="Pérez" name="ApellidoPaternoEditar" required>
+                                                    <input type="text" class="form-control" id="ApellidoPaternoEditar" autocomplete="off" placeholder="" name="ApellidoPaternoEditar" required>
 
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="ApellidoMaternoEditar" class="form-label">Apellido materno</label>
-                                                    <input type="text" class="form-control" id="ApellidoMaternoEditar" autocomplete="off" placeholder="Chávez" name="ApellidoMaternoEditar" required>
+                                                    <input type="text" class="form-control" id="ApellidoMaternoEditar" autocomplete="off" placeholder="" name="ApellidoMaternoEditar">
 
                                                 </div>
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="emailEditar" class="form-label">Email</label>
-                                                    <input type="text" class="form-control" id="emailEditar" autocomplete="off" placeholder="uncorreo@email.com" name="emailEditar" required>
+                                                    <input type="text" class="form-control" id="emailEditar" autocomplete="off" placeholder="" name="emailEditar" required>
 
                                                 </div>
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="TelefonoEditar" class="form-label">Teléfono</label>
-                                                    <input type="text" class="form-control" id="TelefonoEditar" autocomplete="off" placeholder="656 123 4567" name="TelefonoEditar" required>
+                                                    <input type="text" class="form-control" id="TelefonoEditar" autocomplete="off" placeholder="" name="TelefonoEditar">
 
                                                 </div>
 
