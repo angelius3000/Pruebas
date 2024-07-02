@@ -12,9 +12,6 @@ $(document).ready(function() {
     serverSide: true,
     responsive: true,
     pageLength: 100,
-    columnDefs: [
-      { className: "text-end NumerosSIAN", targets: [0] }, // Alinear al centro las columnas 1 y 2
-    ],
     language: {
       search: "Búsqueda:",
       lengthMenu: "Mostrar _MENU_ filas",
@@ -32,7 +29,7 @@ $(document).ready(function() {
     processing: "Procesando...",
     loadingRecords: "Cargando...",
     columnDefs: [
-      { orderable: false, targets: [1] }, // Deshabilitar ordenar para la segunda columna (índice 1)
+      { orderable: false, targets: [1] }, { className: "text-end NumerosSIAN", targets: [0] } // Deshabilitar ordenar para la segunda columna (índice 1)
     ],
 
     ajax: {
