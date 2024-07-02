@@ -21,6 +21,11 @@
 
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="CLCSIAN" class="form-label">Número de crédito</label>
+                                                    <input type="text" class="form-control" id="CLCSIAN" autocomplete="off" placeholder="107" name="CLCSIAN">
+
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
 
                                                     <label for="NombreCliente" class="form-label">Nombre</label>
                                                     <input type="text" class="form-control" id="NombreCliente" autocomplete="off" placeholder="Roberto" name="NombreCliente" required>
@@ -113,9 +118,15 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <div class="row">
+
                                                 <div class="col-lg-6 col-sm-12 mb-4">
                                                     <label for="CLIENTESIANEditar" class="form-label">Número de cliente</label>
                                                     <input type="text" class="form-control" id="CLIENTESIANEditar" autocomplete="off" placeholder="" name="CLIENTESIANEditar" required>
+
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="CLCSIANEditar" class="form-label">Número de crédito</label>
+                                                    <input type="text" class="form-control" id="CLCSIANEditar" autocomplete="off" placeholder="107" name="CLCSIANEditar">
 
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
@@ -202,7 +213,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Deshabilitar cliente</h5>
+                <h5 class="modal-title">Borrar cliente</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
             </div>
 
@@ -212,11 +223,11 @@
                         <div class="card">
                             <div class="card-body">
 
-                                Deseas dehabilitar este cliente?
+                                Deseas borrar este cliente?
 
                                 <br>
                                 <br>
-                                <h3 id="NombreClienteDeshabilitar"></h3>
+                                <h3 id="NombreClienteBorrar"></h3>
 
                             </div>
                         </div>
@@ -229,8 +240,8 @@
 
 
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" id="DeshabilitarCliente" class="btn btn-danger">
-                    Deshabilitar</button>
+                <button type="button" id="BorrarCliente" class="btn btn-danger">
+                    Borrar</button>
             </div>
 
         </div>

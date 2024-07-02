@@ -11,6 +11,8 @@ $row = mysqli_fetch_array($status);
 
 $msg = array(
     'CLIENTEID' => $row['CLIENTEID'],
+    'CLIENTESIAN' => $row['CLIENTESIAN'],
+    'CLCSIAN' => $row['CLCSIAN'],
     'NombreCliente' => $row['NombreCliente'],
     'EmailCliente' => $row['EmailCliente'],
     'TelefonoCliente' => $row['TelefonoCliente'],
