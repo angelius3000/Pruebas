@@ -29,7 +29,7 @@ $(document).ready(function() {
     processing: "Procesando...",
     loadingRecords: "Cargando...",
     columnDefs: [
-      { orderable: false, targets: [1] }, // Deshabilitar ordenar para la segunda columna (índice 1)
+      { orderable: false, targets: [1] }, { className: "text-end NumerosSIAN", targets: [0] } // Deshabilitar ordenar para la segunda columna (índice 1)
     ],
 
     ajax: {

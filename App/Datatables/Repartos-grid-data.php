@@ -199,16 +199,10 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
     $nestedData[] = '<strong>' . $row["REPARTOID"] . '</strong>';
     $nestedData[] = $BadgeStatus;
     $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"];
-
     $nestedData[] = $row["Surtidores"];
-
     $nestedData[] = $row["PrimerNombre_REP"] . ' ' . $row["SegundoNombre_REP"] . ' ' . $row["ApellidoPaterno_REP"] . ' ' . $row["ApellidoMaterno_REP"];
-
-    $nestedData[] = $row["PrimerNombre_US"] . ' ' . $row["SegundoNombre_US"] . ' ' . $row["ApellidoPaterno_US"] . ' ' . $row["ApellidoMaterno_US"];
-
     $nestedData[] = $row["NombreCliente"];
-    $nestedData[] =  SoloFecha($row["FechaDeRegistro"]);
-
+    $nestedData[] = date('d-m-Y H:i:s', strtotime($row["FechaDeRegistro"]));
     $nestedData[] = $row["CP"];
     $nestedData[] = $row["Receptor"];
     $nestedData[] = $row["TelefonoDeReceptor"];

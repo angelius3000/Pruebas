@@ -23,8 +23,15 @@
 
                                                             <option value="<?php echo $row_clientes['CLIENTEID']; ?>">
 
-                                                                <?php echo $row_clientes['CLIENTESIAN'] . " - " . $row_clientes['NombreCliente']; ?>
+                                                                <?php if ($row_clientes["CLCSIAN"] != NULL) {
 
+                                                                    $NumeroDeCredito = " - " . $row_clientes["CLCSIAN"];
+                                                                } else {
+                                                            
+                                                                    $NumeroDeCredito = " ";
+                                                                }
+                                                                
+                                                                echo $row_clientes['CLIENTESIAN'] . $NumeroDeCredito . " - " . $row_clientes['NombreCliente']; ?>
                                                             </option>
 
                                                         <?php }
@@ -129,16 +136,25 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <div class="row">
-                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                            <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="CLIENTEIDEditar" class="form-label">Cliente ID</label>
-                                                    <select class="form-select" name="CLIENTEIDEditar" id="CLIENTEIDEditar" aria-label="Default select example" required>
+                                                    <select class="form-select select2" name="CLIENTEIDEditar" id="CLIENTEIDEditar" aria-label="Default select example" required>
                                                         <option selected>Selecciona cliente</option>
 
                                                         <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
 
                                                             <option value="<?php echo $row_clientes['CLIENTEID']; ?>">
 
-                                                                <?php echo $row_clientes['clientesIAN'] . " - " . $row_clientes['NombreCliente']; ?>
+                                                                <?php 
+                                                                if ($row_clientes["CLCSIAN"] != NULL) {
+
+                                                                    $NumeroDeCredito = " - " . $row_clientes["CLCSIAN"];
+                                                                } else {
+                                                            
+                                                                    $NumeroDeCredito = " ";
+                                                                }
+                                                                
+                                                                echo $row_clientes['CLIENTESIAN'] . $NumeroDeCredito . " - " . $row_clientes['NombreCliente']; ?>
 
                                                             </option>
 
@@ -150,6 +166,7 @@
                                                         ?>
 
                                                     </select>
+                                                
                                                 </div>
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
