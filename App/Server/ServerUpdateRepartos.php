@@ -18,9 +18,13 @@ $Comentarios = mysqli_real_escape_string($conn, $_POST['ComentariosEditar']);
 $USUARIOID = mysqli_real_escape_string($conn, $_POST['USUARIOID']);
 $REPARTOID = mysqli_real_escape_string($conn, $_POST['REPARTOIDEditar']);
 
+$EnlaceGoogleMaps = !empty($_POST['EnlaceGoogleMapsEditar']) ? mysqli_real_escape_string($conn, $_POST['EnlaceGoogleMapsEditar']) : NULL;
 
-// Build the base query
-$sql = "UPDATE repartos SET 
+
+if ($EnlaceGoogleMaps !== NULL) {
+
+    // Build the base query
+    $sql = "UPDATE repartos SET 
     CLIENTEID = '$CLIENTEID',
     NumeroDeFactura = '$NumeroDeFactura',
     Calle = '$Calle',
@@ -32,8 +36,29 @@ $sql = "UPDATE repartos SET
     Receptor = '$Receptor',
     TelefonoDeReceptor = '$TelefonoDeReceptor',
     TelefonoAlternativo = '$TelefonoAlternativo',
-    Comentarios = '$Comentarios'
+    Comentarios = '$Comentarios',
+    EnlaceMapaGoogle = '$EnlaceGoogleMaps'
     WHERE REPARTOID = '$REPARTOID'";
+} else {
+
+    // Build the base query
+    $sql = "UPDATE repartos SET 
+    CLIENTEID = '$CLIENTEID',
+    NumeroDeFactura = '$NumeroDeFactura',
+    Calle = '$Calle',
+    NumeroEXT = '$NumeroEXT',
+    Colonia = '$Colonia',
+    CP = '$CP',
+    Ciudad = '$Ciudad',
+    Estado = '$Estado',
+    Receptor = '$Receptor',
+    TelefonoDeReceptor = '$TelefonoDeReceptor',
+    TelefonoAlternativo = '$TelefonoAlternativo',
+    Comentarios = '$Comentarios',
+    EnlaceMapaGoogle = NULL
+    WHERE REPARTOID = '$REPARTOID'";
+}
+
 
 if (!mysqli_query($conn, $sql)) {
     die('Error: ' . mysqli_error($conn));

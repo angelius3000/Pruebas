@@ -29,7 +29,8 @@ $(document).ready(function() {
     processing: "Procesando...",
     loadingRecords: "Cargando...",
     columnDefs: [
-      { orderable: false, targets: [1] }, { className: "text-end NumerosSIAN", targets: [0] } // Deshabilitar ordenar para la segunda columna (índice 1)
+      { orderable: false, targets: [1] },
+      { className: "text-end NumerosSIAN", targets: [0] }, // Deshabilitar ordenar para la segunda columna (índice 1)
     ],
 
     ajax: {
@@ -239,6 +240,7 @@ function TomarDatosParaModalRepartos(val) {
       $("input#CPEditar").val(response.CP);
       $("input#CiudadEditar").val(response.Ciudad);
       $("input#EstadoEditar").val(response.Estado);
+      $("input#EnlaceGoogleMapsEditar").val(response.EnlaceMapaGoogle);
       $("input#ReceptorEditar").val(response.Receptor);
       $("input#TelefonoDeReceptorEditar").val(response.TelefonoDeReceptor);
       $("input#TelefonoAlternativoEditar").val(response.TelefonoAlternativo);

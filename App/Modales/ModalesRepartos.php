@@ -27,10 +27,10 @@
 
                                                                     $NumeroDeCredito = " - " . $row_clientes["CLCSIAN"];
                                                                 } else {
-                                                            
+
                                                                     $NumeroDeCredito = " ";
                                                                 }
-                                                                
+
                                                                 echo $row_clientes['CLIENTESIAN'] . $NumeroDeCredito . " - " . $row_clientes['NombreCliente']; ?>
                                                             </option>
 
@@ -136,7 +136,7 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <div class="row">
-                                            <div class="col-lg-12 col-sm-12 mb-4">
+                                                <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="CLIENTEIDEditar" class="form-label">Cliente ID</label>
                                                     <select class="form-select select2" name="CLIENTEIDEditar" id="CLIENTEIDEditar" aria-label="Default select example" required>
                                                         <option selected>Selecciona cliente</option>
@@ -145,15 +145,15 @@
 
                                                             <option value="<?php echo $row_clientes['CLIENTEID']; ?>">
 
-                                                                <?php 
+                                                                <?php
                                                                 if ($row_clientes["CLCSIAN"] != NULL) {
 
                                                                     $NumeroDeCredito = " - " . $row_clientes["CLCSIAN"];
                                                                 } else {
-                                                            
+
                                                                     $NumeroDeCredito = " ";
                                                                 }
-                                                                
+
                                                                 echo $row_clientes['CLIENTESIAN'] . $NumeroDeCredito . " - " . $row_clientes['NombreCliente']; ?>
 
                                                             </option>
@@ -166,7 +166,7 @@
                                                         ?>
 
                                                     </select>
-                                                
+
                                                 </div>
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
@@ -198,6 +198,12 @@
                                                     <label for="EstadoEditar" class="form-label">Estado</label>
                                                     <input type="text" class="form-control" id="EstadoEditar" autocomplete="off" name="EstadoEditar" required>
                                                 </div>
+
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="EnlaceGoogleMapsEditar" class="form-label">Enlace Google Maps</label>
+                                                    <input type="text" class="form-control" id="EnlaceGoogleMapsEditar" autocomplete="off" name="EnlaceGoogleMapsEditar">
+                                                </div>
+
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="ReceptorEditar" class="form-label">Receptor</label>
                                                     <input type="text" class="form-control" id="ReceptorEditar" autocomplete="off" name="ReceptorEditar" required>
