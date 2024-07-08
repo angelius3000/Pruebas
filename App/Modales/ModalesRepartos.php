@@ -70,6 +70,10 @@
                                                     <input type="text" class="form-control" id="Estado" autocomplete="off" name="Estado" required>
                                                 </div>
                                                 <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="EnlaceGoogleMaps" class="form-label">Enlace Google Maps</label>
+                                                    <input type="text" class="form-control" id="EnlaceGoogleMaps" autocomplete="off" name="EnlaceGoogleMaps">
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="Receptor" class="form-label">Receptor</label>
                                                     <input type="text" class="form-control" id="Receptor" autocomplete="off" name="Receptor" required>
                                                 </div>
