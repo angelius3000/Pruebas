@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			exit;
 		} else if ($_SERVER['HTTP_HOST'] == "localhost") {
 
-			echo "<script>window.location.href='http://localhost/edisonreparto/Repartos.php';</script>";
+			echo "<script>window.location.href='http://localhost/DesarrolloWeb/edisonreparto/Repartos.php';</script>";
 			exit;
 		} else {
 
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			echo "<script>window.location.href='http://local.edison:8888/index.php?login=no';</script>";
 			exit;
 		} else if ($_SERVER['HTTP_HOST'] == "localhost/edisonreparto") {
-			echo "<script>window.location.href=''http://localhost/sindex.php?login=no';</script>";
+			echo "<script>window.location.href=''http://localhost/index.php?login=no';</script>";
 			exit;
 		} else {
 			echo "<script>window.location.href='https://reparto.edison.com.mx/index.php?login=no';</script>";
