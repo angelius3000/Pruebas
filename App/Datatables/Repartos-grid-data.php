@@ -194,10 +194,18 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
         $BotonBorrar = '';
     }
 
+    if ($row["EnlaceMapaGoogle"] !== NULL) {
+
+        $BotonMapa = '<a href="' . $row["EnlaceMapaGoogle"] . '" class="btn btn-sm btn-secondary waves-effect width-md waves-light" target="_blank" >Mapa &nbsp; <i class="material-icons"> arrow_forward</i></a>';
+    } else {
+        $BotonMapa = '';
+    }
+
     $nestedData = array();
 
     $nestedData[] = '<strong>' . $row["REPARTOID"] . '</strong>';
     $nestedData[] = $BadgeStatus;
+    $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"] . '<br>' . $BotonMapa;
 
     $nestedData[] = $row["Surtidores"];
 
@@ -207,7 +215,6 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
 
     $nestedData[] = $row["NombreCliente"];
     $nestedData[] = date('d-m-Y H:i:s', strtotime($row["FechaDeRegistro"]));
-    $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"];
     $nestedData[] = $row["CP"];
     $nestedData[] = $row["Receptor"];
     $nestedData[] = $row["TelefonoDeReceptor"];

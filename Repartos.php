@@ -119,12 +119,12 @@ if ($_SESSION['TIPOUSUARIO'] == 3) {
                                         <tr>
                                             <th>Folio</th>
                                             <th>Estatus</th>
+                                            <th>Dirección</th>
                                             <th>Surtidor</th>
                                             <th>Repartidor</th>
                                             <th>Solicitante</th>
                                             <th>Cliente</th>
                                             <th>Fecha de registro</th>
-                                            <th>Dirección</th>
                                             <th>CP</th>
                                             <th>Receptor</th>
                                             <th>Teléfono receptor</th>

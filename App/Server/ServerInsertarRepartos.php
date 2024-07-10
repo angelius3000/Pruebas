@@ -15,11 +15,19 @@ $Receptor = mysqli_real_escape_string($conn, $_POST['Receptor']);
 $TelefonoDeReceptor = mysqli_real_escape_string($conn, $_POST['TelefonoDeReceptor']);
 $TelefonoAlternativo = mysqli_real_escape_string($conn, $_POST['TelefonoAlternativo']);
 $Comentarios = mysqli_real_escape_string($conn, $_POST['Comentarios']);
+
+$EnlaceGoogleMaps = !empty($_POST['EnlaceGoogleMaps']) ? mysqli_real_escape_string($conn, $_POST['EnlaceGoogleMaps']) : NULL;
+
 $USUARIOID = mysqli_real_escape_string($conn, $_POST['USUARIOID']);
 
-
-$sql = "INSERT INTO repartos (USUARIOID, CLIENTEID, NumeroDeFactura, Calle, NumeroEXT, Colonia, CP, Ciudad, Estado, Receptor,TelefonoDeReceptor,TelefonoAlternativo, Comentarios, STATUSID) 
-VALUES ('$USUARIOID', '$CLIENTEID', '$NumeroDeFactura', '$Calle', '$NumeroEXT', '$Colonia', '$CP', '$Ciudad', '$Estado', '$Receptor', '$TelefonoDeReceptor', '$TelefonoAlternativo', '$Comentarios', '1')";
+// Construye la consulta SQL de forma dinámica
+if ($EnlaceGoogleMaps !== NULL) {
+    $sql = "INSERT INTO repartos (USUARIOID, CLIENTEID, NumeroDeFactura, Calle, NumeroEXT, Colonia, CP, Ciudad, Estado, Receptor, TelefonoDeReceptor, TelefonoAlternativo, Comentarios, STATUSID, EnlaceMapaGoogle) 
+            VALUES ('$USUARIOID', '$CLIENTEID', '$NumeroDeFactura', '$Calle', '$NumeroEXT', '$Colonia', '$CP', '$Ciudad', '$Estado', '$Receptor', '$TelefonoDeReceptor', '$TelefonoAlternativo', '$Comentarios', '1', '$EnlaceGoogleMaps')";
+} else {
+    $sql = "INSERT INTO repartos (USUARIOID, CLIENTEID, NumeroDeFactura, Calle, NumeroEXT, Colonia, CP, Ciudad, Estado, Receptor, TelefonoDeReceptor, TelefonoAlternativo, Comentarios, STATUSID) 
+            VALUES ('$USUARIOID', '$CLIENTEID', '$NumeroDeFactura', '$Calle', '$NumeroEXT', '$Colonia', '$CP', '$Ciudad', '$Estado', '$Receptor', '$TelefonoDeReceptor', '$TelefonoAlternativo', '$Comentarios', '1')";
+}
 
 if (!mysqli_query($conn, $sql)) {
     die('Error: ' . mysqli_error($conn));
