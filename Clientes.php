@@ -66,7 +66,6 @@ if ($_SESSION['TIPOUSUARIO'] != 1) {
                                         <th>Ciudad</th>
                                         <th>Estado</th>
                                         <th></th>
-                                        <th></th>
                                     </tr>
                                 </thead>
                             </table>

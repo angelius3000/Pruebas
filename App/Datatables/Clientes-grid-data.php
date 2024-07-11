@@ -87,7 +87,6 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
     $nestedData[] = $row["ColoniaCliente"];
     $nestedData[] = $row["CiudadCliente"];
     $nestedData[] = $row["EstadoCliente"];
-    $nestedData[] = $BadgeActivo;
     $nestedData[] = '
 
     <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalEditarClientes" onclick="TomarDatosParaModalClientes(' . $row["CLIENTEID"] . ')"><i class="mdi mdi-pencil"></i>Editar</button>
@@ -101,9 +100,7 @@ $json_data = array(
     "draw" => intval($requestData['draw']),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
     "recordsTotal"    => intval($totalData),  // total number of records
     "recordsFiltered" => intval($totalFiltered), // total number of records after searching, if there is no searching then totalFiltered = totalData
-    "data"            => $data,  // total data array,
-
-    "sql" => $sql
+    "data"            => $data
 
 );
 

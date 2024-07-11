@@ -39,11 +39,6 @@ $(document).ready(function() {
     ajax: {
       url: "App/Datatables/Clientes-grid-data.php", // json datasource
       type: "post",
-      success: function(response) {
-        // Reescribe la Datatable y le da refresh
-
-        console.log(response.sql);
-      },
     },
     lengthChange: true, // añade la lista desplegable
     order: [[1, "ASC"]],
