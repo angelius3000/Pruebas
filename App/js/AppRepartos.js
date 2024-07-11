@@ -12,6 +12,13 @@ $(document).ready(function() {
 
   $(".select2").select2();
 
+  // Mandar el Datepicker
+
+  $(".flatpickr2").flatpickr({
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+  });
+
   var dataTableRepartosDT = $("#Repartos2DT").DataTable({
     // Tabla General de Usuarios
 

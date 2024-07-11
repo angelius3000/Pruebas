@@ -323,6 +323,19 @@
                                                 </div>
                                             </div>
 
+                                            <!--  style="display:none" -->
+
+                                            <div class="row FechasEntregaEscondidos">
+
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="MotivoDelEstatus" class="form-label">Programación</label>
+
+                                                    <input class="form-control flatpickr2" type="text" placeholder="Select Date..">
+                                                </div>
+
+
+                                            </div>
+
                                             <div class="row StatusEscondidos" style="display:none">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="MotivoDelEstatus" class="form-label">Motivo del estatus</label>
