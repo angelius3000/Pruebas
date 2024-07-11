@@ -1,8 +1,8 @@
-$(document).ready(function () {
+$(document).ready(function() {
   var tooltipTriggerList = [].slice.call(
     document.querySelectorAll('[data-bs-toggle="tooltip"]')
   );
-  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 
@@ -39,13 +39,18 @@ $(document).ready(function () {
     ajax: {
       url: "App/Datatables/Clientes-grid-data.php", // json datasource
       type: "post",
+      success: function(response) {
+        // Reescribe la Datatable y le da refresh
+
+        console.log(response.sql);
+      },
     },
     lengthChange: true, // añade la lista desplegable
     order: [[1, "ASC"]],
   });
 
   // Para Agregar Usuarios
-  $("#ValidacionAgregarClientes").on("submit", function (e) {
+  $("#ValidacionAgregarClientes").on("submit", function(e) {
     var form = $(this);
 
     form.parsley().validate();
@@ -66,20 +71,20 @@ $(document).ready(function () {
         url: "App/Server/ServerInsertarClientes.php",
         data: dataString,
         dataType: "json",
-        success: function (response) {
+        success: function(response) {
           // Reescribe la Datatable y le da refresh
 
           console.log(response.CLIENTEID);
 
           dataTableClientesDT.columns.adjust().draw();
         },
-      }).done(function () {});
+      }).done(function() {});
 
       $("#ModalAgregarClientes").modal("toggle");
     }
   });
 
-  $("#ValidacionEditarClientes").on("submit", function (e) {
+  $("#ValidacionEditarClientes").on("submit", function(e) {
     var form = $(this);
 
     form.parsley().validate();
@@ -100,12 +105,12 @@ $(document).ready(function () {
         url: "App/Server/ServerUpdateClientes.php",
         data: dataString,
         dataType: "json",
-        success: function (response) {
+        success: function(response) {
           // Reescribe la Datatable y le da refresh
 
           dataTableClientesDT.columns.adjust().draw();
         },
-      }).done(function () {});
+      }).done(function() {});
 
       $("#ModalEditarClientes").modal("toggle");
     }
@@ -113,7 +118,7 @@ $(document).ready(function () {
 
   // Deshabilitar Usuario
 
-  $("body").on("click", "#BorrarCliente", function () {
+  $("body").on("click", "#BorrarCliente", function() {
     var CLIENTEID = $("input#CLIENTEIDDeshabilitar").val();
 
     var dataString = "CLIENTEID=" + CLIENTEID;
@@ -127,15 +132,15 @@ $(document).ready(function () {
       url: "App/Server/ServerBorrarClientes.php",
       data: dataString,
       dataType: "json",
-      success: function (response) {
+      success: function(response) {
         dataTableClientesDT.columns.adjust().draw();
       },
-    }).done(function () {});
+    }).done(function() {});
 
     $("#ModalDeshabilitarClientes").modal("toggle");
   });
 
-  $(document).on("change", "#TIPODEUSUARIOID", function () {
+  $(document).on("change", "#TIPODEUSUARIOID", function() {
     var TipoDeUsuario = $(this).val();
 
     if (TipoDeUsuario == 4) {
@@ -151,7 +156,7 @@ $(document).ready(function () {
 
   // Para que los clientes no se puedan clonar , mandamos el pedido para ver si existen
 
-  $("#EmailCliente, #EmailClienteEditar").on("keyup", function () {
+  $("#EmailCliente, #EmailClienteEditar").on("keyup", function() {
     var ValorEmail = $(this).val();
 
     // ajax
@@ -161,7 +166,7 @@ $(document).ready(function () {
       url: "App/Server/ServerInfoClientesChecarEmailSiExiste.php",
       data: "EmailCliente=" + ValorEmail,
       dataType: "json",
-      success: function (response) {
+      success: function(response) {
         // Reescribe la Datatable y le da refresh
 
         if (response.NombreCliente != null) {
@@ -186,7 +191,7 @@ $(document).ready(function () {
           $("#EstadoClienteYaExiste").text(response.EstadoCliente);
         }
       },
-    }).done(function () {});
+    }).done(function() {});
   });
 
   // Para que los clientes no se puedan clonar , en SIAN
@@ -197,7 +202,7 @@ $(document).ready(function () {
   var ValorClienteSIAN;
 
   // Evento keyup en el input
-  $input.on("keyup", function () {
+  $input.on("keyup", function() {
     ValorClienteSIAN = $(this).val();
 
     clearTimeout(typingTimer);
@@ -205,12 +210,12 @@ $(document).ready(function () {
   });
 
   // Evento keydown en el input (opcional, para cancelar el temporizador si se vuelve a escribir antes de que termine)
-  $input.on("keydown", function () {
+  $input.on("keydown", function() {
     clearTimeout(typingTimer);
   });
 
   // Evento blur en el input
-  $input.on("blur", function () {
+  $input.on("blur", function() {
     clearTimeout(typingTimer);
     doneTyping();
   });
@@ -223,7 +228,7 @@ $(document).ready(function () {
       url: "App/Server/ServerInfoClientesChecarSIANSiExiste.php",
       data: "CLIENTESIAN=" + ValorClienteSIAN,
       dataType: "json",
-      success: function (response) {
+      success: function(response) {
         // Reescribe la Datatable y le da refresh
 
         if (response.NombreCliente != null) {
@@ -248,12 +253,12 @@ $(document).ready(function () {
           $("#EstadoClienteYaExiste").text(response.EstadoCliente);
         }
       },
-    }).done(function () {});
+    }).done(function() {});
   }
 
   // Disparo el modal #ModalAgregarClientes cuano cierro #ModalEmailYaExiste
 
-  $("#ModalYaExiste").on("hidden.bs.modal", function () {
+  $("#ModalYaExiste").on("hidden.bs.modal", function() {
     $("#ModalAgregarClientes").modal("show");
 
     // Limpia la forma del modal
@@ -268,7 +273,7 @@ function TomarDatosParaModalClientes(val) {
     url: "App/Server/ServerInfoClientesParaModal.php",
     dataType: "json",
     data: "ID=" + val,
-    success: function (response) {
+    success: function(response) {
       // Para el Modal de editar
 
       $("input#CLIENTEIDEditar").val(response.CLIENTEID);
