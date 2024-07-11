@@ -392,6 +392,9 @@
 
 
                     <input type="hidden" class="form-control" id="REPARTOIDEditarStatus" name="REPARTOIDEditarStatus">
+                    <input type="hidden" class="form-control" id="FechaDeEntregaDelReparto" name="FechaDeEntregaDelReparto">
+                    <input type="hidden" class="form-control" id="HoraDeEntregaDelReparto" name="HoraDeEntregaDelReparto">
+
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-primary">Editar</button>

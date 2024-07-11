@@ -14,27 +14,6 @@ $(document).ready(function() {
 
   // Mandar el Datepicker
 
-  $(".flatpickr2").flatpickr({
-    enableTime: true,
-    dateFormat: "Y-m-d H:i",
-    onChange: function(selectedDates, dateStr, instance) {
-      // dateStr es el valor en formato "Y-m-d H:i"
-      let [date, time] = dateStr.split(" ");
-
-      // Ahora 'date' tiene la fecha y 'time' tiene la hora
-      console.log("Fecha: ", date); // Output: "Y-m-d"
-      console.log("Hora: ", time); // Output: "H:i"
-
-      // Si quieres guardarlos en variables
-      let selectedDate = date;
-      let selectedTime = time;
-
-      // O hacer algo con estas variables, por ejemplo:
-      // $("#someDateInput").val(selectedDate);
-      // $("#someTimeInput").val(selectedTime);
-    },
-  });
-
   var dataTableRepartosDT = $("#Repartos2DT").DataTable({
     // Tabla General de Usuarios
 
@@ -135,7 +114,30 @@ $(document).ready(function() {
     }
   });
 
+  $(".flatpickr2").flatpickr({
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+    onChange: function(selectedDates, dateStr, instance) {
+      // dateStr es el valor en formato "Y-m-d H:i"
+      let [date, time] = dateStr.split(" ");
+
+      // Ahora 'date' tiene la fecha y 'time' tiene la hora
+      console.log("Fecha: ", date); // Output: "Y-m-d"
+      console.log("Hora: ", time); // Output: "H:i"
+
+      // Si quieres guardarlos en variables
+      let selectedDate = date;
+      let selectedTime = time;
+
+      // O hacer algo con estas variables, por ejemplo:
+      $("#FechaDeEntregaDelReparto").val(selectedDate);
+      $("#HoraDeEntregaDelReparto").val(selectedTime);
+    },
+  });
+
   $("#ValidacionEditarRepartos").on("submit", function(e) {
+    console.log("Si se mando la forma");
+
     var form = $(this);
 
     form.parsley().validate();
@@ -146,6 +148,8 @@ $(document).ready(function() {
 
       // data string
       var dataString = form.serialize();
+
+      console.log(dataString);
 
       // ajax
       $.ajax({
@@ -200,6 +204,8 @@ $(document).ready(function() {
 
       // data string
       var dataString = form.serialize();
+
+      console.log(dataString);
 
       // ajax
       $.ajax({
