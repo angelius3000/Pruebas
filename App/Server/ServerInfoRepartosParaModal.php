@@ -39,7 +39,8 @@ $msg = array(
     'DatosParaBorrarReparto' => $DatosParaBorrarReparto,
     'Surtidores' => $row['Surtidores'],
     'USUARIOIDRepartidor' => $row['USUARIOIDRepartidor'],
-    'EnlaceMapaGoogle' => $row['EnlaceMapaGoogle']
+    'EnlaceMapaGoogle' => $row['EnlaceMapaGoogle'],
+    'MotivoDelEstatus' => $row['MotivoDelEstatus']
 
 );
 

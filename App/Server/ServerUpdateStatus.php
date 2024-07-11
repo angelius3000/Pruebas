@@ -4,10 +4,13 @@ include("../../Connections/ConDB.php");
 
 // Get values from form
 
+// STATUSIDEditar=2&MotivoDelEstatus=oijdoijdoijdoijd&Surtidores=&USUARIOIDRepartidor=&REPARTOIDEditarStatus=98
+
 $STATUSID = mysqli_real_escape_string($conn, $_POST['STATUSIDEditar']);
 $REPARTOID = mysqli_real_escape_string($conn, $_POST['REPARTOIDEditarStatus']);
 $Surtidores = mysqli_real_escape_string($conn, $_POST['Surtidores']);
 $Repartidor = mysqli_real_escape_string($conn, $_POST['USUARIOIDRepartidor']);
+$MotivoDelEstatus = mysqli_real_escape_string($conn, $_POST['MotivoDelEstatus']);
 
 
 // Build the base query
@@ -16,6 +19,10 @@ $sql = "UPDATE repartos SET
 
 if (!empty($Repartidor)) {
     $sql .= ", USUARIOIDRepartidor = '$Repartidor'";
+}
+
+if (!empty($MotivoDelEstatus)) {
+    $sql .= ", MotivoDelEstatus = '$MotivoDelEstatus'";
 }
 
 if (!empty($Surtidores)) {

@@ -1,6 +1,15 @@
 $(document).ready(function() {
   // como puedo disparar en la clase .select2 que comienze la busqueda de los clientes
 
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  );
+  var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+
+  $("body").tooltip({ selector: '[data-toggle="tooltip"]' });
+
   $(".select2").select2();
 
   var dataTableRepartosDT = $("#Repartos2DT").DataTable({
@@ -87,8 +96,6 @@ $(document).ready(function() {
       // data string
       var dataString = form.serialize();
 
-      console.log(dataString);
-
       // ajax
       $.ajax({
         //async: false,
@@ -97,8 +104,6 @@ $(document).ready(function() {
         data: dataString,
         dataType: "json",
         success: function(response) {
-          //console.log(response.USUARIOID);
-
           dataTableRepartosDT.columns.adjust().draw();
         },
       }).done(function() {});
@@ -119,8 +124,6 @@ $(document).ready(function() {
       // data string
       var dataString = form.serialize();
 
-      console.log(dataString);
-
       // ajax
       $.ajax({
         //async: false,
@@ -130,8 +133,6 @@ $(document).ready(function() {
         dataType: "json",
         success: function(response) {
           // Reescribe la Datatable y le da refresh
-
-          console.log(response.USUARIOID);
 
           dataTableRepartosDT.columns.adjust().draw();
         },
@@ -147,8 +148,6 @@ $(document).ready(function() {
     var REPARTOID = $("input#REPARTOIDBorrar").val();
 
     var dataString = "REPARTOID=" + REPARTOID;
-
-    console.log(dataString);
 
     // ajax
     $.ajax({
@@ -179,8 +178,6 @@ $(document).ready(function() {
       // data string
       var dataString = form.serialize();
 
-      console.log(dataString);
-
       // ajax
       $.ajax({
         //async: false,
@@ -190,8 +187,6 @@ $(document).ready(function() {
         dataType: "json",
         success: function(response) {
           // Reescribe la Datatable y le da refresh
-
-          console.log(response.REPARTOID);
 
           dataTableRepartosDT.columns.adjust().draw();
         },
@@ -208,6 +203,12 @@ $(document).ready(function() {
     var REPARTOID = $("input#REPARTOIDEditarStatus").val();
 
     TomarDatosParaModalEnEdicionDeStatus(REPARTOID);
+
+    if (Status != 1) {
+      $(".StatusEscondidos").show();
+    } else {
+      $(".StatusEscondidos").hide();
+    }
 
     if (Status == 4) {
       $(".RepartosEscondidos").show();
@@ -254,6 +255,14 @@ function TomarDatosParaModalRepartos(val) {
       // Para el editor de Status
       $("input#REPARTOIDEditarStatus").val(response.REPARTOID);
       $("select#STATUSIDEditar").val(response.STATUSID);
+
+      $("textarea#MotivoDelEstatus").val(response.MotivoDelEstatus);
+
+      if (response.STATUSID != 1) {
+        $(".StatusEscondidos").show();
+      } else {
+        $(".StatusEscondidos").hide();
+      }
 
       if (response.STATUSID == 4) {
         $(".RepartosEscondidos").show();

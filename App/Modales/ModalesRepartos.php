@@ -323,6 +323,15 @@
                                                 </div>
                                             </div>
 
+                                            <div class="row StatusEscondidos" style="display:none">
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="MotivoDelEstatus" class="form-label">Motivo del estatus</label>
+
+                                                    <textarea class="form-control" id="MotivoDelEstatus" name="MotivoDelEstatus" maxlength="500" rows="4"></textarea>
+                                                </div>
+                                            </div>
+
+
                                             <div class="row RepartosEscondidos" style="display:none">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="Surtidores" class="form-label">Surtidor</label>

@@ -168,6 +168,7 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
     if ($row["STATUSID"] == 1) {
         $BadgeStatus = '<span class="badge badge-info" ' . $MandarModal . '>Registrado</span>';
     } else if ($row["STATUSID"] == 2) {
+
         $BadgeStatus = '<span class="badge badge-warning"  ' . $MandarModal . '>En tránsito</span>';
     } else if ($row["STATUSID"] == 3) {
         $BadgeStatus = '<span class="badge badge-dark"  ' . $MandarModal . '>Demorado</span>';
@@ -201,18 +202,25 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
         $BotonMapa = '';
     }
 
+    if (!empty($row["MotivoDelEstatus"]) && $row["STATUSID"] != 1) {
+
+        $BadgeConTooltipInicio = '<span data-toggle="tooltip" data-bs-placement="right"  title="' . $row["MotivoDelEstatus"] . '" data-html="true">';
+
+        $BadgeConTooltipFinal = '</span>';
+    } else {
+
+        $BadgeConTooltipInicio  =  '';
+        $BadgeConTooltipFinal = '';
+    }
+
     $nestedData = array();
 
     $nestedData[] = '<strong>' . $row["REPARTOID"] . '</strong>';
-    $nestedData[] = $BadgeStatus;
+    $nestedData[] = $BadgeConTooltipInicio . $BadgeStatus . $BadgeConTooltipFinal;
     $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"] . '<br>' . $BotonMapa;
-
     $nestedData[] = $row["Surtidores"];
-
     $nestedData[] = $row["PrimerNombre_REP"] . ' ' . $row["SegundoNombre_REP"] . ' ' . $row["ApellidoPaterno_REP"] . ' ' . $row["ApellidoMaterno_REP"];
-
     $nestedData[] = $row["PrimerNombre_US"] . ' ' . $row["SegundoNombre_US"] . ' ' . $row["ApellidoPaterno_US"] . ' ' . $row["ApellidoMaterno_US"];
-
     $nestedData[] = $row["NombreCliente"];
     $nestedData[] = date('d-m-Y H:i:s', strtotime($row["FechaDeRegistro"]));
     $nestedData[] = $row["CP"];
