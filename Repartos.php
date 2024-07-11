@@ -107,7 +107,7 @@ if ($_SESSION['TIPOUSUARIO'] == 3) {
                                             <th>Telefono alternativo</th>
                                             <th>Numero de factura</th>
                                             <th>Comentarios</th>
-                                            <th></th>
+                                            <!-- <th></th> -->
                                         </tr>
                                     </thead>
                                 </table>
