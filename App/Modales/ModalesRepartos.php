@@ -330,7 +330,7 @@
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="MotivoDelEstatus" class="form-label">Programación</label>
 
-                                                    <input class="form-control flatpickr2" type="text" placeholder="Select Date..">
+                                                    <input class="form-control flatpickr2" type="text" placeholder="Registra la fecha de entrega programada..">
                                                 </div>
 
 
