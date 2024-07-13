@@ -130,8 +130,8 @@ $(document).ready(function() {
       let selectedTime = time;
 
       // O hacer algo con estas variables, por ejemplo:
-      $("#FechaDeEntregaDelReparto").val(selectedDate);
-      $("#HoraDeEntregaDelReparto").val(selectedTime);
+      $("#FechaReparto").val(selectedDate);
+      $("#HoraReparto").val(selectedTime);
     },
   });
 
@@ -284,8 +284,9 @@ function TomarDatosParaModalRepartos(val) {
       // Para el editor de Status
       $("input#REPARTOIDEditarStatus").val(response.REPARTOID);
       $("select#STATUSIDEditar").val(response.STATUSID);
-
       $("textarea#MotivoDelEstatus").val(response.MotivoDelEstatus);
+      $("input#FechaReparto").val(response.FechaReparto);
+      $("input#HoraReparto").val(response.HoraReparto);
 
       if (response.STATUSID != 1) {
         $(".StatusEscondidos").show();
@@ -295,7 +296,6 @@ function TomarDatosParaModalRepartos(val) {
 
       if (response.STATUSID == 4) {
         $(".RepartosEscondidos").show();
-
         $("textarea#Surtidores").val(response.Surtidores);
         $("select#USUARIOIDRepartidor").val(response.USUARIOIDRepartidor);
       } else {

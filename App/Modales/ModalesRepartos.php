@@ -328,12 +328,10 @@
                                             <div class="row FechasEntregaEscondidos">
 
                                                 <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="MotivoDelEstatus" class="form-label">Programación</label>
+                                                    <label for="Programacion" class="form-label">Programación</label>
 
-                                                    <input class="form-control flatpickr2" type="text" placeholder="Registra la fecha de entrega programada..">
+                                                    <input class="form-control flatpickr2" type="text" placeholder="Registra la fecha programada de reparto...">
                                                 </div>
-
-
                                             </div>
 
                                             <div class="row StatusEscondidos" style="display:none">
@@ -392,8 +390,8 @@
 
 
                     <input type="hidden" class="form-control" id="REPARTOIDEditarStatus" name="REPARTOIDEditarStatus">
-                    <input type="hidden" class="form-control" id="FechaDeEntregaDelReparto" name="FechaDeEntregaDelReparto">
-                    <input type="hidden" class="form-control" id="HoraDeEntregaDelReparto" name="HoraDeEntregaDelReparto">
+                    <input type="hidden" class="form-control" id="FechaReparto" name="FechaReparto">
+                    <input type="hidden" class="form-control" id="HoraReparto" name="HoraReparto">
 
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

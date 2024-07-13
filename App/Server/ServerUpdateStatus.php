@@ -11,6 +11,8 @@ $REPARTOID = mysqli_real_escape_string($conn, $_POST['REPARTOIDEditarStatus']);
 $Surtidores = mysqli_real_escape_string($conn, $_POST['Surtidores']);
 $Repartidor = mysqli_real_escape_string($conn, $_POST['USUARIOIDRepartidor']);
 $MotivoDelEstatus = mysqli_real_escape_string($conn, $_POST['MotivoDelEstatus']);
+$FechaReparto = mysqli_real_escape_string($conn, $_POST['FechaReparto']);
+$HoraReparto = mysqli_real_escape_string($conn, $_POST['HoraReparto']);
 
 
 // Build the base query
@@ -23,6 +25,14 @@ if (!empty($Repartidor)) {
 
 if (!empty($MotivoDelEstatus)) {
     $sql .= ", MotivoDelEstatus = '$MotivoDelEstatus'";
+}
+
+if (!empty($FechaReparto)) {
+    $sql .= ", FechaReparto = '$FechaReparto'";
+}
+
+if (!empty($HoraReparto)) {
+    $sql .= ", HoraReparto = '$HoraReparto'";
 }
 
 if (!empty($Surtidores)) {
