@@ -95,19 +95,20 @@ if ($_SESSION['TIPOUSUARIO'] == 3) {
                                 <table id="RepartosCliente2DT" class="display" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>Folio</th>
-                                            <th>Estatus</th>
-                                            <th>Solicitante</th>
-                                            <th>Cliente</th>
-                                            <th>Fecha de registro</th>
-                                            <th>Dirección</th>
-                                            <th>CP</th>
-                                            <th>Receptor</th>
-                                            <th>Teléfono receptor</th>
-                                            <th>Telefono alternativo</th>
-                                            <th>Numero de factura</th>
-                                            <th>Comentarios</th>
-                                            <!-- <th></th> -->
+                                            <th>Folio</th> <!-- (0) -->
+                                            <th>Estatus</th> <!-- (1) -->
+                                            <th>Dirección</th> <!-- (2) -->
+                                            <th>Fecha de registro</th> <!-- (5) -->
+                                            <th>Fecha de reparto</th> <!-- (6) -->
+                                            <th>Hora de reparto</th> <!-- (7) -->
+                                            <th>Solicitante</th> <!-- (8) -->
+                                            <th>Cliente</th> <!-- (9) -->
+                                            <th>CP</th> <!-- (10) -->
+                                            <th>Receptor</th> <!-- (11) -->
+                                            <th>Teléfono receptor</th> <!-- (12) -->
+                                            <th>Telefono alternativo</th> <!-- (13) -->
+                                            <th>Numero de factura</th> <!-- (14) -->
+                                            <th>Comentarios</th> <!-- (15) -->
                                         </tr>
                                     </thead>
                                 </table>
@@ -117,21 +118,23 @@ if ($_SESSION['TIPOUSUARIO'] == 3) {
                                 <table id="Repartos2DT" class="table table-striped" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>Folio</th>
-                                            <th>Estatus</th>
-                                            <th>Dirección</th>
-                                            <th>Surtidor</th>
-                                            <th>Repartidor</th>
-                                            <th>Solicitante</th>
-                                            <th>Cliente</th>
-                                            <th>Fecha de registro</th>
-                                            <th>CP</th>
-                                            <th>Receptor</th>
-                                            <th>Teléfono receptor</th>
-                                            <th>Telefono alternativo</th>
-                                            <th>Numero de factura</th>
-                                            <th>Comentarios</th>
-                                            <th></th>
+                                            <th>Folio</th> <!-- (0) -->
+                                            <th>Estatus</th> <!-- (1) -->
+                                            <th>Dirección</th> <!-- (2) -->
+                                            <th>Surtidor</th> <!-- (3) -->
+                                            <th>Repartidor</th> <!-- (4) -->
+                                            <th>Fecha de registro</th> <!-- (5) -->
+                                            <th>Fecha de reparto</th> <!-- (6) -->
+                                            <th>Hora de reparto</th> <!-- (7) -->
+                                            <th>Solicitante</th> <!-- (8) -->
+                                            <th>Cliente</th> <!-- (9) -->
+                                            <th>CP</th> <!-- (10) -->
+                                            <th>Receptor</th> <!-- (11) -->
+                                            <th>Teléfono receptor</th> <!-- (12) -->
+                                            <th>Telefono alternativo</th> <!-- (13) -->
+                                            <th>Numero de factura</th> <!-- (14) -->
+                                            <th>Comentarios</th> <!-- (15) -->
+                                            <th></th> <!-- Botones (16) -->
                                         </tr>
                                     </thead>
                                 </table>
