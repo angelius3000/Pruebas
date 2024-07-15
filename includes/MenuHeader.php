@@ -46,9 +46,13 @@
                     ?>
 
                     <span class="dropdown-headerTipoUsuario"><?php echo $TituloDeUsuarioParaMenu; ?></span>
+                    <br>
+
+                    <a href="#ModalCambiarContrasenas" data-bs-toggle="modal" data-bs-target="#ModalCambiarContrasena">Cambiar contraseña</a>
+
                     <div class="dropdown-divider"></div>
 
-                    <a href="logout.php">Log out</a>
+                    <a href="logout.php">Cerrar sesión</a>
 
 
                 </div>
@@ -58,3 +62,5 @@
         </div>
     </nav>
 </div>
+
+<?php include("App/Modales/ModalesCambiarContrasena.php") ?>
