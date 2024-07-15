@@ -191,7 +191,6 @@ $(document).ready(function() {
     $("#ModalBorrarReparto").modal("toggle");
   });
 
-
   // Borrar Fecha y Hora de reparto
 
   $("body").on("click", "#BorrarFechaReparto", function() {
@@ -213,7 +212,6 @@ $(document).ready(function() {
 
     $("#ModalBorrarReparto").modal("toggle");
   });
-
 
   // Evento para editar Status de reparto
 
@@ -274,6 +272,12 @@ $(document).ready(function() {
     }
   });
 });
+
+var flatpickrInstance = $("#FechayHoraReparto").flatpickr({
+  enableTime: true,
+  dateFormat: "Y-m-d H:i",
+});
+
 function TomarDatosParaModalRepartos(val) {
   $.ajax({
     type: "POST",
@@ -309,8 +313,19 @@ function TomarDatosParaModalRepartos(val) {
       $("input#REPARTOIDEditarStatus").val(response.REPARTOID);
       $("select#STATUSIDEditar").val(response.STATUSID);
       $("textarea#MotivoDelEstatus").val(response.MotivoDelEstatus);
+
       $("input#FechaReparto").val(response.FechaReparto);
       $("input#HoraReparto").val(response.HoraReparto);
+
+      var FechaYHoraReparto =
+        response.FechaReparto + " " + response.HoraReparto;
+      console.log(FechaYHoraReparto);
+
+      // Asigna el valor combinado al campo de entrada
+      $("input#FechayHoraReparto").val(FechaYHoraReparto);
+
+      // Establece la fecha y hora en el Flatpickr
+      flatpickrInstance.setDate(FechaYHoraReparto);
 
       if (response.STATUSID != 1) {
         $(".StatusEscondidos").show();

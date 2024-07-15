@@ -17,13 +17,15 @@ $DatosParaBorrarReparto = '<strong>Folio: </strong>' . $row['REPARTOID']
     . '<br> <strong>Fecha: </strong>' . SoloFecha($row['FechaDeRegistro']) .
     '<br><strong>Cliente: </strong> ' . $row['NombreCliente'];
 
+$HoraSinSegundos = substr($row['HoraReparto'], 0, 5);
+
 $msg = array(
     'REPARTOID' => $row['REPARTOID'],
     'USUARIOID' => $row['USUARIOID'],
     'CLIENTEID' => $row['CLIENTEID'],
     'NumeroDeFactura' => $row['NumeroDeFactura'],
     'FechaReparto' => $row['FechaReparto'],
-    'HoraReparto' => $row['HoraReparto'],
+    'HoraReparto' => $HoraSinSegundos,
     'FechaDeRegistro' => $row['FechaDeRegistro'],
     'Calle' => $row['Calle'],
     'NumeroEXT' => $row['NumeroEXT'],
@@ -40,7 +42,8 @@ $msg = array(
     'Surtidores' => $row['Surtidores'],
     'USUARIOIDRepartidor' => $row['USUARIOIDRepartidor'],
     'EnlaceMapaGoogle' => $row['EnlaceMapaGoogle'],
-    'MotivoDelEstatus' => $row['MotivoDelEstatus']
+    'MotivoDelEstatus' => $row['MotivoDelEstatus'],
+
 
 );
 
