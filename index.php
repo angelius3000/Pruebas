@@ -68,6 +68,13 @@
 
             <?php // echo "Este es el HTTPHOST <strong>" . $_SERVER['HTTP_HOST'] . '</strong>'; 
             ?>
+
+            <?php if (isset($_GET['login']) && $_GET['login'] == 'no') { ?>
+
+                <span class="text-danger pb-4"><strong>Tu usuario o contraseña es incorrecta. Vuelve a intentar</strong></span>
+
+            <?php } ?>
+
             <form action="includes/login.php" method="POST">
                 <div class="auth-credentials m-b-xxl">
                     <label for="username" class="form-label">Email</label>

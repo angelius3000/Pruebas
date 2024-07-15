@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 	} else { // Unsuccessful!
 
-		if ($_SERVER['HTTP_HOST'] == "local.sertec:8888") {
+		if ($_SERVER['HTTP_HOST'] == "local.edison:8888") {
 			echo "<script>window.location.href='http://local.edison:8888/index.php?login=no';</script>";
 			exit;
 		} else if ($_SERVER['HTTP_HOST'] == "localhost/edisonreparto") {
