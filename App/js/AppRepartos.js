@@ -273,11 +273,6 @@ $(document).ready(function() {
   });
 });
 
-var flatpickrInstance = $("#FechayHoraReparto").flatpickr({
-  enableTime: true,
-  dateFormat: "Y-m-d H:i",
-});
-
 function TomarDatosParaModalRepartos(val) {
   $.ajax({
     type: "POST",
@@ -319,13 +314,17 @@ function TomarDatosParaModalRepartos(val) {
 
       var FechaYHoraReparto =
         response.FechaReparto + " " + response.HoraReparto;
+
+      if (response.FechaReparto == null) {
+        FechaYHoraReparto = "";
+      } else {
+        FechaYHoraReparto = FechaYHoraReparto;
+      }
+
       console.log(FechaYHoraReparto);
 
       // Asigna el valor combinado al campo de entrada
       $("input#FechayHoraReparto").val(FechaYHoraReparto);
-
-      // Establece la fecha y hora en el Flatpickr
-      flatpickrInstance.setDate(FechaYHoraReparto);
 
       if (response.STATUSID != 1) {
         $(".StatusEscondidos").show();

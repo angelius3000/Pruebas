@@ -4,7 +4,7 @@ include("../../Connections/ConDB.php");
 
 // Get values from form
 
-// STATUSIDEditar=2&MotivoDelEstatus=oijdoijdoijdoijd&Surtidores=&USUARIOIDRepartidor=&REPARTOIDEditarStatus=98
+// STATUSIDEditar=2&MotivoDelEstatus=Aqui%20esta%20el%20motivo%20Ya%20saliendo%20DINAMICAMENTE&Surtidores=&USUARIOIDRepartidor=&REPARTOIDEditarStatus=98&FechaReparto=&HoraReparto=
 
 $STATUSID = mysqli_real_escape_string($conn, $_POST['STATUSIDEditar']);
 $REPARTOID = mysqli_real_escape_string($conn, $_POST['REPARTOIDEditarStatus']);
@@ -29,10 +29,14 @@ if (!empty($MotivoDelEstatus)) {
 
 if (!empty($FechaReparto)) {
     $sql .= ", FechaReparto = '$FechaReparto'";
+} else {
+    $sql .= ", FechaReparto = NULL";
 }
 
 if (!empty($HoraReparto)) {
     $sql .= ", HoraReparto = '$HoraReparto'";
+} else {
+    $sql .= ", HoraReparto = NULL";
 }
 
 if (!empty($Surtidores)) {
