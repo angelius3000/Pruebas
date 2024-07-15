@@ -169,7 +169,7 @@ $(document).ready(function() {
     }
   });
 
-  // Deshabilitar Usuario
+  // Borrar Reparto
 
   $("body").on("click", "#BorrarReparto", function() {
     var REPARTOID = $("input#REPARTOIDBorrar").val();
@@ -190,6 +190,30 @@ $(document).ready(function() {
 
     $("#ModalBorrarReparto").modal("toggle");
   });
+
+
+  // Borrar Fecha y Hora de reparto
+
+  $("body").on("click", "#BorrarFechaReparto", function() {
+    var REPARTOID = $("input#REPARTOIDBorrar").val();
+
+    var dataString = "REPARTOID=" + REPARTOID;
+
+    // ajax
+    $.ajax({
+      //async: false,
+      type: "POST",
+      url: "App/Server/ServerBorrarFechaReparto.php",
+      data: dataString,
+      dataType: "json",
+      success: function(response) {
+        dataTableRepartosDT.columns.adjust().draw();
+      },
+    }).done(function() {});
+
+    $("#ModalBorrarReparto").modal("toggle");
+  });
+
 
   // Evento para editar Status de reparto
 
@@ -317,6 +341,8 @@ function TomarDatosParaModalEnEdicionDeStatus(val) {
       // Para el Modal de editar
       $("textarea#Surtidores").val(response.Surtidores);
       $("select#USUARIOIDRepartidor").val(response.USUARIOIDRepartidor);
+      $("input#FechaReparto").val(response.FechaReparto);
+      $("input#HoraReparto").val(response.HoraReparto);
     },
   });
 }
