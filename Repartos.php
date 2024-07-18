@@ -174,6 +174,7 @@ if ($_SESSION['TIPOUSUARIO'] == 3) {
     <script src="assets/plugins/flatpickr/flatpickr.js"></script>
 
     <script src="App/js/AppRepartos.js"></script>
+    <script src="App/js/AppCambiarContrasena.js"></script>
 
 </body>
 

@@ -97,6 +97,7 @@ if ($_SESSION['TIPOUSUARIO'] != 1) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js" integrity="sha512-Fq/wHuMI7AraoOK+juE5oYILKvSPe6GC5ZWZnvpOO/ZPdtyA29n+a5kVLP4XaLyDy9D1IBPYzdFycO33Ijd0Pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="App/js/AppClientes.js"></script>
+    <script src="App/js/AppCambiarContrasena.js"></script>
 
 </body>
 
