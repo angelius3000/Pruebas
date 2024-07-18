@@ -18,7 +18,7 @@ $(document).ready(function() {
     // Tabla General de Usuarios
 
     dom: "Bifrtip",
-    buttons: ["excelHtml5", "pdfHtml5", "pageLength"],
+    buttons: ["excelHtml5", "pageLength"],
     processing: true,
     serverSide: true,
     responsive: true,
@@ -47,10 +47,34 @@ $(document).ready(function() {
     ajax: {
       url: "App/Datatables/Repartos-grid-data.php", // json datasource
       type: "post",
+      data: function(data) {
+        // Read values
+        var StatusSelect = $("select#STATUSID").val();
+        var RepartidoresSelect = $("select#Repartidores").val();
+        var SolicitanteSelect = $("select#Solicitantes").val();
+
+        // var FechaIN = $("input#FechaIN").val();
+        // var FechaOUT = $("input#FechaOUT").val();
+
+        // Append to data
+        data.StatusSelect = StatusSelect;
+        data.RepartidoresSelect = RepartidoresSelect;
+        data.SolicitanteSelect = SolicitanteSelect;
+      },
     },
     lengthChange: true, // añade la lista desplegable
     order: [[0, "DESC"]],
   });
+
+  $(document).on(
+    "change",
+    "#STATUSID, #Repartidores, #Solicitantes",
+    function() {
+      console.log("Cambio en el filtro");
+
+      dataTableRepartosDT.draw();
+    }
+  );
 
   var dataTableRepartosDTClientes = $("#RepartosCliente2DT").DataTable({
     // Tabla General de Usuarios

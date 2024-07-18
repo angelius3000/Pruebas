@@ -6,8 +6,14 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+// check request
 // storing request (ie, get/post) global array to a variable  
 $requestData = $_REQUEST;
+
+$StatusSelect = $_REQUEST['StatusSelect'];
+$RepartidoresSelect = $_REQUEST['RepartidoresSelect'];
+$SolicitanteSelect = $_REQUEST['SolicitanteSelect'];
+
 
 $columns = array(
     // datatable column index  => database column name
@@ -146,6 +152,22 @@ if (!empty($requestData['search']['value'])) {
     }
     $sql .= " AND " . implode(' AND ', $sql_words);
 }
+
+// Filtros
+
+if (!empty($StatusSelect)) {
+    $sql .= " AND repartos.STATUSID = '" . $StatusSelect . "'";
+}
+
+if (!empty($RepartidoresSelect)) {
+    $sql .= " AND repartos.USUARIOIDRepartidor = '" . $RepartidoresSelect . "'";
+}
+
+if (!empty($SolicitanteSelect)) {
+    $sql .= " AND repartos.USUARIOID = '" . $SolicitanteSelect . "'";
+}
+
+
 
 $query = mysqli_query($conn, $sql) or die("employee-grid-data.php: get employees");
 $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 

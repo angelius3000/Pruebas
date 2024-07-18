@@ -1,6 +1,4 @@
 $(document).ready(function() {
-  console.log("Cargo ????");
-
   $("#ValidacionEditarContrasena").on("submit", function(e) {
     var form = $(this);
 
