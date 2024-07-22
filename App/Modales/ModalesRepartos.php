@@ -86,11 +86,11 @@
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
                                                     <label for="TelefonoDeReceptor" class="form-label">Teléfono del Receptor</label>
-                                                    <input type="text" class="form-control" id="TelefonoDeReceptor" autocomplete="off" name="TelefonoDeReceptor" required>
+                                                    <input type="text" class="form-control" id="TelefonoDeReceptor" autocomplete="off" name="TelefonoDeReceptor" required placeholder="Número sin guiones ni espacios" data-parsley-pattern="^\d{10}$">
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
                                                     <label for="TelefonoAlternativo" class="form-label">Teléfono Alternativo</label>
-                                                    <input type="text" class="form-control" id="TelefonoAlternativo" autocomplete="off" name="TelefonoAlternativo">
+                                                    <input type="text" class="form-control" id="TelefonoAlternativo" autocomplete="off" name="TelefonoAlternativo" data-parsley-pattern="^\d{10}$">
                                                 </div>
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="Comentarios" class="form-label">Comentarios</label>
