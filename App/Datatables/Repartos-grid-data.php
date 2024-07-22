@@ -258,8 +258,8 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
     $nestedData[] = $row["NombreCliente"]; //(9) Cliente
     $nestedData[] = $row["CP"]; //(10) Código postal
     $nestedData[] = $row["Receptor"]; //(11) Receptor
-    $nestedData[] = $row["TelefonoDeReceptor"]; //(12) Teléfono de receptor
-    $nestedData[] = $row["TelefonoAlternativo"]; //(13) Teléfono alternativo
+    $nestedData[] = '<a href="tel:' . $row["TelefonoDeReceptor"] . '">' . $row["TelefonoDeReceptor"] . '</a>'; //(12) Teléfono de receptor
+    $nestedData[] = '<a href="tel:' . $row["TelefonoAlternativo"] . '">' . $row["TelefonoAlternativo"] . '</a>'; //(13) Teléfono alternativo
     $nestedData[] = $row["NumeroDeFactura"]; //(14) Número de factura
     $nestedData[] = $row["Comentarios"]; //(15) Comentarios
     $nestedData[] = $BotonEditar . $BotonBorrar; //(16) Botones
