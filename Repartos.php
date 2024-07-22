@@ -179,6 +179,22 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
                                     </div>
                                 </div>
 
+
+                                <div class="row">
+                                    <div class="col-lg-6 col-sm-12 mb-4 border-right pe-4">
+                                        <label for="NombreCliente" class="form-label">Fecha de Registro</label>
+                                        <input class="form-control flatpickr1" type="text" placeholder="Inicio">
+                                        <input class="form-control flatpickr1" type="text" placeholder="Final">
+                                    </div>
+
+                                    <div class="col-lg-6 col-sm-12 mb-4 ps-4">
+                                        <label for="NombreCliente" class="form-label">Fecha de Reparto</label>
+                                        <input class="form-control flatpickr1" type="text" placeholder="Inicio">
+                                        <input class="form-control flatpickr1" type="text" placeholder="Final">
+                                    </div>
+
+                                </div>
+
                                 <table id="Repartos2DT" class="table table-striped" style="width:100%">
                                     <thead>
                                         <tr>
