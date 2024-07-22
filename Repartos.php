@@ -126,23 +126,29 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
 
 
                                 <div class="row">
-                                    <div class="col-lg-4 col-sm-12 mb-4">
-                                        <select class="form-select" name="STATUSID" id="STATUSID" aria-label="Default select example" required>
-                                            <option selected value="">Selecciona Estatus</option>
 
-                                            <?php while ($row_TipoDeStatus = mysqli_fetch_assoc($TipoDeStatus)) { ?>
+                                    <?php if ($_SESSION['TIPOUSUARIO'] != 2) { ?>
 
-                                                <option value="<?php echo $row_TipoDeStatus['STATUSID']; ?>"><?php echo $row_TipoDeStatus['Status']; ?></option>
+                                        <div class="col-lg-4 col-sm-12 mb-4">
+                                            <select class="form-select" name="STATUSID" id="STATUSID" aria-label="Default select example" required>
+                                                <option selected value="">Selecciona Estatus</option>
 
-                                            <?php }
+                                                <?php while ($row_TipoDeStatus = mysqli_fetch_assoc($TipoDeStatus)) { ?>
 
-                                            // Reset the pointer to the beginning
-                                            mysqli_data_seek($TipoDeStatus, 0);
+                                                    <option value="<?php echo $row_TipoDeStatus['STATUSID']; ?>"><?php echo $row_TipoDeStatus['Status']; ?></option>
 
-                                            ?>
+                                                <?php }
 
-                                        </select>
-                                    </div>
+                                                // Reset the pointer to the beginning
+                                                mysqli_data_seek($TipoDeStatus, 0);
+
+                                                ?>
+
+                                            </select>
+                                        </div>
+
+                                    <?php } ?>
+
                                     <div class="col-lg-4 col-sm-12 mb-4">
                                         <select class="form-select" name="Repartidores" id="Repartidores" aria-label="Default select example" required>
                                             <option selected value="">Selecciona Repartidor</option>
@@ -160,40 +166,48 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
 
                                         </select>
                                     </div>
-                                    <div class="col-lg-4 col-sm-12 mb-4">
-                                        <select class="form-select" name="Solicitantes" id="Solicitantes" aria-label="Default select example" required>
-                                            <option selected value="">Selecciona Solicitante</option>
 
-                                            <?php while ($row_Solicitantes = mysqli_fetch_assoc($Solicitantes)) { ?>
+                                    <?php if ($_SESSION['TIPOUSUARIO'] != 2) { ?>
 
-                                                <option value="<?php echo $row_Solicitantes['USUARIOID']; ?>"><?php echo $row_Solicitantes['PrimerNombre'] . ' ' . $row_Solicitantes['ApellidoPaterno']; ?></option>
+                                        <div class="col-lg-4 col-sm-12 mb-4">
+                                            <select class="form-select" name="Solicitantes" id="Solicitantes" aria-label="Default select example" required>
+                                                <option selected value="">Selecciona Solicitante</option>
 
-                                            <?php }
+                                                <?php while ($row_Solicitantes = mysqli_fetch_assoc($Solicitantes)) { ?>
 
-                                            // Reset the pointer to the beginning
-                                            mysqli_data_seek($Solicitantes, 0);
+                                                    <option value="<?php echo $row_Solicitantes['USUARIOID']; ?>"><?php echo $row_Solicitantes['PrimerNombre'] . ' ' . $row_Solicitantes['ApellidoPaterno']; ?></option>
 
-                                            ?>
+                                                <?php }
 
-                                        </select>
-                                    </div>
-                                </div>
+                                                // Reset the pointer to the beginning
+                                                mysqli_data_seek($Solicitantes, 0);
 
+                                                ?>
 
-                                <div class="row">
-                                    <div class="col-lg-6 col-sm-12 mb-4 border-right pe-4">
-                                        <label for="NombreCliente" class="form-label">Fecha de Registro</label>
-                                        <input class="form-control flatpickr1" id="FechaInicioRegistro" type="text" placeholder="Inicio">
-                                        <input class="form-control flatpickr1" id="FechaFinalRegistro" type="text" placeholder="Final">
-                                    </div>
+                                            </select>
+                                        </div>
 
-                                    <div class="col-lg-6 col-sm-12 mb-4 ps-4">
-                                        <label for="NombreCliente" class="form-label">Fecha de Reparto</label>
-                                        <input class="form-control flatpickr1" id="FechaInicioReparto" type="text" placeholder="Inicio">
-                                        <input class="form-control flatpickr1" id="FechaFinalReparto" type="text" placeholder="Final">
-                                    </div>
+                                    <?php } ?>
 
                                 </div>
+
+                                <?php if ($_SESSION['TIPOUSUARIO'] != 2) { ?>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-12 mb-4 border-right pe-4">
+                                            <label for="NombreCliente" class="form-label">Fecha de Registro</label>
+                                            <input class="form-control flatpickr1" id="FechaInicioRegistro" type="text" placeholder="Inicio">
+                                            <input class="form-control flatpickr1" id="FechaFinalRegistro" type="text" placeholder="Final">
+                                        </div>
+
+                                        <div class="col-lg-6 col-sm-12 mb-4 ps-4">
+                                            <label for="NombreCliente" class="form-label">Fecha de Reparto</label>
+                                            <input class="form-control flatpickr1" id="FechaInicioReparto" type="text" placeholder="Inicio">
+                                            <input class="form-control flatpickr1" id="FechaFinalReparto" type="text" placeholder="Final">
+                                        </div>
+
+                                    </div>
+
+                                <?php } ?>
 
                                 <table id="Repartos2DT" class="table table-striped" style="width:100%">
                                     <thead>
