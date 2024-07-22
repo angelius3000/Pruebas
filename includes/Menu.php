@@ -23,9 +23,9 @@
         <?php } ?>
 
         <br>
-        <hr>
 
-        <li>
+
+        <li class="border-menu-top">
             <a href="logout.php"><i class="material-icons-two-tone">logout</i>Cerrar Sesión</a>
         </li>
 
