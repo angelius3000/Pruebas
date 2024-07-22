@@ -13,6 +13,10 @@ $requestData = $_REQUEST;
 $StatusSelect = $_REQUEST['StatusSelect'];
 $RepartidoresSelect = $_REQUEST['RepartidoresSelect'];
 $SolicitanteSelect = $_REQUEST['SolicitanteSelect'];
+$FechaInicioRegistro = $_REQUEST['FechaInicioRegistro'];
+$FechaFinalRegistro = $_REQUEST['FechaFinalRegistro'];
+$FechaInicioReparto = $_REQUEST['FechaInicioReparto'];
+$FechaFinalReparto = $_REQUEST['FechaFinalReparto'];
 
 
 $columns = array(
@@ -165,6 +169,18 @@ if (!empty($RepartidoresSelect)) {
 
 if (!empty($SolicitanteSelect)) {
     $sql .= " AND repartos.USUARIOID = '" . $SolicitanteSelect . "'";
+}
+
+$FechaFinalRegistro = date('Y-m-d', strtotime($FechaFinalRegistro . ' +1 day'));
+
+if (!empty($FechaInicioRegistro)  && !empty($FechaFinalRegistro)) {
+    $sql .= " AND repartos.FechaDeRegistro BETWEEN '" . $FechaInicioRegistro . "' AND '" . $FechaFinalRegistro . "'";
+}
+
+$FechaFinalReparto = date('Y-m-d', strtotime($FechaFinalReparto . ' +1 day'));
+
+if (!empty($FechaInicioReparto) && !empty($FechaFinalReparto)) {
+    $sql .= " AND repartos.FechaReparto BETWEEN '" . $FechaInicioReparto . "' AND '" . $FechaFinalReparto . "'";
 }
 
 
