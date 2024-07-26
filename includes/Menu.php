@@ -4,9 +4,9 @@
             Apps
         </li> -->
         <?php if ($_SESSION['TIPOUSUARIO'] == '1') { ?>
-        <li>
-            <a href="main.php"><i class="material-icons-two-tone">dashboard</i>Dashboard</a>
-        </li>
+            <li>
+                <a href="main.php"><i class="material-icons-two-tone">dashboard</i>Dashboard</a>
+            </li>
         <?php } ?>
         <li>
             <a href="Repartos.php"><i class="material-icons-two-tone">local_shipping</i>Reparto</a>
@@ -22,6 +22,12 @@
             </li>
         <?php } ?>
 
+        <br>
+
+
+        <li class="border-menu-top">
+            <a href="logout.php"><i class="material-icons-two-tone">logout</i>Cerrar Sesión</a>
+        </li>
 
     </ul>
 </div>

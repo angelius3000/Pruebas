@@ -6,8 +6,18 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+// check request
 // storing request (ie, get/post) global array to a variable  
 $requestData = $_REQUEST;
+
+$StatusSelect = $_REQUEST['StatusSelect'];
+$RepartidoresSelect = $_REQUEST['RepartidoresSelect'];
+$SolicitanteSelect = $_REQUEST['SolicitanteSelect'];
+$FechaInicioRegistro = $_REQUEST['FechaInicioRegistro'];
+$FechaFinalRegistro = $_REQUEST['FechaFinalRegistro'];
+$FechaInicioReparto = $_REQUEST['FechaInicioReparto'];
+$FechaFinalReparto = $_REQUEST['FechaFinalReparto'];
+
 
 $columns = array(
     // datatable column index  => database column name
@@ -147,6 +157,34 @@ if (!empty($requestData['search']['value'])) {
     $sql .= " AND " . implode(' AND ', $sql_words);
 }
 
+// Filtros
+
+if (!empty($StatusSelect)) {
+    $sql .= " AND repartos.STATUSID = '" . $StatusSelect . "'";
+}
+
+if (!empty($RepartidoresSelect)) {
+    $sql .= " AND repartos.USUARIOIDRepartidor = '" . $RepartidoresSelect . "'";
+}
+
+if (!empty($SolicitanteSelect)) {
+    $sql .= " AND repartos.USUARIOID = '" . $SolicitanteSelect . "'";
+}
+
+$FechaFinalRegistro = date('Y-m-d', strtotime($FechaFinalRegistro . ' +1 day'));
+
+if (!empty($FechaInicioRegistro)  && !empty($FechaFinalRegistro)) {
+    $sql .= " AND repartos.FechaDeRegistro BETWEEN '" . $FechaInicioRegistro . "' AND '" . $FechaFinalRegistro . "'";
+}
+
+$FechaFinalReparto = date('Y-m-d', strtotime($FechaFinalReparto . ' +1 day'));
+
+if (!empty($FechaInicioReparto) && !empty($FechaFinalReparto)) {
+    $sql .= " AND repartos.FechaReparto BETWEEN '" . $FechaInicioReparto . "' AND '" . $FechaFinalReparto . "'";
+}
+
+
+
 $query = mysqli_query($conn, $sql) or die("employee-grid-data.php: get employees");
 $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
 
@@ -220,8 +258,8 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
     $nestedData[] = $row["NombreCliente"]; //(9) Cliente
     $nestedData[] = $row["CP"]; //(10) Código postal
     $nestedData[] = $row["Receptor"]; //(11) Receptor
-    $nestedData[] = $row["TelefonoDeReceptor"]; //(12) Teléfono de receptor
-    $nestedData[] = $row["TelefonoAlternativo"]; //(13) Teléfono alternativo
+    $nestedData[] = '<a href="tel:' . $row["TelefonoDeReceptor"] . '">' . $row["TelefonoDeReceptor"] . '</a>'; //(12) Teléfono de receptor
+    $nestedData[] = '<a href="tel:' . $row["TelefonoAlternativo"] . '">' . $row["TelefonoAlternativo"] . '</a>'; //(13) Teléfono alternativo
     $nestedData[] = $row["NumeroDeFactura"]; //(14) Número de factura
     $nestedData[] = $row["Comentarios"]; //(15) Comentarios
     $nestedData[] = $BotonEditar . $BotonBorrar; //(16) Botones

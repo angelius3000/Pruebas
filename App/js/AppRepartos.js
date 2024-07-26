@@ -1,5 +1,32 @@
 $(document).ready(function() {
-  // como puedo disparar en la clase .select2 que comienze la busqueda de los clientes
+  // Variables para almacenar las fechas
+  var fechaInicioRegistro;
+  var fechaFinalRegistro;
+  var fechaInicioReparto;
+  var fechaFinalReparto;
+
+  // Inicializa Flatpickr en los inputs
+  $(".flatpickr1").flatpickr({
+    onChange: function(selectedDates, dateStr, instance) {
+      switch (instance.element.id) {
+        case "FechaInicioRegistro":
+          fechaInicioRegistro = dateStr;
+          break;
+        case "FechaFinalRegistro":
+          fechaFinalRegistro = dateStr;
+          break;
+        case "FechaInicioReparto":
+          fechaInicioReparto = dateStr;
+          break;
+        case "FechaFinalReparto":
+          fechaFinalReparto = dateStr;
+          break;
+      }
+      // Puedes agregar más lógica aquí si es necesario
+
+      dataTableRepartosDT.draw();
+    },
+  });
 
   var tooltipTriggerList = [].slice.call(
     document.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -18,7 +45,7 @@ $(document).ready(function() {
     // Tabla General de Usuarios
 
     dom: "Bifrtip",
-    buttons: ["excelHtml5", "pdfHtml5", "pageLength"],
+    buttons: ["excelHtml5", "pageLength"],
     processing: true,
     serverSide: true,
     responsive: true,
@@ -47,9 +74,49 @@ $(document).ready(function() {
     ajax: {
       url: "App/Datatables/Repartos-grid-data.php", // json datasource
       type: "post",
+      data: function(data) {
+        // Read values
+        var StatusSelect = $("select#STATUSID").val();
+        var RepartidoresSelect = $("select#Repartidores").val();
+        var SolicitanteSelect = $("select#Solicitantes").val();
+
+        console.log(
+          "Fecha de Inicio Registro desde datatable:",
+          fechaInicioRegistro
+        );
+        console.log("Fecha de Final Registro:", fechaFinalRegistro);
+        console.log("Fecha de Inicio Reparto:", fechaInicioReparto);
+        console.log("Fecha de Final Reparto:", fechaFinalReparto);
+
+        // Append to data
+        data.StatusSelect = StatusSelect;
+        data.RepartidoresSelect = RepartidoresSelect;
+        data.SolicitanteSelect = SolicitanteSelect;
+        data.FechaInicioRegistro = fechaInicioRegistro;
+        data.FechaFinalRegistro = fechaFinalRegistro;
+        data.FechaInicioReparto = fechaInicioReparto;
+        data.FechaFinalReparto = fechaFinalReparto;
+      },
     },
     lengthChange: true, // añade la lista desplegable
     order: [[0, "DESC"]],
+  });
+
+  $(document).on(
+    "change",
+    "#STATUSID, #Repartidores, #Solicitantes",
+    function() {
+      console.log("Cambio en el filtro");
+
+      dataTableRepartosDT.draw();
+    }
+  );
+
+  $(document).on("change", "#FechaInicioRegistros", function() {
+    console.log(
+      "Fecha de Inicio Registro cambio para mandar la datatable:",
+      fechaInicioRegistro
+    );
   });
 
   var dataTableRepartosDTClientes = $("#RepartosCliente2DT").DataTable({
