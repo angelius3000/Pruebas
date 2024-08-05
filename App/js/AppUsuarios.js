@@ -28,6 +28,9 @@ $(document).ready(function() {
       url: "App/Datatables/Usuarios-grid-data.php", // json datasource
       type: "post",
     },
+
+    columnDefs: [{ orderable: false, targets: [4, 5] }],
+
     lengthChange: true, // añade la lista desplegable
     order: [[0, "DESC"]],
   });

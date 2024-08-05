@@ -8,7 +8,7 @@
     <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Edison - Incidencias</title>
+    <title>Edison - Reparto</title>
 
     <!-- Styles -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -19,11 +19,22 @@
     <link href="assets/plugins/perfectscroll/perfect-scrollbar.css" rel="stylesheet">
     <link href="assets/plugins/pace/pace.css" rel="stylesheet">
     <link href="assets/plugins/highlight/styles/github-gist.css" rel="stylesheet">
-    <link href="assets/plugins/datatables/datatables.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+
+    <!-- DataTables Buttons CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css">
+
+
+    <!-- DataTables Responsive CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css">
 
     <!-- Theme Styles -->
     <link href="assets/css/main.min.css" rel="stylesheet">
     <link href="assets/css/custom.css" rel="stylesheet">
+
+    <!-- CSS de Edison -->
+    <link href="assets/css/Edison.css" rel="stylesheet">
 
     <link rel="apple-touch-icon" sizes="57x57" href="App/Graficos/Favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="App/Graficos/Favicon/apple-icon-60x60.png">
@@ -44,14 +55,12 @@
     <meta name="msapplication-TileImage" content="App/Graficos/Favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
+    <!-- Se llama a el CSS del flatpicker -->
+
+    <link href="assets/plugins/flatpickr/flatpickr.min.css" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.3/select2.min.css" integrity="sha512-iVAPZRCMdOOiZWYKdeY78tlHFUKf/PqAJEf/0bfnkxJ8MHQHqNXB/wK2y6RH/LmoQ0avRlGphSn06IMMxSW+xw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
 </head>

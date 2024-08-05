@@ -1,8 +1,8 @@
-<?php include("Connections/ConDB.php");
+<?php include("includes/HeaderScripts.php");
 
-//if ($_SESSION['TIPOUSUARIO'] != 1) {
-//    header("Location: index.php");
-//}
+if ($_SESSION['TIPOUSUARIO'] != 1) {
+    header("Location: index.php");
+}
 
 $query_TipoDeUsuario = "SELECT * FROM tipodeusuarios";
 $TipoDeUsuario = mysqli_query($conn, $query_TipoDeUsuario) or die(mysqli_error($conn));
@@ -57,18 +57,19 @@ $totalRows_clientes = mysqli_num_rows($clientes);
 
                         <div class="row">
                             <div class="col">
-                                <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalAgregarUsuarios"><i class="mdi mdi-pencil"></i>Agregar Usuario</button>
+                                <button type="button" class="btn btn-sm btn-primary waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalAgregarUsuarios"><i class="material-icons-two-tone">add</i> Agregar Usuario</button>
 
                             </div>
                         </div>
                         <br>
                         <div class="row">
-                            <table id="UsuariosDT" class="display" style="width:100%">
+                            <table id="UsuariosDT" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
                                         <th>email</th>
                                         <th>Tipo de usuario</th>
+                                        <th>Empresa</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -94,14 +95,20 @@ $totalRows_clientes = mysqli_num_rows($clientes);
     <script src="assets/plugins/perfectscroll/perfect-scrollbar.min.js"></script>
     <script src="assets/plugins/pace/pace.min.js"></script>
     <script src="assets/plugins/highlight/highlight.pack.js"></script>
-    <script src="assets/plugins/datatables/datatables.min.js"></script>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+
     <script src="assets/js/main.min.js"></script>
     <script src="assets/js/custom.js"></script>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+
     <script src="assets/js/pages/datatables.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js" integrity="sha512-Fq/wHuMI7AraoOK+juE5oYILKvSPe6GC5ZWZnvpOO/ZPdtyA29n+a5kVLP4XaLyDy9D1IBPYzdFycO33Ijd0Pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="App/js/AppUsuarios.js"></script>
+    <script src="App/js/AppCambiarContrasena.js"></script>
 
 </body>
 

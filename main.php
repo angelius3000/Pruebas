@@ -1,4 +1,8 @@
-<?php include("includes/HeaderScripts.php"); 
+<?php include("includes/HeaderScripts.php");
+
+if ($_SESSION['TIPOUSUARIO'] != 1) {
+    header("Location: index.php");
+}
 
 ?>
 
@@ -35,6 +39,10 @@
                                 <div class="page-description">
                                     <h1>Full-width Header</h1>
 
+
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1470.0296650689004!2d-106.42566092351314!3d31.698776125172365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e75d3d94598019%3A0x1f38d02956229c6d!2sEdison%20Material%20El%C3%A9ctrico!5e0!3m2!1ses-419!2smx!4v1719510658585!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
                                     <?php // ESTE ES EL QUE IMPRIME LAS SESSIONES VARIABLES
                                     echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';
                                     ?>
@@ -61,6 +69,9 @@
     <script src="assets/plugins/highlight/highlight.pack.js"></script>
     <script src="assets/js/main.min.js"></script>
     <script src="assets/js/custom.js"></script>
+
+    <script src="App/js/AppCambiarContrasena.js"></script>
+
 </body>
 
 </html>
