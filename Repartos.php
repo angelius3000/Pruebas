@@ -111,8 +111,6 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
                                             <th>Fecha de reparto</th> <!-- (6) -->
                                             <th>Hora de reparto</th> <!-- (7) -->
                                             <th>Solicitante</th> <!-- (8) -->
-                                            <th>Cliente</th> <!-- (9) -->
-                                            <th>CP</th> <!-- (10) -->
                                             <th>Receptor</th> <!-- (11) -->
                                             <th>Teléfono receptor</th> <!-- (12) -->
                                             <th>Telefono alternativo</th> <!-- (13) -->
