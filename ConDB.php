@@ -16,7 +16,7 @@ if ($_SERVER['HTTP_HOST'] == "localhost") {
 
     /* Database connection start */
     $servername = "localhost:3306";
-    $username = "edison";
+    $username = "sistemas";
     $password = "Edison2024!";
     $dbname = "edisonincidenciasp";
 }
