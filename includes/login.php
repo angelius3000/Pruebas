@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			echo "<script>window.location.href=''http://localhost/index.php?login=no';</script>";
 			exit;
 		} else {
-			echo "<script>window.location.href='https://reparto.edison.com.mx/index.php?login=no';</script>";
+			echo "<script>window.location.href='http://72.167.50.62/plesk-site-preview/pruebas.edison.com.mx/https/72.167.50.62/index.php?login=no';</script>";
 			exit;
 		}
 	}
