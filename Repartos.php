@@ -122,8 +122,7 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
                                     </thead>
                                 </table>
 
-                            <?php } else { ?>
-                                <?php if ($_SESSION['TIPOUSUARIO'] == 2) { ?>
+                            <?php } elseif ($_SESSION['TIPOUSUARIO'] == 2) { ?>
                                 <table id="RepartosCliente2DT" class="display" style="width:100%">
                                     <thead>
                                         <tr>
