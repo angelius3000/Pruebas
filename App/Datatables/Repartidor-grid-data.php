@@ -52,21 +52,23 @@ if (!empty($requestData['search']['value'])) {
     $sql_words = array();
     foreach ($search_words as $word) {
         $sql_words[] = "(
+            repartos.REPARTOID LIKE '%" . $word . "%' OR
             usuarios.PrimerNombre LIKE '%" . $word . "%' OR
             usuarios.SegundoNombre LIKE '%" . $word . "%' OR
             usuarios.ApellidoPaterno LIKE '%" . $word . "%' OR
             usuarios.ApellidoMaterno LIKE '%" . $word . "%' OR
-            clientes.NombreCliente LIKE '%" . $word . "%' OR
-            repartos.REPARTOID LIKE '%" . $word . "%' OR
-            repartos.FechaReparto LIKE '%" . $word . "%' OR
             repartos.Calle LIKE '%" . $word . "%' OR
             repartos.CP LIKE '%" . $word . "%' OR
             repartos.Receptor LIKE '%" . $word . "%' OR
             repartos.TelefonoDeReceptor LIKE '%" . $word . "%' OR
+            repartos.Surtidores LIKE '%" . $word . "%' OR
+            repartos.FechaDeRegistro LIKE '%" . $word . "%' OR
+            repartos.FechaReparto LIKE '%" . $word . "%' OR
+            repartos.HoraReparto LIKE '%" . $word . "%' OR
+            clientes.NombreCliente LIKE '%" . $word . "%' OR
             repartos.TelefonoAlternativo LIKE '%" . $word . "%' OR
             repartos.NumeroDeFactura LIKE '%" . $word . "%' OR
-            repartos.Comentarios LIKE '%" . $word . "%' OR
-            usuarios.email LIKE '%" . $word . "%'
+            repartos.Comentarios LIKE '%" . $word . "%'
         )";
     }
     $sql .= " AND " . implode(' AND ', $sql_words);
