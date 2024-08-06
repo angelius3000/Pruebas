@@ -59,7 +59,6 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
             <?php include("includes/Menu.php") ?>
 
 
-
         </div>
         <div class="app-container">
             <div class="search">
