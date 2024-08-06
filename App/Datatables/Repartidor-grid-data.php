@@ -36,7 +36,7 @@ $columns = array(
 // getting total number records without any search
 $sql = "SELECT * FROM repartos
 LEFT JOIN status ON status.STATUSID = repartos.STATUSID
-WHERE repartos.STATUSID NOT IN (1, 5, 6);
+WHERE repartos.STATUSID NOT IN (5, 6);
 ";
 $query = mysqli_query($conn, $sql) or die("Usuario-grid-data.php: get employees");
 $totalData = mysqli_num_rows($query);
