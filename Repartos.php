@@ -99,7 +99,7 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
                         <br>
                         <div class="row">
 
-                            <?php if ($_SESSION['TIPOUSUARIO'] == 4) { ?>
+                            <?php if ($_SESSION['TIPOUSUARIO'] == 2) { ?>
                                 <table id="RepartosCliente2DT" class="display" style="width:100%">
                                     <thead>
                                         <tr>
