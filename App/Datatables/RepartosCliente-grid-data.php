@@ -16,15 +16,20 @@ $columns = array(
     0 => 'REPARTOID', //Folio
     1 => 'STATUSID', //Estatus
     2 => 'Calle', //Dirección
-    3 => 'Fecha', //Fecha de registro
-    4 => 'FechaReparto', //Fecha de reparto
-    5 => 'HoraReparto', //Hora de reparto
-    6 => 'USUARIOID', //Solicitante
-    7 => 'Receptor', //Receptor
-    8 => 'TelefonoDeReceptor', //Teléfono receptor
-    9 => 'TelefonoAlternativo', //Teléfono alternativo
-    10 => 'NumeroFactura', //Numero de factura
-    11 => 'Comentarios', //Comentarios
+    3 => 'Surtidores', //Surtidor
+    4 => 'USUARIOIDRepartidor', //Repartidor
+    5 => 'Fecha', //Fecha de registro
+    6 => 'FechaReparto', //Fecha de reparto
+    7 => 'HoraReparto', //Hora de reparto
+    8 => 'USUARIOID', //Solicitante
+    9 => 'CLIENTEID', //Cliente
+    10 => 'CP', //Codigo Postal
+    11 => 'Receptor', //Receptor
+    12 => 'TelefonoDeReceptor', //Teléfono receptor
+    13 => 'TelefonoAlternativo', //Teléfono alternativo
+    14 => 'NumeroFactura', //Numero de factura
+    15 => 'Comentarios', //Comentarios
+    16 => '' //Botones
 
 
 );
