@@ -119,6 +119,26 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
                                     </thead>
                                 </table>
 
+                            <?php } elseif ($_SESSION['TIPOUSUARIO'] == 2) { ?>
+                                <table id="RepartosCliente2DT" class="display" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Folio2</th> <!-- (0) -->
+                                            <th>Estatus</th> <!-- (1) -->
+                                            <th>Dirección</th> <!-- (2) -->
+                                            <th>Fecha de registro</th> <!-- (5) -->
+                                            <th>Fecha de reparto</th> <!-- (6) -->
+                                            <th>Hora de reparto</th> <!-- (7) -->
+                                            <th>Solicitante</th> <!-- (8) -->
+                                            <th>Receptor</th> <!-- (11) -->
+                                            <th>Teléfono receptor</th> <!-- (12) -->
+                                            <th>Telefono alternativo</th> <!-- (13) -->
+                                            <th>Numero de factura</th> <!-- (14) -->
+                                            <th>Comentarios</th> <!-- (15) -->
+                                        </tr>
+                                    </thead>
+                                </table>
+
                             <?php } else { ?>
 
 
