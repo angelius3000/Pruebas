@@ -44,7 +44,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 $sql = "SELECT * FROM repartos
 LEFT JOIN status ON status.STATUSID = repartos.STATUSID
-WHERE 1=1 AND repartos.STATUSID NOT IN (1, 5, 6) ";
+WHERE 1=1 AND repartos.STATUSID NOT IN (5, 6) ";
 
 if (!empty($requestData['search']['value'])) {
 
