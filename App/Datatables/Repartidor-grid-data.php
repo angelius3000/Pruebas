@@ -13,18 +13,22 @@ $TIPODEUSUARIOID = $_SESSION['TIPODEUSUARIOID'];
 
 $columns = array(
     // datatable column index  => database column name
-    0 => 'REPARTOID',
-    1 => 'USUARIOID',
-    3 => 'CLIENTEID',
-    4 => 'Fecha',
-    5 => 'Calle',
-    6 => 'CP',
-    7 => 'Receptor',
-    8 => 'TelefonoDeReceptor',
-    9 => 'TelefonoAlternativo',
-    10 => 'NumeroFactura',
-    11 => 'Comentarios',
-    12 => ''
+    0 => 'REPARTOID', //Folio
+    1 => 'STATUSID', //Estatus
+    2 => 'Calle', //Dirección
+    3 => 'CP', //Codigo Postal
+    4 => 'Receptor', //Receptor
+    5 => 'TelefonoDeReceptor', //Teléfono receptor
+    6 => 'USUARIOIDRepartidor', //Repartidor
+    7 => 'Surtidores', //Surtidor
+    8 => 'Fecha', //Fecha de registro
+    9 => 'FechaReparto', //Fecha de reparto
+    10 => 'HoraReparto', //Hora de reparto  
+    11 => 'USUARIOID', //Solicitante
+    12 => 'CLIENTEID', //Cliente
+    13 => 'TelefonoAlternativo', //Teléfono alternativo
+    14 => 'NumeroFactura', //Numero de factura
+    15 => 'Comentarios', //Comentarios
 
 
 );
@@ -122,17 +126,20 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
 
     $nestedData[] = '<strong>' . $row["REPARTOID"] . '</strong>';
     $nestedData[] = $BadgeStatus;
-    $nestedData[] = $row["PrimerNombre"] . ' ' . $row["SegundoNombre"] . ' ' . $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"];
-    $nestedData[] = $row["NombreCliente"];
-    $nestedData[] =  SoloFecha($row["FechaDeRegistro"]);
     $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"];
     $nestedData[] = $row["CP"];
     $nestedData[] = $row["Receptor"];
     $nestedData[] = $row["TelefonoDeReceptor"];
+    $nestedData[] = $row["PrimerNombre_REP"] . ' ' . $row["SegundoNombre_REP"] . ' ' . $row["ApellidoPaterno_REP"] . ' ' . $row["ApellidoMaterno_REP"]; //(4) Repartidor
+    $nestedData[] = $row["Surtidores"]; //(3) Surtidor
+    $nestedData[] =  SoloFecha($row["FechaDeRegistro"]);
+    $nestedData[] = $row["FechaRepartoFormatted"]; //(6) Fecha de reparto
+    $nestedData[] = $row["HoraReparto"]; //(7) Hora de reparto
+    $nestedData[] = $row["PrimerNombre"] . ' ' . $row["SegundoNombre"] . ' ' . $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"];
+    $nestedData[] = $row["NombreCliente"];
     $nestedData[] = $row["TelefonoAlternativo"];
     $nestedData[] = $row["NumeroDeFactura"];
     $nestedData[] = $row["Comentarios"];
-    $nestedData[] = $BotonEditar . $BotonBorrar;
 
     $data[] = $nestedData;
 }
