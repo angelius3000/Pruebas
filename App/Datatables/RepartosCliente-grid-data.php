@@ -13,19 +13,18 @@ $CLIENTEID = $_SESSION['CLIENTEID'];
 
 $columns = array(
     // datatable column index  => database column name
-    0 => 'REPARTOID',
-    1 => 'STATUSID',
-    2 => 'USUARIOID',
-    3 => 'CLIENTEID',
-    4 => 'Fecha',
-    5 => 'Calle',
-    6 => 'CP',
-    7 => 'Receptor',
-    8 => 'TelefonoDeReceptor',
-    9 => 'TelefonoAlternativo',
-    10 => 'NumeroFactura',
-    11 => 'Comentarios',
-    12 => ''
+    0 => 'REPARTOID', //Folio
+    1 => 'STATUSID', //Estatus
+    2 => 'Calle', //Dirección
+    3 => 'Fecha', //Fecha de registro
+    4 => 'FechaReparto', //Fecha de reparto
+    5 => 'HoraReparto', //Hora de reparto
+    6 => 'USUARIOID', //Solicitante
+    7 => 'Receptor', //Receptor
+    8 => 'TelefonoDeReceptor', //Teléfono receptor
+    9 => 'TelefonoAlternativo', //Teléfono alternativo
+    10 => 'NumeroFactura', //Numero de factura
+    11 => 'Comentarios', //Comentarios
 
 
 );
