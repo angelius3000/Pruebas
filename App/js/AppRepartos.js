@@ -160,7 +160,7 @@ $(document).ready(function() {
     processing: true,
     serverSide: true,
     responsive: true,
-    pageLength: 10,
+    pageLength: 5,
     language: {
       search: "Búsqueda:",
       lengthMenu: "Mostrar _MENU_ filas",
