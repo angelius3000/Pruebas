@@ -123,7 +123,7 @@ $(document).ready(function() {
     // Tabla General de Usuarios
 
     dom: "Bifrtip",
-    buttons: ["excelHtml5", "pageLength"],
+    buttons: [""],
     processing: true,
     serverSide: true,
     responsive: true,
