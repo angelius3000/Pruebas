@@ -282,7 +282,7 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
     <script src="assets/plugins/highlight/highlight.pack.js"></script>
 
 
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/js/jquery.dataTables.js"></script>
 
     <script src="assets/js/main.min.js"></script>
     <script src="assets/js/custom.js"></script>
