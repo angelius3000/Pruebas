@@ -292,12 +292,12 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
     <script type="text/javascript" charset="utf8" src="assets/js/dataTables.buttons.min.js"></script>
     <script type="text/javascript" charset="utf8" src="assets/js/buttons.html5.min.js"></script>
     <!-- JSZip for Excel export -->
-    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/js/jszip.min.js"></script>
     <!-- pdfmake for PDF export -->
-    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/js/pdfmake.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/js/vfs_fonts.js"></script>
 
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/js/dataTables.responsive.min.js"></script>
 
 
 
