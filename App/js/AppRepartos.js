@@ -160,6 +160,7 @@ $(document).ready(function() {
     processing: true,
     serverSide: true,
     responsive: true,
+    searching: false,
     pageLength: 5,
     language: {
       search: "Búsqueda:",
