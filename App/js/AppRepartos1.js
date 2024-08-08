@@ -123,7 +123,7 @@ $(document).ready(function() {
     // Tabla General de Usuarios
 
     dom: "Bifrtip",
-    buttons: [],
+    buttons: ["excelHtml5", "pdfHtml5", "pageLength"],
     processing: true,
     serverSide: true,
     responsive: true,
@@ -146,40 +146,6 @@ $(document).ready(function() {
     loadingRecords: "Cargando...",
     ajax: {
       url: "App/Datatables/RepartosCliente-grid-data.php", // json datasource
-      type: "post",
-    },
-    lengthChange: true, // añade la lista desplegable
-    order: [[0, "DESC"]],
-  });
-
-  var dataTableRepartosDTClientes = $("#RepartosRepartidor2DT").DataTable({
-    // Tabla General de Usuarios
-
-    dom: "Bifrtip",
-    buttons: [],
-    processing: true,
-    serverSide: true,
-    responsive: true,
-    searching: false,
-    pageLength: 5,
-    language: {
-      search: "Búsqueda:",
-      lengthMenu: "Mostrar _MENU_ filas",
-      zeroRecords: "Sin información",
-      info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-      paginate: {
-        first: "Primera",
-        last: "Última",
-        next: "Siguiente",
-        previous: "Anterior",
-      },
-      infoEmpty: "Sin repartos registradas",
-      infoFiltered: "(filtrado de _MAX_ registros)",
-    },
-    processing: "Procesando...",
-    loadingRecords: "Cargando...",
-    ajax: {
-      url: "App/Datatables/Repartidor-grid-data.php", // json datasource
       type: "post",
     },
     lengthChange: true, // añade la lista desplegable

@@ -13,19 +13,18 @@ $CLIENTEID = $_SESSION['CLIENTEID'];
 
 $columns = array(
     // datatable column index  => database column name
-    0 => 'REPARTOID',
-    1 => 'STATUSID',
-    2 => 'USUARIOID',
-    3 => 'CLIENTEID',
-    4 => 'Fecha',
-    5 => 'Calle',
-    6 => 'CP',
-    7 => 'Receptor',
-    8 => 'TelefonoDeReceptor',
-    9 => 'TelefonoAlternativo',
-    10 => 'NumeroFactura',
-    11 => 'Comentarios',
-    12 => ''
+    0 => 'REPARTOID', //Folio
+    1 => 'STATUSID', //Estatus
+    2 => 'Calle', //Dirección
+    3 => 'Fecha', //Fecha de registro
+    4 => 'FechaReparto', //Fecha de reparto
+    5 => 'HoraReparto', //Hora de reparto
+    6 => 'USUARIOID', //Solicitante
+    7 => 'Receptor', //Receptor
+    8 => 'TelefonoDeReceptor', //Teléfono receptor
+    9 => 'TelefonoAlternativo', //Teléfono alternativo
+    10 => 'NumeroFactura', //Numero de factura
+    11 => 'Comentarios', //Comentarios
 
 
 );
@@ -127,17 +126,16 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
 
     $nestedData[] = '<strong>' . $row["REPARTOID"] . '</strong>';
     $nestedData[] = $BadgeStatus;
-    $nestedData[] = $row["PrimerNombre"] . ' ' . $row["SegundoNombre"] . ' ' . $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"];
-    $nestedData[] = $row["NombreCliente"];
-    $nestedData[] =  SoloFecha($row["FechaDeRegistro"]);
     $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"];
-    $nestedData[] = $row["CP"];
+    $nestedData[] =  SoloFecha($row["FechaDeRegistro"]);
+    $nestedData[] = $row["FechaRepartoFormatted"]; //(6) Fecha de reparto
+    $nestedData[] = $row["HoraReparto"]; //(7) Hora de reparto
+    $nestedData[] = $row["PrimerNombre"] . ' ' . $row["SegundoNombre"] . ' ' . $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"];
     $nestedData[] = $row["Receptor"];
     $nestedData[] = $row["TelefonoDeReceptor"];
     $nestedData[] = $row["TelefonoAlternativo"];
     $nestedData[] = $row["NumeroDeFactura"];
     $nestedData[] = $row["Comentarios"];
-    $nestedData[] = $BotonEditar . $BotonBorrar;
 
     $data[] = $nestedData;
 }
