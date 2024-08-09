@@ -10,7 +10,7 @@ $ApellidoMaternoEditar = mysqli_real_escape_string($conn, $_POST['ApellidoMatern
 $emailEditar = mysqli_real_escape_string($conn, $_POST['emailEditar']);
 $TelefonoEditar = mysqli_real_escape_string($conn, $_POST['TelefonoEditar']);
 $USUARIOIDEditar = mysqli_real_escape_string($conn, $_POST['USUARIOIDEditar']);
-$CLIENTEIDEditar = mysqli_real_escape_string($conn, $_POST['CLIENTEIDEditar']);
+$CLIENTEID = isset($_POST['CLIENTEID']) ? mysqli_real_escape_string($conn, $_POST['CLIENTEID']) : 0;
 
 // Build the base query
 $sql = "UPDATE usuarios SET 
