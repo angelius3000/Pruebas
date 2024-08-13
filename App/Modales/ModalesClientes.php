@@ -143,7 +143,7 @@
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12 mb-4">
 
-                                                    <label for="TelefonoClienteEditar" class="form-label">Apellido materno</label>
+                                                    <label for="TelefonoClienteEditar" class="form-label">Teléfono</label>
                                                     <input type="text" class="form-control" id="TelefonoClienteEditar" autocomplete="off" placeholder="" name="TelefonoClienteEditar">
 
                                                 </div>
