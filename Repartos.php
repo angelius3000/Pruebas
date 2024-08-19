@@ -215,13 +215,13 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
                                 <?php if ($_SESSION['TIPOUSUARIO'] != 2) { ?>
                                     <div class="row">
                                         <div class="col-lg-6 col-sm-12 mb-4 border-right pe-4">
-                                            <label for="NombreCliente" class="form-label">Fecha de Registro</label>
+                                            <label for="FechaRegistro" class="form-label">Fecha de Registro</label>
                                             <input class="form-control flatpickr1" id="FechaInicioRegistro" type="text" placeholder="Inicio">
                                             <input class="form-control flatpickr1" id="FechaFinalRegistro" type="text" placeholder="Final">
                                         </div>
 
                                         <div class="col-lg-6 col-sm-12 mb-4 ps-4">
-                                            <label for="NombreCliente" class="form-label">Fecha de Reparto</label>
+                                            <label for="FechaReparto" class="form-label">Fecha de Reparto</label>
                                             <input class="form-control flatpickr1" id="FechaInicioReparto" type="text" placeholder="Inicio">
                                             <input class="form-control flatpickr1" id="FechaFinalReparto" type="text" placeholder="Final">
                                         </div>
