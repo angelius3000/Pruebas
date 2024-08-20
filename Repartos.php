@@ -221,7 +221,7 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
                                         </div>
 
                                         <div class="col-lg-6 col-sm-12 mb-4 ps-4">
-                                            <label for="FechaReparto" class="form-label">Fecha de Reparto</label>
+                                            <label for="FechaInicioReparto" class="form-label">Fecha de Reparto</label>
                                             <input class="form-control flatpickr1" id="FechaInicioReparto" type="text" placeholder="Inicio">
                                             <input class="form-control flatpickr1" id="FechaFinalReparto" type="text" placeholder="Final">
                                         </div>
