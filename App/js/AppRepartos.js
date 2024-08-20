@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+  $(".select2").select2();
   // Variables para almacenar las fechas
   var fechaInicioRegistro;
   var fechaFinalRegistro;
@@ -37,7 +39,7 @@ $(document).ready(function() {
 
   $("body").tooltip({ selector: '[data-toggle="tooltip"]' });
 
-  $(".select2").select2();
+  
 
   // Mandar el Datepicker
 
