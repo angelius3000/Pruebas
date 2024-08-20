@@ -328,7 +328,7 @@
                                             <div class="row FechasEntregaEscondidos">
 
                                                 <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="Programacion" class="form-label">Programación</label>
+                                                    <label for="FechayHoraReparto" class="form-label">Programación</label>
 
                                                     <input class="form-control flatpickr2" id="FechayHoraReparto" type="text" placeholder="Registra la fecha programada de reparto...">
                                                 </div>
