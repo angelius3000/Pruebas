@@ -1,8 +1,9 @@
 $(document).ready(function() {
 
-  $(".select2").select2()({
+  $(".select2").select2({
     dropdownParent: $('#myModal .modal-body')
-});
+  });
+
 
   // Variables para almacenar las fechas
   var fechaInicioRegistro;
