@@ -115,18 +115,22 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
     } else {
         $BotonEditar = '';
     }
-    
-    if ($row["EnlaceMapaGoogle"] !== NULL) {
-        $BotonMapa = '<a href="' . $row["EnlaceMapaGoogle"] . '" class="btn btn-sm btn-secondary waves-effect width-md waves-light" target="_blank" >Mapa &nbsp; <i class="material-icons"> arrow_forward</i></a>';
-    } else {
-        $BotonMapa = '';
 
+   
     if (($row['USUARIOID'] == $_SESSION['USUARIOID']) && ($row['STATUSID'] == '1') || $_SESSION['TIPOUSUARIO'] == '1') {
 
         $BotonBorrar = '<button type="button" class="btn btn-sm btn-danger waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalBorrarReparto" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')"><i class="mdi mdi-pencil"></i>Borrar</button>';
     } else {
         $BotonBorrar = '';
     }
+
+    if ($row["EnlaceMapaGoogle"] !== NULL) {
+        $BotonMapa = '<a href="' . $row["EnlaceMapaGoogle"] . '" class="btn btn-sm btn-secondary waves-effect width-md waves-light" target="_blank" >Mapa &nbsp; <i class="material-icons"> arrow_forward</i></a>';
+    } else {
+        $BotonMapa = '';
+    }
+
+    
 
     $nestedData = array();
 
