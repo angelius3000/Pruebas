@@ -128,10 +128,10 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
 
     $nestedData[] = '<strong>' . $row["REPARTOID"] . '</strong>';
     $nestedData[] = $BadgeStatus;
-    $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"];
+    $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"] . '<br>' . $BotonMapa; //(2) Dirección
     $nestedData[] = $row["CP"];
     $nestedData[] = $row["Receptor"];
-    $nestedData[] = $row["TelefonoDeReceptor"];
+    $nestedData[] = '<a href="tel:' . $row["TelefonoDeReceptor"] . '">' . $row["TelefonoDeReceptor"] . '</a>'; //(12) Teléfono de receptor
     $nestedData[] = $row["PrimerNombre_REP"] . ' ' . $row["SegundoNombre_REP"] . ' ' . $row["ApellidoPaterno_REP"] . ' ' . $row["ApellidoMaterno_REP"]; //(4) Repartidor
     $nestedData[] = $row["Surtidores"]; //(3) Surtidor
     $nestedData[] =  SoloFecha($row["FechaDeRegistro"]);
@@ -139,7 +139,7 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
     $nestedData[] = $row["HoraReparto"]; //(7) Hora de reparto
     $nestedData[] = $row["PrimerNombre"] . ' ' . $row["SegundoNombre"] . ' ' . $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"];
     $nestedData[] = $row["NombreCliente"];
-    $nestedData[] = $row["TelefonoAlternativo"];
+    $nestedData[] = '<a href="tel:' . $row["TelefonoAlternativo"] . '">' . $row["TelefonoAlternativo"] . '</a>'; //(13) Teléfono alternativo$row["TelefonoAlternativo"];
     $nestedData[] = $row["NumeroDeFactura"];
     $nestedData[] = $row["Comentarios"];
 
