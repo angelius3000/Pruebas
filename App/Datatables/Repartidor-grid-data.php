@@ -115,7 +115,11 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
     } else {
         $BotonEditar = '';
     }
-
+    
+    if ($row["EnlaceMapaGoogle"] !== NULL) {
+        $BotonMapa = '<a href="' . $row["EnlaceMapaGoogle"] . '" class="btn btn-sm btn-secondary waves-effect width-md waves-light" target="_blank" >Mapa &nbsp; <i class="material-icons"> arrow_forward</i></a>';
+    } else {
+        $BotonMapa = '';
 
     if (($row['USUARIOID'] == $_SESSION['USUARIOID']) && ($row['STATUSID'] == '1') || $_SESSION['TIPOUSUARIO'] == '1') {
 
