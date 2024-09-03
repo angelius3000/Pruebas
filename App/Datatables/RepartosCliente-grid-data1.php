@@ -109,7 +109,7 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
     } else if ($row["STATUSID"] == 7) {
         $BadgeStatus = '<span class="badge badge-successParcial"  ' . $MandarModal . '>Entrega Parcial</span>';
     } else if ($row["STATUSID"] == 8) {
-        $BadgeStatus = '<span class="badge badge-light text-dark"  ' . $MandarModal . '>Recolectado</span>';
+        $BadgeStatus = '<span class="badge badge-success"  ' . $MandarModal . '>Recolectado</span>';
     }
 
     if ($row['USUARIOID'] == $_SESSION['USUARIOID'] || $_SESSION['TIPOUSUARIO'] == '1') {
