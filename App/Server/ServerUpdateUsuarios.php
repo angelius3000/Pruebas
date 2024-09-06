@@ -21,7 +21,7 @@ $sql = "UPDATE usuarios SET
     email = '$emailEditar',
     Telefono = '$TelefonoEditar',
     TIPODEUSUARIOID = '$TIPODEUSUARIOIDEditar'
-    CLIENTEID = '$CLIENTEIDEditar'
+    -- CLIENTEID = '$CLIENTEIDEditar'
     WHERE USUARIOID = '$USUARIOIDEditar'";
 
 if (!mysqli_query($conn, $sql)) {
