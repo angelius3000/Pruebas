@@ -157,7 +157,7 @@
 
                                                         <?php while ($row_TipoDeUsuario = mysqli_fetch_assoc($TipoDeUsuario)) { ?>
 
-                                                            <option value="<?php echo $row_TipoDeUsuario['TIPODEUSUARIOIDEditar']; ?>"><?php echo $row_TipoDeUsuario['TipoDeUsuario']; ?></option>
+                                                            <option value="<?php echo $row_TipoDeUsuario['TIPODEUSUARIOID']; ?>"><?php echo $row_TipoDeUsuario['TipoDeUsuario']; ?></option>
 
                                                         <?php } ?>
 
