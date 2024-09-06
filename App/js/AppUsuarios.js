@@ -144,7 +144,19 @@ $(document).ready(function() {
       $("select#CLIENTEID").attr("required", false);
     }
   });
- 
+  $(document).on("change", "#TIPODEUSUARIOIDEditar", function() {
+    var TipoDeUsuario = $(this).val();
+
+    if (TipoDeUsuario == 4) {
+      $("#ClientesEscondidosEditar").show();
+
+      // Ponerle el parametro "required al select de Clientes"
+      $("select#CLIENTEIDEditar").attr("required", true);
+    } else {
+      $("#ClientesEscondidosEditar").hide();
+      $("select#CLIENTEIDEditar").attr("required", false);
+    }
+  });
 });
 
 function TomarDatosParaModalUsuarios(val) {
