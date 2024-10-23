@@ -440,6 +440,26 @@ function TomarDatosParaModalRepartos(val) {
 
       $("input#REPARTOIDBorrar").val(response.REPARTOID);
 
+      // Campos para el modal #ModalClonarReparto
+
+      $("select#CLIENTEIDClonar").val(response.CLIENTEID);
+      $("input#NumeroDeFacturaClonar").val(response.NumeroDeFactura);
+      $("input#CalleClonar").val(response.Calle);
+      $("input#ColoniaClonar").val(response.Colonia);
+      $("input#NumeroEXTClonar").val(response.NumeroEXT);
+      $("input#ColoniaClonar").val(response.Colonia);
+      $("input#CPClonar").val(response.CP);
+      $("input#CiudadClonar").val(response.Ciudad);
+      $("input#EstadoClonar").val(response.Estado);
+      $("input#EnlaceGoogleMapsClonar").val(response.EnlaceMapaGoogle);
+      $("input#ReceptorClonar").val(response.Receptor);
+      $("input#TelefonoDeReceptorClonar").val(response.TelefonoDeReceptor);
+      $("input#TelefonoAlternativoClonar").val(response.TelefonoAlternativo);
+      $("textarea#ComentariosClonar").val(response.Comentarios);
+
+      $("input#REPARTOIDClonar").val(response.REPARTOID);
+      
+
       // Para el editor de Status
       $("input#REPARTOIDEditarStatus").val(response.REPARTOID);
       $("select#STATUSIDEditar").val(response.STATUSID);
