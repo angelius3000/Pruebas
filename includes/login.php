@@ -32,11 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			exit;
 		} else if ($_SERVER['HTTP_HOST'] == "localhost") {
 
-			echo "<script>window.location.href='http://localhost/DesarrolloWeb/edisonreparto/Repartos.php';</script>";
+			echo "<script>window.location.href='http://localhost/DesarrolloWeb/pruebas/Repartos.php';</script>";
 			exit;
 		} else {
 
-			echo "<script>window.location.href='https://reparto.edison.com.mx/Repartos.php';</script>";
+			echo "<script>window.location.href='https://pruebas.edison.com.mx/Repartos.php';</script>";
 			exit;
 		}
 	} else { // Unsuccessful!
@@ -44,11 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if ($_SERVER['HTTP_HOST'] == "local.edison:8888") {
 			echo "<script>window.location.href='http://local.edison:8888/index.php?login=no';</script>";
 			exit;
-		} else if ($_SERVER['HTTP_HOST'] == "localhost/edisonreparto") {
+		} else if ($_SERVER['HTTP_HOST'] == "localhost/pruebas") {
 			echo "<script>window.location.href=''http://localhost/index.php?login=no';</script>";
 			exit;
 		} else {
-			echo "<script>window.location.href='https://reparto.edison.com.mx/index.php?login=no';</script>";
+			echo "<script>window.location.href='https://pruebas.edison.com.mx/index.php?login=no';</script>";
 			exit;
 		}
 	}
