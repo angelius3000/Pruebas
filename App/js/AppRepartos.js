@@ -443,7 +443,7 @@ function TomarDatosParaModalRepartos(val) {
       // Campos para el modal #ModalClonarReparto
 
       $("select#CLIENTEIDClonar").val(response.CLIENTEID);
-      //$("input#NumeroDeFacturaClonar").val(response.NumeroDeFactura);
+      $("input#NumeroDeFacturaClonar").val(response.NumeroDeFactura);
       $("input#CalleClonar").val(response.Calle);
       $("input#ColoniaClonar").val(response.Colonia);
       $("input#NumeroEXTClonar").val(response.NumeroEXT);
