@@ -281,6 +281,129 @@
     </div>
 </div>
 
+<!-- MODAL DE CLONACION -->
+<div class="modal" id="ModalClonarReparto">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Clonar reparto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+            </div>
+            <form data-parsley-validate class="forms-sample" id="ValidacionClonarRepartos">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="CLIENTEIDClonar" class="form-label">Cliente ID</label>
+                                                    <select class="form-select select2" name="CLIENTEIDClonar" id="CLIENTEIDClonar" aria-label="Default select example" required>
+                                                        <option selected>Selecciona cliente</option>
+
+                                                        <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
+
+                                                            <option value="<?php echo $row_clientes['CLIENTEID']; ?>">
+
+                                                                <?php
+                                                                if ($row_clientes["CLCSIAN"] != NULL) {
+
+                                                                    $NumeroDeCredito = " - " . $row_clientes["CLCSIAN"];
+                                                                } else {
+
+                                                                    $NumeroDeCredito = " ";
+                                                                }
+
+                                                                echo $row_clientes['CLIENTESIAN'] . $NumeroDeCredito . " - " . $row_clientes['NombreCliente']; ?>
+
+                                                            </option>
+
+                                                        <?php }
+
+                                                        // Reset the pointer to the beginning
+                                                        mysqli_data_seek($clientes, 0);
+
+                                                        ?>
+
+                                                    </select>
+
+                                                </div>
+
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="NumeroDeFacturaClonar" class="form-label">Número de Factura</label>
+                                                    <input type="text" class="form-control" id="NumeroDeFacturaClonar" autocomplete="off" name="NumeroDeFacturaClonar" required>
+                                                </div>
+
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="CalleClonar" class="form-label">Calle</label>
+                                                    <input type="text" class="form-control" id="CalleClonar" autocomplete="off" name="CalleClonar" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="NumeroEXTClonar" class="form-label">Número Exterior</label>
+                                                    <input type="text" class="form-control" id="NumeroEXTClonar" autocomplete="off" name="NumeroEXTClonar" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="ColoniaClonar" class="form-label">Colonia</label>
+                                                    <input type="text" class="form-control" id="ColoniaClonar" autocomplete="off" name="ColoniaClonar" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="CPClonar" class="form-label">Código Postal</label>
+                                                    <input type="text" class="form-control" id="CPClonar" autocomplete="off" name="CPClonar" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="CiudadClonar" class="form-label">Ciudad</label>
+                                                    <input type="text" class="form-control" id="CiudadClonar" autocomplete="off" name="CiudadClonar" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="EstadoClonar" class="form-label">Estado</label>
+                                                    <input type="text" class="form-control" id="EstadoClonar" autocomplete="off" name="EstadoClonar" required>
+                                                </div>
+
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="EnlaceGoogleMapsClonar" class="form-label">Enlace Google Maps</label>
+                                                    <input type="text" class="form-control" id="EnlaceGoogleMapsClonar" autocomplete="off" name="EnlaceGoogleMapsClonar">
+                                                </div>
+
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="ReceptorClonar" class="form-label">Receptor</label>
+                                                    <input type="text" class="form-control" id="ReceptorClonar" autocomplete="off" name="ReceptorClonar" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="TelefonoDeReceptorClonar" class="form-label">Teléfono del Receptor</label>
+                                                    <input type="text" class="form-control" id="TelefonoDeReceptorClonar" autocomplete="off" name="TelefonoDeReceptorClonar" required>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                    <label for="TelefonoAlternativoClonar" class="form-label">Teléfono Alternativo</label>
+                                                    <input type="text" class="form-control" id="TelefonoAlternativoClonar" autocomplete="off" name="TelefonoAlternativoClonar">
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="ComentariosClonar" class="form-label">Comentarios</label>
+                                                    <textarea class="form-control" id="ComentariosClonar" name="ComentariosClonar" rows="4"></textarea>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+
+                    <input type="hidden" class="form-control" id="REPARTOIDClonar" name="REPARTOIDClonar">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Editar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!-- MODAL DE CAMBIO DE STATUS -->
 
 <div class="modal" id="ModalCambioStatus">
@@ -328,7 +451,7 @@
                                             <div class="row FechasEntregaEscondidos">
 
                                                 <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="Programacion" class="form-label">Programación</label>
+                                                    <label for="FechayHoraReparto" class="form-label">Programación</label>
 
                                                     <input class="form-control flatpickr2" id="FechayHoraReparto" type="text" placeholder="Registra la fecha programada de reparto...">
                                                 </div>

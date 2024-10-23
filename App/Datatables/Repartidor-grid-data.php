@@ -107,6 +107,10 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
         $BadgeStatus = '<span class="badge badge-success" ' . $MandarModal . '>Entregado</span>';
     } else if ($row["STATUSID"] == 6) {
         $BadgeStatus = '<span class="badge badge-danger"  ' . $MandarModal . '>Cancelado</span>';
+    } else if ($row["STATUSID"] == 7) {
+        $BadgeStatus = '<span class="badge badge-successParcial"  ' . $MandarModal . '>Entrega Parcial</span>';
+    } else if ($row["STATUSID"] == 8) {
+        $BadgeStatus = '<span class="badge badge-success"  ' . $MandarModal . '>Recolectado</span>';
     }
 
     if ($row['USUARIOID'] == $_SESSION['USUARIOID'] || $_SESSION['TIPOUSUARIO'] == '1') {
@@ -116,7 +120,7 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
         $BotonEditar = '';
     }
 
-
+   
     if (($row['USUARIOID'] == $_SESSION['USUARIOID']) && ($row['STATUSID'] == '1') || $_SESSION['TIPOUSUARIO'] == '1') {
 
         $BotonBorrar = '<button type="button" class="btn btn-sm btn-danger waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalBorrarReparto" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')"><i class="mdi mdi-pencil"></i>Borrar</button>';
@@ -124,22 +128,30 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
         $BotonBorrar = '';
     }
 
+    if ($row["EnlaceMapaGoogle"] !== NULL) {
+        $BotonMapa = '<a href="' . $row["EnlaceMapaGoogle"] . '" class="btn btn-sm btn-secondary waves-effect width-md waves-light" target="_blank" >Mapa &nbsp; <i class="material-icons"> arrow_forward</i></a>';
+    } else {
+        $BotonMapa = '';
+    }
+
+    
+
     $nestedData = array();
 
     $nestedData[] = '<strong>' . $row["REPARTOID"] . '</strong>';
     $nestedData[] = $BadgeStatus;
-    $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"];
+    $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"] . '<br>' . $BotonMapa; //(2) Dirección
     $nestedData[] = $row["CP"];
     $nestedData[] = $row["Receptor"];
-    $nestedData[] = $row["TelefonoDeReceptor"];
+    $nestedData[] = '<a href="tel:' . $row["TelefonoDeReceptor"] . '">' . $row["TelefonoDeReceptor"] . '</a>'; //(12) Teléfono de receptor
     $nestedData[] = $row["PrimerNombre_REP"] . ' ' . $row["SegundoNombre_REP"] . ' ' . $row["ApellidoPaterno_REP"] . ' ' . $row["ApellidoMaterno_REP"]; //(4) Repartidor
     $nestedData[] = $row["Surtidores"]; //(3) Surtidor
-    $nestedData[] =  SoloFecha($row["FechaDeRegistro"]);
+    $nestedData[] = SoloFecha($row["FechaDeRegistro"]);
     $nestedData[] = $row["FechaRepartoFormatted"]; //(6) Fecha de reparto
     $nestedData[] = $row["HoraReparto"]; //(7) Hora de reparto
     $nestedData[] = $row["PrimerNombre"] . ' ' . $row["SegundoNombre"] . ' ' . $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"];
     $nestedData[] = $row["NombreCliente"];
-    $nestedData[] = $row["TelefonoAlternativo"];
+    $nestedData[] = '<a href="tel:' . $row["TelefonoAlternativo"] . '">' . $row["TelefonoAlternativo"] . '</a>'; //(13) Teléfono alternativo$row["TelefonoAlternativo"];
     $nestedData[] = $row["NumeroDeFactura"];
     $nestedData[] = $row["Comentarios"];
 

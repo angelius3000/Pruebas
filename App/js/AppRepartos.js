@@ -1,4 +1,10 @@
 $(document).ready(function() {
+
+  $(".select2").select2({
+    dropdownParent: "#modal-container"
+  });
+
+
   // Variables para almacenar las fechas
   var fechaInicioRegistro;
   var fechaFinalRegistro;
@@ -37,7 +43,7 @@ $(document).ready(function() {
 
   $("body").tooltip({ selector: '[data-toggle="tooltip"]' });
 
-  $(".select2").select2();
+  
 
   // Mandar el Datepicker
 
@@ -186,7 +192,7 @@ $(document).ready(function() {
     order: [[0, "DESC"]],
   });
 
-  // Para Agregar Usuarios
+  // Para Agregar Repartos
   $("#ValidacionAgregarRepartos").on("submit", function(e) {
     var form = $(this);
 
@@ -212,6 +218,35 @@ $(document).ready(function() {
       }).done(function() {});
 
       $("#ModalAgregarReparto").modal("toggle");
+    }
+  });
+
+  // Para Clonar Repartos
+  $("#ValidacionClonarRepartos").on("submit", function(e) {
+    var form = $(this);
+
+    form.parsley().validate();
+
+    if (form.parsley().isValid()) {
+      //prevent Default functionality
+      e.preventDefault();
+
+      // data string
+      var dataString = form.serialize();
+
+      // ajax
+      $.ajax({
+        //async: false,
+        type: "POST",
+        url: "App/Server/ServerInsertarRepartos.php",
+        data: dataString,
+        dataType: "json",
+        success: function(response) {
+          dataTableRepartosDT.columns.adjust().draw();
+        },
+      }).done(function() {});
+
+      $("#ModalClonarReparto").modal("toggle");
     }
   });
 

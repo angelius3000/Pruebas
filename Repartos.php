@@ -63,7 +63,7 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
         <div class="app-container">
             <div class="search">
                 <form>
-                    <input class="form-control" type="text" placeholder="Type here..." aria-label="Search">
+                    <!-- <input class="form-control" type="text" placeholder="Type here..." aria-label="Search"> -->
                 </form>
                 <a href="#" class="toggle-search"><i class="material-icons">close</i></a>
             </div>
@@ -215,13 +215,13 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
                                 <?php if ($_SESSION['TIPOUSUARIO'] != 2) { ?>
                                     <div class="row">
                                         <div class="col-lg-6 col-sm-12 mb-4 border-right pe-4">
-                                            <label for="NombreCliente" class="form-label">Fecha de Registro</label>
+                                            <label for="Fecha" class="form-label">Fecha de Registro</label>
                                             <input class="form-control flatpickr1" id="FechaInicioRegistro" type="text" placeholder="Inicio">
                                             <input class="form-control flatpickr1" id="FechaFinalRegistro" type="text" placeholder="Final">
                                         </div>
 
                                         <div class="col-lg-6 col-sm-12 mb-4 ps-4">
-                                            <label for="NombreCliente" class="form-label">Fecha de Reparto</label>
+                                            <label for="FechaInicioReparto" class="form-label">Fecha de Reparto</label>
                                             <input class="form-control flatpickr1" id="FechaInicioReparto" type="text" placeholder="Inicio">
                                             <input class="form-control flatpickr1" id="FechaFinalReparto" type="text" placeholder="Final">
                                         </div>
@@ -301,8 +301,8 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
 
 
 
-
     <script src="assets/js/select2.min.js" integrity="sha512-nwnflbQixsRIWaXWyQmLkq4WazLLsPLb1k9tA0SEx3Njm+bjEBVbLTijfMnztBKBoTwPsyz4ToosyNn/4ahTBQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
 
     <script src="assets/js/parsley.js" integrity="sha512-Fq/wHuMI7AraoOK+juE5oYILKvSPe6GC5ZWZnvpOO/ZPdtyA29n+a5kVLP4XaLyDy9D1IBPYzdFycO33Ijd0Pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
