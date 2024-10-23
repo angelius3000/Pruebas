@@ -16,7 +16,7 @@
                                             <div class="row">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="CLIENTEID" class="form-label">Cliente ID</label>
-                                                    <select class="form-select select2" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
+                                                    <select class="select2" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
                                                         <option selected>Selecciona cliente</option>
 
                                                         <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
