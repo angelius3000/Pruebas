@@ -18,7 +18,7 @@ $Comentarios = mysqli_real_escape_string($conn, $_POST['ComentariosClonar']);
 
 $EnlaceGoogleMaps = !empty($_POST['EnlaceGoogleMapsClonar']) ? mysqli_real_escape_string($conn, $_POST['EnlaceGoogleMapsClonar']) : NULL;
 
-$USUARIOID = mysqli_real_escape_string($conn, $_POST['USUARIOID']);
+$USUARIOID = mysqli_real_escape_string($conn, $_POST['USUARIOIDClonar']);
 
 // Construye la consulta SQL de forma dinámica
 if ($EnlaceGoogleMaps !== NULL) {

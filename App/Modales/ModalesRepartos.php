@@ -395,7 +395,7 @@
 
 
                     <input type="hidden" class="form-control" id="REPARTOIDClonar" name="REPARTOIDClonar">
-
+                    <input type="hidden" class="form-control" id="USUARIOIDClonar" name="USUARIOIDClonar" value="<?php echo $_SESSION['USUARIOID']; ?>">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-primary">Clonar</button>
                 </div>

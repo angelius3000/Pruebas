@@ -456,7 +456,7 @@ function TomarDatosParaModalRepartos(val) {
       $("input#TelefonoDeReceptorClonar").val(response.TelefonoDeReceptor);
       $("input#TelefonoAlternativoClonar").val(response.TelefonoAlternativo);
       $("textarea#ComentariosClonar").val(response.Comentarios);
-      $("input#USUARIOID").val(response.USUARIOID);
+      $("input#USUARIOIDClonar").val(response.USUARIOID);
       $("input#REPARTOIDClonar").val(response.REPARTOID);
       
 
