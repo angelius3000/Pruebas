@@ -238,7 +238,7 @@ $(document).ready(function() {
       $.ajax({
         //async: false,
         type: "POST",
-        url: "App/Server/ServerInsertarRepartos.php",
+        url: "App/Server/ServerClonarRepartos.php",
         data: dataString,
         dataType: "json",
         success: function(response) {
