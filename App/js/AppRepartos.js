@@ -192,7 +192,7 @@ $(document).ready(function() {
     order: [[0, "DESC"]],
   });
 
-  // Para Agregar Usuarios
+  // Para Agregar Repartos
   $("#ValidacionAgregarRepartos").on("submit", function(e) {
     var form = $(this);
 
@@ -218,6 +218,35 @@ $(document).ready(function() {
       }).done(function() {});
 
       $("#ModalAgregarReparto").modal("toggle");
+    }
+  });
+
+   // Para Clonar Repartos
+   $("#ValidacionClonarRepartos").on("submit", function(e) {
+    var form = $(this);
+
+    form.parsley().validate();
+
+    if (form.parsley().isValid()) {
+      //prevent Default functionality
+      e.preventDefault();
+
+      // data string
+      var dataString = form.serialize();
+
+      // ajax
+      $.ajax({
+        //async: false,
+        type: "POST",
+        url: "App/Server/ServerClonarRepartos.php",
+        data: dataString,
+        dataType: "json",
+        success: function(response) {
+          dataTableRepartosDT.columns.adjust().draw();
+        },
+      }).done(function() {});
+
+      $("#ModalClonarReparto").modal("toggle");
     }
   });
 
@@ -410,6 +439,26 @@ function TomarDatosParaModalRepartos(val) {
       $("#DatosRepartoParaBorrar").html(response.DatosParaBorrarReparto);
 
       $("input#REPARTOIDBorrar").val(response.REPARTOID);
+
+      // Campos para el modal #ModalClonarReparto
+
+      $("select#CLIENTEIDClonar").val(response.CLIENTEID);
+      $("input#NumeroDeFacturaClonar").val(response.NumeroDeFactura);
+      $("input#CalleClonar").val(response.Calle);
+      $("input#ColoniaClonar").val(response.Colonia);
+      $("input#NumeroEXTClonar").val(response.NumeroEXT);
+      $("input#ColoniaClonar").val(response.Colonia);
+      $("input#CPClonar").val(response.CP);
+      $("input#CiudadClonar").val(response.Ciudad);
+      $("input#EstadoClonar").val(response.Estado);
+      $("input#EnlaceGoogleMapsClonar").val(response.EnlaceMapaGoogle);
+      $("input#ReceptorClonar").val(response.Receptor);
+      $("input#TelefonoDeReceptorClonar").val(response.TelefonoDeReceptor);
+      $("input#TelefonoAlternativoClonar").val(response.TelefonoAlternativo);
+      $("textarea#ComentariosClonar").val(response.Comentarios);
+      $("input#USUARIOIDClonar").val(response.USUARIOID);
+      $("input#REPARTOIDClonar").val(response.REPARTOID);
+      
 
       // Para el editor de Status
       $("input#REPARTOIDEditarStatus").val(response.REPARTOID);

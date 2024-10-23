@@ -233,6 +233,12 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
         $BotonBorrar = '';
     }
 
+    if ($row['USUARIOID_US'] == $_SESSION['USUARIOID'] || $_SESSION['TIPOUSUARIO'] == '1') {
+        $BotonClonar = ' <button type="button" class="btn btn-sm btn-dark waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalClonarReparto" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')"><i class="mdi mdi-pencil"></i>Clonar</button>';
+    } else {
+        $BotonClonar = '';
+    }
+
     if ($row["EnlaceMapaGoogle"] !== NULL) {
         $BotonMapa = '<a href="' . $row["EnlaceMapaGoogle"] . '" class="btn btn-sm btn-secondary waves-effect width-md waves-light" target="_blank" >Mapa &nbsp; <i class="material-icons"> arrow_forward</i></a>';
     } else {
@@ -264,7 +270,7 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
     $nestedData[] = '<a href="tel:' . $row["TelefonoAlternativo"] . '">' . $row["TelefonoAlternativo"] . '</a>'; //(13) Teléfono alternativo
     $nestedData[] = $row["NumeroDeFactura"]; //(14) Número de factura
     $nestedData[] = $row["Comentarios"]; //(15) Comentarios
-    $nestedData[] = $BotonEditar . $BotonBorrar; //(16) Botones
+    $nestedData[] = $BotonEditar . $BotonBorrar . $BotonClonar; //(16) Botones
 
     $data[] = $nestedData;
 }
