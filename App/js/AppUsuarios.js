@@ -1,6 +1,13 @@
 $(document).ready(function() {
 
-  $(".select2").select2();
+  $('#ModalAgregarUsuarios').on('shown.bs.modal', function () {
+    $('#CLIENTEID').select2({
+      dropdownParent: $('#ModalAgregarUsuarios'), // Ajuste importante
+      placeholder: 'Selecciona cliente',
+      allowClear: true,
+      width: '100%' // Asegura que ocupe todo el ancho del contenedor
+    });
+  });
   
   var dataTableUsuarioDT = $("#UsuariosDT").DataTable({
     // Tabla General de Usuarios

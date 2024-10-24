@@ -6,6 +6,15 @@ $(document).ready(function() {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 
+  $('#ModalAgregarClientes').on('shown.bs.modal', function () {
+    $('#CLIENTEID').select2({
+      dropdownParent: $('#ModalAgregarClientes'), // Ajuste importante
+      placeholder: 'Selecciona cliente',
+      allowClear: true,
+      width: '100%' // Asegura que ocupe todo el ancho del contenedor
+    });
+  });
+
   $("body").tooltip({ selector: '[data-toggle="tooltip"]' });
 
   var dataTableClientesDT = $("#ClientesDT").DataTable({

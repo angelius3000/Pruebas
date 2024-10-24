@@ -138,7 +138,7 @@
                                             <div class="row">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="CLIENTEIDEditar" class="form-label">Cliente ID</label>
-                                                    <select class="form-select select2" name="CLIENTEIDEditar" id="CLIENTEIDEditar" aria-label="Default select example" required>
+                                                    <select class="select2" name="CLIENTEIDEditar" id="CLIENTEIDEditar" aria-label="Default select example" required>
                                                         <option selected>Selecciona cliente</option>
 
                                                         <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
@@ -300,7 +300,7 @@
                                             <div class="row">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="CLIENTEIDClonar" class="form-label">Cliente ID</label>
-                                                    <select class="form-select select2" name="CLIENTEIDClonar" id="CLIENTEIDClonar" aria-label="Default select example" required>
+                                                    <select class="select2" name="CLIENTEIDClonar" id="CLIENTEIDClonar" aria-label="Default select example" required>
                                                         <option selected>Selecciona cliente</option>
 
                                                         <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
@@ -543,7 +543,7 @@
                                             <div class="row">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="CLIENTEID" class="form-label">Producto</label>
-                                                    <select class="form-select select2" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
+                                                    <select class="select2" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
                                                         <option selected>Selecciona cliente</option>
 
                                                         <?php while ($row_productos = mysqli_fetch_assoc($productos)) { ?>
