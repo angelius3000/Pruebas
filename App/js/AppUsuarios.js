@@ -9,7 +9,7 @@ $(document).ready(function() {
     });
   });
   $('#ModalEditarUsuarios').on('shown.bs.modal', function () {
-    $('#CLIENTEID').select2({
+    $('#CLIENTEIDEditar').select2({
       dropdownParent: $('#ModalAgregarUsuarios'), // Ajuste importante
       placeholder: 'Selecciona cliente',
       allowClear: true,

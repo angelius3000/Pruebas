@@ -9,16 +9,16 @@ $(document).ready(function() {
     });
   });
   $('#ModalEditarReparto').on('shown.bs.modal', function () {
-    $('#CLIENTEID').select2({
-      dropdownParent: $('#ModalAgregarReparto'), // Ajuste importante
+    $('#CLIENTEIDEditar').select2({
+      dropdownParent: $('#ModalEditarReparto'), // Ajuste importante
       placeholder: 'Selecciona cliente',
       allowClear: true,
       width: '100%' // Asegura que ocupe todo el ancho del contenedor
     });
   });
   $('#ModalClonarReparto').on('shown.bs.modal', function () {
-    $('#CLIENTEID').select2({
-      dropdownParent: $('#ModalAgregarReparto'), // Ajuste importante
+    $('#CLIENTEIDClonar').select2({
+      dropdownParent: $('#ModalClonarReparto'), // Ajuste importante
       placeholder: 'Selecciona cliente',
       allowClear: true,
       width: '100%' // Asegura que ocupe todo el ancho del contenedor
