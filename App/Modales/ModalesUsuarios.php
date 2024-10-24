@@ -167,7 +167,7 @@
 
                                                 <div class="row" style="display:none" id="ClientesEscondidosEditar">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="CLIENTEID" class="form-label">Cliente ID</label>
+                                                    <label for="CLIENTEIDEditar" class="form-label">Cliente ID</label>
                                                     <select class="select2" name="CLIENTEIDEditar" id="CLIENTEIDEditar" aria-label="Default select example" required>
                                                         <option selected>Selecciona cliente</option>
 
