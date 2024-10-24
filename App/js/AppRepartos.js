@@ -8,8 +8,22 @@ $(document).ready(function() {
       width: '100%' // Asegura que ocupe todo el ancho del contenedor
     });
   });
-  
-
+  $('#ModalEditarReparto').on('shown.bs.modal', function () {
+    $('#CLIENTEID').select2({
+      dropdownParent: $('#ModalAgregarReparto'), // Ajuste importante
+      placeholder: 'Selecciona cliente',
+      allowClear: true,
+      width: '100%' // Asegura que ocupe todo el ancho del contenedor
+    });
+  });
+  $('#ModalClonarReparto').on('shown.bs.modal', function () {
+    $('#CLIENTEID').select2({
+      dropdownParent: $('#ModalAgregarReparto'), // Ajuste importante
+      placeholder: 'Selecciona cliente',
+      allowClear: true,
+      width: '100%' // Asegura que ocupe todo el ancho del contenedor
+    });
+  });
 
   // Variables para almacenar las fechas
   var fechaInicioRegistro;
