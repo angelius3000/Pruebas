@@ -167,7 +167,7 @@
 
                                                 <div class="row" style="display:none" id="ClientesEscondidosEditar">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="CLIENTEIDEditar" class="form-label">Cliente ID</label>
+                                                <label for="CLIENTEIDEditar" class="form-label">Cliente ID</label>
                                                     <select class="select2" name="CLIENTEIDEditar" id="CLIENTEIDEditar" aria-label="Default select example" required>
                                                         <option selected>Selecciona cliente</option>
 
@@ -175,7 +175,16 @@
 
                                                             <option value="<?php echo $row_clientes['CLIENTEID']; ?>">
 
-                                                                <?php echo $row_clientes['CLIENTESIAN'] . " - " . $row_clientes['NombreCliente']; ?>
+                                                                <?php
+                                                                if ($row_clientes["CLCSIAN"] != NULL) {
+
+                                                                    $NumeroDeCredito = " - " . $row_clientes["CLCSIAN"];
+                                                                } else {
+
+                                                                    $NumeroDeCredito = " ";
+                                                                }
+
+                                                                echo $row_clientes['CLIENTESIAN'] . $NumeroDeCredito . " - " . $row_clientes['NombreCliente']; ?>
 
                                                             </option>
 
@@ -185,6 +194,7 @@
                                                         mysqli_data_seek($clientes, 0);
 
                                                         ?>
+
                                                     </select>
                                                 </div>
 
