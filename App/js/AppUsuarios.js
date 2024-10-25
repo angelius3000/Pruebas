@@ -10,7 +10,7 @@ $(document).ready(function() {
   });
   $('#ModalEditarUsuarios').on('shown.bs.modal', function () {
     $('#CLIENTEIDEditar').select2({
-      dropdownParent: $('#ModalAgregarUsuarios'), // Ajuste importante
+      dropdownParent: $('#ModalEditarUsuarios'), // Ajuste importante
       placeholder: 'Selecciona cliente',
       allowClear: true,
       width: '100%' // Asegura que ocupe todo el ancho del contenedor
