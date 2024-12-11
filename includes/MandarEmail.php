@@ -18,7 +18,7 @@ function RecuperaTuPassword($email, $Hash)
   try {
     // Configuración del servidor SMTP
     $mail->isSMTP();
-    $mail->Host = 's1079.usc1.mysecurecloudhost.com'; // Reemplaza con la dirección del servidor SMTP
+    $mail->Host = 'mail.edison.com.mx'; // Reemplaza con la dirección del servidor SMTP
     $mail->Port = 587; // Reemplaza con el puerto SMTP correspondiente
     $mail->SMTPAuth = true;
     $mail->Username = 'notificaciones@edison.com.mx'; // Reemplaza con tu nombre de usuario SMTP
