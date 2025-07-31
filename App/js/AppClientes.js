@@ -18,7 +18,7 @@ $(document).ready(function() {
   $("body").tooltip({ selector: '[data-toggle="tooltip"]' });
 
   var dataTableClientesDT = $("#ClientesDT").DataTable({
-    // Tabla General de Usuarios
+    // Tabla general de clientes
 
     dom: "Bifrtip",
     buttons: ["excelHtml5", "pdfHtml5", "pageLength"],
