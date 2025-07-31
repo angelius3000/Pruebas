@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$_SESSION['Username'] = $data['email'];
 		$_SESSION['TIPOUSUARIO'] = $data['TIPODEUSUARIOID'];
 		$_SESSION['USUARIOID'] = $data['USUARIOID'];
-		$_SESSION['Deshabiitado'] = $data['Deshabilitado'];
+               $_SESSION['Deshabilitado'] = $data['Deshabilitado'];
 		$_SESSION['NombreDelUsuario'] = $NombreDelUsuario;
 		$_SESSION['TipoDeUsuario'] = $data['TipoDeUsuario'];
 		$_SESSION['NombreCliente'] = $data['NombreCliente'];
