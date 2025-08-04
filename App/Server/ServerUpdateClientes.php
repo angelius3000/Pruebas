@@ -22,6 +22,7 @@ $sql = "UPDATE clientes SET
     CLIENTESIAN = '$CLIENTESIANEditar',
     CLCSIAN = '$CLCSIANEditar',
     NombreCliente = '$NombreClienteEditar',
+    EmailCliente = '$EmailClienteEditar',
     TelefonoCliente = '$TelefonoClienteEditar',
     NombreContacto = '$NombreContactoEditar',
     DireccionCliente = '$DireccionClienteEditar',
