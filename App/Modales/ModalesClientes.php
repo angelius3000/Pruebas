@@ -274,6 +274,11 @@
                                         <strong><span id="NumeroDeClienteSIANYaExiste"></span></strong>
                                     </div>
                                     <div class="col-lg-6 col-sm-12 mb-4">
+                                        Número de crédito:
+                                        <br>
+                                        <strong><span id="CLCSIANYaExiste"></span></strong>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12 mb-4">
                                         Nombre:
                                         <br>
                                         <strong><span id="NombreClienteYaExiste"></span></strong>
