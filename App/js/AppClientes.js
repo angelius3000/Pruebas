@@ -112,7 +112,7 @@ $(document).ready(function() {
         success: function(response) {
           // Reescribe la Datatable y le da refresh
 
-          dataTableClientesDT.columns.adjust().draw();
+          dataTableClientesDT.ajax.reload(null, false);
         },
       }).done(function() {});
 
