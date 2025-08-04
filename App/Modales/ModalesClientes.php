@@ -264,7 +264,7 @@
                         <div class="card">
                             <div class="card-body">
 
-                                <h3>Ya existe un cliente con esa información:</h3>
+                                <h3 id="ModalYaExisteMensaje">Ya existe un cliente con esa información:</h3>
 
 
                                 <div class="row">

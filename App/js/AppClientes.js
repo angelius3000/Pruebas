@@ -196,15 +196,69 @@ $(document).ready(function() {
         // Reescribe la Datatable y le da refresh
 
         if (response.NombreCliente != null) {
-          // Mandar el modal de que ya existe el email
-
+          // Mandar el modal de que ya existe el SIAN
+          $("#ModalYaExisteMensaje").text(
+            "Ya existe un cliente con ese número SIAN:"
+          );
           $("#ModalYaExiste").modal("show");
 
-          // Quitamos el modal que genero el email
-
+          // Quitamos el modal que generó el SIAN
           $("#ModalAgregarClientes").modal("hide");
 
           // Mandamos la informacion al nuevo modal
+          $("#NumeroDeClienteSIANYaExiste").text(response.CLIENTESIAN);
+          $("#NombreClienteYaExiste").text(response.NombreCliente);
+          $("#EmailClienteYaExiste").text(response.EmailCliente);
+          $("#TelefonoClienteYaExiste").text(response.TelefonoCliente);
+          $("#NombreContactoYaExiste").text(response.NombreContacto);
+          $("#DireccionClienteYaExiste").text(response.DireccionCliente);
+          $("#ColoniaClienteYaExiste").text(response.ColoniaCliente);
+          $("#CiudadClienteYaExiste").text(response.CiudadCliente);
+          $("#EstadoClienteYaExiste").text(response.EstadoCliente);
+        }
+      },
+    }).done(function() {});
+  }
+
+  // Para que los clientes no se puedan clonar por Nombre
+  var typingTimerNombre; // Timer identifier
+  var doneTypingIntervalNombre = 1000; // Tiempo en milisegundos (1 segundo)
+  var $inputNombre = $("#NombreCliente, #NombreClienteEditar");
+  var ValorNombreCliente;
+
+  // Evento keyup en el input de Nombre
+  $inputNombre.on("keyup", function() {
+    ValorNombreCliente = $(this).val();
+
+    clearTimeout(typingTimerNombre);
+    typingTimerNombre = setTimeout(doneTypingNombre, doneTypingIntervalNombre);
+  });
+
+  // Evento keydown en el input de Nombre
+  $inputNombre.on("keydown", function() {
+    clearTimeout(typingTimerNombre);
+  });
+
+  // Evento blur en el input de Nombre
+  $inputNombre.on("blur", function() {
+    clearTimeout(typingTimerNombre);
+    doneTypingNombre();
+  });
+
+  // Función que se llama cuando el usuario deja de escribir el Nombre
+  function doneTypingNombre() {
+    $.ajax({
+      type: "POST",
+      url: "App/Server/ServerInfoClientesChecarNombreSiExiste.php",
+      data: "NombreCliente=" + ValorNombreCliente,
+      dataType: "json",
+      success: function(response) {
+        if (response.NombreCliente != null) {
+          $("#ModalYaExisteMensaje").text(
+            "Ya existe un cliente con ese nombre:"
+          );
+          $("#ModalYaExiste").modal("show");
+          $("#ModalAgregarClientes").modal("hide");
 
           $("#NumeroDeClienteSIANYaExiste").text(response.CLIENTESIAN);
           $("#NombreClienteYaExiste").text(response.NombreCliente);
