@@ -1,11 +1,11 @@
 <?php
 
 include("../../Connections/ConDB.php");
-// Definir La table de la base de datos
+// Definir la tabla de la base de datos
 
-$SIANDeCliente = $_POST['CLIENTESIAN'];
+$CLCSIANDeCliente = $_POST['CLCSIAN'];
 
-$sql = "SELECT * FROM clientes WHERE clientes.CLIENTESIAN = '$SIANDeCliente'";
+$sql = "SELECT * FROM clientes WHERE clientes.CLCSIAN = '$CLCSIANDeCliente'";
 $status = mysqli_query($conn, $sql) or die("database error:" . mysqli_error($conn));
 $row = mysqli_fetch_array($status);
 
