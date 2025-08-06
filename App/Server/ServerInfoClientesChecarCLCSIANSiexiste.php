@@ -5,6 +5,11 @@ include("../../Connections/ConDB.php");
 
 $CLCSIANDeCliente = $_POST['CLCSIAN'];
 
+if ($CLCSIANDeCliente === '' || $CLCSIANDeCliente === '0') {
+    echo json_encode([]);
+    exit;
+}
+
 $sql = "SELECT * FROM clientes WHERE clientes.CLCSIAN = '$CLCSIANDeCliente'";
 $status = mysqli_query($conn, $sql) or die("database error:" . mysqli_error($conn));
 $row = mysqli_fetch_array($status);
