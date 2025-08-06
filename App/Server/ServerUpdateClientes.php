@@ -2,9 +2,13 @@
 
 include("../../Connections/ConDB.php");
 
-$CLIENTESIANEditar = mysqli_real_escape_string($conn, $_POST['CLIENTESIANEditar']);
+$CLIENTESIANEditar = isset($_POST['CLIENTESIANEditar']) && $_POST['CLIENTESIANEditar'] !== ''
+    ? "'" . mysqli_real_escape_string($conn, $_POST['CLIENTESIANEditar']) . "'"
+    : "NULL";
 
-$CLCSIANEditar = mysqli_real_escape_string($conn, $_POST['CLCSIANEditar']);
+$CLCSIANEditar = isset($_POST['CLCSIANEditar']) && $_POST['CLCSIANEditar'] !== ''
+    ? "'" . mysqli_real_escape_string($conn, $_POST['CLCSIANEditar']) . "'"
+    : "NULL";
 
 $NombreClienteEditar = mysqli_real_escape_string($conn, $_POST['NombreClienteEditar']);
 $EmailClienteEditar = mysqli_real_escape_string($conn, $_POST['EmailClienteEditar']);
@@ -19,8 +23,8 @@ $CLIENTEIDEditar = mysqli_real_escape_string($conn, $_POST['CLIENTEIDEditar']);
 
 // Build the base query
 $sql = "UPDATE clientes SET 
-    CLIENTESIAN = '$CLIENTESIANEditar',
-    CLCSIAN = '$CLCSIANEditar',
+    CLIENTESIAN = $CLIENTESIANEditar,
+    CLCSIAN = $CLCSIANEditar,
     NombreCliente = '$NombreClienteEditar',
     EmailCliente = '$EmailClienteEditar',
     TelefonoCliente = '$TelefonoClienteEditar',
