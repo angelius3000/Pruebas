@@ -5,6 +5,8 @@ include('../Connections/ConDB.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// Need two helper files:
+	$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+	$host = $_SERVER['HTTP_HOST'] ?? 'pruebas.edison.com.mx';
 
 	// Check the login:
 	list($check, $data) = check_login($conn, $_POST['username'], $_POST['password']);
@@ -34,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			exit;
 		} else {
 
-			echo "<script>window.location.href='https://reparto.edison.com.mx/main.php';</script>";
+			echo "<script>window.location.href='{$scheme}://{$host}/main.php';</script>";
 			exit;
 		}
 	} else { // Unsuccessful!
@@ -43,10 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			echo "<script>window.location.href='http://local.edison:8888/index.php?login=no';</script>";
 			exit;
 		} else if ($_SERVER['HTTP_HOST'] == "localhost/edisonreparto") {
-			echo "<script>window.location.href=''http://localhost/edisonreparto/index.php?login=no';</script>";
+			echo "<script>window.location.href='http://localhost/edisonreparto/index.php?login=no';</script>";
 			exit;
 		} else {
-			echo "<script>window.location.href='https://reparto.edison.com.mx/index.php?login=no';</script>";
+			echo "<script>window.location.href='{$scheme}://{$host}/index.php?login=no';</script>";
 			exit;
 		}
 	}
