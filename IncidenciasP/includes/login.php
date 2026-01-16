@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			exit;
 		} else {
 
-			echo "<script>window.location.href='https://reparto.edison.com.mx/main.php';</script>";
+			echo "<script>window.location.href='https://pruebas.edison.com.mx/main.php';</script>";
 			exit;
 		}
 	} else { // Unsuccessful!
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			echo "<script>window.location.href=''http://localhost/edisonreparto/index.php?login=no';</script>";
 			exit;
 		} else {
-			echo "<script>window.location.href='https://reparto.edison.com.mx/index.php?login=no';</script>";
+			echo "<script>window.location.href='https://pruebas.edison.com.mx/index.php?login=no';</script>";
 			exit;
 		}
 	}
