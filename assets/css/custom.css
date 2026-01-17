@@ -74,15 +74,27 @@ body {
 }
 
 body.theme-blue {
-    background: linear-gradient(135deg, #0d6efd 0%, #5c9dff 45%, #f5f6f8 100%);
+    --gradient-start: #0d6efd;
+    --gradient-end: #5c9dff;
+    --gradient-angle: 135deg;
 }
 
 body.theme-indigo {
-    background: linear-gradient(135deg, #3f51b5 0%, #7986cb 45%, #f5f6f8 100%);
+    --gradient-start: #3f51b5;
+    --gradient-end: #7986cb;
+    --gradient-angle: 135deg;
 }
 
 body.theme-slate {
-    background: linear-gradient(135deg, #495057 0%, #adb5bd 45%, #f5f6f8 100%);
+    --gradient-start: #495057;
+    --gradient-end: #adb5bd;
+    --gradient-angle: 135deg;
+}
+
+body.theme-blue,
+body.theme-indigo,
+body.theme-slate {
+    background: linear-gradient(var(--gradient-angle), var(--gradient-start) 0%, var(--gradient-end) 45%, #f5f6f8 100%);
 }
 
 .app-header .navbar {
@@ -222,4 +234,13 @@ body.theme-slate {
 
 .theme-swatch.theme-slate {
     background: linear-gradient(135deg, #495057, #adb5bd);
+}
+
+.theme-controls .form-control-sm {
+    min-height: 34px;
+}
+
+.theme-controls .theme-color-input {
+    padding: 0.15rem;
+    height: 34px;
 }

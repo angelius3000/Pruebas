@@ -61,6 +61,25 @@
                         <button class="btn btn-sm theme-swatch theme-indigo" type="button" data-theme="theme-indigo" aria-label="Tema índigo"></button>
                         <button class="btn btn-sm theme-swatch theme-slate" type="button" data-theme="theme-slate" aria-label="Tema gris"></button>
                     </div>
+                    <div class="px-3 pb-3 theme-controls">
+                        <div class="form-group mb-2">
+                            <label class="small text-muted mb-1" for="gradientStart">Color inicial</label>
+                            <input class="form-control form-control-sm theme-color-input" type="color" id="gradientStart" value="#0d6efd">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label class="small text-muted mb-1" for="gradientEnd">Color final</label>
+                            <input class="form-control form-control-sm theme-color-input" type="color" id="gradientEnd" value="#5c9dff">
+                        </div>
+                        <div class="form-group mb-0">
+                            <label class="small text-muted mb-1" for="gradientDirection">Dirección</label>
+                            <select class="form-control form-control-sm" id="gradientDirection">
+                                <option value="135deg">Diagonal</option>
+                                <option value="90deg">Horizontal</option>
+                                <option value="180deg">Vertical</option>
+                                <option value="45deg">Diagonal inversa</option>
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="dropdown-divider"></div>
 
