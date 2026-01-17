@@ -28,22 +28,6 @@
 }
 /* Your Custom CSS Goes here */
 
-.app-card {
-    box-shadow: none !important;
-    border: none;
-    border-radius: 0;
-    width: 150px;
-    height: 150px;
-}
-
-.app-card .card-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
 .toggle-detalle {
     background: transparent;
     border: 0;
@@ -81,4 +65,161 @@ tr.detalle-abierto .toggle-detalle-badge {
 .detalle-control {
     width: 1%;
     white-space: nowrap;
+}
+.dashboard-body,
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f5f6f8;
+    color: #343a40;
+}
+
+body.theme-blue {
+    background: linear-gradient(135deg, #0d6efd 0%, #5c9dff 45%, #f5f6f8 100%);
+}
+
+body.theme-indigo {
+    background: linear-gradient(135deg, #3f51b5 0%, #7986cb 45%, #f5f6f8 100%);
+}
+
+body.theme-slate {
+    background: linear-gradient(135deg, #495057 0%, #adb5bd 45%, #f5f6f8 100%);
+}
+
+.app-header .navbar {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    z-index: 1030;
+}
+
+.app-container {
+    padding-top: 70px;
+}
+
+.app-sidebar {
+    background-color: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+    min-height: 100vh;
+    width: 260px;
+    transition: width 0.2s ease;
+}
+
+.app-sidebar .logo {
+    padding: 1.5rem 1.25rem;
+}
+
+.app-sidebar .accordion-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #495057;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    margin: 0.25rem 0.75rem;
+}
+
+.app-sidebar .accordion-menu li a:hover,
+.app-sidebar .accordion-menu li a:focus {
+    background-color: rgba(13, 110, 253, 0.1);
+    color: #0d6efd;
+}
+
+.app-sidebar .accordion-menu li a i {
+    color: #6c757d;
+    width: 1.25rem;
+    text-align: center;
+}
+
+.app-sidebar .accordion-menu li a:hover i,
+.app-sidebar .accordion-menu li a:focus i {
+    color: #0d6efd;
+}
+
+.sidebar-collapsed .app-sidebar {
+    width: 80px;
+}
+
+.sidebar-collapsed .app-sidebar .menu-text {
+    display: none;
+}
+
+.sidebar-collapsed .app-sidebar .logo img {
+    max-width: 50px;
+}
+
+.card {
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+.app-card {
+    width: 170px;
+    height: 170px;
+    justify-content: center;
+}
+
+.app-card .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 0.5rem;
+}
+
+.table thead th {
+    background-color: #343a40;
+    color: #fff;
+    border-color: #343a40;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #0b5ed7;
+    border-color: #0b5ed7;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: #5c636a;
+    border-color: #5c636a;
+}
+
+.theme-selector {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.theme-swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+    padding: 0;
+}
+
+.theme-swatch.theme-blue {
+    background: linear-gradient(135deg, #0d6efd, #5c9dff);
+}
+
+.theme-swatch.theme-indigo {
+    background: linear-gradient(135deg, #3f51b5, #7986cb);
+}
+
+.theme-swatch.theme-slate {
+    background: linear-gradient(135deg, #495057, #adb5bd);
 }
