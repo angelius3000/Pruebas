@@ -1,16 +1,19 @@
 <div class="app-header">
-    <nav class="navbar navbar-light navbar-expand-lg">
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
         <div class="container-fluid">
+            <button class="btn btn-link text-white sidebar-toggle mr-3" type="button">
+                <i class="fas fa-bars"></i>
+            </button>
             <div class="navbar-nav" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link hide-sidebar-toggle-button" href="#"><i class="material-icons"><?php echo $IconoFlecha; ?></i></a>
+                        <a class="nav-link hide-sidebar-toggle-button text-white" href="#"><i class="fas fa-chevron-left"></i></a>
                     </li>
                 </ul>
 
             </div>
             <div class="d-flex">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav align-items-center">
 
                     <li class="nav-item hidden-on-mobile">
 
@@ -26,7 +29,7 @@
                     </li>
 
                 <?php } ?>
-                <a class="nav-link nav-notifications-toggle" id="notificationsDropDown" href="#" data-bs-toggle="dropdown"><?php echo $CaracterUsuario; ?></a>
+                <a class="nav-link nav-notifications-toggle text-white" id="notificationsDropDown" href="#" data-bs-toggle="dropdown"><?php echo $CaracterUsuario; ?></a>
                 <div class="dropdown-menu dropdown-menu-end notifications-dropdown" aria-labelledby="notificationsDropDown">
 
 
@@ -49,6 +52,34 @@
                     <br>
 
                     <a href="#ModalCambiarContrasenas" data-bs-toggle="modal" data-bs-target="#ModalCambiarContrasena">Cambiar contraseña</a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <div class="dropdown-header text-uppercase text-muted small">Tema</div>
+                    <div class="px-3 pb-2 theme-selector">
+                        <button class="btn btn-sm theme-swatch theme-blue" type="button" data-theme="theme-blue" aria-label="Tema azul"></button>
+                        <button class="btn btn-sm theme-swatch theme-indigo" type="button" data-theme="theme-indigo" aria-label="Tema índigo"></button>
+                        <button class="btn btn-sm theme-swatch theme-slate" type="button" data-theme="theme-slate" aria-label="Tema gris"></button>
+                    </div>
+                    <div class="px-3 pb-3 theme-controls">
+                        <div class="form-group mb-2">
+                            <label class="small text-muted mb-1" for="gradientStart">Color inicial</label>
+                            <input class="form-control form-control-sm theme-color-input" type="color" id="gradientStart" value="#0d6efd">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label class="small text-muted mb-1" for="gradientEnd">Color final</label>
+                            <input class="form-control form-control-sm theme-color-input" type="color" id="gradientEnd" value="#5c9dff">
+                        </div>
+                        <div class="form-group mb-0">
+                            <label class="small text-muted mb-1" for="gradientDirection">Dirección</label>
+                            <select class="form-control form-control-sm" id="gradientDirection">
+                                <option value="135deg">Diagonal</option>
+                                <option value="90deg">Horizontal</option>
+                                <option value="180deg">Vertical</option>
+                                <option value="45deg">Diagonal inversa</option>
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="dropdown-divider"></div>
 
