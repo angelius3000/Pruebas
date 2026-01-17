@@ -6,25 +6,33 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-// storing  request (ie, get/post) global array to a variable  
+$tipoUsuarioActual = isset($_SESSION['TipoDeUsuario']) ? strtolower(trim((string) $_SESSION['TipoDeUsuario'])) : '';
+$tiposPermitidosCambioEstatus = ['administrador', 'supervisor', 'auditor'];
+$puedeCambiarEstatus = $tipoUsuarioActual !== '' && in_array($tipoUsuarioActual, $tiposPermitidosCambioEstatus, true);
+
+// storing  request (ie, get/post) global array to a variable
 $requestData = $_REQUEST;
 
 $TIPODEUSUARIOID = $_SESSION['TIPODEUSUARIOID'];
 
 $columns = array(
     // datatable column index  => database column name
-    0 => 'REPARTOID',
-    1 => 'USUARIOID',
-    3 => 'CLIENTEID',
-    4 => 'Fecha',
-    5 => 'Calle',
-    6 => 'CP',
-    7 => 'Receptor',
-    8 => 'TelefonoDeReceptor',
-    9 => 'TelefonoAlternativo',
-    10 => 'NumeroFactura',
-    11 => 'Comentarios',
-    12 => ''
+    0 => 'REPARTOID', //Folio
+    1 => 'STATUSID', //Estatus
+    2 => 'Calle', //Dirección
+    3 => 'CP', //Codigo Postal
+    4 => 'Receptor', //Receptor
+    5 => 'TelefonoDeReceptor', //Teléfono receptor
+    6 => 'USUARIOIDRepartidor', //Repartidor
+    7 => 'Surtidores', //Surtidor
+    8 => 'Fecha', //Fecha de registro
+    9 => 'FechaReparto', //Fecha de reparto
+    10 => 'HoraReparto', //Hora de reparto  
+    11 => 'USUARIOID', //Solicitante
+    12 => 'CLIENTEID', //Cliente
+    13 => 'TelefonoAlternativo', //Teléfono alternativo
+    14 => 'NumeroFactura', //Numero de factura
+    15 => 'Comentarios', //Comentarios
 
 
 );
@@ -32,7 +40,7 @@ $columns = array(
 // getting total number records without any search
 $sql = "SELECT * FROM repartos
 LEFT JOIN status ON status.STATUSID = repartos.STATUSID
-WHERE repartos.STATUSID NOT IN (1, 5, 6);
+WHERE repartos.STATUSID NOT IN (5, 6);
 ";
 $query = mysqli_query($conn, $sql) or die("Usuario-grid-data.php: get employees");
 $totalData = mysqli_num_rows($query);
@@ -40,7 +48,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 $sql = "SELECT * FROM repartos
 LEFT JOIN status ON status.STATUSID = repartos.STATUSID
-WHERE 1=1 AND repartos.STATUSID NOT IN (1, 5, 6) ";
+WHERE 1=1 AND repartos.STATUSID NOT IN (5, 6) ";
 
 if (!empty($requestData['search']['value'])) {
 
@@ -48,21 +56,23 @@ if (!empty($requestData['search']['value'])) {
     $sql_words = array();
     foreach ($search_words as $word) {
         $sql_words[] = "(
+            repartos.REPARTOID LIKE '%" . $word . "%' OR
             usuarios.PrimerNombre LIKE '%" . $word . "%' OR
             usuarios.SegundoNombre LIKE '%" . $word . "%' OR
             usuarios.ApellidoPaterno LIKE '%" . $word . "%' OR
             usuarios.ApellidoMaterno LIKE '%" . $word . "%' OR
-            clientes.NombreCliente LIKE '%" . $word . "%' OR
-            repartos.REPARTOID LIKE '%" . $word . "%' OR
-            repartos.FechaReparto LIKE '%" . $word . "%' OR
             repartos.Calle LIKE '%" . $word . "%' OR
             repartos.CP LIKE '%" . $word . "%' OR
             repartos.Receptor LIKE '%" . $word . "%' OR
             repartos.TelefonoDeReceptor LIKE '%" . $word . "%' OR
+            repartos.Surtidores LIKE '%" . $word . "%' OR
+            repartos.FechaDeRegistro LIKE '%" . $word . "%' OR
+            repartos.FechaReparto LIKE '%" . $word . "%' OR
+            repartos.HoraReparto LIKE '%" . $word . "%' OR
+            clientes.NombreCliente LIKE '%" . $word . "%' OR
             repartos.TelefonoAlternativo LIKE '%" . $word . "%' OR
             repartos.NumeroDeFactura LIKE '%" . $word . "%' OR
-            repartos.Comentarios LIKE '%" . $word . "%' OR
-            usuarios.email LIKE '%" . $word . "%'
+            repartos.Comentarios LIKE '%" . $word . "%'
         )";
     }
     $sql .= " AND " . implode(' AND ', $sql_words);
@@ -83,7 +93,7 @@ $data = array();
 
 while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparando el Arraigo
 
-    if ($_SESSION['TIPOUSUARIO'] == '1') {
+    if ($puedeCambiarEstatus) {
         $MandarModal = 'data-bs-toggle="modal" data-bs-target="#ModalCambioStatus" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')"';
     } else {
         $MandarModal = '';
@@ -101,6 +111,10 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
         $BadgeStatus = '<span class="badge badge-success" ' . $MandarModal . '>Entregado</span>';
     } else if ($row["STATUSID"] == 6) {
         $BadgeStatus = '<span class="badge badge-danger"  ' . $MandarModal . '>Cancelado</span>';
+    } else if ($row["STATUSID"] == 7) {
+        $BadgeStatus = '<span class="badge badge-successParcial"  ' . $MandarModal . '>Entrega Parcial</span>';
+    } else if ($row["STATUSID"] == 8) {
+        $BadgeStatus = '<span class="badge badge-success"  ' . $MandarModal . '>Recolectado</span>';
     }
 
     if ($row['USUARIOID'] == $_SESSION['USUARIOID'] || $_SESSION['TIPOUSUARIO'] == '1') {
@@ -110,7 +124,7 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
         $BotonEditar = '';
     }
 
-
+   
     if (($row['USUARIOID'] == $_SESSION['USUARIOID']) && ($row['STATUSID'] == '1') || $_SESSION['TIPOUSUARIO'] == '1') {
 
         $BotonBorrar = '<button type="button" class="btn btn-sm btn-danger waves-effect width-md waves-light" data-bs-toggle="modal" data-bs-target="#ModalBorrarReparto" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')"><i class="mdi mdi-pencil"></i>Borrar</button>';
@@ -118,21 +132,32 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
         $BotonBorrar = '';
     }
 
+    if ($row["EnlaceMapaGoogle"] !== NULL) {
+        $BotonMapa = '<a href="' . $row["EnlaceMapaGoogle"] . '" class="btn btn-sm btn-secondary waves-effect width-md waves-light" target="_blank" >Mapa &nbsp; <i class="material-icons"> arrow_forward</i></a>';
+    } else {
+        $BotonMapa = '';
+    }
+
+    
+
     $nestedData = array();
 
     $nestedData[] = '<strong>' . $row["REPARTOID"] . '</strong>';
     $nestedData[] = $BadgeStatus;
-    $nestedData[] = $row["PrimerNombre"] . ' ' . $row["SegundoNombre"] . ' ' . $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"];
-    $nestedData[] = $row["NombreCliente"];
-    $nestedData[] =  SoloFecha($row["FechaDeRegistro"]);
-    $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"];
+    $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"] . '<br>' . $BotonMapa; //(2) Dirección
     $nestedData[] = $row["CP"];
     $nestedData[] = $row["Receptor"];
-    $nestedData[] = $row["TelefonoDeReceptor"];
-    $nestedData[] = $row["TelefonoAlternativo"];
+    $nestedData[] = '<a href="tel:' . $row["TelefonoDeReceptor"] . '">' . $row["TelefonoDeReceptor"] . '</a>'; //(12) Teléfono de receptor
+    $nestedData[] = $row["PrimerNombre_REP"] . ' ' . $row["SegundoNombre_REP"] . ' ' . $row["ApellidoPaterno_REP"] . ' ' . $row["ApellidoMaterno_REP"]; //(4) Repartidor
+    $nestedData[] = $row["Surtidores"]; //(3) Surtidor
+    $nestedData[] = date('d-m-Y H:i', strtotime($row["FechaDeRegistro"]));
+    $nestedData[] = $row["FechaRepartoFormatted"]; //(6) Fecha de reparto
+    $nestedData[] = $row["HoraReparto"]; //(7) Hora de reparto
+    $nestedData[] = $row["PrimerNombre"] . ' ' . $row["SegundoNombre"] . ' ' . $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"];
+    $nestedData[] = $row["NombreCliente"];
+    $nestedData[] = '<a href="tel:' . $row["TelefonoAlternativo"] . '">' . $row["TelefonoAlternativo"] . '</a>'; //(13) Teléfono alternativo$row["TelefonoAlternativo"];
     $nestedData[] = $row["NumeroDeFactura"];
     $nestedData[] = $row["Comentarios"];
-    $nestedData[] = $BotonEditar . $BotonBorrar;
 
     $data[] = $nestedData;
 }

@@ -8,7 +8,7 @@
     <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Edison - Reparto</title>
+    <title><?php echo $pageTitle ?? 'Edison - Reparto'; ?></title>
 
     <!-- Styles -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,14 +20,14 @@
     <link href="assets/plugins/pace/pace.css" rel="stylesheet">
     <link href="assets/plugins/highlight/styles/github-gist.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.dataTables.css">
 
     <!-- DataTables Buttons CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/buttons.dataTables.min.css">
 
 
     <!-- DataTables Responsive CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.dataTables.min.css">
 
     <!-- Theme Styles -->
     <link href="assets/css/main.min.css" rel="stylesheet">
@@ -61,6 +61,6 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.3/select2.min.css" integrity="sha512-iVAPZRCMdOOiZWYKdeY78tlHFUKf/PqAJEf/0bfnkxJ8MHQHqNXB/wK2y6RH/LmoQ0avRlGphSn06IMMxSW+xw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/select2.min.css" />
 
 </head>

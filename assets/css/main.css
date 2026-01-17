@@ -13,6 +13,8 @@
 
 ------------------------------------------------------------*/
 
+@import url('login-background-data.css');
+
 /*------------------------------------------------------------
 [1. Global Styles]
 ------------------------------------------------------------*/
@@ -1050,7 +1052,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .app-menu>ul>li>a>i:not(.has-sub-menu) {
-    margin-right: 13px;
+    margin-right: 5px;
     vertical-align: top;
     line-height: 20px;
     filter: invert(41%) sepia(17%) saturate(674%) hue-rotate(182deg) brightness(95%) contrast(89%);
@@ -6407,9 +6409,12 @@ span.flatpickr-weekday {
 }
 
 .app-auth-sign-in .app-auth-background {
-    background: url('../../App/Graficos/Background/BackIndex.jpg') no-repeat;
-    background-size: 100%;
+    /* Use the embedded Edison artwork without shipping binary assets */
+    background-image: var(--login-background-image);
+    background-color: #ffffff;
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 

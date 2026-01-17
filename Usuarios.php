@@ -1,7 +1,8 @@
 <?php include("includes/HeaderScripts.php");
 
-if ($_SESSION['TIPOUSUARIO'] != 1) {
-    header("Location: index.php");
+if (!usuarioTieneAccesoSeccion('usuarios')) {
+    header("Location: main.php");
+    exit;
 }
 
 $query_TipoDeUsuario = "SELECT * FROM tipodeusuarios";
@@ -11,6 +12,17 @@ $totalRows_TipoDeUsuario = mysqli_num_rows($TipoDeUsuario);
 $query_clientes = "SELECT * FROM clientes";
 $clientes = mysqli_query($conn, $query_clientes) or die(mysqli_error($conn));
 $totalRows_clientes = mysqli_num_rows($clientes);
+
+$seccionesSistema = [];
+if ($conn) {
+    $consultaSecciones = mysqli_query($conn, "SELECT SECCIONID, Nombre FROM secciones ORDER BY Orden, Nombre");
+    if ($consultaSecciones) {
+        while ($filaSeccion = mysqli_fetch_assoc($consultaSecciones)) {
+            $seccionesSistema[] = $filaSeccion;
+        }
+        mysqli_free_result($consultaSecciones);
+    }
+}
 
 
 ?>
@@ -34,7 +46,7 @@ $totalRows_clientes = mysqli_num_rows($clientes);
         <div class="app-container">
             <div class="search">
                 <form>
-                    <input class="form-control" type="text" placeholder="Type here..." aria-label="Search">
+                    <!-- <input class="form-control" type="text" placeholder="Type here..." aria-label="Search"> -->
                 </form>
                 <a href="#" class="toggle-search"><i class="material-icons">close</i></a>
             </div>
@@ -63,13 +75,16 @@ $totalRows_clientes = mysqli_num_rows($clientes);
                         </div>
                         <br>
                         <div class="row">
-                            <table id="UsuariosDT" class="table table-striped" style="width:100%">
+                            <table id="UsuariosDT" class="table table-striped" style="width:100%" data-permiso-count="<?php echo count($seccionesSistema); ?>">
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
                                         <th>email</th>
                                         <th>Tipo de usuario</th>
                                         <th>Empresa</th>
+                                        <?php foreach ($seccionesSistema as $seccion) { ?>
+                                            <th><?php echo htmlspecialchars($seccion['Nombre'], ENT_QUOTES, 'UTF-8'); ?></th>
+                                        <?php } ?>
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -87,6 +102,7 @@ $totalRows_clientes = mysqli_num_rows($clientes);
     </div>
 
     <?php include("App/Modales/ModalesUsuarios.php") ?>
+    <?php include("App/Modales/ModalBorrarUsuarios.php") ?>
 
     <!-- Javascripts -->
     <script src="assets/plugins/jquery/jquery-3.5.1.min.js"></script>
@@ -104,7 +120,7 @@ $totalRows_clientes = mysqli_num_rows($clientes);
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
 
     <script src="assets/js/pages/datatables.js"></script>
-
+    <script src="assets/js/select2.min.js" integrity="sha512-9p/L4acAjbjIaaGXmZf0Q2bV42HetlCLbv8EP0z3rLbQED2TAFUlDvAezy7kumYqg5T8jHtDdlm1fgIsr5QzKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js" integrity="sha512-Fq/wHuMI7AraoOK+juE5oYILKvSPe6GC5ZWZnvpOO/ZPdtyA29n+a5kVLP4XaLyDy9D1IBPYzdFycO33Ijd0Pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="App/js/AppUsuarios.js"></script>

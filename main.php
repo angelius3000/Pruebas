@@ -1,7 +1,10 @@
 <?php include("includes/HeaderScripts.php");
 
-if ($_SESSION['TIPOUSUARIO'] != 1) {
+$pageTitle = 'Edison - Apps';
+
+if (!usuarioTieneAccesoSeccion('aplicaciones')) {
     header("Location: index.php");
+    exit;
 }
 
 ?>
@@ -24,7 +27,7 @@ if ($_SESSION['TIPOUSUARIO'] != 1) {
         <div class="app-container">
             <div class="search">
                 <form>
-                    <input class="form-control" type="text" placeholder="Type here..." aria-label="Search">
+                    <!-- <input class="form-control" type="text" placeholder="Type here..." aria-label="Search"> -->
                 </form>
                 <a href="#" class="toggle-search"><i class="material-icons">close</i></a>
             </div>
@@ -36,22 +39,35 @@ if ($_SESSION['TIPOUSUARIO'] != 1) {
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col">
-                                <div class="page-description">
-                                    <h1>Full-width Header</h1>
-
-
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1470.0296650689004!2d-106.42566092351314!3d31.698776125172365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e75d3d94598019%3A0x1f38d02956229c6d!2sEdison%20Material%20El%C3%A9ctrico!5e0!3m2!1ses-419!2smx!4v1719510658585!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-
-                                    <?php // ESTE ES EL QUE IMPRIME LAS SESSIONES VARIABLES
-                                    echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';
-                                    ?>
-                                    <span>Header without spacing to sidebar and page edges. <div class="alert alert-secondary m-t-lg" role="alert">Note! Logo block with user info in it is not compatible with full-width header.</div></span>
+                                <div class="page-description text-center">
+                                    <h1>Aplicaciones</h1>
+                                    <div class="row justify-content-center mt-4">
+                                        <div class="col-auto mb-3">
+                                            <a href="Repartos.php" class="card app-card text-decoration-none text-dark bg-transparent border-0">
+                                                <div class="card-body">
+                                                    <i class="material-icons-two-tone" style="font-size:72px;">local_shipping</i>
+                                                    <h5 class="mt-1">Reparto</h5>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-auto mb-3">
+                                            <a href="charolas.php" class="card app-card text-decoration-none text-dark bg-transparent border-0">
+                                                <div class="card-body">
+                                                    <i class="material-icons-two-tone" style="font-size:72px;">view_day</i>
+                                                    <h5 class="mt-1">Charolas</h5>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-auto mb-3">
+                                            <a href="MaterialPendiente.php" class="card app-card text-decoration-none text-dark bg-transparent border-0">
+                                                <div class="card-body">
+                                                    <i class="material-icons-two-tone" style="font-size:72px;">pending_actions</i>
+                                                    <h5 class="mt-1">Material Pendiente</h5>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
                             </div>
                         </div>
                     </div>

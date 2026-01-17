@@ -6,6 +6,41 @@ $(document).ready(function() {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 
+  if (window.Parsley && window.Parsley.addValidator) {
+    window.Parsley.addValidator('requireclientnumber', {
+      requirementType: 'string',
+      validateString: function(value, requirement, parsleyInstance) {
+        var currentValue = $.trim(value);
+        if (currentValue !== '') {
+          return true;
+        }
+
+        var $form = parsleyInstance.$element.closest('form');
+        var $otherField = $form.find(requirement);
+        if ($otherField.length === 0) {
+          return false;
+        }
+
+        var otherValue = $.trim($otherField.val());
+
+        return otherValue !== '';
+      },
+      messages: {
+        es: 'Captura al menos uno de los números de cliente',
+        en: 'Provide at least one client number'
+      }
+    });
+  }
+
+  $('#ModalAgregarClientes').on('shown.bs.modal', function () {
+    $('#CLIENTEID').select2({
+      dropdownParent: $('#ModalAgregarClientes'), // Ajuste importante
+      placeholder: 'Selecciona cliente',
+      allowClear: true,
+      width: '100%' // Asegura que ocupe todo el ancho del contenedor
+    });
+  });
+
   $("body").tooltip({ selector: '[data-toggle="tooltip"]' });
 
   var dataTableClientesDT = $("#ClientesDT").DataTable({
@@ -48,6 +83,14 @@ $(document).ready(function() {
   $("#ValidacionAgregarClientes").on("submit", function(e) {
     var form = $(this);
 
+    var clienteSian = $.trim(form.find('#CLIENTESIAN').val());
+    var clcSian = $.trim(form.find('#CLCSIAN').val());
+
+    if (clienteSian === '' && clcSian === '') {
+      form.find('#CLIENTESIAN').parsley().validate();
+      form.find('#CLCSIAN').parsley().validate();
+    }
+
     form.parsley().validate();
 
     if (form.parsley().isValid()) {
@@ -82,6 +125,14 @@ $(document).ready(function() {
   $("#ValidacionEditarClientes").on("submit", function(e) {
     var form = $(this);
 
+    var clienteSian = $.trim(form.find('#CLIENTESIANEditar').val());
+    var clcSian = $.trim(form.find('#CLCSIANEditar').val());
+
+    if (clienteSian === '' && clcSian === '') {
+      form.find('#CLIENTESIANEditar').parsley().validate();
+      form.find('#CLCSIANEditar').parsley().validate();
+    }
+
     form.parsley().validate();
 
     if (form.parsley().isValid()) {
@@ -108,6 +159,24 @@ $(document).ready(function() {
       }).done(function() {});
 
       $("#ModalEditarClientes").modal("toggle");
+    }
+  });
+
+  $(document).on('input change', '#CLIENTESIAN, #CLCSIAN, #CLIENTESIANEditar, #CLCSIANEditar', function() {
+    var $field = $(this);
+    var requirementSelector = $field.data('parsley-requireclientnumber');
+
+    if (typeof $field.parsley === 'function') {
+      $field.parsley().validate();
+    }
+
+    if (requirementSelector) {
+      var $form = $field.closest('form');
+      var $otherField = $form.find(requirementSelector);
+
+      if ($otherField.length && typeof $otherField.parsley === 'function') {
+        $otherField.parsley().validate();
+      }
     }
   });
 
@@ -217,38 +286,40 @@ $(document).ready(function() {
 
   // Función que se llama cuando el usuario deja de escribir
   function doneTyping() {
-    $.ajax({
-      //async: false,
-      type: "POST",
-      url: "App/Server/ServerInfoClientesChecarSIANSiExiste.php",
-      data: "CLIENTESIAN=" + ValorClienteSIAN,
-      dataType: "json",
-      success: function(response) {
-        // Reescribe la Datatable y le da refresh
+    if (ValorClienteSIAN !== "" && ValorClienteSIAN !== "0") {
+      $.ajax({
+        //async: false,
+        type: "POST",
+        url: "App/Server/ServerInfoClientesChecarSIANSiExiste.php",
+        data: "CLIENTESIAN=" + ValorClienteSIAN,
+        dataType: "json",
+        success: function(response) {
+          // Reescribe la Datatable y le da refresh
 
-        if (response.NombreCliente != null) {
-          // Mandar el modal de que ya existe el email
+          if (response.NombreCliente != null) {
+            // Mandar el modal de que ya existe el email
 
-          $("#ModalYaExiste").modal("show");
+            $("#ModalYaExiste").modal("show");
 
-          // Quitamos el modal que genero el email
+            // Quitamos el modal que genero el email
 
-          $("#ModalAgregarClientes").modal("hide");
+            $("#ModalAgregarClientes").modal("hide");
 
-          // Mandamos la informacion al nuevo modal
+            // Mandamos la informacion al nuevo modal
 
-          $("#NumeroDeClienteSIANYaExiste").text(response.CLIENTESIAN);
-          $("#NombreClienteYaExiste").text(response.NombreCliente);
-          $("#EmailClienteYaExiste").text(response.EmailCliente);
-          $("#TelefonoClienteYaExiste").text(response.TelefonoCliente);
-          $("#NombreContactoYaExiste").text(response.NombreContacto);
-          $("#DireccionClienteYaExiste").text(response.DireccionCliente);
-          $("#ColoniaClienteYaExiste").text(response.ColoniaCliente);
-          $("#CiudadClienteYaExiste").text(response.CiudadCliente);
-          $("#EstadoClienteYaExiste").text(response.EstadoCliente);
-        }
-      },
-    }).done(function() {});
+            $("#NumeroDeClienteSIANYaExiste").text(response.CLIENTESIAN);
+            $("#NombreClienteYaExiste").text(response.NombreCliente);
+            $("#EmailClienteYaExiste").text(response.EmailCliente);
+            $("#TelefonoClienteYaExiste").text(response.TelefonoCliente);
+            $("#NombreContactoYaExiste").text(response.NombreContacto);
+            $("#DireccionClienteYaExiste").text(response.DireccionCliente);
+            $("#ColoniaClienteYaExiste").text(response.ColoniaCliente);
+            $("#CiudadClienteYaExiste").text(response.CiudadCliente);
+            $("#EstadoClienteYaExiste").text(response.EstadoCliente);
+          }
+        },
+      }).done(function() {});
+    }
   }
 
   // Disparo el modal #ModalAgregarClientes cuano cierro #ModalEmailYaExiste

@@ -1,7 +1,8 @@
 <?php include("includes/HeaderScripts.php");
 
-if ($_SESSION['TIPOUSUARIO'] != 1) {
-    header("Location: index.php");
+if (!usuarioTieneAccesoSeccion('clientes')) {
+    header("Location: main.php");
+    exit;
 }
 
 ?>
@@ -24,7 +25,7 @@ if ($_SESSION['TIPOUSUARIO'] != 1) {
         <div class="app-container">
             <div class="search">
                 <form>
-                    <input class="form-control" type="text" placeholder="Type here..." aria-label="Search">
+                    <!-- <input class="form-control" type="text" placeholder="Type here..." aria-label="Search"> -->
                 </form>
                 <a href="#" class="toggle-search"><i class="material-icons">close</i></a>
             </div>
@@ -97,7 +98,7 @@ if ($_SESSION['TIPOUSUARIO'] != 1) {
     <script src="assets/js/pages/datatables.js"></script>
 
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
-
+    <script src="assets/js/select2.min.js" integrity="sha512-9p/L4acAjbjIaaGXmZf0Q2bV42HetlCLbv8EP0z3rLbQED2TAFUlDvAezy7kumYqg5T8jHtDdlm1fgIsr5QzKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js" integrity="sha512-Fq/wHuMI7AraoOK+juE5oYILKvSPe6GC5ZWZnvpOO/ZPdtyA29n+a5kVLP4XaLyDy9D1IBPYzdFycO33Ijd0Pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="App/js/AppClientes.js"></script>

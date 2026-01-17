@@ -1,4 +1,36 @@
 $(document).ready(function() {
+
+  $('#ModalAgregarUsuarios').on('show.bs.modal', function () {
+    $(this)
+      .find('input.permiso-seccion')
+      .prop('checked', true);
+
+    $('#SeccionInicioID').val('');
+  });
+
+  $('#ModalAgregarUsuarios').on('shown.bs.modal', function () {
+    $('#CLIENTEID').select2({
+      dropdownParent: $('#ModalAgregarUsuarios'), // Ajuste importante
+      placeholder: 'Selecciona cliente',
+      allowClear: true,
+      width: '100%' // Asegura que ocupe todo el ancho del contenedor
+    });
+  });
+  $('#ModalEditarUsuarios').on('shown.bs.modal', function () {
+    $('#CLIENTEIDEditar').select2({
+      dropdownParent: $('#ModalEditarUsuarios'), // Ajuste importante
+      placeholder: 'Selecciona cliente',
+      allowClear: true,
+      width: '100%' // Asegura que ocupe todo el ancho del contenedor
+    });
+  });
+  
+  var permisoCount = parseInt($('#UsuariosDT').data('permisoCount'), 10) || 0;
+  var nonOrderableTargets = [];
+  for (var i = 0; i < permisoCount + 2; i++) {
+    nonOrderableTargets.push(4 + i);
+  }
+
   var dataTableUsuarioDT = $("#UsuariosDT").DataTable({
     // Tabla General de Usuarios
 
@@ -29,7 +61,7 @@ $(document).ready(function() {
       type: "post",
     },
 
-    columnDefs: [{ orderable: false, targets: [4, 5] }],
+    columnDefs: [{ orderable: false, targets: nonOrderableTargets }],
 
     lengthChange: true, // añade la lista desplegable
     order: [[0, "DESC"]],
@@ -62,7 +94,7 @@ $(document).ready(function() {
 
           console.log(response.USUARIOID);
 
-          dataTableUsuarioDT.columns.adjust().draw();
+          dataTableUsuarioDT.ajax.reload(null, false);
         },
       }).done(function() {});
 
@@ -96,7 +128,7 @@ $(document).ready(function() {
 
           console.log(response.USUARIOID);
 
-          dataTableUsuarioDT.columns.adjust().draw();
+          dataTableUsuarioDT.ajax.reload(null, false);
         },
       }).done(function() {});
 
@@ -104,28 +136,50 @@ $(document).ready(function() {
     }
   });
 
-  // Deshabilitar Usuario
+  // Cambiar estado de Usuario (habilitar/deshabilitar)
 
-  $("body").on("click", "#DeshabilitarUsuario", function() {
+  $("body").on("click", "#CambiarEstadoUsuario", function() {
     var USUARIOID = $("input#USUARIOIDDeshabilitar").val();
+    var nuevoEstado = $("input#EstadoNuevoUsuario").val();
 
-    var dataString = "USUARIOID=" + USUARIOID;
-
-    console.log(dataString);
+    var payload = {
+      USUARIOID: USUARIOID,
+      Deshabilitado: nuevoEstado,
+    };
 
     // ajax
     $.ajax({
       //async: false,
       type: "POST",
       url: "App/Server/ServerDeshabilitarUsuarios.php",
-      data: dataString,
+      data: payload,
       dataType: "json",
       success: function(response) {
-        dataTableUsuarioDT.columns.adjust().draw();
+        dataTableUsuarioDT.ajax.reload(null, false);
       },
     }).done(function() {});
 
     $("#ModalDeshabilitarUsuarios").modal("toggle");
+  });
+
+  $("body").on("click", "#BorrarUsuario", function() {
+    var USUARIOID = $("input#USUARIOIDBorrar").val();
+
+    var dataString = "USUARIOID=" + USUARIOID;
+
+    console.log(dataString);
+
+    $.ajax({
+      type: "POST",
+      url: "App/Server/ServerBorrarUsuarios.php",
+      data: dataString,
+      dataType: "json",
+      success: function(response) {
+        dataTableUsuarioDT.ajax.reload(null, false);
+      }
+    }).done(function() {});
+
+    $("#ModalBorrarUsuarios").modal("toggle");
   });
 
   $(document).on("change", "#TIPODEUSUARIOID", function() {
@@ -139,6 +193,19 @@ $(document).ready(function() {
     } else {
       $("#ClientesEscondidos").hide();
       $("select#CLIENTEID").attr("required", false);
+    }
+  });
+  $(document).on("change", "#TIPODEUSUARIOIDEditar", function() {
+    var TipoDeUsuario = $(this).val();
+
+    if (TipoDeUsuario == 4) {
+      $("#ClientesEscondidosEditar").show();
+
+      // Ponerle el parametro "required al select de Clientes"
+      $("select#CLIENTEIDEditar").attr("required", true);
+    } else {
+      $("#ClientesEscondidosEditar").hide();
+      $("select#CLIENTEIDEditar").attr("required", false);
     }
   });
 });
@@ -158,9 +225,17 @@ function TomarDatosParaModalUsuarios(val) {
       $("input#emailEditar").val(response.Email);
       $("input#TelefonoEditar").val(response.Telefono);
 
-      $("select#TIPODEUSUARIOIDEditar").val(response.TIPODEUSUARIOID);
-
+      $("select#TIPODEUSUARIOIDEditar").val(response.TIPODEUSUARIOID).trigger('change');
+      $("select#CLIENTEIDEditar").val(response.CLIENTEID).trigger('change');
+      $("select#SeccionInicioIDEditar").val(response.SeccionInicioID || '').trigger('change');
       $("input#USUARIOIDEditar").val(response.USUARIOID);
+
+      var permisos = response.Permisos || {};
+      $("#ModalEditarUsuarios input.permiso-seccion-editar").each(function() {
+        var seccionId = String($(this).data("seccion"));
+        var activo = permisos.hasOwnProperty(seccionId) ? permisos[seccionId] == 1 : true;
+        $(this).prop("checked", activo);
+      });
 
       //Para modal de Borrar
 
@@ -175,6 +250,66 @@ function TomarDatosParaModalUsuarios(val) {
       );
 
       $("input#USUARIOIDDeshabilitar").val(response.USUARIOID);
+
+      var estaDeshabilitado = parseInt(response.Deshabilitado, 10) === 1;
+      var modalTitulo = estaDeshabilitado
+        ? "Habilitar usuario"
+        : "Deshabilitar usuarios";
+      var modalMensaje = estaDeshabilitado
+        ? "¿Deseas habilitar este usuario?"
+        : "¿Deseas deshabilitar este usuario?";
+
+      $("#ModalDeshabilitarUsuariosTitulo").text(modalTitulo);
+      $("#ModalDeshabilitarUsuariosMensaje").text(modalMensaje);
+      $("#EstadoNuevoUsuario").val(estaDeshabilitado ? 0 : 1);
+
+      $("#CambiarEstadoUsuario")
+        .toggleClass("btn-success", estaDeshabilitado)
+        .toggleClass("btn-danger", !estaDeshabilitado)
+        .text(estaDeshabilitado ? "Habilitar" : "Deshabilitar");
+
+      $("#NombreUsuarioBorrar").text(
+        response.PrimerNombre +
+          " " +
+          response.SegundoNombre +
+          " " +
+          response.ApellidoPaterno +
+          " " +
+          response.ApellidoMaterno
+      );
+
+      $("input#USUARIOIDBorrar").val(response.USUARIOID);
     },
   });
 }
+
+$(document).on("change", ".usuario-seccion-toggle", function() {
+  var checkbox = $(this);
+  var nuevoEstado = checkbox.is(":checked");
+  var estadoAnterior = !nuevoEstado;
+  var data = {
+    USUARIOID: checkbox.data("usuario"),
+    SECCIONID: checkbox.data("seccion"),
+    PuedeVer: nuevoEstado ? 1 : 0,
+  };
+
+  checkbox.prop("disabled", true);
+
+  $.ajax({
+    type: "POST",
+    url: "App/Server/ServerActualizarPermisoSeccion.php",
+    data: data,
+    dataType: "json",
+  })
+    .done(function(response) {
+      if (!response || response.success !== true) {
+        checkbox.prop("checked", estadoAnterior);
+      }
+    })
+    .fail(function() {
+      checkbox.prop("checked", estadoAnterior);
+    })
+    .always(function() {
+      checkbox.prop("disabled", false);
+    });
+});

@@ -5,8 +5,6 @@ include('../Connections/ConDB.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// Need two helper files:
-	$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-	$host = $_SERVER['HTTP_HOST'] ?? 'pruebas.edison.com.mx';
 
 	// Check the login:
 	list($check, $data) = check_login($conn, $_POST['username'], $_POST['password']);
@@ -22,38 +20,67 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$_SESSION['TIPOUSUARIO'] = $data['TIPODEUSUARIOID'];
 		$_SESSION['USUARIOID'] = $data['USUARIOID'];
 		$_SESSION['Deshabiitado'] = $data['Deshabilitado'];
-		$_SESSION['NombreDelUsuario'] = $NombreDelUsuario;
-		$_SESSION['TipoDeUsuario'] = $data['TipoDeUsuario'];
-		$_SESSION['NombreCliente'] = $data['NombreCliente'];
-		$_SESSION['CLIENTEID'] = $data['CLIENTEID'];
+                $_SESSION['NombreDelUsuario'] = $NombreDelUsuario;
+                $_SESSION['TipoDeUsuario'] = $data['TipoDeUsuario'];
+                $_SESSION['NombreCliente'] = $data['NombreCliente'];
+               $_SESSION['CLIENTEID'] = $data['CLIENTEID'];
+                $seccionInicioRuta = $data['RutaSeccionInicio'] ?? '';
+                $seccionInicioSlug = $data['SlugSeccionInicio'] ?? '';
+                $_SESSION['SeccionInicioID'] = $data['SECCIONINICIOID'] ?? null;
+                $_SESSION['SeccionInicioRuta'] = $seccionInicioRuta;
+                $_SESSION['SeccionInicioSlug'] = $seccionInicioSlug;
 
+                $permisos = [];
+                $stmtPermisos = @mysqli_prepare(
+                    $conn,
+                    'SELECT s.Slug, COALESCE(us.PuedeVer, 0) as PuedeVer, s.MostrarEnMenu
+                     FROM secciones s
+                     LEFT JOIN usuario_secciones us ON us.SECCIONID = s.SECCIONID AND us.USUARIOID = ?
+                     ORDER BY s.Orden, s.Nombre'
+                );
 
-		if ($_SERVER['HTTP_HOST'] == "local.edison:8888") {
+                $configuracionSecciones = [];
+                if ($stmtPermisos) {
+                    mysqli_stmt_bind_param($stmtPermisos, 'i', $_SESSION['USUARIOID']);
+                    mysqli_stmt_execute($stmtPermisos);
+                    mysqli_stmt_bind_result($stmtPermisos, $slugPermiso, $puedeVerPermiso, $mostrarEnMenu);
 
-			echo "<script>window.location.href='http://local.edison:8888/Repartos.php';</script>";
-			exit;
-		} else if ($_SERVER['HTTP_HOST'] == "localhost") {
+                    while (mysqli_stmt_fetch($stmtPermisos)) {
+                        $slugNormalizado = strtolower((string)$slugPermiso);
+                        $permisos[$slugNormalizado] = (int)$puedeVerPermiso;
+                        $configuracionSecciones[$slugNormalizado] = (int)$mostrarEnMenu;
+                    }
 
-			echo "<script>window.location.href='http://localhost/DesarrolloWeb/edisonreparto/Repartos.php';</script>";
-			exit;
-		} else {
+                    mysqli_stmt_close($stmtPermisos);
+                }
 
-			echo "<script>window.location.href='{$scheme}://{$host}/Repartos.php';</script>";
-			exit;
-		}
-	} else { // Unsuccessful!
+                $_SESSION['PermisosSecciones'] = $permisos;
+                $_SESSION['SeccionesVisibles'] = $configuracionSecciones;
 
-		if ($_SERVER['HTTP_HOST'] == "local.edison:8888") {
-			echo "<script>window.location.href='http://local.edison:8888/index.php?login=no';</script>";
-			exit;
-		} else if ($_SERVER['HTTP_HOST'] == "localhost/edisonreparto") {
-			echo "<script>window.location.href='http://localhost/index.php?login=no';</script>";
-			exit;
-		} else {
-			echo "<script>window.location.href='{$scheme}://{$host}/index.php?login=no';</script>";
-			exit;
-		}
-	}
+                $destino = 'main.php';
+                if (!empty($seccionInicioRuta)) {
+                    $puedeIngresar = true;
+                    $slugInicioNormalizado = strtolower((string)$seccionInicioSlug);
+                    if ($slugInicioNormalizado !== '') {
+                        $estaDisponible = !isset($configuracionSecciones[$slugInicioNormalizado])
+                            || (int)$configuracionSecciones[$slugInicioNormalizado] === 1;
+                        if (!$estaDisponible) {
+                            $puedeIngresar = false;
+                        } else {
+                            $puedeIngresar = !isset($permisos[$slugInicioNormalizado])
+                                || (int)$permisos[$slugInicioNormalizado] === 1;
+                        }
+                    }
+                    if ($puedeIngresar) {
+                        $destino = $seccionInicioRuta;
+                    }
+                }
+
+                redirect_user($destino);
+       } else { // Unsuccessful!
+               // Failed login should return to the login form with an error
+               redirect_user('index.php?login=no');
+       }
 
 	mysqli_close($conn); // Close the database connection.
 

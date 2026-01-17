@@ -32,20 +32,36 @@
 
                                                     </select>
                                                 </div>
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="SeccionInicioID" class="form-label">Sección de inicio</label>
+                                                    <select class="form-select" name="SeccionInicioID" id="SeccionInicioID" aria-label="Selecciona sección de inicio">
+                                                        <option value="">Selecciona sección de inicio</option>
+                                                        <?php foreach ($seccionesSistema as $seccion) { ?>
+                                                            <option value="<?php echo (int)$seccion['SECCIONID']; ?>"><?php echo htmlspecialchars($seccion['Nombre'], ENT_QUOTES, 'UTF-8'); ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
                                             </div>
 
                                             <div class="row" style="display:none" id="ClientesEscondidos">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="CLIENTEID" class="form-label">Cliente ID</label>
-                                                    <select class="form-select select2" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
+                                                    <select class="select2" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
                                                         <option selected>Selecciona cliente</option>
 
                                                         <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
 
                                                             <option value="<?php echo $row_clientes['CLIENTEID']; ?>">
 
-                                                                <?php echo $row_clientes['CLIENTESIAN'] . " - " . $row_clientes['NombreCliente']; ?>
+                                                                <?php if ($row_clientes["CLCSIAN"] != NULL) {
 
+                                                                    $NumeroDeCredito = " - " . $row_clientes["CLCSIAN"];
+                                                                } else {
+
+                                                                    $NumeroDeCredito = " ";
+                                                                }
+
+                                                                echo $row_clientes['CLIENTESIAN'] . $NumeroDeCredito . " - " . $row_clientes['NombreCliente']; ?>
                                                             </option>
 
                                                         <?php }
@@ -107,6 +123,24 @@
 
                                             </div>
 
+                                            <?php if (!empty($seccionesSistema)) { ?>
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-sm-12 mb-4">
+                                                        <label class="form-label d-block">Permisos de secciones</label>
+                                                        <div class="row">
+                                                            <?php foreach ($seccionesSistema as $seccion) { ?>
+                                                                <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
+                                                                    <div class="form-check form-switch">
+                                                                        <input class="form-check-input permiso-seccion" type="checkbox" id="seccion_<?php echo $seccion['SECCIONID']; ?>" name="secciones[<?php echo $seccion['SECCIONID']; ?>]" value="1" data-seccion="<?php echo $seccion['SECCIONID']; ?>" checked>
+                                                                        <label class="form-check-label" for="seccion_<?php echo $seccion['SECCIONID']; ?>"><?php echo htmlspecialchars($seccion['Nombre'], ENT_QUOTES, 'UTF-8'); ?></label>
+                                                                    </div>
+                                                                </div>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php } ?>
+
                                         </div>
                                     </div>
                                 </div>
@@ -158,6 +192,50 @@
                                                     </select>
                                                 </div>
 
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                    <label for="SeccionInicioIDEditar" class="form-label">Sección de inicio</label>
+                                                    <select class="form-select" name="SeccionInicioIDEditar" id="SeccionInicioIDEditar" aria-label="Selecciona sección de inicio">
+                                                        <option value="">Selecciona sección de inicio</option>
+                                                        <?php foreach ($seccionesSistema as $seccion) { ?>
+                                                            <option value="<?php echo (int)$seccion['SECCIONID']; ?>"><?php echo htmlspecialchars($seccion['Nombre'], ENT_QUOTES, 'UTF-8'); ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+
+                                                <div class="row" style="display:none" id="ClientesEscondidosEditar">
+                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                <label for="CLIENTEIDEditar" class="form-label">Cliente ID</label>
+                                                    <select class="select2" name="CLIENTEIDEditar" id="CLIENTEIDEditar" aria-label="Default select example" required>
+                                                        <option selected>Selecciona cliente</option>
+
+                                                        <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
+
+                                                            <option value="<?php echo $row_clientes['CLIENTEID']; ?>">
+
+                                                                <?php
+                                                                if ($row_clientes["CLCSIAN"] != NULL) {
+
+                                                                    $NumeroDeCredito = " - " . $row_clientes["CLCSIAN"];
+                                                                } else {
+
+                                                                    $NumeroDeCredito = " ";
+                                                                }
+
+                                                                echo $row_clientes['CLIENTESIAN'] . $NumeroDeCredito . " - " . $row_clientes['NombreCliente']; ?>
+
+                                                            </option>
+
+                                                        <?php }
+
+                                                        // Reset the pointer to the beginning
+                                                        mysqli_data_seek($clientes, 0);
+
+                                                        ?>
+
+                                                    </select>
+                                                </div>
+
+                                            </div>
 
                                                 <div class="col-lg-6 col-sm-12 mb-4">
                                                     <label for="PrimerNombreEditar" class="form-label">Primer nombre</label>
@@ -199,6 +277,24 @@
 
                                             </div>
 
+                                            <?php if (!empty($seccionesSistema)) { ?>
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-sm-12 mb-4">
+                                                        <label class="form-label d-block">Permisos de secciones</label>
+                                                        <div class="row">
+                                                            <?php foreach ($seccionesSistema as $seccion) { ?>
+                                                                <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
+                                                                    <div class="form-check form-switch">
+                                                                        <input class="form-check-input permiso-seccion-editar" type="checkbox" id="seccion_editar_<?php echo $seccion['SECCIONID']; ?>" name="secciones[<?php echo $seccion['SECCIONID']; ?>]" value="1" data-seccion="<?php echo $seccion['SECCIONID']; ?>">
+                                                                        <label class="form-check-label" for="seccion_editar_<?php echo $seccion['SECCIONID']; ?>"><?php echo htmlspecialchars($seccion['Nombre'], ENT_QUOTES, 'UTF-8'); ?></label>
+                                                                    </div>
+                                                                </div>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php } ?>
+
                                         </div>
                                     </div>
                                 </div>
@@ -227,7 +323,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Deshabilitar usuarios</h5>
+                <h5 class="modal-title" id="ModalDeshabilitarUsuariosTitulo">Deshabilitar usuarios</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
             </div>
 
@@ -236,10 +332,7 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-
-                                Deseas dehabilitar este usuario?
-
-                                <br>
+                                <p id="ModalDeshabilitarUsuariosMensaje">¿Deseas deshabilitar este usuario?</p>
                                 <br>
                                 <h3 id="NombreUsuarioDeshabilitar"></h3>
 
@@ -251,10 +344,11 @@
             <div class="modal-footer">
 
                 <input type="hidden" id="USUARIOIDDeshabilitar" name="USUARIOIDDeshabilitar">
+                <input type="hidden" id="EstadoNuevoUsuario" name="EstadoNuevoUsuario" value="1">
 
 
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" id="DeshabilitarUsuario" class="btn btn-danger">
+                <button type="button" id="CambiarEstadoUsuario" class="btn btn-danger">
                     Deshabilitar</button>
             </div>
 

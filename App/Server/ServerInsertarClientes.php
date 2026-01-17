@@ -3,8 +3,26 @@
 include("../../Connections/ConDB.php");
 include("../../includes/Funciones.php");
 
-$CLIENTESIAN = mysqli_real_escape_string($conn, $_POST['CLIENTESIAN']);
-$CLCSIAN = isset($_POST['CLCSIAN']) ? mysqli_real_escape_string($conn, $_POST['CLCSIAN']) : NULL;
+header('Content-Type: application/json');
+
+$clienteSianInput = isset($_POST['CLIENTESIAN']) ? trim($_POST['CLIENTESIAN']) : '';
+$clcSianInput = isset($_POST['CLCSIAN']) ? trim($_POST['CLCSIAN']) : '';
+
+if ($clienteSianInput === '' && $clcSianInput === '') {
+    http_response_code(400);
+    echo json_encode([
+        'error' => 'Captura al menos uno de los números de cliente (CLIENTESIAN o CLCSIAN).'
+    ]);
+    mysqli_close($conn);
+    exit;
+}
+
+$CLIENTESIAN = ($clienteSianInput !== '')
+    ? "'" . mysqli_real_escape_string($conn, $clienteSianInput) . "'"
+    : "NULL";
+$CLCSIAN = ($clcSianInput !== '')
+    ? "'" . mysqli_real_escape_string($conn, $clcSianInput) . "'"
+    : "NULL";
 
 $NombreCliente = isset($_POST['NombreCliente']) ? mysqli_real_escape_string($conn, $_POST['NombreCliente']) : NULL;
 
@@ -16,7 +34,7 @@ $ColoniaCliente = isset($_POST['ColoniaCliente']) ? mysqli_real_escape_string($c
 $CiudadCliente = isset($_POST['CiudadCliente']) ? mysqli_real_escape_string($conn, $_POST['CiudadCliente']) : NULL;
 $EstadoCliente = isset($_POST['EstadoCliente']) ? mysqli_real_escape_string($conn, $_POST['EstadoCliente']) : NULL;
 
-$sql = "INSERT INTO clientes (CLIENTESIAN,CLCSIAN, NombreCliente, EmailCliente, TelefonoCliente, NombreContacto, DireccionCliente, ColoniaCliente, CiudadCliente, EstadoCliente) VALUES ('$CLIENTESIAN', '$CLCSIAN', '$NombreCliente', '$EmailCliente', '$TelefonoCliente', '$NombreContacto', '$DireccionCliente', '$ColoniaCliente', '$CiudadCliente', '$EstadoCliente')";
+$sql = "INSERT INTO clientes (CLIENTESIAN,CLCSIAN, NombreCliente, EmailCliente, TelefonoCliente, NombreContacto, DireccionCliente, ColoniaCliente, CiudadCliente, EstadoCliente) VALUES ($CLIENTESIAN, $CLCSIAN, '$NombreCliente', '$EmailCliente', '$TelefonoCliente', '$NombreContacto', '$DireccionCliente', '$ColoniaCliente', '$CiudadCliente', '$EstadoCliente')";
 
 if (!mysqli_query($conn, $sql)) {
     die('Error: ' . mysqli_error($conn));

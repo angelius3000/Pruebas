@@ -6,7 +6,11 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-// storing  request (ie, get/post) global array to a variable  
+$tipoUsuarioActual = isset($_SESSION['TipoDeUsuario']) ? strtolower(trim((string) $_SESSION['TipoDeUsuario'])) : '';
+$tiposPermitidosCambioEstatus = ['administrador', 'supervisor', 'auditor'];
+$puedeCambiarEstatus = $tipoUsuarioActual !== '' && in_array($tipoUsuarioActual, $tiposPermitidosCambioEstatus, true);
+
+// storing  request (ie, get/post) global array to a variable
 $requestData = $_REQUEST;
 
 $CLIENTEID = $_SESSION['CLIENTEID'];
@@ -87,7 +91,7 @@ $data = array();
 
 while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparando el Arraigo
 
-    if ($_SESSION['TIPOUSUARIO'] == '1') {
+    if ($puedeCambiarEstatus) {
         $MandarModal = 'data-bs-toggle="modal" data-bs-target="#ModalCambioStatus" onclick="TomarDatosParaModalRepartos(' . $row["REPARTOID"] . ')"';
     } else {
         $MandarModal = '';
@@ -105,6 +109,10 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
         $BadgeStatus = '<span class="badge badge-success" ' . $MandarModal . '>Entregado</span>';
     } else if ($row["STATUSID"] == 6) {
         $BadgeStatus = '<span class="badge badge-danger"  ' . $MandarModal . '>Cancelado</span>';
+    } else if ($row["STATUSID"] == 7) {
+        $BadgeStatus = '<span class="badge badge-successParcial"  ' . $MandarModal . '>Entrega Parcial</span>';
+    } else if ($row["STATUSID"] == 8) {
+        $BadgeStatus = '<span class="badge badge-success"  ' . $MandarModal . '>Recolectado</span>';
     }
 
     if ($row['USUARIOID'] == $_SESSION['USUARIOID'] || $_SESSION['TIPOUSUARIO'] == '1') {
@@ -124,18 +132,19 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array ... Preparand
 
     $nestedData = array();
 
-    $nestedData[] = '<strong>' . $row["REPARTOID"] . '</strong>'; //(0) Folio
-    $nestedData[] = $BadgeStatus; //(1) Estatus
-    $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"]; //(2) Dirección
-    $nestedData[] = SoloFecha($row["FechaDeRegistro"]); //(5) Fecha de registro
+    $nestedData[] = '<strong>' . $row["REPARTOID"] . '</strong>';
+    $nestedData[] = $BadgeStatus;
+    $nestedData[] = $row["Calle"] . ' ' . $row["NumeroEXT"] . ' ' . $row["Colonia"];
+    $nestedData[] = date('d-m-Y H:i', strtotime($row["FechaDeRegistro"]));
     $nestedData[] = $row["FechaRepartoFormatted"]; //(6) Fecha de reparto
     $nestedData[] = $row["HoraReparto"]; //(7) Hora de reparto
-    $nestedData[] = $row["PrimerNombre"] . ' ' . $row["SegundoNombre"] . ' ' . $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"]; //(8) Solicitante
-    $nestedData[] = $row["Receptor"]; //(11) Receptor
-    $nestedData[] = $row["TelefonoDeReceptor"]; //(12) Teléfono de receptor
-    $nestedData[] = $row["TelefonoAlternativo"]; //(13) Teléfono alternativo
-    $nestedData[] = $row["NumeroDeFactura"]; //(14) Número de factura
-    $nestedData[] = $row["Comentarios"]; //(15) Comentarios
+    $nestedData[] = $row["PrimerNombre"] . ' ' . $row["SegundoNombre"] . ' ' . $row["ApellidoPaterno"] . ' ' . $row["ApellidoMaterno"];
+    $nestedData[] = $row["Receptor"];
+    $nestedData[] = $row["TelefonoDeReceptor"];
+    $nestedData[] = $row["TelefonoAlternativo"];
+    $nestedData[] = $row["NumeroDeFactura"];
+    $nestedData[] = $row["Comentarios"];
+
     $data[] = $nestedData;
 }
 

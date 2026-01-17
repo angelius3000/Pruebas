@@ -830,7 +830,7 @@ h6 {
     brightness(109%) contrast(115%);
 }
 .app-menu > ul > li > a > i:not(.has-sub-menu) {
-  margin-right: 13px;
+  margin-right: 5px;
   vertical-align: top;
   line-height: 20px;
   filter: invert(41%) sepia(17%) saturate(674%) hue-rotate(182deg)
@@ -5943,11 +5943,7 @@ span.flatpickr-weekday {
   content: "";
   display: block;
 }
-.app-auth-sign-in .app-auth-background {
-  background: url(../../App/Graficos/Background/BackIndex.jpg) no-repeat;
-  background-size: 60%;
-  background-position: center;
-}
+.app-auth-sign-in .app-auth-background{background:url(../../App/Graficos/Background/BackIndex.jpg) center/cover no-repeat;}
 .app-auth-sign-up .app-auth-background {
   background: url(../images/backgrounds/sign-up.svg) no-repeat;
   background-size: 60%;

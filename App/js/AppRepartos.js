@@ -1,4 +1,43 @@
 $(document).ready(function() {
+  var repartosConfig = window.repartosConfig || {};
+  var puedeCambiarEstatus = !!repartosConfig.puedeCambiarEstatus;
+  var mensajeRestriccionCambioEstatus = typeof repartosConfig.mensajeRestriccionCambioEstatus === 'string' && repartosConfig.mensajeRestriccionCambioEstatus.trim() !== ''
+    ? repartosConfig.mensajeRestriccionCambioEstatus
+    : 'Solo un administrador, supervisor o auditor puede cambiar el estatus.';
+
+  $('#ModalCambioStatus').on('show.bs.modal', function(event) {
+    if (!puedeCambiarEstatus) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      window.alert(mensajeRestriccionCambioEstatus);
+    }
+  });
+
+  $('#ModalAgregarReparto').on('shown.bs.modal', function () {
+    $('#CLIENTEID').select2({
+      dropdownParent: $('#ModalAgregarReparto'), // Ajuste importante
+      placeholder: 'Selecciona cliente',
+      allowClear: true,
+      width: '100%' // Asegura que ocupe todo el ancho del contenedor
+    });
+  });
+  $('#ModalEditarReparto').on('shown.bs.modal', function () {
+    $('#CLIENTEIDEditar').select2({
+      dropdownParent: $('#ModalEditarReparto'), // Ajuste importante
+      placeholder: 'Selecciona cliente',
+      allowClear: true,
+      width: '100%' // Asegura que ocupe todo el ancho del contenedor
+    });
+  });
+  $('#ModalClonarReparto').on('shown.bs.modal', function () {
+    $('#CLIENTEIDClonar').select2({
+      dropdownParent: $('#ModalClonarReparto'), // Ajuste importante
+      placeholder: 'Selecciona cliente',
+      allowClear: true,
+      width: '100%' // Asegura que ocupe todo el ancho del contenedor
+    });
+  });
+
   // Variables para almacenar las fechas
   var fechaInicioRegistro;
   var fechaFinalRegistro;
@@ -37,7 +76,7 @@ $(document).ready(function() {
 
   $("body").tooltip({ selector: '[data-toggle="tooltip"]' });
 
-  $(".select2").select2();
+  
 
   // Mandar el Datepicker
 
@@ -123,7 +162,7 @@ $(document).ready(function() {
     // Tabla General de Usuarios
 
     dom: "Bifrtip",
-    buttons: ["excelHtml5", "pdfHtml5", "pageLength"],
+    buttons: [],
     processing: true,
     serverSide: true,
     responsive: true,
@@ -152,7 +191,41 @@ $(document).ready(function() {
     order: [[0, "DESC"]],
   });
 
-  // Para Agregar Usuarios
+  var dataTableRepartosDTClientes = $("#RepartosRepartidor2DT").DataTable({
+    // Tabla General de Usuarios
+
+    dom: "Bifrtip",
+    buttons: [],
+    processing: true,
+    serverSide: true,
+    responsive: true,
+    searching: false,
+    pageLength: 5,
+    language: {
+      search: "Búsqueda:",
+      lengthMenu: "Mostrar _MENU_ filas",
+      zeroRecords: "Sin información",
+      info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+      paginate: {
+        first: "Primera",
+        last: "Última",
+        next: "Siguiente",
+        previous: "Anterior",
+      },
+      infoEmpty: "Sin repartos registradas",
+      infoFiltered: "(filtrado de _MAX_ registros)",
+    },
+    processing: "Procesando...",
+    loadingRecords: "Cargando...",
+    ajax: {
+      url: "App/Datatables/Repartidor-grid-data.php", // json datasource
+      type: "post",
+    },
+    lengthChange: true, // añade la lista desplegable
+    order: [[0, "DESC"]],
+  });
+
+  // Para Agregar Repartos
   $("#ValidacionAgregarRepartos").on("submit", function(e) {
     var form = $(this);
 
@@ -178,6 +251,35 @@ $(document).ready(function() {
       }).done(function() {});
 
       $("#ModalAgregarReparto").modal("toggle");
+    }
+  });
+
+   // Para Clonar Repartos
+   $("#ValidacionClonarRepartos").on("submit", function(e) {
+    var form = $(this);
+
+    form.parsley().validate();
+
+    if (form.parsley().isValid()) {
+      //prevent Default functionality
+      e.preventDefault();
+
+      // data string
+      var dataString = form.serialize();
+
+      // ajax
+      $.ajax({
+        //async: false,
+        type: "POST",
+        url: "App/Server/ServerClonarRepartos.php",
+        data: dataString,
+        dataType: "json",
+        success: function(response) {
+          dataTableRepartosDT.columns.adjust().draw();
+        },
+      }).done(function() {});
+
+      $("#ModalClonarReparto").modal("toggle");
     }
   });
 
@@ -283,6 +385,12 @@ $(document).ready(function() {
   // Evento para editar Status de reparto
 
   $("#ValidacionEditarStatus").on("submit", function(e) {
+    if (!puedeCambiarEstatus) {
+      e.preventDefault();
+      window.alert(mensajeRestriccionCambioEstatus);
+      $("#ModalCambioStatus").modal("hide");
+      return;
+    }
     var form = $(this);
 
     form.parsley().validate();
@@ -370,6 +478,26 @@ function TomarDatosParaModalRepartos(val) {
       $("#DatosRepartoParaBorrar").html(response.DatosParaBorrarReparto);
 
       $("input#REPARTOIDBorrar").val(response.REPARTOID);
+
+      // Campos para el modal #ModalClonarReparto
+
+      $("select#CLIENTEIDClonar").val(response.CLIENTEID);
+      //$("input#NumeroDeFacturaClonar").val(response.NumeroDeFactura);
+      $("input#CalleClonar").val(response.Calle);
+      $("input#ColoniaClonar").val(response.Colonia);
+      $("input#NumeroEXTClonar").val(response.NumeroEXT);
+      $("input#ColoniaClonar").val(response.Colonia);
+      $("input#CPClonar").val(response.CP);
+      $("input#CiudadClonar").val(response.Ciudad);
+      $("input#EstadoClonar").val(response.Estado);
+      $("input#EnlaceGoogleMapsClonar").val(response.EnlaceMapaGoogle);
+      $("input#ReceptorClonar").val(response.Receptor);
+      $("input#TelefonoDeReceptorClonar").val(response.TelefonoDeReceptor);
+      $("input#TelefonoAlternativoClonar").val(response.TelefonoAlternativo);
+      $("textarea#ComentariosClonar").val(response.Comentarios);
+      $("input#USUARIOIDClonar").val(response.USUARIOID);
+      $("input#REPARTOIDClonar").val(response.REPARTOID);
+      
 
       // Para el editor de Status
       $("input#REPARTOIDEditarStatus").val(response.REPARTOID);

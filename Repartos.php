@@ -1,5 +1,13 @@
 <?php include("includes/HeaderScripts.php");
 
+$pageTitle = 'Edison - Reparto';
+
+$tieneAcceso = usuarioTieneAccesoSeccion('reparto');
+if (!$tieneAcceso) {
+    header("Location: main.php");
+    exit;
+}
+
 $query_clientes = "SELECT * FROM clientes";
 $clientes = mysqli_query($conn, $query_clientes) or die(mysqli_error($conn));
 $totalRows_clientes = mysqli_num_rows($clientes);
@@ -40,6 +48,14 @@ $query_Solicitantes = "SELECT * FROM usuarios WHERE usuarios.TIPODEUSUARIOID != 
 $Solicitantes = mysqli_query($conn, $query_Solicitantes) or die(mysqli_error($conn));
 $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
 
+$tipoUsuarioActual = isset($_SESSION['TipoDeUsuario']) ? strtolower(trim((string) $_SESSION['TipoDeUsuario'])) : '';
+$tiposPermitidosCambioEstatus = ['administrador', 'supervisor', 'auditor'];
+$puedeCambiarEstatusRepartos = $tipoUsuarioActual !== '' && in_array($tipoUsuarioActual, $tiposPermitidosCambioEstatus, true);
+$mensajeRestriccionCambioEstatus = 'Solo un administrador, supervisor o auditor puede cambiar el estatus.';
+$tiposPermitidosAgregarReparto = ['administrador', 'supervisor'];
+$puedeAgregarReparto = in_array((string) ($_SESSION['TIPOUSUARIO'] ?? ''), ['1', '3'], true)
+    || ($tipoUsuarioActual !== '' && in_array($tipoUsuarioActual, $tiposPermitidosAgregarReparto, true));
+
 
 ?>
 
@@ -59,12 +75,11 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
             <?php include("includes/Menu.php") ?>
 
 
-
         </div>
         <div class="app-container">
             <div class="search">
                 <form>
-                    <input class="form-control" type="text" placeholder="Type here..." aria-label="Search">
+                    <!-- <input class="form-control" type="text" placeholder="Type here..." aria-label="Search"> -->
                 </form>
                 <a href="#" class="toggle-search"><i class="material-icons">close</i></a>
             </div>
@@ -86,7 +101,7 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
                             </div>
                         </div>
 
-                        <?php if ($_SESSION['TIPOUSUARIO'] == 1 || $_SESSION['TIPOUSUARIO'] == 3) { ?>
+                        <?php if ($puedeAgregarReparto) { ?>
 
                             <div class="row">
                                 <div class="col">
@@ -120,7 +135,31 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
                                     </thead>
                                 </table>
 
-                            <?php } else
+                            <?php } elseif ($_SESSION['TIPOUSUARIO'] == 2) { ?>
+                                <table id="RepartosRepartidor2DT" class="display" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Folio</th> <!-- (0) -->
+                                            <th>Estatus</th> <!-- (1) -->
+                                            <th>Dirección</th> <!-- (2) -->
+                                            <th>CP</th> <!-- (10) -->
+                                            <th>Receptor</th> <!-- (11) -->
+                                            <th>Teléfono receptor</th> <!-- (12) -->
+                                            <th>Repartidor</th> <!-- (4) -->
+                                            <th>Surtidor</th> <!-- (3) -->
+                                            <th>Fecha de registro</th> <!-- (5) -->
+                                            <th>Fecha de reparto</th> <!-- (6) -->
+                                            <th>Hora de reparto</th> <!-- (7) -->
+                                            <th>Solicitante</th> <!-- (8) -->
+                                            <th>Cliente</th> <!-- (9) -->
+                                            <th>Telefono alternativo</th> <!-- (13) -->
+                                            <th>Numero de factura</th> <!-- (14) -->
+                                            <th>Comentarios</th> <!-- (15) -->
+                                        </tr>
+                                    </thead>
+                                </table>
+
+                            <?php } else { ?>
 
 
                                 <div class="row">
@@ -192,13 +231,13 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
                                 <?php if ($_SESSION['TIPOUSUARIO'] != 2) { ?>
                                     <div class="row">
                                         <div class="col-lg-6 col-sm-12 mb-4 border-right pe-4">
-                                            <label for="NombreCliente" class="form-label">Fecha de Registro</label>
+                                            <label for="Fecha" class="form-label">Fecha de Registro</label>
                                             <input class="form-control flatpickr1" id="FechaInicioRegistro" type="text" placeholder="Inicio">
                                             <input class="form-control flatpickr1" id="FechaFinalRegistro" type="text" placeholder="Final">
                                         </div>
 
                                         <div class="col-lg-6 col-sm-12 mb-4 ps-4">
-                                            <label for="NombreCliente" class="form-label">Fecha de Reparto</label>
+                                            <label for="FechaInicioReparto" class="form-label">Fecha de Reparto</label>
                                             <input class="form-control flatpickr1" id="FechaInicioReparto" type="text" placeholder="Inicio">
                                             <input class="form-control flatpickr1" id="FechaFinalReparto" type="text" placeholder="Final">
                                         </div>
@@ -247,10 +286,17 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
 
     <?php include("App/Modales/ModalesRepartos.php") ?>
 
+    <script>
+        window.repartosConfig = <?php echo json_encode([
+            'puedeCambiarEstatus' => $puedeCambiarEstatusRepartos,
+            'mensajeRestriccionCambioEstatus' => $mensajeRestriccionCambioEstatus,
+        ], JSON_UNESCAPED_UNICODE); ?>;
+    </script>
+
     <!-- Javascripts -->
     <!-- <script src="assets/plugins/jquery/jquery-3.5.1.min.js"></script> -->
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/plugins/jquery/jquery-3.7.1.min.js"></script>
 
     <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -259,29 +305,29 @@ $totalRows_Solicitantes = mysqli_num_rows($Solicitantes);
     <script src="assets/plugins/highlight/highlight.pack.js"></script>
 
 
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/js/jquery.dataTables.js"></script>
 
     <script src="assets/js/main.min.js"></script>
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/pages/datatables.js"></script>
 
     <!-- DataTables Buttons JS -->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/js/buttons.html5.min.js"></script>
     <!-- JSZip for Excel export -->
-    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/js/jszip.min.js"></script>
     <!-- pdfmake for PDF export -->
-    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/js/pdfmake.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/js/vfs_fonts.js"></script>
 
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
-
-
+    <script type="text/javascript" charset="utf8" src="assets/js/dataTables.responsive.min.js"></script>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.3/select2.min.js" integrity="sha512-nwnflbQixsRIWaXWyQmLkq4WazLLsPLb1k9tA0SEx3Njm+bjEBVbLTijfMnztBKBoTwPsyz4ToosyNn/4ahTBQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js" integrity="sha512-Fq/wHuMI7AraoOK+juE5oYILKvSPe6GC5ZWZnvpOO/ZPdtyA29n+a5kVLP4XaLyDy9D1IBPYzdFycO33Ijd0Pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/select2.min.js" integrity="sha512-9p/L4acAjbjIaaGXmZf0Q2bV42HetlCLbv8EP0z3rLbQED2TAFUlDvAezy7kumYqg5T8jHtDdlm1fgIsr5QzKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script src="assets/js/parsley.js" integrity="sha512-Fq/wHuMI7AraoOK+juE5oYILKvSPe6GC5ZWZnvpOO/ZPdtyA29n+a5kVLP4XaLyDy9D1IBPYzdFycO33Ijd0Pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="assets/plugins/flatpickr/flatpickr.js"></script>
 

@@ -2,9 +2,27 @@
 
 include("../../Connections/ConDB.php");
 
-$CLIENTESIANEditar = mysqli_real_escape_string($conn, $_POST['CLIENTESIANEditar']);
+header('Content-Type: application/json');
 
-$CLCSIANEditar = mysqli_real_escape_string($conn, $_POST['CLCSIANEditar']);
+$clienteSianEditarInput = isset($_POST['CLIENTESIANEditar']) ? trim($_POST['CLIENTESIANEditar']) : '';
+$clcSianEditarInput = isset($_POST['CLCSIANEditar']) ? trim($_POST['CLCSIANEditar']) : '';
+
+if ($clienteSianEditarInput === '' && $clcSianEditarInput === '') {
+    http_response_code(400);
+    echo json_encode([
+        'error' => 'Captura al menos uno de los números de cliente (CLIENTESIAN o CLCSIAN).'
+    ]);
+    mysqli_close($conn);
+    exit;
+}
+
+$CLIENTESIANEditar = ($clienteSianEditarInput !== '')
+    ? "'" . mysqli_real_escape_string($conn, $clienteSianEditarInput) . "'"
+    : "NULL";
+
+$CLCSIANEditar = ($clcSianEditarInput !== '')
+    ? "'" . mysqli_real_escape_string($conn, $clcSianEditarInput) . "'"
+    : "NULL";
 
 $NombreClienteEditar = mysqli_real_escape_string($conn, $_POST['NombreClienteEditar']);
 $EmailClienteEditar = mysqli_real_escape_string($conn, $_POST['EmailClienteEditar']);
@@ -18,9 +36,9 @@ $EstadoClienteEditar = mysqli_real_escape_string($conn, $_POST['EstadoClienteEdi
 $CLIENTEIDEditar = mysqli_real_escape_string($conn, $_POST['CLIENTEIDEditar']);
 
 // Build the base query
-$sql = "UPDATE clientes SET 
-    CLIENTESIAN = '$CLIENTESIANEditar',
-    CLCSIAN = '$CLCSIANEditar',
+$sql = "UPDATE clientes SET
+    CLIENTESIAN = $CLIENTESIANEditar,
+    CLCSIAN = $CLCSIANEditar,
     NombreCliente = '$NombreClienteEditar',
     TelefonoCliente = '$TelefonoClienteEditar',
     NombreContacto = '$NombreContactoEditar',
