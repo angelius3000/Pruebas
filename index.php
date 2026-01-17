@@ -24,7 +24,7 @@
 
 
     <!-- Theme Styles -->
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/main.min.css" rel="stylesheet">
     <link href="assets/css/custom.css" rel="stylesheet">
 
     <link rel="apple-touch-icon" sizes="57x57" href="App/Graficos/Favicon/apple-icon-57x57.png">
@@ -61,10 +61,12 @@
 
         </div>
         <div class="app-auth-container">
-            <div class="logomain">
-                <a href="main.php"> <img src="App/Graficos/Logo/LogoEdison.png" style="max-width :250px;"> </a>
+            <div class="logo">
+                <a href="main.php"><img src="App/Graficos/Logo/LogoEdison.png" style="max-width: 250px;" alt="Edison"></a>
             </div>
-            <br>
+            <p class="auth-description">
+                Inicia sesión para continuar a las aplicaciones.
+            </p>
 
             <?php // echo "Este es el HTTPHOST <strong>" . $_SERVER['HTTP_HOST'] . '</strong>'; 
             ?>
