@@ -55,6 +55,15 @@
 
                     <div class="dropdown-divider"></div>
 
+                    <div class="dropdown-header text-uppercase text-muted small">Tema</div>
+                    <div class="px-3 pb-2 theme-selector">
+                        <button class="btn btn-sm theme-swatch theme-blue" type="button" data-theme="theme-blue" aria-label="Tema azul"></button>
+                        <button class="btn btn-sm theme-swatch theme-indigo" type="button" data-theme="theme-indigo" aria-label="Tema índigo"></button>
+                        <button class="btn btn-sm theme-swatch theme-slate" type="button" data-theme="theme-slate" aria-label="Tema gris"></button>
+                    </div>
+
+                    <div class="dropdown-divider"></div>
+
                     <a href="logout.php">Cerrar sesión</a>
 
 
