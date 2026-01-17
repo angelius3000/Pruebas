@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 include('login_functions.inc.php');
 include('../Connections/ConDB.php');
 
