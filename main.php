@@ -43,25 +43,25 @@ if (!usuarioTieneAccesoSeccion('aplicaciones')) {
                                     <h1>Aplicaciones</h1>
                                     <div class="row justify-content-center mt-4">
                                         <div class="col-auto mb-3">
-                                            <a href="Repartos.php" class="card app-card text-decoration-none text-dark bg-transparent border-0">
+                                            <a href="Repartos.php" class="card app-card text-decoration-none text-dark">
                                                 <div class="card-body">
-                                                    <i class="material-icons-two-tone" style="font-size:72px;">local_shipping</i>
+                                                    <i class="fas fa-truck fa-3x text-primary"></i>
                                                     <h5 class="mt-1">Reparto</h5>
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="col-auto mb-3">
-                                            <a href="charolas.php" class="card app-card text-decoration-none text-dark bg-transparent border-0">
+                                            <a href="charolas.php" class="card app-card text-decoration-none text-dark">
                                                 <div class="card-body">
-                                                    <i class="material-icons-two-tone" style="font-size:72px;">view_day</i>
+                                                    <i class="fas fa-layer-group fa-3x text-primary"></i>
                                                     <h5 class="mt-1">Charolas</h5>
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="col-auto mb-3">
-                                            <a href="MaterialPendiente.php" class="card app-card text-decoration-none text-dark bg-transparent border-0">
+                                            <a href="MaterialPendiente.php" class="card app-card text-decoration-none text-dark">
                                                 <div class="card-body">
-                                                    <i class="material-icons-two-tone" style="font-size:72px;">pending_actions</i>
+                                                    <i class="fas fa-clipboard-list fa-3x text-primary"></i>
                                                     <h5 class="mt-1">Material Pendiente</h5>
                                                 </div>
                                             </a>

@@ -11,43 +11,43 @@
             [
                 'slug' => 'aplicaciones',
                 'ruta' => 'main.php',
-                'icono' => 'dashboard',
+                'icono' => 'fas fa-th-large',
                 'nombre' => 'Aplicaciones',
             ],
             [
                 'slug' => 'charolas',
                 'ruta' => 'charolas.php',
-                'icono' => 'view_day',
+                'icono' => 'fas fa-layer-group',
                 'nombre' => 'Charolas',
             ],
             [
                 'slug' => 'reparto',
                 'ruta' => 'Repartos.php',
-                'icono' => 'local_shipping',
+                'icono' => 'fas fa-truck',
                 'nombre' => 'Reparto',
             ],
             [
                 'slug' => 'materialpendiente',
                 'ruta' => 'MaterialPendiente.php',
-                'icono' => 'pending_actions',
+                'icono' => 'fas fa-clipboard-list',
                 'nombre' => 'Material Pendiente',
             ],
             [
                 'slug' => 'clientes',
                 'ruta' => 'Clientes.php',
-                'icono' => 'people',
+                'icono' => 'fas fa-users',
                 'nombre' => 'Clientes',
             ],
             [
                 'slug' => 'usuarios',
                 'ruta' => 'Usuarios.php',
-                'icono' => 'person_add_alt',
+                'icono' => 'fas fa-user-plus',
                 'nombre' => 'Usuarios',
             ],
             [
                 'slug' => 'administracion',
                 'ruta' => 'Administracion.php',
-                'icono' => 'settings',
+                'icono' => 'fas fa-cogs',
                 'nombre' => 'Administración',
                 'soloAdministrador' => true,
             ],
@@ -67,7 +67,7 @@
 
             if ($mostrar) {
                 echo '<li>';
-                echo '<a href="' . htmlspecialchars($seccionMenu['ruta'], ENT_QUOTES, 'UTF-8') . '"><i class="material-icons-two-tone">' . htmlspecialchars($seccionMenu['icono'], ENT_QUOTES, 'UTF-8') . '</i>' . htmlspecialchars($seccionMenu['nombre'], ENT_QUOTES, 'UTF-8') . '</a>';
+                echo '<a href="' . htmlspecialchars($seccionMenu['ruta'], ENT_QUOTES, 'UTF-8') . '"><i class="' . htmlspecialchars($seccionMenu['icono'], ENT_QUOTES, 'UTF-8') . '"></i><span class="menu-text">' . htmlspecialchars($seccionMenu['nombre'], ENT_QUOTES, 'UTF-8') . '</span></a>';
                 echo '</li>';
             }
         }
@@ -76,7 +76,7 @@
         <br>
 
         <li class="border-menu-top">
-            <a href="logout.php"><i class="material-icons-two-tone">logout</i>Cerrar Sesión</a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"></i><span class="menu-text">Cerrar Sesión</span></a>
         </li>
 
     </ul>
