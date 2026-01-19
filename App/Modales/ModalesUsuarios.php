@@ -129,9 +129,10 @@
                                                         <label class="form-label d-block">Permisos de secciones</label>
                                                         <div class="row">
                                                             <?php foreach ($seccionesSistema as $seccion) { ?>
+                                                                <?php $estaHabilitada = !isset($seccion['MostrarEnMenu']) || (int)$seccion['MostrarEnMenu'] === 1; ?>
                                                                 <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
                                                                     <div class="form-check form-switch">
-                                                                        <input class="form-check-input permiso-seccion" type="checkbox" id="seccion_<?php echo $seccion['SECCIONID']; ?>" name="secciones[<?php echo $seccion['SECCIONID']; ?>]" value="1" data-seccion="<?php echo $seccion['SECCIONID']; ?>" checked>
+                                                                        <input class="form-check-input permiso-seccion" type="checkbox" id="seccion_<?php echo $seccion['SECCIONID']; ?>" name="secciones[<?php echo $seccion['SECCIONID']; ?>]" value="1" data-seccion="<?php echo $seccion['SECCIONID']; ?>" <?php echo $estaHabilitada ? 'checked' : ''; ?>>
                                                                         <label class="form-check-label" for="seccion_<?php echo $seccion['SECCIONID']; ?>"><?php echo htmlspecialchars($seccion['Nombre'], ENT_QUOTES, 'UTF-8'); ?></label>
                                                                     </div>
                                                                 </div>
