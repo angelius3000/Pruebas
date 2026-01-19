@@ -33,6 +33,12 @@
                 'nombre' => 'Material Pendiente',
             ],
             [
+                'slug' => 'corte',
+                'ruta' => 'Corte.php',
+                'icono' => 'fas fa-cut',
+                'nombre' => 'Corte',
+            ],
+            [
                 'slug' => 'clientes',
                 'ruta' => 'Clientes.php',
                 'icono' => 'fas fa-users',

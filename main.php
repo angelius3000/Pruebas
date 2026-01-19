@@ -66,6 +66,16 @@ if (!usuarioTieneAccesoSeccion('aplicaciones')) {
                                                 </div>
                                             </a>
                                         </div>
+                                        <?php if (usuarioTieneAccesoSeccion('corte')) { ?>
+                                            <div class="col-auto mb-3">
+                                                <a href="Corte.php" class="card app-card text-decoration-none text-dark">
+                                                    <div class="card-body">
+                                                        <i class="fas fa-cut fa-3x text-primary"></i>
+                                                        <h5 class="mt-1">Corte</h5>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>

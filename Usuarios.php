@@ -15,7 +15,7 @@ $totalRows_clientes = mysqli_num_rows($clientes);
 
 $seccionesSistema = [];
 if ($conn) {
-    $consultaSecciones = mysqli_query($conn, "SELECT SECCIONID, Nombre FROM secciones ORDER BY Orden, Nombre");
+    $consultaSecciones = mysqli_query($conn, "SELECT SECCIONID, Nombre, MostrarEnMenu FROM secciones ORDER BY Orden, Nombre");
     if ($consultaSecciones) {
         while ($filaSeccion = mysqli_fetch_assoc($consultaSecciones)) {
             $seccionesSistema[] = $filaSeccion;
