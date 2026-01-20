@@ -39,6 +39,12 @@
                 'nombre' => 'Corte',
             ],
             [
+                'slug' => 'conteo',
+                'ruta' => 'Conteo.php',
+                'icono' => 'fas fa-clipboard-check',
+                'nombre' => 'Conteo',
+            ],
+            [
                 'slug' => 'clientes',
                 'ruta' => 'Clientes.php',
                 'icono' => 'fas fa-users',
