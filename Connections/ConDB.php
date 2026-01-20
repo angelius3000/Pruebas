@@ -133,6 +133,22 @@ if ($conn === false) {
     @mysqli_query($conn, $crearTablaSecciones);
     @mysqli_query($conn, $crearTablaUsuarioSecciones);
 
+    $crearTablaConteo = "CREATE TABLE IF NOT EXISTS conteo_visitantes (
+        CONTEOID INT NOT NULL AUTO_INCREMENT,
+        Fecha DATE NOT NULL,
+        HoraInicio TIME NOT NULL,
+        HoraFin TIME NOT NULL,
+        Hombre INT NOT NULL DEFAULT 0,
+        Mujer INT NOT NULL DEFAULT 0,
+        Pareja INT NOT NULL DEFAULT 0,
+        Familia INT NOT NULL DEFAULT 0,
+        Cuadrilla INT NOT NULL DEFAULT 0,
+        PRIMARY KEY (CONTEOID),
+        UNIQUE KEY conteo_fecha_hora_unique (Fecha, HoraInicio)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
+
+    @mysqli_query($conn, $crearTablaConteo);
+
     $columnaMostrarEnMenu = @mysqli_query(
         $conn,
         "SHOW COLUMNS FROM secciones LIKE 'MostrarEnMenu'"
