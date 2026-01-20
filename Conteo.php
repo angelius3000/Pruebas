@@ -40,6 +40,7 @@ if (!usuarioTieneAccesoSeccion('conteo')) {
                                 <div class="page-description">
                                     <h2>Conteo</h2>
                                     <p class="text-muted">Registra los visitantes por hora y clasifica por tipo.</p>
+                                    <p class="text-muted mb-0">Fecha y hora actual: <?php echo htmlspecialchars(date('d/m/Y H:i'), ENT_QUOTES, 'UTF-8'); ?></p>
                                 </div>
                             </div>
                         </div>
