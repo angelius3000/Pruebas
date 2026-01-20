@@ -9,7 +9,10 @@ if (!$conn) {
     exit;
 }
 
-$fecha = date('Y-m-d');
+$zonaUtc = new DateTimeZone('UTC');
+$fechaActual = new DateTimeImmutable('now', $zonaUtc);
+$fechaActual = $fechaActual->modify('-7 hours');
+$fecha = $fechaActual->format('Y-m-d');
 
 $intervalos = [];
 for ($hora = 8; $hora < 19; $hora++) {

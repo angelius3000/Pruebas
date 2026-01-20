@@ -26,14 +26,19 @@ if (!isset($permitidos[$tipo]) || !in_array($delta, [1, -1], true)) {
     exit;
 }
 
-$horaActual = (int)date('G');
-if ($horaActual < 8 || $horaActual >= 19) {
-    http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'El conteo solo está disponible entre las 8:00 y 19:00.']);
-    exit;
+$zonaUtc = new DateTimeZone('UTC');
+$fechaActual = new DateTimeImmutable('now', $zonaUtc);
+$fechaActual = $fechaActual->modify('-7 hours');
+$horaActual = (int)$fechaActual->format('G');
+$fecha = $fechaActual->format('Y-m-d');
+
+if ($horaActual < 8) {
+    $horaActual = 8;
 }
 
-$fecha = date('Y-m-d');
+if ($horaActual >= 19) {
+    $horaActual = 18;
+}
 $horaInicio = sprintf('%02d:00:00', $horaActual);
 $horaFin = sprintf('%02d:00:00', $horaActual + 1);
 
