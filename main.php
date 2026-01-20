@@ -53,7 +53,7 @@ if (!usuarioTieneAccesoSeccion('aplicaciones')) {
                                         <div class="col-auto mb-3">
                                             <a href="charolas.php" class="card app-card text-decoration-none text-dark">
                                                 <div class="card-body">
-                                                    <i class="fas fa-layer-group fa-3x text-primary"></i>
+                                                    <i class="fas fa-stream fa-3x text-primary"></i>
                                                     <h5 class="mt-1">Charolas</h5>
                                                 </div>
                                             </a>
