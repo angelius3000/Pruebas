@@ -76,6 +76,16 @@ if (!usuarioTieneAccesoSeccion('aplicaciones')) {
                                                 </a>
                                             </div>
                                         <?php } ?>
+                                        <?php if (usuarioTieneAccesoSeccion('conteo')) { ?>
+                                            <div class="col-auto mb-3">
+                                                <a href="Conteo.php" class="card app-card text-decoration-none text-dark">
+                                                    <div class="card-body">
+                                                        <i class="fas fa-clipboard-check fa-3x text-primary"></i>
+                                                        <h5 class="mt-1">Conteo</h5>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
