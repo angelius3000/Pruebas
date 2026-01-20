@@ -41,8 +41,9 @@ if (!usuarioTieneAccesoSeccion('conteo')) {
                                     <h2>Conteo</h2>
                                     <p class="text-muted">Registra los visitantes por hora y clasifica por tipo.</p>
                                     <?php
-                                    $zonaHoraria = new DateTimeZone('America/Phoenix');
-                                    $fechaActual = new DateTime('now', $zonaHoraria);
+                                    $zonaUtc = new DateTimeZone('UTC');
+                                    $fechaActual = new DateTimeImmutable('now', $zonaUtc);
+                                    $fechaActual = $fechaActual->modify('-7 hours');
                                     ?>
                                     <p class="text-muted mb-0">Fecha y hora actual: <?php echo htmlspecialchars($fechaActual->format('d/m/Y H:i'), ENT_QUOTES, 'UTF-8'); ?></p>
                                 </div>
