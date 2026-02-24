@@ -14,7 +14,9 @@
                                     <div class="row">
                                         <div class="col-lg-5 col-md-12">
                                             <div class="row">
-                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                <div class="col-lg-6 col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="CLIENTEID" class="form-label">Cliente ID</label>
                                                     <select class="select2" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
                                                         <option selected>Selecciona cliente</option>
@@ -42,15 +44,15 @@
                                                         ?>
 
                                                     </select>
-                                                </div>
-                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-12 mb-4">
                                                     <label for="Fecha" class="form-label">Fecha de registro</label>
                                                     <input type="input" class="form-control" id="Fecha" disabled value="<?php echo $FechaHoy; ?> ">
-                                                </div>
-                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-12 mb-4">
                                                     <label for="NumeroDeFactura" class="form-label">Número de Factura</label>
                                                     <input type="text" class="form-control" id="NumeroDeFactura" autocomplete="off" name="NumeroDeFactura" required>
-                                                </div>
+                                                        </div>
 
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="Calle" class="form-label">Calle</label>
@@ -75,6 +77,8 @@
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="Estado" class="form-label">Estado</label>
                                                     <input type="text" class="form-control" id="Estado" autocomplete="off" name="Estado" required>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -86,6 +90,11 @@
                                                     <input type="text" class="form-control" id="EnlaceGoogleMaps" autocomplete="off" name="EnlaceGoogleMaps" readonly>
                                                     <small class="text-muted">El enlace se genera automáticamente con la dirección capturada.</small>
                                                 </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-12">
+                                            <div class="row">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label class="form-label">Mini mapa</label>
                                                     <div class="border rounded overflow-hidden" style="height: 230px;">
@@ -100,18 +109,20 @@
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="Receptor" class="form-label">Receptor</label>
                                                     <input type="text" class="form-control" id="Receptor" autocomplete="off" name="Receptor" required>
-                                                </div>
-                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-12 mb-4">
                                                     <label for="TelefonoDeReceptor" class="form-label">Teléfono del Receptor</label>
                                                     <input type="text" class="form-control" id="TelefonoDeReceptor" autocomplete="off" name="TelefonoDeReceptor" required placeholder="Número sin guiones ni espacios" data-parsley-pattern="^\d{10}$">
-                                                </div>
-                                                <div class="col-lg-6 col-sm-12 mb-4">
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-12 mb-4">
                                                     <label for="TelefonoAlternativo" class="form-label">Teléfono Alternativo</label>
                                                     <input type="text" class="form-control" id="TelefonoAlternativo" autocomplete="off" name="TelefonoAlternativo" data-parsley-pattern="^\d{10}$">
-                                                </div>
-                                                <div class="col-lg-12 col-sm-12 mb-4">
+                                                        </div>
+                                                        <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="Comentarios" class="form-label">Comentarios</label>
                                                     <textarea class="form-control" id="Comentarios" name="Comentarios" rows="4"></textarea>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
