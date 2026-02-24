@@ -28,8 +28,7 @@ $(document).ready(function() {
 
   function construirDireccionReparto() {
     var partesDireccion = [
-      limpiarValorDireccion($('#Calle').val()),
-      limpiarValorDireccion($('#NumeroEXT').val()),
+      limpiarValorDireccion($('#CalleNumero').val()),
       limpiarValorDireccion($('#Colonia').val()),
       limpiarValorDireccion($('#CP').val()),
       limpiarValorDireccion($('#Ciudad').val()),
@@ -40,6 +39,27 @@ $(document).ready(function() {
     });
 
     return partesDireccion.join(', ');
+  }
+
+  function separarCalleYNumero(direccionCapturada) {
+    var direccion = limpiarValorDireccion(direccionCapturada);
+    var resultado = {
+      calle: direccion,
+      numero: ''
+    };
+
+    if (direccion === '') {
+      return resultado;
+    }
+
+    var coincidencia = direccion.match(/^(.*\S)\s+([#\-\w\/]*\d[\w\/-]*)$/);
+
+    if (coincidencia) {
+      resultado.calle = limpiarValorDireccion(coincidencia[1]);
+      resultado.numero = limpiarValorDireccion(coincidencia[2]);
+    }
+
+    return resultado;
   }
 
   function actualizarMapaYEnlaceReparto() {
@@ -59,7 +79,7 @@ $(document).ready(function() {
     $('#MiniMapaReparto').attr('src', enlaceEmbed);
   }
 
-  $(document).on('input', '#Calle, #NumeroEXT, #Colonia, #CP, #Ciudad, #Estado', function() {
+  $(document).on('input', '#CalleNumero, #Colonia, #CP, #Ciudad, #Estado', function() {
     actualizarMapaYEnlaceReparto();
   });
 
@@ -281,7 +301,13 @@ $(document).ready(function() {
       e.preventDefault();
 
       // data string
-      var dataString = form.serialize();
+      var datosDireccion = separarCalleYNumero($('#CalleNumero').val());
+      var formData = form.serializeArray();
+
+      formData.push({ name: 'Calle', value: datosDireccion.calle });
+      formData.push({ name: 'NumeroEXT', value: datosDireccion.numero });
+
+      var dataString = $.param(formData);
 
       // ajax
       $.ajax({
