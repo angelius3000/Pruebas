@@ -1,3 +1,65 @@
+<style>
+    #ModalAgregarReparto .reparto-grid-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    #ModalAgregarReparto .reparto-grid-col,
+    #ModalAgregarReparto .reparto-grid-col .form-control,
+    #ModalAgregarReparto .reparto-grid-col .select2,
+    #ModalAgregarReparto .reparto-grid-col .select2-container {
+        width: 100% !important;
+        min-width: 0;
+    }
+
+    #ModalAgregarReparto .reparto-grid-col .select2-selection {
+        min-width: 0;
+    }
+
+    #ModalAgregarReparto .reparto-phone-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    #ModalAgregarReparto .reparto-mapa-wrapper {
+        width: 100%;
+        height: 260px;
+        border: 1px solid #dee2e6;
+        border-radius: 0.5rem;
+        overflow: hidden;
+    }
+
+    #ModalAgregarReparto #Comentarios {
+        min-height: 140px;
+    }
+
+    @media (min-width: 768px) {
+        #ModalAgregarReparto .reparto-grid-layout {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        #ModalAgregarReparto .reparto-grid-col--right {
+            grid-column: 1 / -1;
+        }
+
+        #ModalAgregarReparto .reparto-phone-row {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (min-width: 1200px) {
+        #ModalAgregarReparto .reparto-grid-layout {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        #ModalAgregarReparto .reparto-grid-col--right {
+            grid-column: auto;
+        }
+    }
+</style>
+
 <div class="modal" id="ModalAgregarReparto">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -11,119 +73,93 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-5 col-md-12">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-12">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="CLIENTEID" class="form-label">Cliente ID</label>
-                                                    <select class="select2" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
-                                                        <option selected>Selecciona cliente</option>
+                                    <div class="reparto-grid-layout">
+                                        <div class="reparto-grid-col reparto-grid-col--left">
+                                            <div class="mb-4">
+                                                <label for="CLIENTEID" class="form-label">Cliente ID</label>
+                                                <select class="select2" name="CLIENTEID" id="CLIENTEID" aria-label="Default select example" required>
+                                                    <option selected>Selecciona cliente</option>
 
-                                                        <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
+                                                    <?php while ($row_clientes = mysqli_fetch_assoc($clientes)) { ?>
 
-                                                            <option value="<?php echo $row_clientes['CLIENTEID']; ?>">
+                                                        <option value="<?php echo $row_clientes['CLIENTEID']; ?>">
 
-                                                                <?php if ($row_clientes["CLCSIAN"] != NULL) {
+                                                            <?php if ($row_clientes["CLCSIAN"] != NULL) {
 
-                                                                    $NumeroDeCredito = " - " . $row_clientes["CLCSIAN"];
-                                                                } else {
+                                                                $NumeroDeCredito = " - " . $row_clientes["CLCSIAN"];
+                                                            } else {
 
-                                                                    $NumeroDeCredito = " ";
-                                                                }
+                                                                $NumeroDeCredito = " ";
+                                                            }
 
-                                                                echo $row_clientes['CLIENTESIAN'] . $NumeroDeCredito . " - " . $row_clientes['NombreCliente']; ?>
-                                                            </option>
+                                                            echo $row_clientes['CLIENTESIAN'] . $NumeroDeCredito . " - " . $row_clientes['NombreCliente']; ?>
+                                                        </option>
 
-                                                        <?php }
+                                                    <?php }
 
-                                                        // Reset the pointer to the beginning
-                                                        mysqli_data_seek($clientes, 0);
+                                                    // Reset the pointer to the beginning
+                                                    mysqli_data_seek($clientes, 0);
 
-                                                        ?>
+                                                    ?>
 
-                                                    </select>
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-12 mb-4">
-                                                    <label for="Fecha" class="form-label">Fecha de registro</label>
-                                                    <input type="input" class="form-control" id="Fecha" disabled value="<?php echo $FechaHoy; ?> ">
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-12 mb-4">
-                                                    <label for="NumeroDeFactura" class="form-label">Número de Factura</label>
-                                                    <input type="text" class="form-control" id="NumeroDeFactura" autocomplete="off" name="NumeroDeFactura" required>
-                                                        </div>
-
-                                                <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="Calle" class="form-label">Calle</label>
-                                                    <input type="text" class="form-control" id="Calle" autocomplete="off" name="Calle" required>
-                                                </div>
-                                                <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="NumeroEXT" class="form-label">Número Exterior</label>
-                                                    <input type="text" class="form-control" id="NumeroEXT" autocomplete="off" name="NumeroEXT" required>
-                                                </div>
-                                                <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="Colonia" class="form-label">Colonia</label>
-                                                    <input type="text" class="form-control" id="Colonia" autocomplete="off" name="Colonia" required>
-                                                </div>
-                                                <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="CP" class="form-label">Código Postal</label>
-                                                    <input type="text" class="form-control" id="CP" autocomplete="off" name="CP" required>
-                                                </div>
-                                                <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="Ciudad" class="form-label">Ciudad</label>
-                                                    <input type="text" class="form-control" id="Ciudad" autocomplete="off" name="Ciudad" required>
-                                                </div>
-                                                <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="Estado" class="form-label">Estado</label>
-                                                    <input type="text" class="form-control" id="Estado" autocomplete="off" name="Estado" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                </select>
+                                            </div>
+                                            <div class="mb-4">
+                                                <label for="NumeroDeFactura" class="form-label">Número de Factura</label>
+                                                <input type="text" class="form-control" id="NumeroDeFactura" autocomplete="off" name="NumeroDeFactura" required>
+                                            </div>
+                                            <div class="mb-4">
+                                                <label for="CalleNumero" class="form-label">Calle y número</label>
+                                                <input type="text" class="form-control" id="CalleNumero" autocomplete="off" name="CalleNumero" required>
+                                            </div>
+                                            <div class="mb-4">
+                                                <label for="Colonia" class="form-label">Colonia</label>
+                                                <input type="text" class="form-control" id="Colonia" autocomplete="off" name="Colonia" required>
+                                            </div>
+                                            <div class="mb-4">
+                                                <label for="CP" class="form-label">Código Postal</label>
+                                                <input type="text" class="form-control" id="CP" autocomplete="off" name="CP" required>
+                                            </div>
+                                            <div class="mb-4">
+                                                <label for="Ciudad" class="form-label">Ciudad</label>
+                                                <input type="text" class="form-control" id="Ciudad" autocomplete="off" name="Ciudad" required>
+                                            </div>
+                                            <div class="mb-0">
+                                                <label for="Estado" class="form-label">Estado</label>
+                                                <input type="text" class="form-control" id="Estado" autocomplete="off" name="Estado" required>
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3 col-md-12">
-                                            <div class="row">
-                                                <div class="col-lg-12 col-sm-12 mb-3">
-                                                    <label for="EnlaceGoogleMaps" class="form-label">Enlace Google Maps</label>
-                                                    <input type="text" class="form-control" id="EnlaceGoogleMaps" autocomplete="off" name="EnlaceGoogleMaps" readonly>
-                                                    <small class="text-muted">El enlace se genera automáticamente con la dirección capturada.</small>
-                                                </div>
+                                        <div class="reparto-grid-col reparto-grid-col--center">
+                                            <div class="mb-2">
+                                                <label for="EnlaceGoogleMaps" class="form-label">Enlace Google Maps</label>
+                                                <input type="text" class="form-control" id="EnlaceGoogleMaps" autocomplete="off" name="EnlaceGoogleMaps" readonly>
+                                            </div>
+                                            <p class="text-muted mb-4">El enlace se genera automáticamente con la dirección capturada.</p>
+                                            <label class="form-label">Mini mapa</label>
+                                            <div class="reparto-mapa-wrapper">
+                                                <iframe id="MiniMapaReparto" title="Mini mapa de reparto" width="100%" height="100%" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=M%C3%A9xico&output=embed"></iframe>
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-4 col-md-12">
-                                            <div class="row">
-                                                <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label class="form-label">Mini mapa</label>
-                                                    <div class="border rounded overflow-hidden" style="height: 230px;">
-                                                        <iframe id="MiniMapaReparto" title="Mini mapa de reparto" width="100%" height="100%" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=M%C3%A9xico&output=embed"></iframe>
-                                                    </div>
-                                                </div>
+                                        <div class="reparto-grid-col reparto-grid-col--right">
+                                            <div class="mb-4">
+                                                <label for="Receptor" class="form-label">Receptor</label>
+                                                <input type="text" class="form-control" id="Receptor" autocomplete="off" name="Receptor" required>
                                             </div>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-12">
-                                            <div class="row">
-                                                <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="Receptor" class="form-label">Receptor</label>
-                                                    <input type="text" class="form-control" id="Receptor" autocomplete="off" name="Receptor" required>
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-12 mb-4">
+                                            <div class="reparto-phone-row mb-4">
+                                                <div>
                                                     <label for="TelefonoDeReceptor" class="form-label">Teléfono del Receptor</label>
                                                     <input type="text" class="form-control" id="TelefonoDeReceptor" autocomplete="off" name="TelefonoDeReceptor" required placeholder="Número sin guiones ni espacios" data-parsley-pattern="^\d{10}$">
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-12 mb-4">
+                                                </div>
+                                                <div>
                                                     <label for="TelefonoAlternativo" class="form-label">Teléfono Alternativo</label>
                                                     <input type="text" class="form-control" id="TelefonoAlternativo" autocomplete="off" name="TelefonoAlternativo" data-parsley-pattern="^\d{10}$">
-                                                        </div>
-                                                        <div class="col-lg-12 col-sm-12 mb-4">
-                                                    <label for="Comentarios" class="form-label">Comentarios</label>
-                                                    <textarea class="form-control" id="Comentarios" name="Comentarios" rows="4"></textarea>
-                                                        </div>
-                                                    </div>
                                                 </div>
+                                            </div>
+                                            <div class="mb-0">
+                                                <label for="Comentarios" class="form-label">Comentarios</label>
+                                                <textarea class="form-control" id="Comentarios" name="Comentarios" rows="4"></textarea>
                                             </div>
                                         </div>
                                     </div>
