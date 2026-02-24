@@ -21,6 +21,51 @@ $(document).ready(function() {
       width: '100%' // Asegura que ocupe todo el ancho del contenedor
     });
   });
+
+  function limpiarValorDireccion(valor) {
+    return typeof valor === 'string' ? valor.trim() : '';
+  }
+
+  function construirDireccionReparto() {
+    var partesDireccion = [
+      limpiarValorDireccion($('#Calle').val()),
+      limpiarValorDireccion($('#NumeroEXT').val()),
+      limpiarValorDireccion($('#Colonia').val()),
+      limpiarValorDireccion($('#CP').val()),
+      limpiarValorDireccion($('#Ciudad').val()),
+      limpiarValorDireccion($('#Estado').val()),
+      'México'
+    ].filter(function(valor) {
+      return valor !== '';
+    });
+
+    return partesDireccion.join(', ');
+  }
+
+  function actualizarMapaYEnlaceReparto() {
+    var direccionCompleta = construirDireccionReparto();
+
+    if (direccionCompleta === '') {
+      $('#EnlaceGoogleMaps').val('');
+      $('#MiniMapaReparto').attr('src', 'https://maps.google.com/maps?q=M%C3%A9xico&output=embed');
+      return;
+    }
+
+    var direccionCodificada = encodeURIComponent(direccionCompleta);
+    var enlaceGoogleMaps = 'https://www.google.com/maps/search/?api=1&query=' + direccionCodificada;
+    var enlaceEmbed = 'https://maps.google.com/maps?q=' + direccionCodificada + '&output=embed';
+
+    $('#EnlaceGoogleMaps').val(enlaceGoogleMaps);
+    $('#MiniMapaReparto').attr('src', enlaceEmbed);
+  }
+
+  $(document).on('input', '#Calle, #NumeroEXT, #Colonia, #CP, #Ciudad, #Estado', function() {
+    actualizarMapaYEnlaceReparto();
+  });
+
+  $('#ModalAgregarReparto').on('shown.bs.modal', function() {
+    actualizarMapaYEnlaceReparto();
+  });
   $('#ModalEditarReparto').on('shown.bs.modal', function () {
     $('#CLIENTEIDEditar').select2({
       dropdownParent: $('#ModalEditarReparto'), // Ajuste importante
