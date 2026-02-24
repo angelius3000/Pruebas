@@ -12,7 +12,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-lg-4 col-md-12">
+                                        <div class="col-lg-5 col-md-12">
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-12">
                                                     <div class="row">
@@ -54,27 +54,27 @@
                                                     <input type="text" class="form-control" id="NumeroDeFactura" autocomplete="off" name="NumeroDeFactura" required>
                                                         </div>
 
-                                                        <div class="col-lg-6 col-sm-12 mb-4">
+                                                <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="Calle" class="form-label">Calle</label>
                                                     <input type="text" class="form-control" id="Calle" autocomplete="off" name="Calle" required>
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-12 mb-4">
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="NumeroEXT" class="form-label">Número Exterior</label>
                                                     <input type="text" class="form-control" id="NumeroEXT" autocomplete="off" name="NumeroEXT" required>
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-12 mb-4">
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="Colonia" class="form-label">Colonia</label>
                                                     <input type="text" class="form-control" id="Colonia" autocomplete="off" name="Colonia" required>
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-12 mb-4">
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="CP" class="form-label">Código Postal</label>
                                                     <input type="text" class="form-control" id="CP" autocomplete="off" name="CP" required>
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-12 mb-4">
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="Ciudad" class="form-label">Ciudad</label>
                                                     <input type="text" class="form-control" id="Ciudad" autocomplete="off" name="Ciudad" required>
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-12 mb-4">
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label for="Estado" class="form-label">Estado</label>
                                                     <input type="text" class="form-control" id="Estado" autocomplete="off" name="Estado" required>
                                                         </div>
@@ -83,13 +83,18 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-4 col-md-12">
+                                        <div class="col-lg-3 col-md-12">
                                             <div class="row">
                                                 <div class="col-lg-12 col-sm-12 mb-3">
                                                     <label for="EnlaceGoogleMaps" class="form-label">Enlace Google Maps</label>
                                                     <input type="text" class="form-control" id="EnlaceGoogleMaps" autocomplete="off" name="EnlaceGoogleMaps" readonly>
                                                     <small class="text-muted">El enlace se genera automáticamente con la dirección capturada.</small>
                                                 </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-12">
+                                            <div class="row">
                                                 <div class="col-lg-12 col-sm-12 mb-4">
                                                     <label class="form-label">Mini mapa</label>
                                                     <div class="border rounded overflow-hidden" style="height: 230px;">
