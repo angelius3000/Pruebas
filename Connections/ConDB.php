@@ -1,20 +1,29 @@
 <?php
 require_once __DIR__ . '/../includes/sections_config.php';
 /* Database connection start */
-if ($_SERVER['HTTP_HOST'] == "localhost") {
+// attempt to use environment variables first
+$dbHost = getenv('DB_HOST');
+$dbPort = getenv('DB_PORT');
+$dbUser = getenv('DB_USER');
+$dbPass = getenv('DB_PASS');
+$dbName = getenv('DB_NAME');
 
+if ($dbHost && $dbName && $dbUser) {
+    $servername = $dbHost . ($dbPort ? (":" . $dbPort) : '');
+    $username = $dbUser;
+    $password = $dbPass;
+    $dbname = $dbName;
+} elseif ($_SERVER['HTTP_HOST'] == "localhost") {
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "edison";
 } else if ($_SERVER['HTTP_HOST'] == "local.edison:8888") {
-
     $servername = "localhost";
     $username = "root";
     $password = "root";
     $dbname = "edison";
 } else {
-
     /* Database connection start */
     $servername = "localhost:3306";
     $username = "pruebas";

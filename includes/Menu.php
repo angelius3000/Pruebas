@@ -57,6 +57,12 @@
                 'nombre' => 'Usuarios',
             ],
             [
+                'slug' => 'soporte',
+                'ruta' => 'Soporte/index.php',
+                'icono' => 'fas fa-life-ring',
+                'nombre' => 'Soporte',
+            ],
+            [
                 'slug' => 'administracion',
                 'ruta' => 'Administracion.php',
                 'icono' => 'fas fa-cogs',

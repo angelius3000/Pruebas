@@ -60,10 +60,17 @@ if (!function_exists('obtenerDefinicionSeccionesBase')) {
                 'MostrarEnMenu' => 1,
             ],
             [
+                'Nombre' => 'Soporte',
+                'Slug' => 'soporte',
+                'Ruta' => 'Soporte/index.php',
+                'Orden' => 9,
+                'MostrarEnMenu' => 1,
+            ],
+            [
                 'Nombre' => 'Administración',
                 'Slug' => 'administracion',
                 'Ruta' => 'Administracion.php',
-                'Orden' => 9,
+                'Orden' => 10,
                 'MostrarEnMenu' => 1,
             ],
         ];
