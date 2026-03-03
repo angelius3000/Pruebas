@@ -78,6 +78,33 @@ if (!usuarioTieneAccesoSeccion('conteo')) {
                             </div>
                         </div>
 
+                        <!-- export controls -->
+                        <div class="row mb-3">
+                            <div class="col-lg-3 col-sm-6 mb-2">
+                                <label for="FechaInicioConteo" class="form-label">Fecha inicio</label>
+                                <input type="date" class="form-control" id="FechaInicioConteo" />
+                            </div>
+                            <div class="col-lg-3 col-sm-6 mb-2">
+                                <label for="FechaFinConteo" class="form-label">Fecha fin</label>
+                                <input type="date" class="form-control" id="FechaFinConteo" />
+                            </div>
+                            <div class="col-lg-3 col-sm-6 mb-2">
+                                <label for="GrupoConteo" class="form-label">Agrupar por</label>
+                                <select id="GrupoConteo" class="form-select">
+                                    <option value="hora" selected>Hora</option>
+                                    <option value="dia">Día</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3 col-sm-6 mb-2 d-flex align-items-end">
+                                <button id="BtnExportarConteo" class="btn btn-success w-100">Exportar Excel</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <small class="text-muted">Seleccione las fechas y el tipo de agrupación antes de exportar el conteo.</small>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col">
                                 <div class="table-responsive">

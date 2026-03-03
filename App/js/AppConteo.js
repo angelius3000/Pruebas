@@ -61,4 +61,30 @@ $(document).ready(function () {
     });
 
     cargarConteo();
+
+    // export button interaction
+    $('#BtnExportarConteo').on('click', function() {
+        var inicio = $('#FechaInicioConteo').val();
+        var fin = $('#FechaFinConteo').val();
+        var grupo = $('#GrupoConteo').val() || 'hora';
+
+        if (!inicio || !fin) {
+            alert('Debe seleccionar fecha de inicio y fecha de fin.');
+            return;
+        }
+
+        // swap if inverted dates
+        if (inicio > fin) {
+            var temp = inicio;
+            inicio = fin;
+            fin = temp;
+        }
+
+        var url = 'App/Server/ServerConteoExport.php?inicio=' + encodeURIComponent(inicio)
+            + '&fin=' + encodeURIComponent(fin)
+            + '&grupo=' + encodeURIComponent(grupo);
+
+        // open in new tab to trigger download
+        window.open(url, '_blank');
+    });
 });
